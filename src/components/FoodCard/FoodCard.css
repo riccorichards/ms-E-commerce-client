@@ -1,0 +1,117 @@
+.food-card-wrapper {
+  width: 280px;
+  height: 500px;
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  font-family: "Josefin Sans", sans-serif;
+  padding: 15px;
+  color: #333333;
+  position: relative;
+}
+
+.food-image-wrapper {
+  position: relative;
+  flex: 2;
+}
+
+.food-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 200px rgba(0, 0, 0, 0.35);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.food-content-wrapper {
+  flex: 1;
+  margin-top: 25px;
+}
+.food-content-wrapper p {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.food-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.food-prep-duration {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.shopping-option {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+  position: relative;
+}
+
+.price-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.price-header {
+  border-bottom: 2px hsl(16, 100%, 50%) solid;
+}
+
+.food-action-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.add-to-wishlist {
+  cursor: pointer;
+}
+.add-to-wishlist:active {
+  transform: scale(0.9);
+}
+
+.add-to-cart-wrapper {
+  background-color: #333333;
+  padding: 10px;
+  color: #c0c0c0;
+  border-radius: 15px 15px 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  position: absolute;
+  right: -50px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+  transition: all 0.25s ease-in-out;
+}
+.add-to-cart-wrapper:hover {
+  background-color: hsl(16, 100%, 50%);
+  color: #333333;
+}
+.add-to-cart-wrapper:active {
+  transform: scale(0.9);
+}
+
+.add-to-cart {
+  font-size: 12px;
+}
+
+.add-to-cart-icon {
+  width: 30px;
+  height: 30px;
+  background-color: #fff8e1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

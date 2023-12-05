@@ -1,0 +1,11 @@
+.vendor-popular-food-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.vendor-popular-food {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}

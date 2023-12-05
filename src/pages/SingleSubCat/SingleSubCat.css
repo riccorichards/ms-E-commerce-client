@@ -1,0 +1,16 @@
+.single-sub-cat-wrapper {
+  flex: 5;
+  background-color: #fff8e1;
+  border-radius: 15px;
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.all-sub-cat-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}

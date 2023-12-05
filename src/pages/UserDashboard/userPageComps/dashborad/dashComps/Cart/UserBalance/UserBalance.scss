@@ -1,0 +1,83 @@
+@use "../../../../../../../assets/v.scss";
+
+.user-balance-wrapper {
+  padding: 15px 0;
+}
+
+.balance-wrapper {
+  margin-top: 15px;
+  background-color: v.$orangered;
+  padding: 35px 15px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba($color: #00000026, $alpha: 0.2);
+}
+
+.info-of-balance {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.underline-to-your-info {
+  border-bottom: v.$orangered 2px solid;
+}
+
+.cash-in-the-cart {
+  font-size: 32px;
+}
+
+.deposit-withdraw {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.deposit-withdraw-btn {
+  background-color: v.$att_green;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: v.$p_font2;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    background-color: v.$sky;
+
+    .deposit-withdraw-btn-icon {
+      background-color: v.$orangered;
+    }
+  }
+}
+
+.deposit-withdraw-btn-icon {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  font-size: 18px;
+  justify-content: center;
+  align-items: center;
+  background-color: v.$white;
+  border-radius: 50%;
+  transition: all 0.25s ease-in-out;
+}
+
+.user-address-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.user-address-info-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-address {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}

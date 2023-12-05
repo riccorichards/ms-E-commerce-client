@@ -1,0 +1,45 @@
+@use "../../assets/v.scss";
+
+.each-vendor {
+  display: flex;
+  gap: 15px;
+  background-color: v.$white;
+  border-radius: 15px;
+  height: 30vh;
+  padding: 15px;
+}
+
+.each-vendor-image-wrapper {
+  flex: 1;
+}
+
+.each-vendor-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.each-vendor-the-rest {
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 24px;
+}
+
+.each-vendor-the-rest-items {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.each-vendor-the-rest-items-arr {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.the-rest-items-social {
+  color: v.$orangered;
+}

@@ -1,0 +1,14 @@
+@use "../../../../../../../../assets/v.scss";
+
+.dashboard-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px;
+}
+
+.meeter-text {
+  width: 300px;
+  font-size: 45px;
+  font-weight: 900;
+}

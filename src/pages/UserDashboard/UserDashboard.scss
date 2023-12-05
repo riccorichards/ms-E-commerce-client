@@ -1,0 +1,16 @@
+@use "../../assets/v.scss";
+
+.user-dashboard-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  backdrop-filter: blur(25px);
+  height: calc(100vh - 60px);
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba($color: #00000026, $alpha: 0.2);
+  display: flex;
+  gap: 10px;
+  font-family: v.$title_font2;
+  padding: 15px;
+  color: v.$darken;
+}

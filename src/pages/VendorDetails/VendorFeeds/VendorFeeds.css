@@ -1,0 +1,34 @@
+.vendor-feeds-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 55px;
+}
+
+.feed-wrapper {
+  display: flex;
+  margin: 0 auto;
+  gap: 35px;
+}
+
+.vendor-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 300px;
+  background-color: #333333;
+  color: #c0c0c0;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.feed-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.feed-header-customer {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+}

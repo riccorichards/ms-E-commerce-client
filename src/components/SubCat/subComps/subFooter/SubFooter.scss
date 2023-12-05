@@ -1,0 +1,32 @@
+@use "../../../../assets/v.scss";
+
+.main_subcat-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: v.$darken;
+  color: v.$grey;
+  height: 100%;
+  border-radius: 15px;
+}
+
+.sub-footer-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: v.$white;
+  color: v.$darken;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    color: v.$att_green;
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}

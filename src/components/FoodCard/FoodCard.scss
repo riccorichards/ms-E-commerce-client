@@ -1,0 +1,121 @@
+@use "../../assets/v.scss";
+
+.food-card-wrapper {
+  width: 280px;
+  height: 500px;
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba($color: #00000026, $alpha: 0.2);
+  display: flex;
+  flex-direction: column;
+  font-family: v.$title_font2;
+  padding: 15px;
+  color: v.$darken;
+  position: relative;
+}
+
+.food-image-wrapper {
+  position: relative;
+  flex: 2;
+}
+
+.food-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 200px rgba($color: #00000026, $alpha: 0.35);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.food-content-wrapper {
+  flex: 1;
+  margin-top: 25px;
+
+  p {
+    margin-top: 15px;
+    font-size: 14px;
+  }
+}
+
+.food-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.food-prep-duration {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.shopping-option {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+  position: relative;
+}
+
+.price-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.price-header {
+  border-bottom: 2px v.$orangered solid;
+}
+
+.food-action-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.add-to-wishlist {
+  cursor: pointer;
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.add-to-cart-wrapper {
+  background-color: v.$darken;
+  padding: 10px;
+  color: v.$grey;
+  border-radius: 15px 15px 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  position: absolute;
+  right: -50px;
+  box-shadow: 0 0 20px rgba($color: #00000026, $alpha: 0.35);
+  &:hover {
+    background-color: v.$orangered;
+    color: v.$darken;
+  }
+  transition: all 0.25s ease-in-out;
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.add-to-cart {
+  font-size: 12px;
+}
+
+.add-to-cart-icon {
+  width: 30px;
+  height: 30px;
+  background-color: v.$white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

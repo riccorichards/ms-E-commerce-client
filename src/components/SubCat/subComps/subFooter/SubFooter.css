@@ -1,0 +1,28 @@
+.main_subcat-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #333333;
+  color: #c0c0c0;
+  height: 100%;
+  border-radius: 15px;
+}
+
+.sub-footer-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff8e1;
+  color: #333333;
+  transition: all 0.25s ease-in-out;
+}
+.sub-footer-item:hover {
+  color: #008080;
+  cursor: pointer;
+}
+.sub-footer-item:active {
+  transform: scale(0.95);
+}

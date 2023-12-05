@@ -1,0 +1,30 @@
+@use "../../../../../../../../../assets/v.scss";
+
+.sub-cat-header-wrapper {
+  display: flex;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+h1 {
+  font-weight: 800;
+}
+.sub-cat-header-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: transparent;
+  border: none;
+  font-family: v.$p_font2;
+  letter-spacing: 1px;
+  font-size: 16px;
+  border-bottom: v.$orangered 2px solid;
+  cursor: pointer;
+
+  &:active {
+    transform: scale(0.9);
+  }
+}

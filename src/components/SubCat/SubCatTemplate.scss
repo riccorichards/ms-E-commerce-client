@@ -1,0 +1,21 @@
+@use "../../assets/v.scss";
+
+.main-subcat {
+  width: 280px;
+  height: 500px;
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba($color: #00000026, $alpha: 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: v.$title_font2;
+  padding: 15px;
+  color: v.$darken;
+}
+
+.main-subcat-header {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}

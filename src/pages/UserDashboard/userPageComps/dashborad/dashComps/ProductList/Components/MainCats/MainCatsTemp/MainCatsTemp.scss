@@ -1,0 +1,27 @@
+@use "../../../../../../../../../assets/v.scss";
+
+.each-main-cat-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  background-color: v.$sky;
+
+  border-radius: 10px;
+  width: fit-content;
+  height: 150px;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba($color: #00000023, $alpha: 0.5);
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    background-color: v.$orangered;
+  }
+}
+
+img {
+  width: 70px;
+  height: 70px;
+  border-radius: 15px;
+}

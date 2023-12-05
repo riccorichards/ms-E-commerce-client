@@ -1,0 +1,11 @@
+@use "../../assets/v.scss";
+
+.vendors-list {
+  flex: 5;
+  height: 100%;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: auto;
+}

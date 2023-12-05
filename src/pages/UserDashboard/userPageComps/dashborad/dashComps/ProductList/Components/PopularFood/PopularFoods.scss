@@ -1,0 +1,15 @@
+@use "../../../../../../../../assets/v.scss";
+
+.popular-food-wrappe {
+  display: flex;
+  margin-top: 35px;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+}
+
+.popular-foods {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}

@@ -1,0 +1,21 @@
+@use "../../../../../../../assets/v.scss";
+
+.cart-promotion {
+  background-color: v.$sky;
+  border-radius: 15px;
+  width: 100%;
+  position: relative;
+}
+
+.promo-details {
+  padding: 35px 5px;
+}
+
+.burger-decor {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  transform: rotate(335deg);
+  top: 10%;
+  right: 0%;
+}

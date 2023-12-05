@@ -1,0 +1,68 @@
+@use "../../../../assets/v.scss";
+
+.main_subcat-body {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.main_subcat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.sub-food-rating {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 5px;
+}
+.subcat-image {
+  flex: 1;
+  position: relative;
+  height: 100%;
+}
+
+.food-image-place {
+  position: absolute;
+  top: 10%;
+  box-shadow: 0 0 150px rgba($color: #00000026, $alpha: 0.75);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: rotate 45s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.food-switcher {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.switcher-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: v.$darken;
+  border: none;
+  padding: 3.5px;
+  color: v.$grey;
+  border-radius: 2.5px;
+  cursor: pointer;
+
+  &:active {
+    transform: scale(0.9);
+  }
+}

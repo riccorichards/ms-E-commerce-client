@@ -1,0 +1,62 @@
+@use "../../../../../../../../assets/v.scss";
+
+.per-food-in-cart {
+  width: 100%;
+  height: 15vh;
+  background-color: v.$att_green;
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  gap: 10px;
+  position: relative;
+}
+
+.food-details-in-cart {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.food-amount-controller {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.controller-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: v.$darken;
+  border: none;
+  padding: 3.5px;
+  color: v.$grey;
+  border-radius: 2.5px;
+  cursor: pointer;
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.remove-food-from-cart {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  font-weight: 700;
+  position: absolute;
+  right: 5%;
+}
+
+.trash-icon {
+  transition: all 0.25s ease-in-out;
+  &:hover {
+    cursor: pointer;
+    color: v.$orangered;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}

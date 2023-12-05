@@ -1,0 +1,25 @@
+.main_subcat-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.sub-cats-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.cat-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 2.5px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+.cat-item:hover {
+  background-color: #008080;
+}

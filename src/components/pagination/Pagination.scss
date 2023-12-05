@@ -1,0 +1,29 @@
+@use "../../assets/v.scss";
+
+.pagination-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.each-pagination-btn {
+  width: 35px;
+  height: 35px;
+  font-family: v.$p_font2;
+  border: none;
+  background-color: v.$darken;
+  color: v.$grey;
+  border-radius: 3.5px;
+  transition: all 0.25s ease-in-out;
+  font-size: 17px;
+
+  &:hover {
+    background-color: v.$orangered;
+    color: v.$grey;
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}

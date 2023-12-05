@@ -1,0 +1,25 @@
+.pagination-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.each-pagination-btn {
+  width: 35px;
+  height: 35px;
+  font-family: "Oswald", sans-serif;
+  border: none;
+  background-color: #333333;
+  color: #c0c0c0;
+  border-radius: 3.5px;
+  transition: all 0.25s ease-in-out;
+  font-size: 17px;
+}
+.each-pagination-btn:hover {
+  background-color: hsl(16, 100%, 50%);
+  color: #c0c0c0;
+  cursor: pointer;
+}
+.each-pagination-btn:active {
+  transform: scale(0.9);
+}

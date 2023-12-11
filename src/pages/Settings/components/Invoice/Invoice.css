@@ -1,0 +1,34 @@
+.invoice-wrapper {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.table-wrapper {
+  height: 65vh;
+  overflow-y: auto;
+}
+
+.invoice-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.invoice-table .invoice-thead .invoice-tr {
+  background-color: #333333;
+  font-size: 18px;
+  font-weight: 700;
+  color: #c0c0c0;
+  height: 7vh;
+  text-align: left;
+}
+
+.invoice-table .invoice-th,
+.invoice-table .invoice-td {
+  padding: 12px 15px;
+}
+
+.invoice-table .invoice-tbody .invoice-tr {
+  border-bottom: 2px #c0c0c0 solid;
+}

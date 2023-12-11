@@ -1,0 +1,24 @@
+.current-order-wrapper {
+  flex: 5;
+  display: flex;
+  gap: 15px;
+  height: 100%;
+}
+
+.current-order-side-bar {
+  flex: 1;
+  overflow-y: auto;
+  background-color: #fff8e1;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.current-order-main-bar {
+  flex: 3;
+  overflow-y: auto;
+  background-color: #fff8e1;
+  border-radius: 15px;
+  gap: 25px;
+}

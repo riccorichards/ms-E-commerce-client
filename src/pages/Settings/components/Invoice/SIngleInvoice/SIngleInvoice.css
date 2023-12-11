@@ -1,0 +1,80 @@
+.single-invoice-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.single-invoice {
+  width: 800px;
+  height: 600px;
+  background-color: #fff8e1;
+  padding: 15px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: auto;
+}
+
+.single-invoice-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid #333333;
+}
+
+.single-invoice-header-from {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.single-invoice-header-to {
+  text-align: end;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.single-invoice-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.single-invoice-table .single-invoice-thead .single-invoice-tr {
+  background-color: #333333;
+  font-size: 18px;
+  font-weight: 700;
+  color: #c0c0c0;
+  height: 7vh;
+  text-align: left;
+}
+
+.single-invoice-table .single-invoice-th,
+.single-invoice-table .single-invoice-td {
+  padding: 12px 15px;
+}
+
+.single-invoice-table .single-invoice-tbody .single-invoice-tr {
+  border-bottom: 2px #c0c0c0 solid;
+}
+
+.single-invoice-sum {
+  align-self: flex-end;
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.single-invoice-sum .single-invoice-sum-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

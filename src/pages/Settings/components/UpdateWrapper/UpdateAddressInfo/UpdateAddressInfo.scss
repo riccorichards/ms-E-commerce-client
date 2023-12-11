@@ -1,0 +1,68 @@
+@use "../../../../../assets/v.scss";
+
+.customer-update-address {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#update-address-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  input {
+    padding: 5px;
+    font-family: v.$p_font2;
+    letter-spacing: 1px;
+    border: none;
+    background-color: transparent;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.update-address-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: v.$att_green 2px solid;
+  padding: 0 5px;
+}
+
+.update-item-btn {
+  color: v.$att_green;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    color: v.$orangered;
+  }
+}
+
+.update-address-btn {
+  font-family: v.$p_font2;
+  letter-spacing: 1px;
+  font-weight: 800;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid v.$att_green;
+  width: fit-content;
+  transition: all 0.25s ease-in-out;
+  border-radius: 3.5px;
+  padding: 5px 12px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: v.$att_green;
+    border: none;
+    color: v.$grey;
+  }
+
+  &:active {
+    transform: scale(0.9);
+  }
+}

@@ -1,0 +1,48 @@
+.customer-info-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+  padding: 15px;
+}
+
+.status-wrapper {
+  color: hsl(16, 100%, 50%);
+  background-color: #333333;
+  padding: 5px 15px;
+  font-weight: 900;
+  border-radius: 3.5px;
+}
+
+.customer-contact-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.customer-info-phone {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.customer-info-address {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.decor-underline {
+  width: 100%;
+  height: 2px;
+  background-color: #333333;
+}
+
+.note-order-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.note-order-wrapper p {
+  text-align: center;
+}

@@ -1,0 +1,46 @@
+.vendor-menu-wrapper {
+  flex: 5;
+  background-color: #fff8e1;
+  height: 100%;
+  padding: 30px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  overflow-y: auto;
+}
+
+.vendor-menu-search-wrapper {
+  border: 1px solid hsl(16, 100%, 50%);
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+.vendor-menu-search-wrapper .vendor-menu-search {
+  border: none;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1.5px;
+  height: 100%;
+  width: 95%;
+  background-color: transparent;
+}
+.vendor-menu-search-wrapper .vendor-menu-search:focus {
+  outline: none;
+}
+.vendor-menu-search-wrapper .vendor-menu-search-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  color: #333333;
+  border: none;
+  background-color: hsl(16, 100%, 50%);
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.vendor-menu-search-wrapper .vendor-menu-search-btn:active {
+  transform: scale(0.9);
+}

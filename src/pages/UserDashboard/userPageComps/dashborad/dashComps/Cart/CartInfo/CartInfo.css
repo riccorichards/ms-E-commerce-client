@@ -10,8 +10,25 @@
   justify-content: space-between;
 }
 
-.h1-header-cart {
-  border-bottom: 2px solid hsl(16, 100%, 50%);
+.cart-info-switcher {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-info-switcher-btn {
+  background-color: #333333;
+  border: none;
+  padding: 5px 12px;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  color: #c0c0c0;
+  transition: all 0.25s ease-in-out;
+}
+.cart-info-switcher-btn:hover {
+  cursor: pointer;
+  color: #008080;
 }
 
 .cart-info-icon {

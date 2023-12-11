@@ -1,0 +1,21 @@
+.perfood-in-wishlist {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 5px;
+  background-color: #87ceeb;
+  color: #333333;
+  border-radius: 7px;
+  position: relative;
+}
+
+.remove-food-from-wishlist {
+  position: absolute;
+  right: 2.5px;
+  top: 2.5px;
+  transition: all 0.25s ease-in-out;
+}
+.remove-food-from-wishlist:hover {
+  color: hsl(16, 100%, 50%);
+  cursor: pointer;
+}

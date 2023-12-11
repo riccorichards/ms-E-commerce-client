@@ -1,0 +1,47 @@
+@use "../../../../assets/v.scss";
+
+.nav-order-item {
+  display: flex;
+  width: 95%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid v.$orangered;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover {
+    .order-item-btn {
+      background-color: v.$darken;
+      color: v.$orangered;
+    }
+  }
+}
+
+.order-item-header {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.order-item-total {
+  font-size: 24px;
+  font-weight: 900;
+  color: v.$orangered;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.order-item-btn {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: v.$grey;
+  font-size: 24px;
+  border-radius: 5px;
+  transition: all 0.25s ease-in-out;
+}

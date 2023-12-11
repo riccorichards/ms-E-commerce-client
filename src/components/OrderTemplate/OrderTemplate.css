@@ -1,0 +1,142 @@
+.order-template-wrapper {
+  flex: 3;
+  border: 2px solid hsl(16, 100%, 50%);
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.order-template-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 5px;
+  border-bottom: 2px solid hsl(16, 100%, 50%);
+}
+
+.order-template-date {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.order-template-deliveryman {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.order-template-deliveryman .deliveryman-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.order-template-locational-info {
+  display: flex;
+  align-items: first baseline;
+  justify-content: space-between;
+  border-bottom: 2px solid hsl(16, 100%, 50%);
+  padding-bottom: 15px;
+}
+
+.delivery-address-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.delivery-address-wrapper .delivery-address {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.order-template-vendor-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.order-template-vendor-info-wrapper .order-template-vendor-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.order-template-vendor-info-wrapper .order-template-vendor-info .order-template-vendor-additional-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.distance-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.distance-info-wrapper .distance-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.distance-info-wrapper .distance {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.distance-info-wrapper .duration {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.deliveryman-Img,
+.food-img,
+.vendor-img {
+  width: 75px;
+  height: 75px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border: 5px solid #333333;
+  border-radius: 5px;
+}
+
+.order-template-menu-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 50vh;
+  overflow-y: auto;
+  padding-right: 15px;
+  border-bottom: 2px solid hsl(16, 100%, 50%);
+  padding-bottom: 15px;
+}
+
+.order-template-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.order-template-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-item-left-side {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.order-template-payment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.order-template-payment span {
+  color: #333333;
+  font-size: 24px;
+  font-weight: 700;
+}

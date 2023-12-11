@@ -1,8 +1,6 @@
 .food-card-wrapper {
   width: 280px;
-  height: 500px;
-  -webkit-backdrop-filter: blur(15px);
-          backdrop-filter: blur(15px);
+  height: 400px;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   display: flex;

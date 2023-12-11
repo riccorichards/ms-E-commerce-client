@@ -1,0 +1,81 @@
+@use "../../../../assets/v.scss";
+
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  width: 350px;
+  height: 350px;
+  border: 2px solid v.$att_green;
+  padding: 15px;
+  border-radius: 15px;
+
+  h1 {
+    border-bottom: 2px solid v.$att_green;
+  }
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.login-input-wrapper {
+  width: 100%;
+  display: flex;
+  border: 2px solid v.$att_green;
+  padding: 5px;
+  position: relative;
+
+  .up-form-icon {
+    background-color: v.$att_green;
+    color: v.$grey;
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  input {
+    width: 90%;
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    font-family: v.$title_font2;
+    letter-spacing: 1px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .errors-wrapper {
+    position: absolute;
+    top: 115%;
+    color: red;
+  }
+}
+
+.login-submit-btn {
+  padding: 8px 15px;
+  border: none;
+  font-family: v.$title_font2;
+  letter-spacing: 0.8px;
+  color: v.$grey;
+  font-weight: 900;
+  transition: all 0.25s ease-in-out;
+  background-color: v.$att_green;
+
+  &:hover {
+    cursor: pointer;
+    background-color: v.$orangered;
+  }
+}
+
+.forgot-password {
+  color: v.$orangered;
+  &:hover {
+    cursor: pointer;
+  }
+}

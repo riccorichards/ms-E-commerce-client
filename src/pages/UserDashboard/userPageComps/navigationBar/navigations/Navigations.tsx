@@ -1,34 +1,72 @@
 import "./Navigations.scss";
 import { IoHomeOutline, IoSettingsOutline } from "react-icons/io5";
 import { MdHistoryEdu } from "react-icons/md";
-import { MdOutlineFavoriteBorder } from "react-icons/md";
+import { GrRestaurant } from "react-icons/gr";
+import { NavLink } from "react-router-dom";
+
 const Navigations = () => {
   return (
     <div className="user-navigations-wrapper">
-      <div className="nav-item">
-        <div className="nav-icon">
-          <IoHomeOutline />
+      <NavLink
+        to="/customer/home"
+        style={{
+          color: "inherit",
+          textDecoration: "none",
+          borderRadius: "15px",
+        }}
+      >
+        <div className="nav-item">
+          <div className="nav-icon">
+            <IoHomeOutline />
+          </div>
+          Home
         </div>
-        Home
-      </div>
-      <div className="nav-item">
-        <div className="nav-icon">
-          <MdHistoryEdu />
+      </NavLink>
+      <NavLink
+        to="/customer/orders"
+        style={{
+          color: "inherit",
+          textDecoration: "none",
+          borderRadius: "15px",
+        }}
+      >
+        <div className="nav-item">
+          <div className="nav-icon">
+            <MdHistoryEdu />
+          </div>
+          Orders
         </div>
-        Orders
-      </div>
-      <div className="nav-item">
-        <div className="nav-icon">
-          <MdOutlineFavoriteBorder />
+      </NavLink>
+      <NavLink
+        to="/customer/vendors"
+        style={{
+          color: "inherit",
+          textDecoration: "none",
+          borderRadius: "15px",
+        }}
+      >
+        <div className="nav-item">
+          <div className="nav-icon">
+            <GrRestaurant />
+          </div>
+          Vendors
         </div>
-        Wishlist
-      </div>
-      <div className="nav-item">
-        <div className="nav-icon">
-          <IoSettingsOutline />
+      </NavLink>
+      <NavLink
+        to="/customer/settings"
+        style={{
+          color: "inherit",
+          textDecoration: "none",
+          borderRadius: "15px",
+        }}
+      >
+        <div className="nav-item">
+          <div className="nav-icon">
+            <IoSettingsOutline />
+          </div>
+          Settings
         </div>
-        Settings
-      </div>
+      </NavLink>
     </div>
   );
 };

@@ -1,0 +1,62 @@
+.customer-update-address {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#update-address-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+#update-address-form input {
+  padding: 5px;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1px;
+  border: none;
+  background-color: transparent;
+}
+#update-address-form input:focus {
+  outline: none;
+}
+
+.update-address-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: #008080 2px solid;
+  padding: 0 5px;
+}
+
+.update-item-btn {
+  color: #008080;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+.update-item-btn:hover {
+  color: hsl(16, 100%, 50%);
+}
+
+.update-address-btn {
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1px;
+  font-weight: 800;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #008080;
+  width: -moz-fit-content;
+  width: fit-content;
+  transition: all 0.25s ease-in-out;
+  border-radius: 3.5px;
+  padding: 5px 12px;
+  cursor: pointer;
+}
+.update-address-btn:hover {
+  background-color: #008080;
+  border: none;
+  color: #c0c0c0;
+}
+.update-address-btn:active {
+  transform: scale(0.9);
+}

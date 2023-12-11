@@ -1,0 +1,24 @@
+@use "../../../../../../../../assets/v.scss";
+
+.perfood-in-wishlist {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 5px;
+  background-color: v.$sky;
+  color: v.$darken;
+  border-radius: 7px;
+  position: relative;
+}
+
+.remove-food-from-wishlist {
+  position: absolute;
+  right: 2.5px;
+  top: 2.5px;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    color: v.$orangered;
+    cursor: pointer;
+  }
+}

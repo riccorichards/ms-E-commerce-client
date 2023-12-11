@@ -1,4 +1,7 @@
+@use "./assets/v.scss";
+
 .App {
   height: 100vh;
   padding: 30px;
+  font-family: v.$title_font2;
 }

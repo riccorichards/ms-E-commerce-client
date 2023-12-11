@@ -1,0 +1,65 @@
+@use "../../../../../assets/v.scss";
+
+.sign-up-address-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  width: 350px;
+  height: 450px;
+  border: 2px solid v.$att_green;
+  padding: 15px;
+  border-radius: 15px;
+
+  h1 {
+    border-bottom: 2px solid v.$att_green;
+  }
+}
+
+#sign-up-address-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.sign-up-address-input-wrapper {
+  width: 100%;
+  display: flex;
+  border: 2px solid v.$att_green;
+  padding: 5px;
+  position: relative;
+
+  input {
+    width: 100%;
+    padding: 5px;
+    border: none;
+    background-color: transparent;
+    font-family: v.$title_font2;
+    letter-spacing: 1px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .errors-wrapper {
+    position: absolute;
+    top: 115%;
+    color: red;
+  }
+}
+
+.sign-up-address-submit-btn {
+  padding: 8px 15px;
+  border: none;
+  font-family: v.$title_font2;
+  letter-spacing: 0.8px;
+  color: v.$grey;
+  font-weight: 900;
+  transition: all 0.25s ease-in-out;
+  background-color: v.$att_green;
+
+  &:hover {
+    cursor: pointer;
+    background-color: v.$orangered;
+  }
+}

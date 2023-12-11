@@ -1,0 +1,73 @@
+.login-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  width: 350px;
+  height: 350px;
+  border: 2px solid #008080;
+  padding: 15px;
+  border-radius: 15px;
+}
+.login-wrapper h1 {
+  border-bottom: 2px solid #008080;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.login-input-wrapper {
+  width: 100%;
+  display: flex;
+  border: 2px solid #008080;
+  padding: 5px;
+  position: relative;
+}
+.login-input-wrapper .up-form-icon {
+  background-color: #008080;
+  color: #c0c0c0;
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.login-input-wrapper input {
+  width: 90%;
+  padding: 5px;
+  border: none;
+  background-color: transparent;
+  font-family: "Josefin Sans", sans-serif;
+  letter-spacing: 1px;
+}
+.login-input-wrapper input:focus {
+  outline: none;
+}
+.login-input-wrapper .errors-wrapper {
+  position: absolute;
+  top: 115%;
+  color: red;
+}
+
+.login-submit-btn {
+  padding: 8px 15px;
+  border: none;
+  font-family: "Josefin Sans", sans-serif;
+  letter-spacing: 0.8px;
+  color: #c0c0c0;
+  font-weight: 900;
+  transition: all 0.25s ease-in-out;
+  background-color: #008080;
+}
+.login-submit-btn:hover {
+  cursor: pointer;
+  background-color: hsl(16, 100%, 50%);
+}
+
+.forgot-password {
+  color: hsl(16, 100%, 50%);
+}
+.forgot-password:hover {
+  cursor: pointer;
+}

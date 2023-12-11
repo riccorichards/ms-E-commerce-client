@@ -1,0 +1,6 @@
+.order-wrapper {
+  flex: 5;
+  display: flex;
+  gap: 15px;
+  height: 100%;
+}

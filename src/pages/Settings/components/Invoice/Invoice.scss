@@ -1,0 +1,36 @@
+@use "../../../../assets/v.scss";
+
+.invoice-wrapper {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.table-wrapper {
+  height: 65vh;
+  overflow-y: auto;
+}
+
+.invoice-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.invoice-table .invoice-thead .invoice-tr {
+  background-color: v.$darken;
+  font-size: 18px;
+  font-weight: 700;
+  color: v.$grey;
+  height: 7vh;
+  text-align: left;
+}
+
+.invoice-table .invoice-th,
+.invoice-table .invoice-td {
+  padding: 12px 15px;
+}
+
+.invoice-table .invoice-tbody .invoice-tr {
+  border-bottom: 2px v.$grey solid;
+}

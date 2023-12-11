@@ -13,8 +13,7 @@ const Pagination: FC<{ num: number }> = ({ num }) => {
         <button className="each-pagination-btn">{page}</button>
       ))}
     </div>
-	);
-	
+  );
 };
 
 export default Pagination;

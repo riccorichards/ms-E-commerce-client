@@ -9,6 +9,7 @@ import {
 } from "react-icons/md";
 import { FaRegStar } from "react-icons/fa";
 import RatingCalculation from "../RatingCalculation";
+import { Link } from "react-router-dom";
 
 type SocialMediaType = {
   id: number;
@@ -36,9 +37,14 @@ const VendorTemplate: FC<{ vendor: VendorType }> = ({ vendor }) => {
         <img src={vendor.image} alt="vendor" className="each-vendor-image" />
       </div>
       <div className="each-vendor-the-rest">
-        <div className="each-vendor-the-rest-items">
-          <IoMdRestaurant /> {vendor.name}
-        </div>
+        <Link
+          to={`/vendors${vendor.id}`}
+          style={{ color: "inherit", textDecoration: "none" }}
+        >
+          <div className="each-vendor-the-rest-items">
+            <IoMdRestaurant /> {vendor.name}
+          </div>
+        </Link>
         <div className="each-vendor-the-rest-items">
           <MdAlternateEmail /> {vendor.email}
         </div>

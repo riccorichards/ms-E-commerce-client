@@ -1,0 +1,150 @@
+@use "../../assets/v.scss";
+
+.order-template-wrapper {
+  flex: 3;
+  border: 2px solid v.$orangered;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba($color: #00000028, $alpha: 0.35);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.order-template-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 5px;
+  border-bottom: 2px solid v.$orangered;
+}
+
+.order-template-date {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.order-template-deliveryman {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  .deliveryman-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+.order-template-locational-info {
+  display: flex;
+  align-items: first baseline;
+  justify-content: space-between;
+  border-bottom: 2px solid v.$orangered;
+  padding-bottom: 15px;
+}
+
+.delivery-address-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .delivery-address {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+.order-template-vendor-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .order-template-vendor-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .order-template-vendor-additional-info {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+}
+
+.distance-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .distance-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  .distance {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .duration {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+.deliveryman-Img,
+.food-img,
+.vendor-img {
+  width: 75px;
+  height: 75px;
+  object-fit: cover;
+  border: 5px solid v.$darken;
+  border-radius: 5px;
+}
+
+.order-template-menu-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 50vh;
+  overflow-y: auto;
+  padding-right: 15px;
+  border-bottom: 2px solid v.$orangered;
+  padding-bottom: 15px;
+}
+
+.order-template-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.order-template-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-item-left-side {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.order-template-payment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    color: v.$darken;
+    font-size: 24px;
+    font-weight: 700;
+  }
+}

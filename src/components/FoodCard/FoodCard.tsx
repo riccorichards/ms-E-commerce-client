@@ -15,7 +15,7 @@ const FoodCard: FC<{ food: FoodType }> = ({ food }) => {
     <div className="food-card-wrapper">
       <div className="food-image-wrapper">
         <div className="food-image">
-          <ImageWraper image={food.image} size="250px" />
+          <ImageWraper image={food.image} size="200px" nonCircle />
         </div>
       </div>
       <div className="food-content-wrapper">

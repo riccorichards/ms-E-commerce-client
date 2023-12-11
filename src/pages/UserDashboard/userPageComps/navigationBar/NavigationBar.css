@@ -6,3 +6,10 @@
   align-items: center;
   justify-content: space-between;
 }
+.navigation-bar .active {
+  background-color: hsl(16, 100%, 50%);
+}
+.navigation-bar .active .nav-icon {
+  background-color: #333333;
+  color: hsl(16, 100%, 50%);
+}

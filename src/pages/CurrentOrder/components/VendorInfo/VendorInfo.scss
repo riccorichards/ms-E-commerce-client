@@ -1,0 +1,16 @@
+@use "../../../../assets/v.scss";
+
+.current-order-vendor-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.current-order-vendor-info-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+

@@ -29,5 +29,4 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: orangered;
-  cursor: pointer;
 }

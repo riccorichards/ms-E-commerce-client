@@ -1,0 +1,7 @@
+@use "../../../assets/v.scss";
+
+.vendor-foods-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+}

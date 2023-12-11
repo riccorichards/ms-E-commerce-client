@@ -1,0 +1,38 @@
+.update-customer-image {
+  flex: 1;
+}
+
+.customer-image-wrapper {
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 5px solid #008080;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.file-update-btn {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: #333333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #008080;
+  position: absolute;
+  bottom: 0;
+  font-size: 24px;
+  right: 10%;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+.file-update-btn:hover {
+  color: hsl(16, 100%, 50%);
+}
+.file-update-btn:active {
+  transform: scale(0.9);
+}

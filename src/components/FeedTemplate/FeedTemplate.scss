@@ -1,0 +1,34 @@
+@use "../../assets/v.scss";
+
+.feed-template-wrapper {
+  padding: 10px;
+  background-color: v.$grey;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .feed-template-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+}
+
+.decor-line-in-feed{
+  width: 100%;
+  height: 2px;
+  background-color: v.$att_green;
+}
+
+.target-header-in-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .vendor-details-in-feed {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+}

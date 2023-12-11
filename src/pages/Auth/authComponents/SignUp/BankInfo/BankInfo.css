@@ -1,0 +1,58 @@
+.sign-up-bank-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  width: 350px;
+  height: 350px;
+  border: 2px solid #008080;
+  padding: 15px;
+  border-radius: 15px;
+}
+.sign-up-bank-wrapper h1 {
+  border-bottom: 2px solid #008080;
+}
+
+#sign-up-bank-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.sign-up-bank-input-wrapper {
+  width: 100%;
+  display: flex;
+  border: 2px solid #008080;
+  padding: 5px;
+  position: relative;
+}
+.sign-up-bank-input-wrapper input {
+  width: 100%;
+  padding: 5px;
+  border: none;
+  background-color: transparent;
+  font-family: "Josefin Sans", sans-serif;
+  letter-spacing: 1px;
+}
+.sign-up-bank-input-wrapper input:focus {
+  outline: none;
+}
+.sign-up-bank-input-wrapper .errors-wrapper {
+  position: absolute;
+  top: 115%;
+  color: red;
+}
+
+.sign-up-bank-submit-btn {
+  padding: 8px 15px;
+  border: none;
+  font-family: "Josefin Sans", sans-serif;
+  letter-spacing: 0.8px;
+  color: #c0c0c0;
+  font-weight: 900;
+  transition: all 0.25s ease-in-out;
+  background-color: #008080;
+}
+.sign-up-bank-submit-btn:hover {
+  cursor: pointer;
+  background-color: hsl(16, 100%, 50%);
+}

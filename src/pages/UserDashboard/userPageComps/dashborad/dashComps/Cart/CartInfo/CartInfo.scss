@@ -12,10 +12,32 @@
   justify-content: space-between;
 }
 
-.h1-header-cart {
-  border-bottom: 2px solid v.$orangered;
+//.cart-info-switcher {
+//  display: flex;
+//  flex-direction: column;
+//  gap: 5px;
+//}
+.cart-info-switcher {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
+.cart-info-switcher-btn {
+  background-color: v.$darken;
+  border: none;
+  padding: 5px 12px;
+  font-family: v.$p_font2;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  color: v.$grey;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    color: v.$att_green;
+  }
+}
 .cart-info-icon {
   background-color: v.$darken;
   color: v.$grey;
@@ -42,5 +64,4 @@
   background-color: v.$orangered;
   top: -35%;
   color: v.$white;
-
 }

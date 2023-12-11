@@ -1,0 +1,30 @@
+.feed-template-wrapper {
+  padding: 10px;
+  background-color: #c0c0c0;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.feed-template-wrapper .feed-template-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.decor-line-in-feed {
+  width: 100%;
+  height: 2px;
+  background-color: #008080;
+}
+
+.target-header-in-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.target-header-in-feed .vendor-details-in-feed {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}

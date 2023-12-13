@@ -1,23 +1,41 @@
-export type CookiesType = {
-  accessToken: string;
-  refreshToken: string;
+import {
+  StateAddressType,
+  StateBankInfoType,
+} from "../pages/Settings/components/UpdateWrapper/update.validation";
+
+export type CustomerType = {
+  image?: string;
+  username?: string;
 };
 
-export type CustomerId = {
-  _Id: string;
+export type ProfileURLType = {
+  image: string;
 };
-
-export type VerifyUser = boolean;
-
-export type AccessTokenType = boolean;
-
-export type ExpiresIn = number;
 
 export type ErrorWrapper = object;
 
+export interface CustomarBasicInfo {
+  username: string;
+  email: string;
+}
+
+export interface EntireCustomerType extends CustomarBasicInfo {
+  _id: string;
+  password: string;
+  bonus: number;
+  image: string;
+  address: StateAddressType;
+  bank: StateBankInfoType;
+  wishlist: [];
+  feedback: [];
+  cart: [];
+  order: [];
+}
+
 export type AuthState = {
-  customer: ExpiresIn | CustomerId | CookiesType | null;
-  accessToken: AccessTokenType | null;
+  customer: EntireCustomerType | null;
+  _id: string | null;
+  currentPassword: boolean | null;
   status: string | null;
   error: string | ErrorWrapper | null;
 };

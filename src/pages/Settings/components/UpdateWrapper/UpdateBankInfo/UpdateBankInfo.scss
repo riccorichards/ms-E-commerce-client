@@ -9,7 +9,7 @@
 #update-bank-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 35px;
 
   input {
     padding: 5px;
@@ -17,6 +17,21 @@
     letter-spacing: 1px;
     border: none;
     background-color: transparent;
+    cursor: not-allowed;
+
+    &:focus {
+      outline: none;
+    }
+  }
+  .editable {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    font-family: v.$p_font2;
+    letter-spacing: 1px;
+    color: v.$att_green;
+    cursor: auto;
+    width: 100%;
 
     &:focus {
       outline: none;
@@ -31,6 +46,14 @@
   width: 100%;
   border: v.$att_green 2px solid;
   padding: 0 5px;
+  position: relative;
+
+  .errors-wrapper {
+    position: absolute;
+    top: 115%;
+    color: red;
+    font-size: 14px;
+  }
 }
 
 .update-item-btn {
@@ -56,11 +79,11 @@
   padding: 5px 12px;
   cursor: pointer;
 
-&:hover{
-  background-color: v.$att_green;
-  border: none;
-  color: v.$grey;
-}
+  &:hover {
+    background-color: v.$att_green;
+    border: none;
+    color: v.$grey;
+  }
 
   &:active {
     transform: scale(0.9);

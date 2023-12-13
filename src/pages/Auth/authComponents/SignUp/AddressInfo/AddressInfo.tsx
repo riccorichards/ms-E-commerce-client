@@ -7,7 +7,7 @@ import { addAddress } from "../../../../../redux/appCall/AuthAppCall";
 
 const AddressInfo = () => {
   const dispatch = useAppDispatch();
-  const customer = useAppSelector((state) => state.customer.customer);
+  const { _id } = useAppSelector((state) => state.customer);
   const {
     register,
     formState: { errors },
@@ -16,12 +16,13 @@ const AddressInfo = () => {
   } = useForm<AddressInputType>({
     resolver: zodResolver(addressSchema),
   });
-
   const onSubmit = (values: AddressInputType) => {
     try {
-      const newAddress = { ...values, userId: customer };
-      dispatch(addAddress(newAddress));
-      reset();
+      if (_id) {
+        const newAddress = { ...values, userId: _id };
+        dispatch(addAddress(newAddress));
+        reset();
+      }
     } catch (error) {
       if (error instanceof Error) {
         throw new Error(error.message);

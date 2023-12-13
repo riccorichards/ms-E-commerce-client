@@ -7,8 +7,23 @@ import VendorList from "../vendorList/VendorList";
 import Settings from "../Settings/Settings";
 import VendorDetails from "../VendorDetails/VendorDetails";
 import RefreshToken from "../../components/RefreshToken";
+import { useAppDispatch } from "../../redux/hook";
+import { useEffect } from "react";
+import { findCustomerById } from "../../redux/appCall/AuthAppCall";
 
 const UserDashboard = () => {
+  const dispatch = useAppDispatch();
+  useEffect(() => {
+    try {
+      dispatch(findCustomerById());
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new Error(error.message);
+      }
+      throw error;
+    }
+  }, [dispatch]);
+
   return (
     <div className="user-dashboard-wrapper">
       <NavigationBar />

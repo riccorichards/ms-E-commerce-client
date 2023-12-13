@@ -1,15 +1,22 @@
+import { useAppSelector } from "../../../../../redux/hook";
+import { CustomerType } from "../../../../../redux/type.slice";
 import "./UserProfile.scss";
 
-const fakeImage =
-  "https://i.pinimg.com/564x/18/cd/50/18cd50b133c95a5fc7e041b598ed831e.jpg";
-
 const UserProfile = () => {
+  const customer = useAppSelector(
+    (state) => state.customer.customer
+  ) as CustomerType;
+
   return (
     <div className="user-profile-wrapper">
-      <div className="image-wrapper">
-        <img src={fakeImage} alt="fake" className="profile-image" />
-      </div>
-      <h2>Anastasia Elb</h2>
+      {customer && (
+        <>
+          <div className="image-wrapper">
+            <img src={customer.image} alt="fake" className="profile-image" />
+          </div>
+          <h2>{customer.username}</h2>
+        </>
+      )}
     </div>
   );
 };

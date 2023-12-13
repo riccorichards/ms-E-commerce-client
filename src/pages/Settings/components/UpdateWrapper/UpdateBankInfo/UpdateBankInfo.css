@@ -7,7 +7,7 @@
 #update-bank-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 35px;
 }
 #update-bank-form input {
   padding: 5px;
@@ -15,8 +15,22 @@
   letter-spacing: 1px;
   border: none;
   background-color: transparent;
+  cursor: not-allowed;
 }
 #update-bank-form input:focus {
+  outline: none;
+}
+#update-bank-form .editable {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1px;
+  color: #008080;
+  cursor: auto;
+  width: 100%;
+}
+#update-bank-form .editable:focus {
   outline: none;
 }
 
@@ -27,6 +41,13 @@
   width: 100%;
   border: #008080 2px solid;
   padding: 0 5px;
+  position: relative;
+}
+.update-bank-wrapper .errors-wrapper {
+  position: absolute;
+  top: 115%;
+  color: red;
+  font-size: 14px;
 }
 
 .update-item-btn {

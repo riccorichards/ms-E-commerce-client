@@ -12,15 +12,38 @@
   flex-direction: column;
   gap: 15px;
 }
-#customer-form input {
+#customer-form .customer-update-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+#customer-form .customer-update-input-wrapper input {
   background-color: transparent;
   border: none;
   width: 100%;
   font-family: "Oswald", sans-serif;
   letter-spacing: 1px;
+  cursor: not-allowed;
 }
-#customer-form input:focus {
+#customer-form .customer-update-input-wrapper input:focus {
   outline: none;
+}
+#customer-form .customer-update-input-wrapper .editable {
+  background-color: transparent;
+  border: none;
+  width: 100%;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1px;
+  color: #008080;
+  cursor: auto;
+}
+#customer-form .customer-update-input-wrapper .editable:focus {
+  outline: none;
+}
+#customer-form .customer-update-input-wrapper .errors-wrapper {
+  position: absolute;
+  top: 115%;
+  color: red;
+  font-size: 14px;
 }
 
 .customer-update-input-wrapper {
@@ -62,4 +85,8 @@
 }
 .basic-update-btn:active {
   transform: scale(0.9);
+}
+
+.customer-update-input-wrapper-editable {
+  color: #008080;
 }

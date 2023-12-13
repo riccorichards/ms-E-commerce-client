@@ -14,15 +14,41 @@
   flex-direction: column;
   gap: 15px;
 
-  input {
-    background-color: transparent;
-    border: none;
+  .customer-update-input-wrapper {
+    position: relative;
     width: 100%;
-    font-family: v.$p_font2;
-    letter-spacing: 1px;
 
-    &:focus {
-      outline: none;
+    input {
+      background-color: transparent;
+      border: none;
+      width: 100%;
+      font-family: v.$p_font2;
+      letter-spacing: 1px;
+      cursor: not-allowed;
+
+      &:focus {
+        outline: none;
+      }
+    }
+    .editable {
+      background-color: transparent;
+      border: none;
+      width: 100%;
+      font-family: v.$p_font2;
+      letter-spacing: 1px;
+      color: v.$att_green;
+      cursor: auto;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .errors-wrapper {
+      position: absolute;
+      top: 115%;
+      color: red;
+      font-size: 14px;
     }
   }
 }
@@ -67,4 +93,8 @@
   &:active {
     transform: scale(0.9);
   }
+}
+
+.customer-update-input-wrapper-editable {
+  color: v.$att_green;
 }

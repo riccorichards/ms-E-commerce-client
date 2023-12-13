@@ -1,22 +1,19 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { MdOutlineAlternateEmail } from "react-icons/md";
 import "./Login.scss";
 import { useForm } from "react-hook-form";
 import { LoginInputType, loginSchema } from "../Validation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useAppDispatch } from "../../../../redux/hook";
+import { useAppDispatch, useAppSelector } from "../../../../redux/hook";
 import { fetchLogin } from "../../../../redux/appCall/AuthAppCall";
 import { Link, useNavigate } from "react-router-dom";
-import AuthContent from "../../../../components/AuthContenxt";
 
 const Login = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  const getContext = useContext(AuthContent);
-  const setIsValidCustomer = getContext?.setIsValidCustomer;
-
   const dispatch = useAppDispatch();
+  const { customer } = useAppSelector((state) => state.customer);
   const navigate = useNavigate();
   const {
     register,
@@ -38,10 +35,6 @@ const Login = () => {
   const onSubmit = (value: LoginInputType) => {
     try {
       dispatch(fetchLogin(value));
-      reset();
-      if (!setIsValidCustomer) return null;
-      setIsValidCustomer(true);
-      navigate("/customer/home");
     } catch (error) {
       if (error instanceof Error) {
         console.log(error.message);
@@ -50,6 +43,14 @@ const Login = () => {
       throw new Error("Server Internal");
     }
   };
+
+  useEffect(() => {
+    if (customer) {
+      reset();
+      navigate("/customer/home");
+    }
+  }, [customer]); //eslint-disable-line
+
   return (
     <div className="login-wrapper">
       <h1>Welcome to Ricco</h1>

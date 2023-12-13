@@ -1,7 +1,6 @@
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
-import { useContext, useEffect, useState } from "react";
-import AuthContent from "./AuthContenxt";
+import { useEffect, useState } from "react";
 
 interface DecodedType {
   exp: number;
@@ -10,18 +9,10 @@ interface DecodedType {
 const RefreshToken = () => {
   const [expTime, setExpTime] = useState<number | null>(null);
 
-  const getContext = useContext(AuthContent);
-  const setIsValidCustomer = getContext?.setIsValidCustomer;
-  const getTokenFromCookies = () => {
-    const cookie = document.cookie.split("=");
-    const accessToken = cookie[1];
-
-    if (!accessToken) return null;
-    if (!setIsValidCustomer) return null;
-
-    setIsValidCustomer(true);
-    return decodeURIComponent(accessToken);
-  };
+  function getTokenFromCookies() {
+    const accessToken = document.cookie.split("=");
+    return accessToken ? accessToken[1] : null;
+  }
 
   useEffect(() => {
     const token = getTokenFromCookies();

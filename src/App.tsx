@@ -1,23 +1,21 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.scss";
 import Auth from "./pages/Auth/Auth";
 import UserDashboard from "./pages/UserDashboard/UserDashboard";
-import { useState } from "react";
-import AuthContent from "./components/AuthContenxt";
+import { useAppSelector } from "./redux/hook";
 
 function App() {
-  const [isValidCustomer, setIsValidCustomer] = useState<boolean>(false);
-
-  const values = { isValidCustomer, setIsValidCustomer };
+  const { customer } = useAppSelector((state) => state.customer);
   return (
-    <AuthContent.Provider value={values}>
-      <div className="App">
-        <Routes>
-          <Route path="/*" element={<Auth />} />
-          <Route path="/customer/*" element={<UserDashboard />} />
-        </Routes>
-      </div>
-    </AuthContent.Provider>
+    <div className="App">
+      <Routes>
+        <Route path="/*" element={<Auth />} />
+        <Route
+          path="/customer/*"
+          element={customer ? <UserDashboard /> : <Navigate to="/" />}
+        />
+      </Routes>
+    </div>
   );
 }
 

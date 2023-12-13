@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const BankInfo = () => {
   const dispatch = useAppDispatch();
-  const customer = useAppSelector((state) => state.customer.customer);
+  const { _id } = useAppSelector((state) => state.customer);
   const navigate = useNavigate();
   const {
     register,
@@ -16,16 +16,18 @@ const BankInfo = () => {
     handleSubmit,
     reset,
   } = useForm<BankInputType>({ resolver: zodResolver(bankSchema) });
-
+  console.log(_id);
   const onSubmit = (values: BankInputType) => {
     try {
-      const bankInfo = {
-        ...values,
-        userId: customer,
-      };
-      dispatch(addBankInfo(bankInfo));
-      reset();
-      navigate("/");
+      if (_id) {
+        const bankInfo = {
+          ...values,
+          userId: _id,
+        };
+        dispatch(addBankInfo(bankInfo));
+        reset();
+        navigate("/");
+      }
     } catch (error) {
       if (error instanceof Error) {
         throw new Error(error.message);

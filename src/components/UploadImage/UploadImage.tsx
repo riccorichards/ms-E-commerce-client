@@ -1,12 +1,12 @@
 import React, { useRef } from "react";
-import ImageWraper from "../../../../../components/ImageWraper";
-import "./UpdateImage.scss";
+import "./UploadImage.scss";
 import { TbPhotoEdit } from "react-icons/tb";
-import { useAppDispatch, useAppSelector } from "../../../../../redux/hook";
-import { uploadImage } from "../../../../../redux/appCall/AuthAppCall";
-import { CustomerType } from "../../../../../redux/type.slice";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
+import { CustomerType } from "../../redux/type.slice";
+import { uploadImage } from "../../redux/appCall/AuthAppCall";
+import ImageWraper from "../ImageWraper";
 
-const UpdateImage = () => {
+const UploadImage = () => {
   const customer = useAppSelector(
     (state) => state.customer.customer
   ) as CustomerType;
@@ -48,4 +48,4 @@ const UpdateImage = () => {
   );
 };
 
-export default UpdateImage;
+export default UploadImage;

@@ -1,0 +1,58 @@
+.last-orders-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 15px;
+}
+.last-orders-wrapper h3 {
+  border-bottom: 2px solid #333333;
+}
+
+.last-order-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border-bottom: #c0c0c0 2px solid;
+}
+.last-order-item span:nth-child(1) {
+  color: hsl(16, 100%, 50%);
+}
+
+.last-order-customer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.last-order-line {
+  width: 50%;
+  height: 1px;
+  background-color: #c0c0c0;
+}
+
+.last-order-vendor {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  position: relative;
+}
+.last-order-vendor button {
+  align-self: last baseline;
+  font-family: "Josefin Sans", sans-serif;
+  border: none;
+  background-color: #008080;
+  padding: 5px 8px;
+  border-radius: 3.5px;
+  color: #fff8e1;
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+.last-order-vendor button:hover {
+  background-color: hsl(16, 100%, 50%);
+  color: #333333;
+}

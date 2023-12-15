@@ -1,0 +1,31 @@
+.marketable-foods-wrapper {
+  display: flex;
+  padding: 5px;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #fff;
+  width: 97.5%;
+  border-radius: 15px;
+}
+
+.marketable-header-wrapper {
+  padding: 15px 0;
+  border-bottom: 2px solid hsl(16, 100%, 50%);
+}
+
+.marketable-header {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.marketable-header svg {
+  font-size: 24px;
+}
+
+.marketable-body {
+  height: 250px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}

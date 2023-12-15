@@ -23,6 +23,7 @@ export interface EntireCustomerType extends CustomarBasicInfo {
   _id: string;
   password: string;
   bonus: number;
+  isAdmin: boolean;
   image: string;
   address: StateAddressType;
   bank: StateBankInfoType;

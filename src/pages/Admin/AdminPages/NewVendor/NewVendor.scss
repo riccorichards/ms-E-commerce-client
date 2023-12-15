@@ -1,0 +1,13 @@
+@use "../../../../assets/v.scss";
+
+.new-vendor-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.new-vendor {
+  display: flex;
+  gap: 30px;
+  height: 100%;
+}

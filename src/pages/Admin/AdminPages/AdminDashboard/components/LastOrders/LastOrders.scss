@@ -1,0 +1,64 @@
+@use "../../../../../../assets/v.scss";
+
+.last-orders-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 15px;
+
+  h3 {
+    border-bottom: 2px solid v.$darken;
+  }
+}
+
+.last-order-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  span:nth-child(1) {
+    color: v.$orangered;
+  }
+
+  border-bottom: v.$grey 2px solid;
+}
+
+.last-order-customer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.last-order-line {
+  width: 50%;
+  height: 1px;
+  background-color: v.$grey;
+}
+
+.last-order-vendor {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  position: relative;
+
+  button {
+    align-self: last baseline;
+    font-family: v.$title_font2;
+    border: none;
+    background-color: v.$att_green;
+    padding: 5px 8px;
+    border-radius: 3.5px;
+    color: v.$white;
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+      background-color: v.$orangered;
+      color: v.$darken;
+    }
+  }
+}

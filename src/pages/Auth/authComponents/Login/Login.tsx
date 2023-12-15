@@ -47,7 +47,7 @@ const Login = () => {
   useEffect(() => {
     if (customer) {
       reset();
-      navigate("/customer/home");
+      navigate(customer.isAdmin ? "/admin/home" : "/customer/home");
     }
   }, [customer]); //eslint-disable-line
 

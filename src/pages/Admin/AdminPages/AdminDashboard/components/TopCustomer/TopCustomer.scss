@@ -1,0 +1,44 @@
+@use "../../../../../../assets/v.scss";
+
+.top-customer-wrapper {
+  width: 97.5%;
+  padding: 15px;
+  background-color: #fff;
+}
+
+.top-customer-header-wrapper {
+  padding: 15px 0;
+  border-bottom: 1px solid v.$darken;
+}
+
+.top-customer-header {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+
+  svg {
+    font-size: 24px;
+  }
+}
+
+.top-customer-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.top-customer-table .top-customer-thead .top-customer-tr {
+  font-size: 18px;
+  font-weight: 700;
+  color: v.$grey;
+  height: 5vh;
+  text-align: left;
+}
+
+.top-customer-table .top-customer-th,
+.top-customer-table .top-customer-td {
+  padding: 12px 15px;
+}
+
+.top-customer-table .top-customer-tbody .top-customer-tr {
+  border-bottom: 2px v.$grey solid;
+}

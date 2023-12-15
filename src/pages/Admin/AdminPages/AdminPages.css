@@ -1,0 +1,7 @@
+.admin-pages-wrapper {
+  flex: 5;
+  background-color: #fff8e1;
+  height: 100%;
+  border-radius: 15px;
+  padding: 30px;
+}

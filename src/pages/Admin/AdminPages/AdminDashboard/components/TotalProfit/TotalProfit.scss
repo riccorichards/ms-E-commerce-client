@@ -1,0 +1,49 @@
+@use "../../../../../../assets/v.scss";
+
+.total-profit-wrapper {
+  width: 97.5%;
+  background-color: v.$orangered;
+  border-radius: 15px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.total-profile-header-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: v.$white;
+  border-bottom: 2px solid v.$white;
+  padding: 5px;
+
+  .total-profile-header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    svg {
+      width: 32px;
+      height: 32px;
+    }
+  }
+  span {
+    font-size: 24px;
+  }
+}
+
+.total-profile-body {
+  height: 100px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+
+  span {
+    border-bottom: 2px solid v.$white;
+    font-size: 45px;
+    color: v.$white;
+  }
+}

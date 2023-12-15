@@ -51,7 +51,7 @@ export const addressSchema = z.object({
 
 export const bankSchema = z.object({
   bankOf: z.string().min(1, "Bank name is required").trim(),
-  debit_card: z.string().min(16, "Debit card should has 16 characters").trim(),
+  debit_card: z.string().length(16, "Debit card should has 16 characters").trim(),
 });
 
 export const loginSchema = z.object({

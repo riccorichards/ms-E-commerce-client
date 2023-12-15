@@ -1,0 +1,66 @@
+.employees-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.employee-header {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.filter-section {
+  width: 100%;
+  display: flex;
+  border: 2px solid #008080;
+  border-radius: 4px;
+}
+.filter-section input {
+  width: 100%;
+  border: none;
+  padding: 8px;
+  font-family: "Josefin Sans", sans-serif;
+  letter-spacing: 1px;
+}
+.filter-section input:focus {
+  outline: none;
+}
+.filter-section button {
+  border: none;
+  background-color: hsl(16, 100%, 50%);
+  padding: 6px 12px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.25s ease-in;
+}
+.filter-section button:hover {
+  background-color: #008080;
+  color: #fff8e1;
+}
+
+.employee-body {
+  height: 60vh;
+}
+
+.employees-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.employees-table .employees-thead .employees-tr {
+  font-size: 18px;
+  font-weight: 700;
+  color: #c0c0c0;
+  height: 5vh;
+  text-align: left;
+}
+
+.employees-table .employees-th,
+.employees-table .employees-td {
+  padding: 12px 15px;
+}
+
+.employees-table .employees-tbody .employees-tr {
+  border-bottom: 2px #c0c0c0 solid;
+}

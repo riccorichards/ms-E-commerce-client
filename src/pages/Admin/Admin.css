@@ -1,0 +1,15 @@
+.admin-dashboard-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+  -webkit-backdrop-filter: blur(25px);
+          backdrop-filter: blur(25px);
+  height: calc(100vh - 60px);
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  gap: 10px;
+  font-family: "Josefin Sans", sans-serif;
+  padding: 15px;
+  color: #333333;
+}

@@ -1,0 +1,31 @@
+@use "../../../../../../assets/v.scss";
+
+.echart-line-wrapper {
+  display: flex;
+  padding: 5px;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #fff;
+  border-radius: 15px;
+  width: 97.5%;
+}
+
+.echart-line-header-wrapper {
+  padding: 15px 0;
+  border-bottom: 1px solid v.$darken;
+}
+
+.echart-line-header {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+
+  svg {
+    font-size: 24px;
+  }
+}
+
+.echart-line-body {
+  height: 350px;
+  width: 100%;
+}

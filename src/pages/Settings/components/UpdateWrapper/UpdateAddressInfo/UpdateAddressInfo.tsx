@@ -26,8 +26,8 @@ const UpdateAddressInfo = () => {
   } = useForm<StateAddressType>({
     resolver: zodResolver(updateAddressSchema),
   });
-  if (!customer) return null;
 
+  if (!customer) return null;
   const handleEdit = (fieldname: string) => {
     setIsEditable((prev) => ({
       ...prev,

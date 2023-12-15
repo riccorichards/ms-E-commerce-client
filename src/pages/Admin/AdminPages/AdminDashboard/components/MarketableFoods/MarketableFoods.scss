@@ -1,0 +1,34 @@
+@use "../../../../../../assets/v.scss";
+
+.marketable-foods-wrapper {
+  display: flex;
+  padding: 5px;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #fff;
+  width: 97.5%;
+  border-radius: 15px;
+}
+
+.marketable-header-wrapper {
+  padding: 15px 0;
+  border-bottom: 2px solid v.$orangered;
+}
+
+.marketable-header {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+
+  svg {
+    font-size: 24px;
+  }
+}
+
+.marketable-body {
+  height: 250px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}

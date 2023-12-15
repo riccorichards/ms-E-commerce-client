@@ -1,0 +1,48 @@
+.employee-from-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#employee-form {
+  width: 100%;
+  height: 100%;
+  border: 5px solid #008080;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding: 15px;
+}
+#employee-form .employee-form-item {
+  width: 90%;
+  position: relative;
+}
+#employee-form .employee-form-item input {
+  font-family: "Josefin Sans", sans-serif;
+  border: none;
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #008080;
+}
+#employee-form .employee-form-item input:focus {
+  outline: none;
+}
+#employee-form .employee-form-item .errors-wrapper {
+  position: absolute;
+  color: red;
+}
+#employee-form button {
+  padding: 12px 16px;
+  font-family: "Josefin Sans", sans-serif;
+  border: none;
+  background-color: #008080;
+  color: #fff8e1;
+  transition: all 0.25s ease-in-out;
+}
+#employee-form button:hover {
+  cursor: pointer;
+  background-color: hsl(16, 100%, 50%);
+}

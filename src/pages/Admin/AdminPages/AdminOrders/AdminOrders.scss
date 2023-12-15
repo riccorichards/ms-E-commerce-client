@@ -1,0 +1,15 @@
+@use "../../../../assets/v.scss";
+
+.admin-orders-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.admin-orders {
+  overflow-y: auto;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(3, 1fr);
+  height: 65vh;
+}

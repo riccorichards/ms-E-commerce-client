@@ -1,0 +1,27 @@
+@use "../../../../assets/v.scss";
+
+.admin-home-wrapper {
+  display: flex;
+  gap: 15px;
+  height: 100%;
+  padding: 5px;
+
+  .admin-main-home-wrapper {
+    flex: 2;
+    overflow-y: auto;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+  }
+
+  .admin-rightside-home-wrapper {
+    flex: 1;
+    overflow-y: auto;
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+  }
+}

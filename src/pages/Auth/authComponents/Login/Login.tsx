@@ -8,12 +8,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hook";
 import { fetchLogin } from "../../../../redux/appCall/AuthAppCall";
 import { Link, useNavigate } from "react-router-dom";
+import { vendorLogin } from "../../../../redux/appCall/VendorAppCall";
 
 const Login = () => {
   const [isVisible, setIsVisible] = useState(false);
-
+  const [user, setUser] = useState("customer");
   const dispatch = useAppDispatch();
   const { customer } = useAppSelector((state) => state.customer);
+  const { vendor } = useAppSelector((state) => state.vendor);
   const navigate = useNavigate();
   const {
     register,
@@ -34,7 +36,11 @@ const Login = () => {
 
   const onSubmit = (value: LoginInputType) => {
     try {
-      dispatch(fetchLogin(value));
+      if (user === "customer") {
+        dispatch(fetchLogin(value));
+      } else if (user === "vendor") {
+        dispatch(vendorLogin(value));
+      }
     } catch (error) {
       if (error instanceof Error) {
         console.log(error.message);
@@ -46,14 +52,46 @@ const Login = () => {
 
   useEffect(() => {
     if (customer) {
-      reset();
       navigate(customer.isAdmin ? "/admin/home" : "/customer/home");
+    } else if (vendor) {
+      navigate("/vendor/home");
     }
-  }, [customer]); //eslint-disable-line
+
+    reset();
+  }, [customer, vendor]); //eslint-disable-line
 
   return (
     <div className="login-wrapper">
-      <h1>Welcome to Ricco</h1>
+      <h2>Welcome to RiccoFood</h2>
+      <div className="switch-user-btns-wrapper">
+        <button
+          className="switch-user-btn"
+          style={{
+            backgroundColor: user === "customer" ? "hsl(16, 100%, 50%)" : "",
+          }}
+          onClick={() => setUser("customer")}
+        >
+          Customer
+        </button>
+        <button
+          className="switch-user-btn"
+          style={{
+            backgroundColor: user === "vendor" ? "hsl(16, 100%, 50%)" : "",
+          }}
+          onClick={() => setUser("vendor")}
+        >
+          Restaurant
+        </button>
+        <button
+          className="switch-user-btn"
+          style={{
+            backgroundColor: user === "deliveryman" ? "hsl(16, 100%, 50%)" : "",
+          }}
+          onClick={() => setUser("deliveryman")}
+        >
+          Deliveryman
+        </button>
+      </div>
       <form id="login-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="login-input-wrapper">
           <input type="email" placeholder="Email" {...register("email")} />

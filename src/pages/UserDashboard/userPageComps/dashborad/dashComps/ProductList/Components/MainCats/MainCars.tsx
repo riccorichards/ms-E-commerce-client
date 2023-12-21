@@ -1,23 +1,40 @@
 import MainCatsTemp from "./MainCatsTemp/MainCatsTemp";
 import "./MainCars.scss";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../../../../../../redux/hook";
+import { fetchMainCategorysSubCat } from "../../../../../../../../redux/appCall/FoodAppCall";
+import { useEffect, useState } from "react";
 
-const fake =
-  "https://i.pinimg.com/564x/9e/69/93/9e69932ac6b0d511ee7ce2f2bca5b4f8.jpg";
-
-const fakeData = [
-  { id: 1, image: fake, title: "Pizza" },
-  { id: 2, image: fake, title: "Pizza" },
-  { id: 3, image: fake, title: "Pizza" },
-  { id: 4, image: fake, title: "Pizza" },
-  { id: 5, image: fake, title: "Pizza" },
-  { id: 6, image: fake, title: "Pizza" },
-];
 const MainCars = () => {
+  const dispatch = useAppDispatch();
+  const { mainC } = useAppSelector((state) => state.food);
+  const [isSelected, setIsSelected] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (mainC) {
+      dispatch(fetchMainCategorysSubCat(mainC[0].id));
+      setIsSelected(mainC[0].id);
+    }
+  }, [dispatch, mainC]);
+
+  const clickOnTheMainCat = (id: number) => {
+    setIsSelected(id);
+    dispatch(fetchMainCategorysSubCat(id));
+  };
+
   return (
     <div className="main-cats-wrapper">
-      {fakeData.map((food) => (
-        <MainCatsTemp mainCat={food} key={food.id} />
-      ))}
+      {mainC &&
+        mainC.map((mc) => (
+          <MainCatsTemp
+            mainCat={mc}
+            key={mc.id}
+            OnClickType={clickOnTheMainCat}
+            isClicked={mc.id === isSelected}
+          />
+        ))}
     </div>
   );
 };

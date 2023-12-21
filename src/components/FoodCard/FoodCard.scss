@@ -1,37 +1,22 @@
 @use "../../assets/v.scss";
 
 .food-card-wrapper {
-  width: 280px;
-  height: 400px;
+  width: 220px;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba($color: #00000026, $alpha: 0.2);
   display: flex;
   flex-direction: column;
   font-family: v.$title_font2;
   padding: 15px;
+  gap: 15px;
   color: v.$darken;
-  position: relative;
 }
 
 .food-image-wrapper {
-  position: relative;
-  flex: 2;
-}
-
-.food-image {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 0 200px rgba($color: #00000026, $alpha: 0.35);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 25vh;
 }
 
 .food-content-wrapper {
-  flex: 1;
   margin-top: 25px;
 
   p {
@@ -55,8 +40,8 @@
 .shopping-option {
   display: flex;
   align-items: center;
-  gap: 70px;
   position: relative;
+  justify-content: space-between;
 }
 
 .price-wrapper {
@@ -72,6 +57,9 @@
 .food-action-wrapper {
   display: flex;
   align-items: center;
+  position: absolute;
+  gap: 15px;
+  right: -35px;
 }
 
 .add-to-wishlist {
@@ -83,35 +71,38 @@
 }
 
 .add-to-cart-wrapper {
-  background-color: v.$darken;
-  padding: 10px;
-  color: v.$grey;
-  border-radius: 15px 15px 15px 0;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-  position: absolute;
-  right: -50px;
-  box-shadow: 0 0 20px rgba($color: #00000026, $alpha: 0.35);
-  &:hover {
-    background-color: v.$orangered;
-    color: v.$darken;
+  position: relative;
+  span {
+    font-size: 12px;
   }
-  transition: all 0.25s ease-in-out;
+  .add-to-cart {
+    background-color: v.$darken;
+    padding: 12.5px 8px;
+    color: v.$grey;
+    border-radius: 15px 15px 15px 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba($color: #00000026, $alpha: 0.35);
+    &:hover {
+      background-color: v.$orangered;
+      color: v.$darken;
+    }
+    transition: all 0.25s ease-in-out;
 
-  &:active {
-    transform: scale(0.9);
+    &:active {
+      transform: scale(0.9);
+    }
   }
-}
-
-.add-to-cart {
-  font-size: 12px;
 }
 
 .add-to-cart-icon {
-  width: 30px;
-  height: 30px;
+  position: absolute;
+  bottom: 70%;
+  box-shadow: 0 0 10px rgba($color: #00000026, $alpha: 0.2);
+  right: 5%;
+  width: 20px;
+  height: 20px;
   background-color: v.$white;
   border-radius: 50%;
   display: flex;

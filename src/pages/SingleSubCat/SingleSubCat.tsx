@@ -1,26 +1,25 @@
+import { useEffect } from "react";
 import SubCatTemplate from "../../components/SubCat/SubCatTemplate";
-import Pagination from "../../components/pagination/Pagination";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
 
 import "./SingleSubCat.scss";
+import { fetchSubCategories } from "../../redux/appCall/FoodAppCall";
+import { GetFilteredSubC } from "../../redux/type.slice";
 
-const fakeData = [
-  { id: 1, title: "Pizza" },
-  { id: 2, title: "Pizza" },
-  { id: 3, title: "Pizza" },
-];
 const SingleSubCat = () => {
+  const subC = useAppSelector((state) => state.food.subC) as GetFilteredSubC[];
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(fetchSubCategories());
+  }, []); //eslint-disable-line
+
   return (
     <div className="single-sub-cat-wrapper">
-      <h1>
-        Sub categories from the{" "}
-        <span style={{ color: "orangered" }}>Main category</span>
-      </h1>
+      <h1>All Sub categories</h1>
       <div className="all-sub-cat-wrapper">
-        {fakeData.map((sub) => (
-          <SubCatTemplate sub={sub} key={sub.id} />
-        ))}
+        {subC && subC.map((sub) => <SubCatTemplate sub={sub} key={sub.id} />)}
       </div>
-      <Pagination num={5} />
     </div>
   );
 };

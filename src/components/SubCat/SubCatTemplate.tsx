@@ -1,25 +1,21 @@
 import { FC } from "react";
 import "./SubCatTemplate.scss";
-import SubCategories from "./subComps/categories/SubCategories";
 import SubSearch from "./subComps/search/SubSearch";
 import SubCatBody from "./subComps/subBody/SubCatBody";
 import SubFooter from "./subComps/subFooter/SubFooter";
+import { GetFilteredSubC } from "../../redux/type.slice";
 
-type SubType = {
-  title: string;
-};
-const SubCatTemplate: FC<{ sub: SubType }> = ({ sub }) => {
+const SubCatTemplate: FC<{ sub: GetFilteredSubC }> = ({ sub }) => {
+  const product = sub.Products.length > 0 ? sub.Products[0] : null;
+
   return (
     <div className="main-subcat">
       <div className="main-subcat-header">
         <SubSearch />
         <h2>{sub.title}</h2>
       </div>
-      <SubCategories />
-      <SubCatBody />
-      <p style={{ textAlign: "center" }}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-      </p>
+      <SubCatBody product={product ? product : null} />
+      <p style={{ textAlign: "center" }}>{sub.desc}</p>
       <SubFooter />
     </div>
   );

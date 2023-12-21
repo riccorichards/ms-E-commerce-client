@@ -9,7 +9,8 @@
 }
 
 .popular-foods {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  align-items: center;
   gap: 35px;
+  flex-wrap: wrap;
 }

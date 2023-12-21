@@ -1,24 +1,32 @@
 import { useForm } from "react-hook-form";
 import "./VendorForm.scss";
 import {
-  VendorFromInput,
+  VendorFormInput,
   VendroValidationSchema,
 } from "../NewVendroValidation";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useAppDispatch, useAppSelector } from "../../../../../redux/hook";
+import { createVendor } from "../../../../../redux/appCall/AdminAppCall";
+//import { useState } from "react";
 
 const VendorForm = () => {
+  const dispatch = useAppDispatch();
+  const image = useAppSelector((state) => state.admin.imageUrl);
+  //const [isImage, setIsImage] = useState<boolean>(false);
   const {
     register,
     formState: { errors },
     reset,
     handleSubmit,
-  } = useForm<VendorFromInput>({
+  } = useForm<VendorFormInput>({
     resolver: zodResolver(VendroValidationSchema),
   });
 
-  const onSubmit = (values: VendorFromInput) => {
-    console.log(values);
-    reset();
+  const onSubmit = (values: VendorFormInput) => {
+    if (image) {
+      dispatch(createVendor({ ...values, profileImg: image }));
+      reset();
+    }
   };
   return (
     <div className="vendor-from-wrapper">
@@ -71,13 +79,13 @@ const VendorForm = () => {
           <input
             type="password"
             placeholder="Confirm Password"
-            {...register("confPass")}
+            {...register("confirmPassword")}
           />
-          {errors.confPass && (
-            <p className="errors-wrapper">{errors.confPass.message}</p>
+          {errors.confirmPassword && (
+            <p className="errors-wrapper">{errors.confirmPassword.message}</p>
           )}
         </div>
-        <button>Add new Vendor</button>
+        <button type="submit">Add new Vendor</button>
       </form>
     </div>
   );

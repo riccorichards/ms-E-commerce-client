@@ -1,15 +1,18 @@
 import { FC } from "react";
 import "./MainCatsTemp.scss";
+import { MainCType } from "../../../../../../../../../redux/type.slice";
 
-type MainCatsType = {
-  image: string;
-  title: string;
-};
-
-const MainCatsTemp: FC<{ mainCat: MainCatsType }> = ({ mainCat }) => {
+const MainCatsTemp: FC<{
+  mainCat: MainCType;
+  OnClickType: (id: number) => void;
+  isClicked: boolean;
+}> = ({ mainCat, OnClickType, isClicked }) => {
   return (
-    <div className="each-main-cat-wrapper">
-      <img src={mainCat.image} alt="temp" />
+    <div
+      className={`each-main-cat-wrapper ${isClicked && "selectedCat"}`}
+      onClick={() => OnClickType(mainCat.id)}
+    >
+      <img src={mainCat.image} alt={mainCat.title} />
       <h5>{mainCat.title}</h5>
     </div>
   );

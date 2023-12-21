@@ -9,6 +9,9 @@ const fakeData = [
   { id: 1, image: fakeImage, title: "Pizza" },
   { id: 2, image: fakeImage, title: "Pizza" },
   { id: 3, image: fakeImage, title: "Pizza" },
+  { id: 1, image: fakeImage, title: "Pizza" },
+  { id: 2, image: fakeImage, title: "Pizza" },
+  { id: 3, image: fakeImage, title: "Pizza" },
   { id: 4, image: fakeImage, title: "Pizza" },
 ];
 

@@ -8,7 +8,6 @@ const fakecats = [
   { id: 2, iamge: image, title: "Pizza", desc: "some thenal dndfkl kljfds" },
   { id: 3, iamge: image, title: "Pizza", desc: "some thenal dndfkl kljfds" },
   { id: 4, iamge: image, title: "Pizza", desc: "some thenal dndfkl kljfds" },
-  { id: 5, iamge: image, title: "Pizza", desc: "some thenal dndfkl kljfds" },
 ];
 const VendorMainCat = () => {
   return (

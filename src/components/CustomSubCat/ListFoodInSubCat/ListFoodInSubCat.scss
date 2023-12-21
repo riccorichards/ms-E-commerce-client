@@ -1,0 +1,36 @@
+@use "../../../assets/v.scss";
+
+.list-food-in-sub-cat {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: absolute;
+  top: 120%;
+  width: 100%;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: v.$white;
+  box-shadow: 0 0 10px rgba($color: #0000000b, $alpha: 0.15);
+  height: 25vh;
+  overflow-y: auto;
+  z-index: 1;
+}
+
+.list-food-in-sub-cat-main {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  li {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-bottom: 1px solid v.$grey;
+
+    h5{
+      margin: 0;
+      width: 70%;
+    }
+  }
+}

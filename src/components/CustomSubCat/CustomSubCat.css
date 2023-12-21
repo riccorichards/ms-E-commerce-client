@@ -1,0 +1,120 @@
+.custom-sub-category-wrapper {
+  width: 200px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-radius: 15px;
+}
+
+.custom-sub-caterory-header {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  border-bottom: 0.5px solid #c0c0c0;
+}
+.custom-sub-caterory-header .info-of-incoming-food {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff8e1;
+  color: #008080;
+  border-radius: 50%;
+  position: absolute;
+  top: -35px;
+  right: -10px;
+  font-size: 20px;
+  box-shadow: 0 0 10.5px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+.custom-sub-caterory-header .info-of-incoming-food:hover {
+  background-color: #87ceeb;
+}
+.custom-sub-caterory-header .info-of-incoming-food:hover svg {
+  transform: rotate(5deg);
+}
+
+.custom-sub-caterory-body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  position: relative;
+}
+.custom-sub-caterory-body .foot-switcher-pointer-left {
+  position: absolute;
+  left: -25px;
+  top: 40px;
+  color: #008080;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  border: none;
+  font-size: 20px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all ease-in-out 0.25s;
+}
+.custom-sub-caterory-body .foot-switcher-pointer-left:hover {
+  background-color: #008080;
+  color: #87ceeb;
+}
+.custom-sub-caterory-body .foot-switcher-pointer-right {
+  position: absolute;
+  top: 40px;
+  right: -25px;
+  color: #008080;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  border: none;
+  font-size: 20px;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all ease-in-out 0.25s;
+}
+.custom-sub-caterory-body .foot-switcher-pointer-right:hover {
+  color: #87ceeb;
+  background-color: #008080;
+}
+.custom-sub-caterory-body p {
+  position: absolute;
+  left: 0;
+  font-size: 18px;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+}
+
+.custom-sub-caterory-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.custom-sub-caterory-footer .custom-sub-caterory-footer-item {
+  border: none;
+  background-color: #008080;
+  color: #fff8e1;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+.custom-sub-caterory-footer .custom-sub-caterory-footer-item:hover {
+  background-color: #87ceeb;
+  color: #008080;
+}

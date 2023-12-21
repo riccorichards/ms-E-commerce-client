@@ -1,6 +1,5 @@
 .main-subcat {
   width: 280px;
-  height: 500px;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   display: flex;
@@ -9,6 +8,7 @@
   font-family: "Josefin Sans", sans-serif;
   padding: 15px;
   color: #333333;
+  justify-content: space-between;
 }
 
 .main-subcat-header {

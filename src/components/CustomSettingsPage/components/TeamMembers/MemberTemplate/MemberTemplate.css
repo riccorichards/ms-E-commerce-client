@@ -1,0 +1,94 @@
+.add-new-team-member {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 10.5px rgba(0, 0, 0, 0.13);
+  width: 30%;
+  position: relative;
+}
+.add-new-team-member .remove-team-member {
+  position: absolute;
+  bottom: 97%;
+  padding: 5px 12px;
+  border: none;
+  background-color: hsl(16, 100%, 50%);
+  color: #fff;
+  transition: all 0.25s ease-in-out;
+  font-family: "Josefin Sans", sans-serif;
+  border-radius: 10px 0 10px 0;
+  cursor: pointer;
+}
+.add-new-team-member .remove-team-member:active {
+  transform: scale(0.9);
+}
+
+.add-new-team-member-img {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+}
+.add-new-team-member-img .team-member-img-icon {
+  position: absolute;
+  right: -5%;
+  bottom: 10%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid;
+  font-size: 16px;
+  z-index: 1;
+  border-radius: 50%;
+  background-color: #008080;
+  color: #fff8e1;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+.add-new-team-member-img .team-member-img-icon:hover {
+  background-color: hsl(16, 100%, 50%);
+}
+
+#add-new-team-member-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+#add-new-team-member-form .add-new-member-form-item {
+  width: 100%;
+  position: relative;
+}
+#add-new-team-member-form .errors-wrapper {
+  position: absolute;
+  color: red;
+  font-size: 14px;
+}
+#add-new-team-member-form input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #008080;
+  font-family: "Josefin Sans", sans-serif;
+}
+#add-new-team-member-form input:focus {
+  outline: none;
+}
+#add-new-team-member-form button {
+  align-self: flex-end;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #008080;
+  padding: 5px;
+  font-family: "Josefin Sans", sans-serif;
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  color: #fff;
+}
+#add-new-team-member-form button:hover {
+  background-color: hsl(16, 100%, 50%);
+}

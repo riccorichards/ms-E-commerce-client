@@ -1,0 +1,30 @@
+.all-sub-cat-page-wrapper {
+  flex: 5;
+  background-color: #fff8e1;
+  border-radius: 15px;
+  height: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  overflow-y: auto;
+}
+.all-sub-cat-page-wrapper button {
+  background-color: hsl(16, 100%, 50%);
+  font-family: "Josefin Sans", sans-serif;
+  padding: 6px 10px;
+  border-radius: 3.5px;
+  border: none;
+  color: #fff8e1;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+.all-sub-cat-page-wrapper button:hover {
+  background-color: #333333;
+}
+
+.all-sub-cat-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}

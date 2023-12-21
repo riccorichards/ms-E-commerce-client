@@ -1,19 +1,16 @@
-import SubCatTemplate from "../../../../../../../../components/SubCat/SubCatTemplate";
+import CustomSubCat from "../../../../../../../../components/CustomSubCat/CustomSubCat";
+import { useAppSelector } from "../../../../../../../../redux/hook";
 import "./SubCats.scss";
 import SubCatHeader from "./subCatHeader/SubCatHeader";
 
-const fakeData = [
-  { id: 1, title: "Pizza" },
-  { id: 2, title: "Pizza" },
-];
 const SubCats = () => {
+  const subC = useAppSelector((state) => state.food.subC);
+
   return (
     <div className="sub-cat-wrapper">
       <SubCatHeader />
       <div className="sub-cat-cards">
-        {fakeData.map((sub) => (
-          <SubCatTemplate sub={sub} key={sub.id} />
-        ))}
+        {subC && subC.map((sub) => <CustomSubCat sub={sub} key={sub.id} />)}
       </div>
     </div>
   );

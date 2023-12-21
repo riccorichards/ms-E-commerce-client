@@ -14,9 +14,7 @@ const FoodCard: FC<{ food: FoodType }> = ({ food }) => {
   return (
     <div className="food-card-wrapper">
       <div className="food-image-wrapper">
-        <div className="food-image">
-          <ImageWraper image={food.image} size="200px" nonCircle />
-        </div>
+        <ImageWraper image={food.image} size="100%" nonCircle />
       </div>
       <div className="food-content-wrapper">
         <div className="food-card-header">
@@ -41,9 +39,11 @@ const FoodCard: FC<{ food: FoodType }> = ({ food }) => {
             <FaRegHeart />
           </div>
           <div className="add-to-cart-wrapper">
-            <span className="add-to-cart">Add to Cart</span>
-            <div className="add-to-cart-icon">
-              <IoMdAdd />
+            <div className="add-to-cart">
+              <span>Add to Cart</span>
+              <div className="add-to-cart-icon">
+                <IoMdAdd />
+              </div>
             </div>
           </div>
         </div>

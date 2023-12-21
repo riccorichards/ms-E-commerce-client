@@ -1,0 +1,103 @@
+@use "../../../../../assets/v.scss";
+
+.add-new-team-member {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 10.5px rgba($color: #00000009, $alpha: 0.13);
+  width: 30%;
+  position: relative;
+
+  .remove-team-member {
+    position: absolute;
+    bottom: 97%;
+    padding: 5px 12px;
+    border: none;
+    background-color: v.$orangered;
+    color: #fff;
+    transition: all 0.25s ease-in-out;
+    font-family: v.$title_font2;
+    border-radius: 10px 0 10px 0;
+    cursor: pointer;
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+}
+
+.add-new-team-member-img {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+
+  .team-member-img-icon {
+    position: absolute;
+    right: -5%;
+    bottom: 10%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid;
+    font-size: 16px;
+    z-index: 1;
+    border-radius: 50%;
+    background-color: v.$att_green;
+    color: v.$white;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+      background-color: v.$orangered;
+    }
+  }
+}
+
+#add-new-team-member-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .add-new-member-form-item {
+    width: 100%;
+    position: relative;
+  }
+
+  .errors-wrapper {
+    position: absolute;
+    color: red;
+    font-size: 14px;
+  }
+  input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid v.$att_green;
+    font-family: v.$title_font2;
+
+    &:focus {
+      outline: none;
+    }
+  }
+  button {
+    align-self: flex-end;
+    width: fit-content;
+    background-color: v.$att_green;
+    padding: 5px;
+    font-family: v.$title_font2;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+    color: #fff;
+
+    &:hover {
+      background-color: v.$orangered;
+    }
+  }
+}

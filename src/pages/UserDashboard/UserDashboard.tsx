@@ -4,12 +4,35 @@ import Dashboard from "./userPageComps/dashborad/Dashboard";
 import { Route, Routes } from "react-router-dom";
 import Orders from "../Orders/Orders";
 import VendorList from "../vendorList/VendorList";
-import Settings from "../Settings/Settings";
 import VendorDetails from "../VendorDetails/VendorDetails";
 import RefreshToken from "../../components/RefreshToken";
 import { useAppDispatch } from "../../redux/hook";
 import { useEffect } from "react";
 import { findCustomerById } from "../../redux/appCall/AuthAppCall";
+import Settings from "../../components/CustomSettingsPage/Settings";
+import AllSubCat from "../AllSubCat/AllSubCat";
+
+//for custom setting pages
+const settingOptions = {
+  target: "customer",
+  setNavLInk: [
+    {
+      target: "customer",
+      title: "Update Profile",
+      desc: "Home is the place where you can change your information",
+    },
+    {
+      target: "customer",
+      title: "My Feeds",
+      desc: "You can see your all made feedbacks",
+    },
+    {
+      target: "customer",
+      title: "Invoices",
+      desc: "Invoice is a place where you can see your old financial history",
+    },
+  ],
+};
 
 const UserDashboard = () => {
   const dispatch = useAppDispatch();
@@ -29,11 +52,15 @@ const UserDashboard = () => {
       <NavigationBar />
       <RefreshToken />
       <Routes>
-        <Route path="/home" element={<Dashboard />} />
+        <Route path="/home/*" element={<Dashboard />} />
+        <Route path="/home/sub-category" element={<AllSubCat />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/vendors" element={<VendorList />} />
         <Route path="/vendors/:id" element={<VendorDetails />} />
-        <Route path="/settings/*" element={<Settings />} />
+        <Route
+          path="/settings/*"
+          element={<Settings settingOptions={settingOptions} />}
+        />
       </Routes>
     </div>
   );

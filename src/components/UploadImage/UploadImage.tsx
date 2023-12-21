@@ -23,6 +23,7 @@ const UploadImage = () => {
     if (files) {
       formData.append("upload", files[0]);
       formData.append("type", "profiles");
+      formData.append("isCreated", "0");
       dispatch(uploadImage(formData));
     }
   };

@@ -1,0 +1,13 @@
+@use "../../../../assets/v.scss";
+
+.add-food-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  overflow-y: auto;
+  height: 70vh;
+}
+
+.add-food {
+  display: flex;
+}

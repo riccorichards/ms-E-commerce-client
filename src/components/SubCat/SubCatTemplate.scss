@@ -2,7 +2,6 @@
 
 .main-subcat {
   width: 280px;
-  height: 500px;
   border-radius: 15px;
   box-shadow: 0 0 10px rgba($color: #00000026, $alpha: 0.2);
   display: flex;
@@ -11,6 +10,7 @@
   font-family: v.$title_font2;
   padding: 15px;
   color: v.$darken;
+  justify-content: space-between;
 }
 
 .main-subcat-header {

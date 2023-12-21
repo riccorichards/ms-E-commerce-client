@@ -1,0 +1,130 @@
+@use "../../assets/v.scss";
+
+.custom-sub-category-wrapper {
+  width: 200px;
+  box-shadow: 0 0 10px rgba($color: #00000008, $alpha: 0.15);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border-radius: 15px;
+}
+
+.custom-sub-caterory-header {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  border-bottom: 0.5px solid v.$grey;
+
+  .info-of-incoming-food {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: v.$white;
+    color: v.$att_green;
+    border-radius: 50%;
+    position: absolute;
+    top: -35px;
+    right: -10px;
+    font-size: 20px;
+    box-shadow: 0 0 10.5px rgba($color: #00000008, $alpha: 0.15);
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+      background-color: v.$sky;
+      svg {
+        transform: rotate(5deg);
+      }
+    }
+  }
+}
+
+.custom-sub-caterory-body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  position: relative;
+
+  .foot-switcher-pointer-left {
+    position: absolute;
+    left: -25px;
+    top: 40px;
+    color: v.$att_green;
+    box-shadow: 0 0 10px rgba($color: #00000008, $alpha: 0.15);
+    border: none;
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all ease-in-out 0.25s;
+
+    &:hover {
+      background-color: v.$att_green;
+      color: v.$sky;
+    }
+  }
+  .foot-switcher-pointer-right {
+    position: absolute;
+    top: 40px;
+    right: -25px;
+    color: v.$att_green;
+    box-shadow: 0 0 10px rgba($color: #00000008, $alpha: 0.15);
+    border: none;
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all ease-in-out 0.25s;
+
+    &:hover {
+      color: v.$sky;
+      background-color: v.$att_green;
+    }
+  }
+
+  p {
+    position: absolute;
+    left: 0;
+    font-size: 18px;
+    text-shadow: 0 0 1px rgba($color: #00000008, $alpha: 0.15);
+  }
+}
+
+.custom-sub-caterory-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  .custom-sub-caterory-footer-item {
+    border: none;
+    background-color: v.$att_green;
+    color: v.$white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+      background-color: v.$sky;
+      color: v.$att_green;
+    }
+  }
+}

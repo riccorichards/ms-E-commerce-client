@@ -1,0 +1,33 @@
+.vendor-navigations-wrapper {
+  flex: 2.5;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vendor-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 5px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+.vendor-nav-item:hover {
+  background-color: hsl(16, 100%, 50%);
+}
+.vendor-nav-item:hover .vendor-nav-icon {
+  background-color: #333333;
+  color: hsl(16, 100%, 50%);
+}
+
+.vendor-nav-icon {
+  width: 50px;
+  height: 50px;
+  background-color: #fff8e1;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

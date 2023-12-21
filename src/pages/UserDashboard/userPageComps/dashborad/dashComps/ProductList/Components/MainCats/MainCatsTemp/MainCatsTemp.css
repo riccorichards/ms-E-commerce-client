@@ -15,10 +15,17 @@
 }
 .each-main-cat-wrapper:hover {
   background-color: hsl(16, 100%, 50%);
+  transform: rotate(5deg);
+}
+.each-main-cat-wrapper.selectedCat {
+  background-color: hsl(16, 100%, 50%);
+  transform: rotate(5deg);
 }
 
 img {
   width: 70px;
   height: 70px;
   border-radius: 15px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }

@@ -1,6 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { GetFilteredSubC, MainCType } from "../type.slice";
+import {
+  CartInputType,
+  FoodCardType,
+  GetFilteredSubC,
+  MainCType,
+  ProductType,
+  WishlistToggleType,
+} from "../type.slice";
 
 export const fetchMainCategories = createAsyncThunk<
   MainCType[],
@@ -89,3 +96,72 @@ export const fetchSubCategories = createAsyncThunk<
     return rejectWithValue(error);
   }
 });
+
+export const getPopularFoods = createAsyncThunk<
+  ProductType[],
+  undefined,
+  { rejectValue: string | unknown }
+>("food/getPopularFoods", async (_: undefined, { rejectWithValue }) => {
+  try {
+    const { data } = await axios({
+      method: "get",
+      url: "http://localhost:8002/product",
+      withCredentials: true,
+    });
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      return rejectWithValue(error.message);
+    }
+    return rejectWithValue(error);
+  }
+});
+
+export const wishlistToggle = createAsyncThunk<
+  ProductType,
+  WishlistToggleType,
+  { rejectValue: string | unknown }
+>(
+  "food/wishlistToggle",
+  async ({ productId, userId }: WishlistToggleType, { rejectWithValue }) => {
+    try {
+      const { data } = await axios({
+        method: "post",
+        url: "http://localhost:8002/add-product-to-wishlist",
+        data: { productId, userId },
+        withCredentials: true,
+      });
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const foodToCart = createAsyncThunk<
+  FoodCardType,
+  CartInputType,
+  { rejectValue: string | unknown }
+>(
+  "food/addFoodToCart",
+  async ({ productId, userId, unit }: CartInputType, { rejectWithValue }) => {
+    try {
+      const { data } = await axios({
+        method: "post",
+        url: "http://localhost:8002/add-product-to-cart",
+        data: { productId, userId, unit },
+        withCredentials: true,
+      });
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue(error);
+    }
+  }
+);
+

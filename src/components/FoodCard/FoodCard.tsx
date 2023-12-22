@@ -1,16 +1,16 @@
 import { FC } from "react";
 import ImageWraper from "../ImageWraper";
 import "./FoodCard.scss";
-import { FaRegHeart } from "react-icons/fa";
-import { IoMdTime } from "react-icons/io";
-import { IoMdAdd } from "react-icons/io";
+import { MdOutlineFavorite, MdFavoriteBorder } from "react-icons/md";
+import { IoMdAdd, IoMdTime } from "react-icons/io";
+import { ProductType } from "../../redux/type.slice";
 
-type FoodType = {
-  image: string;
-  title: string;
-};
-
-const FoodCard: FC<{ food: FoodType }> = ({ food }) => {
+const FoodCard: FC<{
+  food: ProductType;
+  wishlistToggle: (productId: number) => void;
+  isPicked: boolean;
+  addFoodToCart: (productId: number) => void;
+}> = ({ food, wishlistToggle, isPicked, addFoodToCart }) => {
   return (
     <div className="food-card-wrapper">
       <div className="food-image-wrapper">
@@ -18,27 +18,32 @@ const FoodCard: FC<{ food: FoodType }> = ({ food }) => {
       </div>
       <div className="food-content-wrapper">
         <div className="food-card-header">
-          <h2>{food.title}</h2>
+          <h4>{food.title}</h4>
           <div className="food-prep-duration">
             <IoMdTime />
-            <span style={{ fontWeight: "bold" }}>25 min</span>
+            <span style={{ fontWeight: "600" }}>25 min</span>
           </div>
         </div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet iure
-          assumenda nulla qui modi itaque.
-        </p>
+        <p>{food.desc}</p>
       </div>
       <div className="shopping-option">
         <div className="price-wrapper">
           <span className="price-header">Price</span>
-          <span style={{ fontWeight: "bold", fontSize: "24px" }}>$ 15.00</span>
+          <span
+            style={{ fontWeight: "bold", fontSize: "24px" }}
+          >{`$ ${food.price}`}</span>
         </div>
         <div className="food-action-wrapper">
-          <div className="add-to-wishlist">
-            <FaRegHeart />
+          <div
+            className="add-to-wishlist"
+            onClick={() => wishlistToggle(food.id)}
+          >
+            {isPicked ? <MdOutlineFavorite /> : <MdFavoriteBorder />}
           </div>
-          <div className="add-to-cart-wrapper">
+          <div
+            className="add-to-cart-wrapper"
+            onClick={() => addFoodToCart(food.id)}
+          >
             <div className="add-to-cart">
               <span>Add to Cart</span>
               <div className="add-to-cart-icon">

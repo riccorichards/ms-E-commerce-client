@@ -13,6 +13,7 @@ import {
   uploadImage,
 } from "../appCall/AuthAppCall";
 import { fetchRegister } from "./../appCall/AuthAppCall";
+import { foodToCart, wishlistToggle } from "../appCall/FoodAppCall";
 
 const initialState: AuthState = {
   customer: null,
@@ -141,6 +142,48 @@ const AuthSlice = createSlice({
         }
       })
       .addCase(updateBankInfo.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload || null;
+      })
+      .addCase(wishlistToggle.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(wishlistToggle.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        if (state.customer) {
+          const { wishlist } = state.customer;
+          const index = wishlist.findIndex(
+            (food) => food.id === action.payload.id
+          );
+          if (index !== -1) {
+            wishlist.splice(index, 1);
+          } else {
+            wishlist.push(action.payload);
+          }
+        }
+      })
+      .addCase(foodToCart.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(foodToCart.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        if (state.customer) {
+          const { cart } = state.customer;
+          const existingFoodIndex = cart.findIndex(
+            (food) => food.id === action.payload.id
+          );
+          if (existingFoodIndex !== -1) {
+            if (action.payload.unit === 0) {
+              cart.splice(existingFoodIndex, 1);
+            } else {
+              cart[existingFoodIndex].unit = action.payload.unit;
+            }
+          } else {
+            cart.push(action.payload);
+          }
+        }
+      })
+      .addCase(foodToCart.rejected, (state, action) => {
         state.status = "rejected";
         state.error = action.payload || null;
       })

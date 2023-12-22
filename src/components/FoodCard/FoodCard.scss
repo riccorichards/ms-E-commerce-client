@@ -51,7 +51,7 @@
 }
 
 .price-header {
-  border-bottom: 2px v.$orangered solid;
+  border-bottom: 2px v.$att_green solid;
 }
 
 .food-action-wrapper {
@@ -76,9 +76,9 @@
     font-size: 12px;
   }
   .add-to-cart {
-    background-color: v.$darken;
+    background-color: v.$sky;
     padding: 12.5px 8px;
-    color: v.$grey;
+    color: v.$att_green;
     border-radius: 15px 15px 15px 0;
     display: flex;
     align-items: center;

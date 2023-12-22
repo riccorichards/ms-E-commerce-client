@@ -9,6 +9,18 @@
   color: v.$darken;
   border-radius: 7px;
   position: relative;
+  height: 15vh;
+  box-shadow: 0 0 10px rgba($color: #0000000f, $alpha: 0.25);
+}
+
+.food-details-in-wishlist {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  p {
+    font-size: 14px;
+  }
 }
 
 .remove-food-from-wishlist {

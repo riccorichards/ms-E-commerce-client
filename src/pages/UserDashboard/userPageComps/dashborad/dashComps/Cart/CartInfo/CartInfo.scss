@@ -12,11 +12,6 @@
   justify-content: space-between;
 }
 
-//.cart-info-switcher {
-//  display: flex;
-//  flex-direction: column;
-//  gap: 5px;
-//}
 .cart-info-switcher {
   display: flex;
   align-items: center;
@@ -64,4 +59,26 @@
   background-color: v.$orangered;
   top: -35%;
   color: v.$white;
+}
+
+.cart-foods-place {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.checkout {
+  background-color: v.$darken;
+  border: none;
+  font-family: v.$title_font2;
+  height: 5vh;
+  border-radius: 5px;
+  color: v.$white;
+  font-size: 18px;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    background-color: v.$orangered;
+    cursor: pointer;
+  }
 }

@@ -1,28 +1,62 @@
+import { useEffect } from "react";
 import FoodCard from "../../../../../../../../components/FoodCard/FoodCard";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../../../../../../redux/hook";
 import PopularFoodsHeader from "./popularfoodHeader/PopularFoodsHeader";
 import "./PopularFoods.scss";
-
-const fakeImage =
-  "https://i.pinimg.com/564x/b4/01/d0/b401d00f0bcacf136d267740ef994d90.jpg";
-
-const fakeData = [
-  { id: 1, image: fakeImage, title: "Pizza" },
-  { id: 2, image: fakeImage, title: "Pizza" },
-  { id: 3, image: fakeImage, title: "Pizza" },
-  { id: 1, image: fakeImage, title: "Pizza" },
-  { id: 2, image: fakeImage, title: "Pizza" },
-  { id: 3, image: fakeImage, title: "Pizza" },
-  { id: 4, image: fakeImage, title: "Pizza" },
-];
+import {
+  foodToCart,
+  getPopularFoods,
+  wishlistToggle,
+} from "../../../../../../../../redux/appCall/FoodAppCall";
 
 const PopularFoods = () => {
+  const { popularF } = useAppSelector((state) => state.food);
+  const dispatch = useAppDispatch();
+  const { customer } = useAppSelector((state) => state.customer);
+  useEffect(() => {
+    dispatch(getPopularFoods());
+  }, [dispatch]);
+
+  const handleWishlistToggle = (productId: number) => {
+    const data = {
+      productId,
+      userId: customer?._id || "",
+    };
+    dispatch(wishlistToggle(data));
+  };
+
+  const isPickedFood = (id: number) => {
+    return Boolean(
+      customer && customer.wishlist.find((food) => food.id === id)
+    );
+  };
+
+  const handleAddFoodToCart = (productId: number) => {
+    const data = {
+      productId,
+      userId: customer?._id || "",
+      unit: 1,
+    };
+
+    dispatch(foodToCart(data));
+  };
   return (
     <div className="popular-food-wrappe">
       <PopularFoodsHeader />
       <div className="popular-foods">
-        {fakeData.map((food) => (
-          <FoodCard key={food.id} food={food} />
-        ))}
+        {popularF &&
+          popularF.map((food) => (
+            <FoodCard
+              key={food.id}
+              food={food}
+              isPicked={isPickedFood(food.id)}
+              wishlistToggle={handleWishlistToggle}
+              addFoodToCart={handleAddFoodToCart}
+            />
+          ))}
       </div>
     </div>
   );

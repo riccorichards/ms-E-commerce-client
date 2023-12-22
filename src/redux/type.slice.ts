@@ -19,6 +19,15 @@ export interface CustomarBasicInfo {
   email: string;
 }
 
+export interface FoodCardType {
+  id: number;
+  title: string;
+  desc: string;
+  image: string;
+  price: string;
+  unit: number;
+}
+
 export interface EntireCustomerType extends CustomarBasicInfo {
   _id: string;
   password: string;
@@ -27,9 +36,9 @@ export interface EntireCustomerType extends CustomarBasicInfo {
   image: string;
   address: StateAddressType;
   bank: StateBankInfoType;
-  wishlist: [];
+  wishlist: ProductType[];
   feedback: [];
-  cart: [];
+  cart: FoodCardType[];
   order: [];
 }
 
@@ -135,23 +144,36 @@ export interface MainCType {
   image: string;
 }
 
-export interface SubSingleProduct {
+export interface ProductType {
+  id: number;
   title: string;
   image: string;
   discount: number;
   price: string;
+  desc: string;
 }
 
 export interface GetFilteredSubC {
   id: number;
   title: string;
   desc: string;
-  Products: SubSingleProduct[];
+  Products: ProductType[];
 }
 
+export interface WishlistToggleType {
+  productId: number;
+  userId: string;
+}
+
+export interface CartInputType {
+  productId: number;
+  userId: string | undefined;
+  unit: number;
+}
 export interface FoodState {
   mainC: MainCType[] | null;
   subC: GetFilteredSubC[] | null;
+  popularF: ProductType[] | null;
   state: string | null;
   error: string | null;
 }

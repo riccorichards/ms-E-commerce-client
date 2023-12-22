@@ -9,9 +9,13 @@ import { FC, useState } from "react";
 import { GetFilteredSubC } from "../../redux/type.slice";
 import HoverFoodInfo from "./HoverFoodInfo/HoverFoodInfo";
 import ListFoodInSubCat from "./ListFoodInSubCat/ListFoodInSubCat";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
+import { wishlistToggle } from "../../redux/appCall/FoodAppCall";
 
 const CustomSubCat: FC<{ sub: GetFilteredSubC }> = ({ sub }) => {
   const product = sub.Products.length > 0 ? sub.Products[0] : null;
+  const dispatch = useAppDispatch();
+  const { customer } = useAppSelector((state) => state.customer);
   const [isInfo, setIsinfo] = useState<boolean>(false);
   const [isList, setIsList] = useState<boolean>(false);
 
@@ -21,6 +25,17 @@ const CustomSubCat: FC<{ sub: GetFilteredSubC }> = ({ sub }) => {
   const listToggle = () => {
     setIsList((prev) => !prev);
   };
+
+  const userId = customer?._id;
+
+  const handleWishlistToggle = (productId: number) => {
+    const data = {
+      productId,
+      userId: userId || "",
+    };
+    dispatch(wishlistToggle(data));
+  };
+  
   return (
     <div className="custom-sub-category-wrapper">
       <div className="custom-sub-caterory-header">

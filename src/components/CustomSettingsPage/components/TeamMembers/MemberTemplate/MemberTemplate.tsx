@@ -1,36 +1,45 @@
-import { FC, useRef } from "react";
+import { FC, useEffect, useRef, useState } from "react";
 import ImageWraper from "../../../../ImageWraper";
 import "./MemberTemplate.scss";
 import { FaCameraRetro } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { MemberSchemaType, MemberValidationSchema } from "./MemberValidation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useAppSelector } from "../../../../../redux/hook";
+import { useAppDispatch, useAppSelector } from "../../../../../redux/hook";
+import { addNewMember } from "../../../../../redux/appCall/VendorAppCall";
 
 const MemberTemplate: FC<{
-  removeNewMember: () => void;
   uploadMemberImage: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}> = ({ removeNewMember, uploadMemberImage }) => {
+}> = ({ uploadMemberImage }) => {
   const memberImage = useAppSelector((state) => state.vendor.imageUrl);
-
+  const dispatch = useAppDispatch();
+  const [imageError, setImageError] = useState<boolean>(false);
   const imageRef = useRef<HTMLInputElement | null>(null);
   const {
     register,
     formState: { errors },
+    reset,
     handleSubmit,
   } = useForm<MemberSchemaType>({
     resolver: zodResolver(MemberValidationSchema),
   });
 
+  useEffect(() => {
+    if (memberImage) setImageError(false);
+  }, [memberImage]);
+
   const onSubmit = (values: MemberSchemaType) => {
-    console.log({ ...values, image: memberImage });
+    if (memberImage) {
+      dispatch(addNewMember({ ...values, image: memberImage }));
+      reset();
+      setImageError(false);
+    } else {
+      setImageError(true);
+    }
   };
 
   return (
     <div className="add-new-team-member">
-      <button className="remove-team-member" onClick={removeNewMember}>
-        Delete
-      </button>
       <div className="add-new-team-member-img">
         <ImageWraper
           image={memberImage ? memberImage : undefined}
@@ -50,6 +59,7 @@ const MemberTemplate: FC<{
           ref={imageRef}
           onChange={(e) => uploadMemberImage(e)}
         />
+        {imageError && <p className="image-error">Please Provide Image</p>}
       </div>
       <form id="add-new-team-member-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="add-new-member-form-item">
@@ -65,9 +75,13 @@ const MemberTemplate: FC<{
           )}
         </div>
         <div className="add-new-member-form-item">
-          <input type="text" placeholder="Description" {...register("desc")} />
-          {errors.desc && (
-            <p className="errors-wrapper">{errors.desc.message}</p>
+          <input
+            type="text"
+            placeholder="Description"
+            {...register("description")}
+          />
+          {errors.description && (
+            <p className="errors-wrapper">{errors.description.message}</p>
           )}
         </div>
         <button type="submit">Save new member</button>

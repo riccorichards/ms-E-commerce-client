@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { VendorType } from "../type.slice";
+import { VendorTeamMembersType, VendorType } from "../type.slice";
 
 export const vendorLogin = createAsyncThunk<
   VendorType,
@@ -62,6 +62,53 @@ export const uploadMemberImage = createAsyncThunk<
         url: "http://localhost:8007/upload",
         headers: { "Content-Type": "multipart/form-data" },
         data: memberImage,
+        withCredentials: true,
+      });
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const addNewMember = createAsyncThunk<
+  VendorTeamMembersType,
+  VendorTeamMembersType,
+  { rejectValue: string | unknown }
+>(
+  "vendor/addNewMember",
+  async (newMember: VendorTeamMembersType, { rejectWithValue }) => {
+    try {
+      const { data } = await axios({
+        method: "post",
+        url: "http://localhost:8004/vendor-team",
+        data: newMember,
+        withCredentials: true,
+      });
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const removeMember = createAsyncThunk<
+  VendorTeamMembersType,
+  string | undefined,
+  { rejectValue: string | unknown }
+>(
+  "vendor/removeMember",
+  async (memberId: string | undefined, { rejectWithValue }) => {
+    try {
+      const { data } = await axios({
+        method: "delete",
+        url: `http://localhost:8004/vendor-team/${memberId}`,
         withCredentials: true,
       });
       return data;

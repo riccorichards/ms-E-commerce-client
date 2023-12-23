@@ -1,0 +1,61 @@
+@use "../../../../../assets/v.scss";
+
+.gallery-image-template-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+  padding: 15px;
+
+  box-shadow: 0 0 10px rgba($color: #00000022, $alpha: 0.1);
+}
+
+.img-gallery {
+  display: flex;
+  flex: 8;
+  width: 100%;
+  border-radius: 0;
+  object-fit: cover;
+
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.gallery-image-details {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  svg {
+    cursor: pointer;
+
+    &:hover {
+      color: v.$orangered;
+    }
+  }
+}
+
+.gallery-img-option {
+  position: absolute;
+  background-color: v.$white;
+  display: flex;
+  width: 100%;
+  top: 100%;
+  height: 5vh;
+  box-shadow: 0 0 10px rgba($color: #00000022, $alpha: 0.1);
+  align-items: center;
+  padding: 15px 5px;
+  gap: 15px;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    background-color: v.$orangered;
+    cursor: pointer;
+    color: v.$white;
+  }
+}

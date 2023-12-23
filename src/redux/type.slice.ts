@@ -102,11 +102,14 @@ interface VendorFeedsType {
 }
 
 export interface VendorTeamMembersType {
+  _id?: string;
   name: string;
   description: string;
   image: string;
   position: string;
 }
+
+
 
 export interface VendorType {
   name: string;

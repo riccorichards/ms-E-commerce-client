@@ -1,0 +1,47 @@
+@use "../../../../../assets/v.scss";
+
+.existing-member-wrapper {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba($color: #0000000e, $alpha: 0.15);
+  padding: 15px;
+  gap: 15px;
+  position: relative;
+
+  .remove-team-member {
+    position: absolute;
+    bottom: 97%;
+    padding: 5px 12px;
+    border: none;
+    background-color: v.$orangered;
+    color: #fff;
+    transition: all 0.25s ease-in-out;
+    font-family: v.$title_font2;
+    border-radius: 10px 0 10px 0;
+    cursor: pointer;
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  .existing-member {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.existing-member-item-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  .existing-member-item {
+    font-weight: 900;
+    border-bottom: 2px solid v.$att_green;
+    width: fit-content;
+  }
+}

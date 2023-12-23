@@ -1,1 +1,8 @@
 @use "../../../../assets/v.scss";
+
+.customer-feeds-to-vendor {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}

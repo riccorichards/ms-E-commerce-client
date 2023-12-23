@@ -1,0 +1,57 @@
+.gallery-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  height: 70vh;
+  overflow-y: auto;
+  padding: 5px;
+}
+
+.gallery-header-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+.gallery-header-wrapper button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #008080;
+  border: none;
+  font-family: "Josefin Sans", sans-serif;
+  width: 100px;
+  height: 30px;
+  border-radius: 2.5px;
+  color: #fff8e1;
+  cursor: pointer;
+}
+.gallery-header-wrapper button svg {
+  font-size: 18px;
+}
+.gallery-header-wrapper button:active {
+  transform: scale(0.9);
+}
+.gallery-header-wrapper .gallery-upload-image-wrapper {
+  opacity: 0;
+  height: 10vh;
+  transition: opacity 0.9s ease-in-out, right 0.9s ease-in-out;
+  position: absolute;
+  right: -100%;
+  background-color: #008080;
+}
+.gallery-header-wrapper .gallery-upload-image-wrapper-show {
+  height: 10vh;
+  opacity: 1;
+  right: 0;
+  position: absolute;
+  transition: right 0.9s ease-in-out, opacity 0.9s ease-in-out;
+  background-color: #008080;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}

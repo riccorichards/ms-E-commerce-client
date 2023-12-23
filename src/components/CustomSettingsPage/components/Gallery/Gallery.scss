@@ -1,1 +1,64 @@
 @use "../../../../assets/v.scss";
+
+.gallery-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  height: 70vh;
+  overflow-y: auto;
+  padding: 5px;
+}
+
+.gallery-header-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: v.$att_green;
+    border: none;
+    font-family: v.$title_font2;
+    width: 100px;
+    height: 30px;
+    border-radius: 2.5px;
+    color: v.$white;
+    cursor: pointer;
+
+    svg {
+      font-size: 18px;
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+
+  .gallery-upload-image-wrapper {
+    opacity: 0;
+    height: 10vh;
+    transition: opacity 0.9s ease-in-out, right 0.9s ease-in-out;
+    position: absolute;
+    right: -100%;
+    background-color: v.$att_green;
+  }
+
+  .gallery-upload-image-wrapper-show {
+    height: 10vh;
+    opacity: 1;
+    right: 0;
+    position: absolute;
+    transition: right 0.9s ease-in-out, opacity 0.9s ease-in-out;
+    background-color: v.$att_green;
+  }
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}

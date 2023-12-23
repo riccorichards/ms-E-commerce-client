@@ -1,0 +1,17 @@
+@use "../../../../../../assets/v.scss";
+
+.liner-view-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.liner-view {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba($color: #0000000b, $alpha: 0.15);
+  background-color: v.$sky;
+}

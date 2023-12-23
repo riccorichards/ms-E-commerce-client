@@ -9,24 +9,6 @@
   border-radius: 15px;
   box-shadow: 0 0 10.5px rgba($color: #00000009, $alpha: 0.13);
   width: 30%;
-  position: relative;
-
-  .remove-team-member {
-    position: absolute;
-    bottom: 97%;
-    padding: 5px 12px;
-    border: none;
-    background-color: v.$orangered;
-    color: #fff;
-    transition: all 0.25s ease-in-out;
-    font-family: v.$title_font2;
-    border-radius: 10px 0 10px 0;
-    cursor: pointer;
-
-    &:active {
-      transform: scale(0.9);
-    }
-  }
 }
 
 .add-new-team-member-img {
@@ -35,6 +17,13 @@
   justify-content: center;
   position: relative;
   align-items: center;
+
+  .image-error {
+    position: absolute;
+    top: 95%;
+    color: red;
+    font-size: 14px;
+  }
 
   .team-member-img-icon {
     position: absolute;

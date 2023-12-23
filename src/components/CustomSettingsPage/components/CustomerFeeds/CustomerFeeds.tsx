@@ -1,9 +1,16 @@
+import { useState } from "react";
 import "./CustomerFeeds.scss";
+import CustomerFeedsHeader from "./components/CustomerFeedsHeader/CustomerFeedsHeader";
+import GridView from "./components/GridView/GridView";
+import LinerView from "./components/LinerView/LinerView";
 
 const CustomerFeeds = () => {
+  const [isGridView, setGrigView] = useState<boolean>(true);
+
   return (
     <div className="customer-feeds-to-vendor">
-      <h1>Hello from Customer feeds</h1>
+      <CustomerFeedsHeader Bstate={{ isGridView, setGrigView }} />
+      {isGridView ? <GridView /> : <LinerView />}
     </div>
   );
 };

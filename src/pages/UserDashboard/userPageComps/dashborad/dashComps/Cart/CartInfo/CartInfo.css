@@ -58,3 +58,24 @@
   top: -35%;
   color: #fff8e1;
 }
+
+.cart-foods-place {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.checkout {
+  background-color: #333333;
+  border: none;
+  font-family: "Josefin Sans", sans-serif;
+  height: 5vh;
+  border-radius: 5px;
+  color: #fff8e1;
+  font-size: 18px;
+  transition: all 0.25s ease-in-out;
+}
+.checkout:hover {
+  background-color: hsl(16, 100%, 50%);
+  cursor: pointer;
+}

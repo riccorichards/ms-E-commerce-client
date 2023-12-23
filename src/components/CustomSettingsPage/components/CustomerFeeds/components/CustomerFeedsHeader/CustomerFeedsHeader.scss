@@ -1,0 +1,31 @@
+@use "../../../../../../assets/v.scss";
+
+.customer-feeds-to-vendor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.customer-feeds-to-vendor-view-btns {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  button {
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: v.$darken;
+    border: none;
+    padding: 3.5px;
+    border-radius: 2.5px;
+    color: v.$white;
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      background-color: v.$orangered;
+    }
+  }
+}

@@ -1,0 +1,27 @@
+.customer-feeds-to-vendor-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.customer-feeds-to-vendor-view-btns {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.customer-feeds-to-vendor-view-btns button {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333333;
+  border: none;
+  padding: 3.5px;
+  border-radius: 2.5px;
+  color: #fff8e1;
+  transition: all 0.25s ease-in-out;
+}
+.customer-feeds-to-vendor-view-btns button:hover {
+  cursor: pointer;
+  background-color: hsl(16, 100%, 50%);
+}

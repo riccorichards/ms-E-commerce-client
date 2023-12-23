@@ -7,22 +7,6 @@
   border-radius: 15px;
   box-shadow: 0 0 10.5px rgba(0, 0, 0, 0.13);
   width: 30%;
-  position: relative;
-}
-.add-new-team-member .remove-team-member {
-  position: absolute;
-  bottom: 97%;
-  padding: 5px 12px;
-  border: none;
-  background-color: hsl(16, 100%, 50%);
-  color: #fff;
-  transition: all 0.25s ease-in-out;
-  font-family: "Josefin Sans", sans-serif;
-  border-radius: 10px 0 10px 0;
-  cursor: pointer;
-}
-.add-new-team-member .remove-team-member:active {
-  transform: scale(0.9);
 }
 
 .add-new-team-member-img {
@@ -31,6 +15,12 @@
   justify-content: center;
   position: relative;
   align-items: center;
+}
+.add-new-team-member-img .image-error {
+  position: absolute;
+  top: 95%;
+  color: red;
+  font-size: 14px;
 }
 .add-new-team-member-img .team-member-img-icon {
   position: absolute;

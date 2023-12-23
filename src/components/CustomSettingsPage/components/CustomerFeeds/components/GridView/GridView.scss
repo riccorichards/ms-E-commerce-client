@@ -1,0 +1,13 @@
+@use "../../../../../../assets/v.scss";
+
+.feeds-grid-view-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.feeds-grid-view {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}

@@ -2,16 +2,18 @@ import React from "react";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hook";
 import MemberTemplate from "./MemberTemplate/MemberTemplate";
 import "./TeamMembers.scss";
-import { IoMdAdd } from "react-icons/io";
-import { uploadMemberImage } from "../../../../redux/appCall/VendorAppCall";
+import {
+  removeMember,
+  uploadMemberImage,
+} from "../../../../redux/appCall/VendorAppCall";
 import { VendorTeamMembersType } from "../../../../redux/type.slice";
+import ExistingMember from "./ExistingMember/ExistingMember";
 
 const TeamMembers = () => {
   const teamMember = useAppSelector(
     (state) => state.vendor.vendor?.teamMember
   ) as VendorTeamMembersType[];
   const dispatch = useAppDispatch();
-
   const { vendor } = useAppSelector((state) => state.vendor);
 
   function handleUploadImageToMember(
@@ -27,32 +29,25 @@ const TeamMembers = () => {
     dispatch(uploadMemberImage(formData));
   }
 
-  function handleAddNewMember() {}
-
-  function handleRemoveNewMember() {}
+  function handleRemoveMember(memberId: string | undefined) {
+    dispatch(removeMember(memberId));
+  }
 
   return (
     <div className="vendor-team-member-wrapper">
-      <h1>
-        <span style={{ color: "orangered" }}>{vendor?.name}</span>'s Team Place
-      </h1>
+      <h2>
+        {vendor?.name}'s <span style={{ color: "orangered" }}>Team Place</span>
+      </h2>
       <div className="add-new-team-member-wrapper">
         {teamMember &&
           teamMember.map((member) => (
-            <MemberTemplate
-              uploadMemberImage={(e) => handleUploadImageToMember(e)}
-              removeNewMember={() => handleRemoveNewMember()}
-              key={member.description}
+            <ExistingMember
+              member={member}
+              key={member._id}
+              removeMember={handleRemoveMember}
             />
           ))}
-        <div className="add-one-more-member">
-          <div
-            className="add-one-more-member-icon"
-            onClick={() => handleAddNewMember()}
-          >
-            <IoMdAdd style={{ fontSize: "50px" }} />
-          </div>
-        </div>
+        <MemberTemplate uploadMemberImage={handleUploadImageToMember} />
       </div>
     </div>
   );

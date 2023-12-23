@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { VendorState } from "../type.slice";
 import {
+  addNewMember,
   fetchVendor,
+  removeMember,
   uploadMemberImage,
   vendorLogOut,
   vendorLogin,
@@ -24,7 +26,7 @@ const VendorSlice = createSlice({
         state.status = "pending";
       })
       .addCase(vendorLogin.fulfilled, (state, action) => {
-        state.status = "pending";
+        state.status = "fulfilled";
         state.vendor = action.payload;
       })
       .addCase(vendorLogin.rejected, (state, action) => {
@@ -35,7 +37,7 @@ const VendorSlice = createSlice({
         state.status = "pending";
       })
       .addCase(fetchVendor.fulfilled, (state, action) => {
-        state.status = "pending";
+        state.status = "fulfilled";
         state.vendor = action.payload;
       })
       .addCase(fetchVendor.rejected, (state, action) => {
@@ -46,10 +48,38 @@ const VendorSlice = createSlice({
         state.status = "pending";
       })
       .addCase(uploadMemberImage.fulfilled, (state, action) => {
-        state.status = "pending";
+        state.status = "fulfilled";
         state.imageUrl = action.payload;
       })
       .addCase(uploadMemberImage.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload || null;
+      })
+      .addCase(addNewMember.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(addNewMember.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        state.vendor?.teamMember.push(action.payload);
+        state.imageUrl = null;
+      })
+      .addCase(addNewMember.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload || null;
+      })
+      .addCase(removeMember.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(removeMember.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        if (state.vendor) {
+          state.vendor.teamMember = state.vendor.teamMember.filter(
+            (member) =>
+              member._id?.toString() !== action.payload._id?.toString()
+          );
+        }
+      })
+      .addCase(removeMember.rejected, (state, action) => {
         state.status = "rejected";
         state.error = action.payload || null;
       })
@@ -57,7 +87,7 @@ const VendorSlice = createSlice({
         state.status = "pending";
       })
       .addCase(vendorLogOut.fulfilled, (state, action) => {
-        state.status = "pending";
+        state.status = "fulfilled";
         state.vendor = action.payload;
       })
       .addCase(vendorLogOut.rejected, (state, action) => {

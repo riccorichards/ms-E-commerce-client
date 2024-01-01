@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useAppDispatch } from "../../redux/hook";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import "./VendorAccount.scss";
 import VendorPages from "./VendorPages/VendorPages";
 import { fetchVendor } from "../../redux/appCall/VendorAppCall";
@@ -7,6 +7,7 @@ import VendorNavLinks from "./VendorNavLinks/VendorNavLinks";
 
 const VendorAccount = () => {
   const dispatch = useAppDispatch();
+  const { imageUrl } = useAppSelector((state) => state.vendor);
 
   useEffect(() => {
     try {
@@ -17,7 +18,7 @@ const VendorAccount = () => {
       }
       throw error;
     }
-  }, [dispatch]);
+  }, [imageUrl]); //eslint-disable-line
 
   return (
     <div className="vendor-account-dashboard-wrapper">

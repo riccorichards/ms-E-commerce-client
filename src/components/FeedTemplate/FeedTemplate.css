@@ -1,15 +1,63 @@
 .feed-template-wrapper {
   padding: 10px;
-  background-color: #c0c0c0;
   border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
   gap: 15px;
+  width: 220px;
 }
 .feed-template-wrapper .feed-template-header {
   display: flex;
   align-items: center;
   gap: 15px;
+  position: relative;
+}
+.feed-template-wrapper .feed-template-header .customer-details-in-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.feed-template-wrapper .feed-template-header .feed-option-btn {
+  cursor: pointer;
+  align-self: flex-start;
+  transition: all 0.25s ease-in-out;
+  background-color: transparent;
+  border: none;
+}
+.feed-template-wrapper .feed-template-header .feed-option-btn:hover {
+  color: hsl(16, 100%, 50%);
+}
+.feed-template-wrapper .feed-template-header .feed-options-wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  right: 0;
+  top: 35%;
+  width: 50%;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 5px 0;
+}
+.feed-template-wrapper .feed-template-header .feed-options-wrapper .feed-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  border-radius: 3.5px;
+}
+.feed-template-wrapper .feed-template-header .feed-options-wrapper .feed-options button {
+  background-color: transparent;
+  border: none;
+}
+.feed-template-wrapper .feed-template-header .feed-options-wrapper .feed-options:hover {
+  background-color: #87ceeb;
+}
+.feed-template-wrapper .feed-template-header .feed-options-wrapper .feed-options:hover button:nth-of-type(1) {
+  color: hsl(16, 100%, 50%);
 }
 
 .decor-line-in-feed {
@@ -21,7 +69,9 @@
 .target-header-in-feed {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
+  justify-content: space-between;
+  height: 100%;
 }
 .target-header-in-feed .vendor-details-in-feed {
   display: flex;

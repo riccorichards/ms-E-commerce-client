@@ -6,6 +6,7 @@ import {
   checkCurrentPassword,
   fetchLogin,
   findCustomerById,
+  getCustomerSpecData,
   logOut,
   updateAddressInfo,
   updateBankInfo,
@@ -13,10 +14,11 @@ import {
   uploadImage,
 } from "../appCall/AuthAppCall";
 import { fetchRegister } from "./../appCall/AuthAppCall";
-import { foodToCart, wishlistToggle } from "../appCall/FoodAppCall";
+import { deleteFeed, foodToCart, wishlistToggle } from "../appCall/FoodAppCall";
 
 const initialState: AuthState = {
   customer: null,
+  myFeeds: null,
   _id: null,
   currentPassword: null,
   status: null,
@@ -114,6 +116,7 @@ const AuthSlice = createSlice({
       .addCase(updateBasicCustomerInfo.fulfilled, (state, action) => {
         state.status = "fulfilled";
         state.customer = action.payload;
+        state.currentPassword = null;
       })
       .addCase(updateBasicCustomerInfo.rejected, (state, action) => {
         state.status = "rejected";
@@ -184,6 +187,32 @@ const AuthSlice = createSlice({
         }
       })
       .addCase(foodToCart.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload || null;
+      })
+      .addCase(getCustomerSpecData.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(getCustomerSpecData.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        state.myFeeds = action.payload;
+      })
+      .addCase(getCustomerSpecData.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload || null;
+      })
+      .addCase(deleteFeed.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(deleteFeed.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        if (state.myFeeds) {
+          state.myFeeds = state.myFeeds.filter(
+            (feed) => feed.feedId !== action.payload.id
+          );
+        }
+      })
+      .addCase(deleteFeed.rejected, (state, action) => {
         state.status = "rejected";
         state.error = action.payload || null;
       })

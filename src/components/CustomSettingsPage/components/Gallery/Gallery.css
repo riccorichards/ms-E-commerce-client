@@ -55,3 +55,11 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
 }
+.gallery .empty-gallery-grid {
+  height: 40vh;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

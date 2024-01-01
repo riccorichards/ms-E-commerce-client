@@ -1,12 +1,9 @@
 import { IoPersonOutline } from "react-icons/io5";
 import { useAppSelector } from "../../../../../redux/hook";
-import { CustomerType } from "../../../../../redux/type.slice";
 import "./UserProfile.scss";
 
 const UserProfile = () => {
-  const customer = useAppSelector(
-    (state) => state.customer.customer
-  ) as CustomerType;
+  const customer = useAppSelector((state) => state.customer.customer);
 
   return (
     <div className="user-profile-wrapper">

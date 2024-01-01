@@ -8,6 +8,70 @@
   padding: 15px;
   gap: 15px;
   color: #333333;
+  position: relative;
+}
+.food-card-wrapper:hover .leave-feedback {
+  opacity: 1;
+  cursor: pointer;
+}
+.food-card-wrapper:hover .leave-feedback:active {
+  transform: scale(0.9);
+}
+
+.leave-feedback {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 90%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: #87ceeb;
+  color: #fff8e1;
+  right: -7.5%;
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
+}
+
+.food-feedback-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  position: absolute;
+  bottom: 100.5%;
+  left: 0;
+  z-index: 1;
+  background-color: #fff;
+}
+.food-feedback-wrapper button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #87ceeb;
+  border: none;
+  color: #333333;
+  font-size: 14px;
+  padding: 2.5px;
+  border-radius: 2.5px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+.food-feedback-wrapper button:hover {
+  background-color: #008080;
+  color: #fff;
+}
+.food-feedback-wrapper button:nth-of-type(2):hover {
+  background-color: hsl(16, 100%, 50%);
+  color: #fff;
+}
+.food-feedback-wrapper button:nth-of-type(3):hover {
+  background-color: rgb(255, 179, 47);
+  color: #fff;
 }
 
 .food-image-wrapper {
@@ -103,4 +167,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+textarea {
+  resize: none;
 }

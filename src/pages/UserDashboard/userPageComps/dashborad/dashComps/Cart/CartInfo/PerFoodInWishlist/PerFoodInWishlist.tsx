@@ -8,6 +8,9 @@ const PerFoodInWishlist: FC<{
   food: ProductType;
   deleteFoodFromWishlist: (productId: number) => void;
 }> = ({ food, deleteFoodFromWishlist }) => {
+  const shortenDesc = (str: string) => {
+    return str.length > 40 ? str.slice(0, 40) + "..." : str;
+  };
   return (
     <div className="perfood-in-wishlist">
       <div
@@ -21,7 +24,7 @@ const PerFoodInWishlist: FC<{
       </div>
       <div className="food-details-in-wishlist">
         <h4>{food.title}</h4>
-        <p>{food.desc}</p>
+        <p>{shortenDesc(food.desc)}</p>
         <span
           style={{ color: "orangered", fontSize: "24px", fontWeight: "700" }}
         >

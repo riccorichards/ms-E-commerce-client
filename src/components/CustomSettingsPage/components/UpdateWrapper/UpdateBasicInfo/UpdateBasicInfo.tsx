@@ -60,10 +60,12 @@ const UpdateBasicInfo = () => {
       }
     }
   };
+
   const sendCurrentPassword = (e: React.MouseEvent<HTMLInputElement>) => {
     e.preventDefault();
     try {
       dispatch(checkCurrentPassword(passwordValue));
+      
     } catch (error) {
       if (error instanceof Error) {
         console.error("Update password failed:", error.message);
@@ -118,11 +120,10 @@ const UpdateBasicInfo = () => {
                 type="password"
                 placeholder="New Password"
                 className="editable"
-                {...register("password")}
+                {...register("newPassword")}
               />
-
-              {errors.password && (
-                <p className="errors-wrapper">{errors.password.message}</p>
+              {errors.newPassword && (
+                <p className="errors-wrapper">{errors.newPassword.message}</p>
               )}
             </div>
             <div className="customer-update-input-wrapper">
@@ -153,9 +154,7 @@ const UpdateBasicInfo = () => {
             </div>
           </div>
         )}
-        <button className="basic-update-btn" type="submit">
-          Save Changes
-        </button>
+        <button className="basic-update-btn">Save Changes</button>
       </form>
     </div>
   );

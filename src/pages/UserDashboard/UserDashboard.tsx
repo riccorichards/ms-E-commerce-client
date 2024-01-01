@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import { findCustomerById } from "../../redux/appCall/AuthAppCall";
 import Settings from "../../components/CustomSettingsPage/Settings";
 import AllSubCat from "../AllSubCat/AllSubCat";
+import VendorMenu from "../VendorMenu/VendorMenu";
 
 //for custom setting pages
 const settingOptions = {
@@ -57,6 +58,7 @@ const UserDashboard = () => {
         <Route path="/orders" element={<Orders />} />
         <Route path="/vendors" element={<VendorList />} />
         <Route path="/vendors/:id" element={<VendorDetails />} />
+        <Route path="/vendors/:id/menu" element={<VendorMenu />} />
         <Route
           path="/settings/*"
           element={<Settings settingOptions={settingOptions} />}

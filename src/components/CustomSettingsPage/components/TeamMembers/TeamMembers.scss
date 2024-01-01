@@ -14,31 +14,3 @@
   flex-wrap: wrap;
   gap: 15px;
 }
-
-.add-one-more-member {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-  background-color: #fff;
-  border-radius: 15px;
-  box-shadow: 0 0 10.5px rgba($color: #00000009, $alpha: 0.13);
-  width: 30%;
-
-  .add-one-more-member-icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: v.$att_green;
-    color: #fff;
-    cursor: pointer;
-    transition: all 0.25s ease-in-out;
-
-    &:hover {
-      background-color: v.$orangered;
-    }
-  }
-}

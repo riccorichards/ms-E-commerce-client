@@ -1,0 +1,53 @@
+@use "../../../../../../../assets/v.scss";
+
+.add-vendor-address {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    .add-vendor-address-form-item {
+      border: 1px solid v.$att_green;
+      padding: 2.5px;
+      position: relative;
+
+      input {
+        background-color: transparent;
+        width: 100%;
+        border: none;
+        font-family: v.$title_font2;
+        &:focus {
+          outline: none;
+        }
+      }
+
+      p {
+        position: absolute;
+        color: red;
+        font-size: 12px;
+        top: 100%;
+      }
+    }
+    button {
+      background-color: v.$att_green;
+      border: none;
+      padding: 5px;
+      width: fit-content;
+      font-family: v.$title_font2;
+      border-radius: 2.5px;
+      color: v.$white;
+      cursor: pointer;
+
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+}

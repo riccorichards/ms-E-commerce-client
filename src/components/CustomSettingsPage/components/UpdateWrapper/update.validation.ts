@@ -4,13 +4,6 @@ export interface EditableFields {
   [key: string]: boolean;
 }
 
-export interface UpdateBasicCustomerInput {
-  username?: string;
-  email?: string;
-  password?: string;
-  confirmPassword?: string;
-}
-
 export interface StateAddressType {
   country?: string;
   city?: string;
@@ -23,19 +16,29 @@ export interface StateBankInfoType {
   debit_card?: string;
 }
 
+export interface UpdateBasicCustomerInput {
+  username?: string;
+  email?: string;
+  newPassword?: string;
+  confirmPassword?: string;
+}
 export const updateBasicCustomerSchema = z
   .object({
     username: z.string().min(3).trim().optional(),
     email: z.string().email().trim().optional(),
-    password: z
+    newPassword: z
       .string()
       .min(8, "Password must be at least 8 characters")
-      .trim(),
-    confirmPassword: z.string().trim().optional(),
+      .trim()
+      .optional(),
+    confirmPassword: z
+      .string()
+      .min(8, "Confirm password must be at least 8 characters")
+      .trim()
+      .optional(),
   })
-  .refine((value) => value.password === value.confirmPassword, {
-    message: "Password does not match!",
-    path: ["confirmPassword"],
+  .refine((value) => value.confirmPassword === value.newPassword, {
+    message: "Password does not match",
   });
 
 export const updateAddressSchema = z.object({
@@ -51,5 +54,9 @@ export const updateAddressSchema = z.object({
 
 export const updateBankSchema = z.object({
   bankOf: z.string().min(1, "Bank name is required").trim().optional(),
-  debit_card: z.string().min(16, "Debit card should has 16 characters").trim(),
+  debit_card: z
+    .string()
+    .min(16, "Debit card should has 16 characters")
+    .trim()
+    .optional(),
 });

@@ -1,0 +1,52 @@
+@use "../../../../../../../../assets/v.scss";
+
+.update-vendor-image-hrs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+  align-items: center;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .form-hrs-item {
+      display: flex;
+      position: relative;
+
+      input {
+        font-family: v.$title_font2;
+        padding: 2.5px;
+        border: v.$att_green 1px solid;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: v.$att_green;
+        color: v.$white;
+        border: none;
+        padding: 1.5px;
+        cursor: pointer;
+
+        &:active {
+          transform: scale(0.9);
+        }
+      }
+
+      p {
+        font-size: 12px;
+        position: absolute;
+        top: 100%;
+        color: red;
+      }
+    }
+  }
+}

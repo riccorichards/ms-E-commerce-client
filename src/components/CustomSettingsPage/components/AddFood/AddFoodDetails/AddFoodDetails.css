@@ -1,0 +1,7 @@
+.add-food-details-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  height: 100vh;
+  border: 1px solid;
+}

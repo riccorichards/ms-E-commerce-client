@@ -1,0 +1,89 @@
+.add-food-sub-cat-wrapper {
+  height: 90vh;
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.add-food-sub-cat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.add-food-sub-cat-header button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: hsl(16, 100%, 50%);
+  border: none;
+  padding: 5px;
+  color: #fff8e1;
+  border-radius: 2.5px;
+  cursor: pointer;
+}
+.add-food-sub-cat-header button:active {
+  transform: scale(0.9);
+}
+
+.add-food-sub-cat {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+.add-food-sub-cat form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  width: 150px;
+  padding: 10px;
+}
+.add-food-sub-cat form div {
+  position: relative;
+}
+.add-food-sub-cat form div p {
+  position: absolute;
+  font-size: 12px;
+  color: red;
+}
+.add-food-sub-cat form input {
+  border: 1px solid #008080;
+  font-family: "Josefin Sans", sans-serif;
+  padding: 5px;
+  width: 100%;
+}
+.add-food-sub-cat form input:focus {
+  outline: none;
+}
+.add-food-sub-cat form button {
+  font-family: "Josefin Sans", sans-serif;
+  padding: 5px;
+  background-color: hsl(16, 100%, 50%);
+  border: none;
+  color: #fff8e1;
+  cursor: pointer;
+}
+.add-food-sub-cat form button:active {
+  transform: scale(0.9);
+}
+.add-food-sub-cat .add-food-sub-cat-item {
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 5px;
+  background-color: #c0c0c0;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+.add-food-sub-cat .add-food-sub-cat-item h4 {
+  font-size: 15px;
+}
+.add-food-sub-cat .add-food-sub-cat-item p {
+  font-size: 13px;
+}
+.add-food-sub-cat .add-food-sub-cat-item:hover {
+  opacity: 0.7;
+}

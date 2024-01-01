@@ -2,25 +2,40 @@ import { FC } from "react";
 import "./ImageTemplateG.scss";
 import { IoIosMore } from "react-icons/io";
 import { IoTrashBinOutline } from "react-icons/io5";
+import { GalleryType } from "../../../../../redux/type.slice";
 
-type ImgeType = {
-  id: number;
-  date: string;
-  image: string;
-};
+function readableTimeFormat(str: string) {
+  const splitDateFormat = str.split("T");
+  return {
+    date: splitDateFormat[0],
+    time: splitDateFormat[1].split(".")[0],
+  };
+}
+
 const ImageTemplateG: FC<{
-  image: ImgeType;
+  image: GalleryType;
+  removePhoto: (title: string) => void;
   isOpenOption: boolean;
-  handleOpenOption: (imgId: number) => void;
-}> = ({ image, handleOpenOption, isOpenOption }) => {
+  handleOpenOption: (imgId: string) => void;
+}> = ({ image, handleOpenOption, isOpenOption, removePhoto }) => {
   return (
     <div className="gallery-image-template-wrapper">
-      <img src={image.image} alt="img-gallery" className="img-gallery" />
+      <img src={image.url} alt="img-gallery" className="img-gallery" />
       <div className="gallery-image-details">
-        <span>{image.date}</span>
-        <IoIosMore onClick={() => handleOpenOption(image.id)} />
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <span style={{ fontSize: "14px" }}>
+            {readableTimeFormat(image.createdAt).date}
+          </span>
+          <span style={{ fontSize: "14px" }}>
+            {readableTimeFormat(image.createdAt).time}
+          </span>
+        </div>
+        <IoIosMore onClick={() => handleOpenOption(image._id)} />
         {isOpenOption && (
-          <div className="gallery-img-option">
+          <div
+            className="gallery-img-option"
+            onClick={() => removePhoto(image.title)}
+          >
             <IoTrashBinOutline />
             Delete
           </div>

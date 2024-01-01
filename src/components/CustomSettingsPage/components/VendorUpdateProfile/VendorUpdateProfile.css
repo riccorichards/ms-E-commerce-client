@@ -1,0 +1,14 @@
+.vendor-update-profile-wrapper {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  height: 70vh;
+  overflow-y: auto;
+}
+
+.vendor-update-profile-components {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}

@@ -2,12 +2,15 @@
 
 .feeds-grid-view-wrapper {
   display: flex;
+  padding: 5px;
   flex-direction: column;
   gap: 15px;
+  height: 70vh;
+  overflow-y: auto;
 }
 
 .feeds-grid-view {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 15px;
 }

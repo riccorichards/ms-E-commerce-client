@@ -2,9 +2,12 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import {
   CartInputType,
+  FeedbackType,
   FoodCardType,
   GetFilteredSubC,
+  GetVendorSubC,
   MainCType,
+  NewFeedbackInputType,
   ProductType,
   WishlistToggleType,
 } from "../type.slice";
@@ -97,7 +100,57 @@ export const fetchSubCategories = createAsyncThunk<
   }
 });
 
-export const getPopularFoods = createAsyncThunk<
+export const fetchVendorSubCategories = createAsyncThunk<
+  GetVendorSubC[],
+  undefined,
+  { rejectValue: string | unknown }
+>(
+  "food/fetchVendorSubCategories",
+  async (_: undefined, { rejectWithValue }) => {
+    try {
+      const { data } = await axios({
+        method: "get",
+        url: "http://localhost:8002/vendor-sub-cat",
+        withCredentials: true,
+      });
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const createSubCat = createAsyncThunk<
+  GetVendorSubC,
+  { title: string; description: string; mainCatId: number },
+  { rejectValue: string | unknown }
+>(
+  "food/createSubCat",
+  async (
+    subCatData: { title: string; description: string; mainCatId: number },
+    { rejectWithValue }
+  ) => {
+    try {
+      const { data } = await axios({
+        method: "post",
+        url: "http://localhost:8002/sub-cat",
+        data: subCatData,
+        withCredentials: true,
+      });
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const getFoods = createAsyncThunk<
   ProductType[],
   undefined,
   { rejectValue: string | unknown }
@@ -116,6 +169,27 @@ export const getPopularFoods = createAsyncThunk<
     return rejectWithValue(error);
   }
 });
+
+export const getVendorFoods = createAsyncThunk<
+  ProductType[],
+  string,
+  { rejectValue: string | unknown }
+>("food/getVendorFoods", async (vendorName: string, { rejectWithValue }) => {
+  try {
+    const { data } = await axios({
+      method: "get",
+      url: `http://localhost:8002/vendor-products/${vendorName}`,
+      withCredentials: true,
+    });
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      return rejectWithValue(error.message);
+    }
+    return rejectWithValue(error);
+  }
+});
+
 
 export const wishlistToggle = createAsyncThunk<
   ProductType,
@@ -165,3 +239,66 @@ export const foodToCart = createAsyncThunk<
   }
 );
 
+export const addFeedToFood = createAsyncThunk<
+  FeedbackType,
+  NewFeedbackInputType,
+  { rejectValue: string | unknown }
+>(
+  "food/addFeedToFood",
+  async (newFeedback: NewFeedbackInputType, { rejectWithValue }) => {
+    try {
+      const { data } = await axios({
+        method: "post",
+        url: "http://localhost:8006/feedback",
+        data: newFeedback,
+        withCredentials: true,
+      });
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const deleteFeed = createAsyncThunk<
+  FeedbackType,
+  number,
+  { rejectValue: string | unknown }
+>("food/updateFeed", async (feedId: number, { rejectWithValue }) => {
+  try {
+    const { data } = await axios({
+      method: "delete",
+      url: `http://localhost:8006/feedback/${feedId}`,
+      withCredentials: true,
+    });
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      return rejectWithValue(error.message);
+    }
+    return rejectWithValue(error);
+  }
+});
+
+export const getFeedsOfFood = createAsyncThunk<
+  FeedbackType[],
+  undefined,
+  { rejectValue: string | unknown }
+>("food/addFeedToFood", async (_: undefined, { rejectWithValue }) => {
+  try {
+    const { data } = await axios({
+      method: "get",
+      url: "http://localhost:8002/product/1",
+      withCredentials: true,
+    });
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      return rejectWithValue(error.message);
+    }
+    return rejectWithValue(error);
+  }
+});

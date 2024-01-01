@@ -1,16 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { FoodState } from "../type.slice";
+import { FoodState, GetVendorSubC } from "../type.slice";
 import {
+  addFeedToFood,
+  createSubCat,
   fetchMainCategories,
   fetchMainCategorysSubCat,
   fetchSubCategories,
-  getPopularFoods,
+  fetchVendorSubCategories,
+  getFoods,
+  getVendorFoods,
 } from "../appCall/FoodAppCall";
+import { uploadImage } from "../appCall/AuthAppCall";
 
 const initialState: FoodState = {
   mainC: null,
   subC: null,
-  popularF: null,
+  foodImageUrl: null,
+  foods: null,
+  vendorFoods: null,
   state: null,
   error: null,
 };
@@ -54,14 +61,84 @@ const FoodSlice = createSlice({
         state.state = "rejected";
         state.error = action.error.message || null;
       })
-      .addCase(getPopularFoods.pending, (state) => {
+      .addCase(fetchVendorSubCategories.pending, (state) => {
         state.state = "pending";
       })
-      .addCase(getPopularFoods.fulfilled, (state, action) => {
+      .addCase(fetchVendorSubCategories.fulfilled, (state, action) => {
         state.state = "fulfilled";
-        state.popularF = action.payload;
+        state.subC = action.payload;
       })
-      .addCase(getPopularFoods.rejected, (state, action) => {
+      .addCase(fetchVendorSubCategories.rejected, (state, action) => {
+        state.state = "rejected";
+        state.error = action.error.message || null;
+      })
+      .addCase(createSubCat.pending, (state) => {
+        state.state = "pending";
+      })
+      .addCase(createSubCat.fulfilled, (state, action) => {
+        state.state = "fulfilled";
+        if (state.subC) {
+          const sub = state.subC as GetVendorSubC[];
+          sub.push(action.payload);
+        }
+      })
+      .addCase(createSubCat.rejected, (state, action) => {
+        state.state = "rejected";
+        state.error = action.error.message || null;
+      })
+      .addCase(getFoods.pending, (state) => {
+        state.state = "pending";
+      })
+      .addCase(getFoods.fulfilled, (state, action) => {
+        state.state = "fulfilled";
+        state.foods = action.payload;
+      })
+      .addCase(getFoods.rejected, (state, action) => {
+        state.state = "rejected";
+        state.error = action.error.message || null;
+      })
+      .addCase(getVendorFoods.pending, (state) => {
+        state.state = "pending";
+      })
+      .addCase(getVendorFoods.fulfilled, (state, action) => {
+        state.state = "fulfilled";
+        state.vendorFoods = action.payload;
+      })
+      .addCase(getVendorFoods.rejected, (state, action) => {
+        state.state = "rejected";
+        state.error = action.error.message || null;
+      })
+      .addCase(uploadImage.pending, (state) => {
+        state.state = "pending";
+      })
+      .addCase(uploadImage.fulfilled, (state, action) => {
+        state.state = "fulfilled";
+        state.foodImageUrl = action.payload;
+      })
+      .addCase(uploadImage.rejected, (state, action) => {
+        state.state = "rejected";
+        state.error = action.error.message || null;
+      })
+      .addCase(addFeedToFood.pending, (state) => {
+        state.state = "pending";
+      })
+      .addCase(addFeedToFood.fulfilled, (state, action) => {
+        state.state = "fulfilled";
+        if (state.foods) {
+          state.foods.forEach((food) => {
+            if (
+              food.id === action.payload.targetId &&
+              action.payload.address === "product"
+            ) {
+              if (!food.feedbacks) {
+                food.feedbacks = [];
+              }
+              food.feedbacks.push(action.payload);
+            }
+          });
+        }
+      })
+      .addCase(addFeedToFood.rejected, (state, action) => {
         state.state = "rejected";
         state.error = action.error.message || null;
       });

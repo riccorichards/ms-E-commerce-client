@@ -127,4 +127,16 @@
       color: v.$att_green;
     }
   }
+
+  .food-number {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba($color: #00000008, $alpha: 0.15);
+    border-radius: 5.5px;
+    color: v.$att_green;
+    font-size: 18px;
+  }
 }

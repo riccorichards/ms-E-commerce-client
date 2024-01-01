@@ -7,7 +7,7 @@ const VendorHeader = () => {
   return (
     <div className="vendor-account-header-wrapper">
       <div className="image-wrapper">
-        <img src={vendor.profileImg} className="profile-image" />
+        <img src={vendor.image} className="profile-image" />
       </div>
       <h3>{vendor.name}</h3>
     </div>

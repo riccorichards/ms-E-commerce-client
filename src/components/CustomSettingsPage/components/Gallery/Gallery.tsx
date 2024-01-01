@@ -1,97 +1,85 @@
-import { useAppSelector } from "../../../../redux/hook";
+import { useAppDispatch, useAppSelector } from "../../../../redux/hook";
 import ImageTemplateG from "./ImageTemplateG/ImageTemplateG";
 import "./Gallery.scss";
 import { IoImageOutline } from "react-icons/io5";
-import { useState } from "react";
-import ImageUpload from "./ImageUpload/ImageUpload";
-
-const fake = [
-  {
-    id: 1,
-    date: "1235-45-12",
-    image:
-      "https://i.pinimg.com/564x/04/be/f6/04bef61884051d5695ad0d2ce37632f2.jpg",
-  },
-  {
-    id: 2,
-    date: "1235-45-12",
-    image:
-      "https://i.pinimg.com/564x/04/be/f6/04bef61884051d5695ad0d2ce37632f2.jpg",
-  },
-  {
-    id: 3,
-    date: "1235-45-12",
-    image:
-      "https://i.pinimg.com/564x/04/be/f6/04bef61884051d5695ad0d2ce37632f2.jpg",
-  },
-  {
-    id: 4,
-    date: "1235-45-12",
-    image:
-      "https://i.pinimg.com/564x/04/be/f6/04bef61884051d5695ad0d2ce37632f2.jpg",
-  },
-  {
-    id: 5,
-    date: "1235-45-12",
-    image:
-      "https://i.pinimg.com/564x/04/be/f6/04bef61884051d5695ad0d2ce37632f2.jpg",
-  },
-  {
-    id: 6,
-    date: "1235-45-12",
-    image:
-      "https://i.pinimg.com/564x/04/be/f6/04bef61884051d5695ad0d2ce37632f2.jpg",
-  },
-  {
-    id: 7,
-    date: "1235-45-12",
-    image:
-      "https://i.pinimg.com/564x/04/be/f6/04bef61884051d5695ad0d2ce37632f2.jpg",
-  },
-  {
-    id: 8,
-    date: "1235-45-12",
-    image:
-      "https://i.pinimg.com/564x/04/be/f6/04bef61884051d5695ad0d2ce37632f2.jpg",
-  },
-];
+import React, { useEffect, useRef, useState } from "react";
+import { FiCameraOff } from "react-icons/fi";
+import {
+  getVendorGallery,
+  removeGalleryImg,
+  uploadGalleryImg,
+} from "../../../../redux/appCall/VendorAppCall";
 
 const Gallery = () => {
+  const dispatch = useAppDispatch();
   const { vendor } = useAppSelector((state) => state.vendor);
-  const [imgIdWrapper, setImgIdWrapper] = useState<number | null>(null);
-  const [isUpload, setIsUpload] = useState<boolean>(false);
+  const { imageUrl } = useAppSelector((state) => state.vendor);
+  const [imgIdWrapper, setImgIdWrapper] = useState<string | null>(null);
+  const imageRef = useRef<HTMLInputElement | null>(null);
 
-  const handleOpenOption = (imgId: number) => {
+  const handleOpenOption = (imgId: string) => {
     setImgIdWrapper(imgId === imgIdWrapper ? null : imgId);
+  };
+
+  useEffect(() => {
+    dispatch(getVendorGallery());
+  }, [imageUrl]); //eslint-disable-line
+
+  if (!vendor) return null;
+
+  const fileSubmition = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files;
+    const formData = new FormData();
+
+    if (file) {
+      formData.append("upload", file[0]);
+      formData.append("type", "gallery");
+      formData.append("isSendToService", "0");
+      formData.append("address", "vendor");
+      dispatch(uploadGalleryImg(formData));
+    }
+  };
+
+  const handleRemovePhoto = (title: string) => {
+    dispatch(removeGalleryImg(title));
   };
 
   return (
     <div className="gallery-wrapper">
       <header className="gallery-header-wrapper">
-        <h1>
+        <h2>
           {vendor?.name}'s <span style={{ color: "orangered" }}>Gallery</span>
-        </h1>
-        <button onClick={() => setIsUpload((prev) => !prev)}>
+        </h2>
+        <button onClick={() => imageRef.current?.click()}>
           <IoImageOutline /> Upload
         </button>
-        <div
-          className={`gallery-upload-image-wrapper${
-            isUpload ? "gallery-upload-image-wrapper-show" : ""
-          }`}
-        >
-          <ImageUpload />
-        </div>
+        <input ref={imageRef} type="file" hidden onChange={fileSubmition} />
       </header>
       <main className="gallery">
-        {fake &&
-          fake.map((image) => (
+        {vendor.gallery.length >= 1 ? (
+          vendor.gallery.map((image) => (
             <ImageTemplateG
+              removePhoto={handleRemovePhoto}
               image={image}
-              key={image.id}
-              isOpenOption={image.id === imgIdWrapper}
+              key={image._id}
+              isOpenOption={image._id === imgIdWrapper}
               handleOpenOption={handleOpenOption}
             />
-          ))}
+          ))
+        ) : (
+          <div className="empty-gallery-grid">
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                flexDirection: "column",
+              }}
+            >
+              <FiCameraOff style={{ color: "orangered", fontSize: "18px" }} />
+              <span>There is no Image</span>
+            </div>
+          </div>
+        )}
       </main>
     </div>
   );

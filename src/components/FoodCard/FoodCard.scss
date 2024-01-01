@@ -10,6 +10,75 @@
   padding: 15px;
   gap: 15px;
   color: v.$darken;
+  position: relative;
+
+  &:hover .leave-feedback {
+    opacity: 1;
+    cursor: pointer;
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+}
+
+.leave-feedback {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 90%;
+  box-shadow: 0 0 10px rgba($color: #00000026, $alpha: 0.2);
+  background-color: v.$sky;
+  color: v.$white;
+  right: -7.5%;
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
+}
+
+.food-feedback-wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba($color: #00000026, $alpha: 0.2);
+  padding: 5px;
+  position: absolute;
+  bottom: 100.5%;
+  left: 0;
+  z-index: 1;
+  background-color: #fff;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: v.$sky;
+    border: none;
+    color: v.$darken;
+    font-size: 14px;
+    padding: 2.5px;
+    border-radius: 2.5px;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+      background-color: v.$att_green;
+      color: #fff;
+    }
+  }
+
+  button:nth-of-type(2):hover {
+    background-color: v.$orangered;
+    color: #fff;
+  }
+  button:nth-of-type(3):hover {
+    background-color: rgb(255, 179, 47);
+    color: #fff;
+  }
 }
 
 .food-image-wrapper {
@@ -108,4 +177,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+textarea {
+  resize: none;
 }

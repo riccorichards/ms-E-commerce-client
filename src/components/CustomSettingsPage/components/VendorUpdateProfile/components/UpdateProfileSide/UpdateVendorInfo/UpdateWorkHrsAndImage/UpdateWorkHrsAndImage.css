@@ -1,0 +1,43 @@
+.update-vendor-image-hrs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  flex: 1;
+  align-items: center;
+}
+.update-vendor-image-hrs form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.update-vendor-image-hrs form .form-hrs-item {
+  display: flex;
+  position: relative;
+}
+.update-vendor-image-hrs form .form-hrs-item input {
+  font-family: "Josefin Sans", sans-serif;
+  padding: 2.5px;
+  border: #008080 1px solid;
+}
+.update-vendor-image-hrs form .form-hrs-item input:focus {
+  outline: none;
+}
+.update-vendor-image-hrs form .form-hrs-item button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #008080;
+  color: #fff8e1;
+  border: none;
+  padding: 1.5px;
+  cursor: pointer;
+}
+.update-vendor-image-hrs form .form-hrs-item button:active {
+  transform: scale(0.9);
+}
+.update-vendor-image-hrs form .form-hrs-item p {
+  font-size: 12px;
+  position: absolute;
+  top: 100%;
+  color: red;
+}

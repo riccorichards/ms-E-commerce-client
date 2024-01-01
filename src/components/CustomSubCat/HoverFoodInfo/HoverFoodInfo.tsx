@@ -1,21 +1,30 @@
+import { FC } from "react";
 import "./HoverFoodInfo.scss";
-const HoverFoodInfo = () => {
+import { ProductType } from "../../../redux/type.slice";
+import RatingCalculation from "./../../RatingCalculation";
+import { FaRegStar } from "react-icons/fa";
+
+const HoverFoodInfo: FC<{ food: ProductType }> = ({ food }) => {
   return (
     <div className="hover-food-info-wrapper">
       <div className="hover-food-info">
         <span>Details</span>
-        <h4>food name</h4>
-        <p>$ 15</p>
+        <h4>{food.title}</h4>
+        <p>{`$ ${food.price}`}</p>
       </div>
       <div className="hover-food-info">
         <span>Shipping fee</span>
         <h4>2.5 km</h4>
-        <p>Discount: $1.5</p>
+        <p>Discount: {`$ ${food.discount}`}</p>
       </div>
       <div className="hover-food-info">
         <span>Restaurant</span>
-        <h4>name</h4>
-        <p>rating</p>
+        <h4>{food.vendor_name}</h4>
+        <p>
+          <RatingCalculation
+            rating={{ icon: FaRegStar, rating: food.vendor_rating }}
+          />
+        </p>
       </div>
     </div>
   );

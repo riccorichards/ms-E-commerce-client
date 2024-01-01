@@ -1,5 +1,7 @@
 .vendor-foods-wrapper {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   gap: 25px;
+  flex-wrap: wrap;
+  width: 80%;
+  justify-content: center;
 }

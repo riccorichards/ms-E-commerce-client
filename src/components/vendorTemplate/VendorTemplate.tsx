@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import "./VendorTemplate.scss";
 import { IoMdRestaurant } from "react-icons/io";
 import {
@@ -10,23 +10,14 @@ import {
 import { FaRegStar } from "react-icons/fa";
 import RatingCalculation from "../RatingCalculation";
 import { Link } from "react-router-dom";
+import { VendorListType } from "../../redux/type.slice";
+import {
+  FaFacebookSquare,
+  FaTwitterSquare,
+  FaInstagramSquare,
+} from "react-icons/fa";
 
-type SocialMediaType = {
-  id: number;
-  icon: React.ElementType;
-};
-type VendorType = {
-  id: number;
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  image: string;
-  workingHrs: string;
-  socialMedia: SocialMediaType[];
-  rating: number;
-};
-const VendorTemplate: FC<{ vendor: VendorType }> = ({ vendor }) => {
+const VendorTemplate: FC<{ vendor: VendorListType }> = ({ vendor }) => {
   const rating = {
     icon: FaRegStar,
     rating: vendor.rating,
@@ -38,8 +29,10 @@ const VendorTemplate: FC<{ vendor: VendorType }> = ({ vendor }) => {
       </div>
       <div className="each-vendor-the-rest">
         <Link
-          to={`/vendors${vendor.id}`}
-          style={{ color: "inherit", textDecoration: "none" }}
+          to={`/customer/vendors/${vendor._id}`}
+          style={{
+            color: "#fff",
+          }}
         >
           <div className="each-vendor-the-rest-items">
             <IoMdRestaurant /> {vendor.name}
@@ -52,21 +45,29 @@ const VendorTemplate: FC<{ vendor: VendorType }> = ({ vendor }) => {
           <MdOutlineLocalPhone /> {vendor.phone}
         </div>
         <div className="each-vendor-the-rest-items">
-          <MdOutlineLocationOn /> {vendor.address}
+          <MdOutlineLocationOn />{" "}
+          {`${vendor.address.country}, ${vendor.address.city}, ${vendor.address.street}`}
         </div>
         <div className="each-vendor-the-rest-items">
           <MdAccessTime />
-          {vendor.workingHrs}
+          {`${vendor.workingHrs.workingDays}-${vendor.workingHrs.weekend}`}
         </div>
         <div className="each-vendor-the-rest-items">
           {<RatingCalculation rating={rating} />}
         </div>
         <div className="each-vendor-the-rest-items-arr">
-          {vendor.socialMedia.map((sm) => (
-            <div className="the-rest-items-social" key={sm.id}>
-              {<sm.icon />}
-            </div>
-          ))}
+          {vendor.socialUrls &&
+            vendor.socialUrls.map((sm) => (
+              <div className="the-rest-items-social" key={sm.title}>
+                {sm.title === "facebook" ? (
+                  <FaFacebookSquare />
+                ) : sm.title === "twitter" ? (
+                  <FaTwitterSquare />
+                ) : (
+                  <FaInstagramSquare />
+                )}
+              </div>
+            ))}
         </div>
       </div>
     </div>

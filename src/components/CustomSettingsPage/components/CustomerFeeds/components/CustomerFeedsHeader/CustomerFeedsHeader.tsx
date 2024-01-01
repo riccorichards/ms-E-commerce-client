@@ -1,35 +1,39 @@
-import { FC } from "react";
+import { useContext } from "react";
 import { CiGrid41, CiBoxList } from "react-icons/ci";
 import { useAppSelector } from "../../../../../../redux/hook";
 import "./CustomerFeedsHeader.scss";
+import FeedContext from "../../FeedContext";
 
-interface BooleanStateType {
-  isGridView: boolean;
-  setGrigView: (value: boolean) => void;
-}
-const CustomerFeedsHeader: FC<{ Bstate: BooleanStateType }> = ({ Bstate }) => {
+const CustomerFeedsHeader = () => {
   const { vendor } = useAppSelector((state) => state.vendor);
+  const { customer } = useAppSelector((state) => state.customer);
+
+  const getFeedContext = useContext(FeedContext);
+  if (!getFeedContext) return null;
+
+  const isGridView = getFeedContext.isGridView;
+  const setGrigView = getFeedContext.setGrigView;
 
   return (
     <header className="customer-feeds-to-vendor-header">
       <h2>
-        {vendor?.name}'s{" "}
+        {vendor?.name ? vendor?.name : customer?.username}'s{" "}
         <span style={{ color: "orangered" }}>Customers Feeds</span>
       </h2>
       <div className="customer-feeds-to-vendor-view-btns">
         <button
           style={{
-            backgroundColor: Bstate && !Bstate.isGridView ? "orangered" : "",
+            backgroundColor: !isGridView ? "orangered" : "",
           }}
-          onClick={() => Bstate.setGrigView(false)}
+          onClick={() => setGrigView(false)}
         >
           <CiBoxList />
         </button>
         <button
           style={{
-            backgroundColor: Bstate && Bstate.isGridView ? "orangered" : "",
+            backgroundColor: isGridView ? "orangered" : "",
           }}
-          onClick={() => Bstate.setGrigView(true)}
+          onClick={() => setGrigView(true)}
         >
           <CiGrid41 />
         </button>

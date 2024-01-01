@@ -1,20 +1,13 @@
-import SubCatTemplate from "../../../components/SubCat/SubCatTemplate";
+import CustomSubCat from "../../../components/CustomSubCat/CustomSubCat";
+import { useAppSelector } from "../../../redux/hook";
+import { GetFilteredSubC } from "../../../redux/type.slice";
 import "./VendorSubCat.scss";
 
-const fakecats = [
-  { id: 1, title: "Pizza" },
-  { id: 2, title: "Pizza" },
-  { id: 3, title: "Pizza" },
-  { id: 4, title: "Pizza" },
-  { id: 5, title: "Pizza" },
-  { id: 6, title: "Pizza" },
-];
 const VendorSubCat = () => {
+  const subC = useAppSelector((state) => state.food.subC) as GetFilteredSubC[];
   return (
     <div className="vendor-sub-cat-wrapper">
-      {fakecats.map((sub) => (
-        <SubCatTemplate sub={sub} key={sub.id} />
-      ))}
+      {subC && subC.map((sub) => <CustomSubCat sub={sub} key={sub.id} />)}
     </div>
   );
 };

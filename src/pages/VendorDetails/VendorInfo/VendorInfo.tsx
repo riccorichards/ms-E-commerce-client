@@ -1,35 +1,29 @@
 import RatingCalculation from "../../../components/RatingCalculation";
 import ImageWraper from "./../../../components/ImageWraper";
-import { FaRegStar } from "react-icons/fa";
+import { FaInfoCircle, FaRegStar } from "react-icons/fa";
 import "./VendorInfo.scss";
 import { FC } from "react";
-import { MdMiscellaneousServices } from "react-icons/md";
-import { IoMdRestaurant } from "react-icons/io";
+import {
+  FaFacebookSquare,
+  FaTwitterSquare,
+  FaInstagramSquare,
+} from "react-icons/fa";
+
 import {
   MdAlternateEmail,
   MdOutlineLocalPhone,
   MdOutlineLocationOn,
   MdAccessTime,
 } from "react-icons/md";
+import { VendorType } from "../../../redux/type.slice";
+import { Link } from "react-router-dom";
 
-type SocialMediaType = {
-  id: number;
-  icon: React.ElementType;
-};
-type VendorType = {
-  id: number;
-  name: string;
-  email: string;
-  about: string;
-  phone: string;
-  address: string;
-  service: string;
-  image: string;
-  workingHrs: string;
-  socialMedia: SocialMediaType[];
-  rating: number;
-};
-const VendorInfo: FC<{ vendor: VendorType }> = ({ vendor }) => {
+const VendorInfo: FC<{
+  vendor: VendorType | null;
+  isCustomer: boolean;
+  id: string | undefined;
+}> = ({ vendor, isCustomer, id }) => {
+  if (!vendor) return null;
   const rating = {
     rating: vendor.rating,
     icon: FaRegStar,
@@ -40,28 +34,32 @@ const VendorInfo: FC<{ vendor: VendorType }> = ({ vendor }) => {
       <div className="vendor-info-header">
         <ImageWraper image={vendor.image} size="75px" />
         <div className="vendor-info-name">
-          <h2>RiccoFood</h2>
+          <h2>{vendor.name}</h2>
           {<RatingCalculation rating={rating} />}
         </div>
       </div>
       <div className="vendor-additional-info">
         <div className="vendor-info-about">
           <span style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-            <IoMdRestaurant /> {vendor.about}
+            <FaInfoCircle /> <span>{vendor.about}</span>
           </span>
           <span style={{ display: "flex", alignItems: "center", gap: "15px" }}>
             <MdAccessTime />
-            {vendor.workingHrs}
+            {`${vendor.workingHrs.workingDays}-${vendor.workingHrs.weekend}`}
           </span>
         </div>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <h2>Services</h2>
-          <div className="vendor-service-wrapper">
-            <span style={{ fontWeight: "900" }}>
-              <MdMiscellaneousServices />
-            </span>{" "}
-            <div className="service">{vendor.service}</div>
-          </div>
+        <div>
+          <h2>Our Social Medias</h2>
+          {vendor.socialMedia &&
+            vendor.socialMedia.map((url) =>
+              url.title === "facebook" ? (
+                <FaFacebookSquare key={url.title} />
+              ) : url.title === "twitter" ? (
+                <FaTwitterSquare key={url.title} />
+              ) : (
+                <FaInstagramSquare key={url.title} />
+              )
+            )}
         </div>
         <div className="vendor-info-contactus">
           <h2>Contact Us</h2>
@@ -72,13 +70,19 @@ const VendorInfo: FC<{ vendor: VendorType }> = ({ vendor }) => {
             <MdAlternateEmail /> {vendor.email}
           </span>
           <span style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-            <MdOutlineLocationOn /> {vendor.address}
+            <MdOutlineLocationOn />{" "}
+            {`${vendor.address.country}, ${vendor.address.city}, ${vendor.address.street}`}
           </span>
         </div>
       </div>
       <div className="vendor-info-action-btns">
-        <button className="vendor-info-action-btn">Order Now</button>
-        <button className="vendor-info-action-btn">Menu</button>
+        {isCustomer ? (
+          <Link to={`/customer/vendors/${id}/menu`}>
+            <button className="vendor-info-action-btn">Order Now</button>
+          </Link>
+        ) : (
+          <button className="vendor-info-action-btn">Menu</button>
+        )}
         <button className="vendor-info-action-btn">Reservation</button>
       </div>
     </div>

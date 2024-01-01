@@ -4,9 +4,9 @@ import RatingCalculation from "../../../RatingCalculation";
 import "../subBody/SubCatBody.scss";
 import { FaRegHandPointRight, FaRegHandPointLeft } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa";
-import { SubSingleProduct } from "../../../../redux/type.slice";
+import { ProductType } from "../../../../redux/type.slice";
 
-const SubCatBody: FC<{ product: SubSingleProduct | null }> = ({ product }) => {
+const SubCatBody: FC<{ product: ProductType | null }> = ({ product }) => {
   const rating = {
     icon: FaRegStar,
     rating: 5,

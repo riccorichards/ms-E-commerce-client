@@ -118,3 +118,14 @@
   background-color: #87ceeb;
   color: #008080;
 }
+.custom-sub-caterory-footer .food-number {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  border-radius: 5.5px;
+  color: #008080;
+  font-size: 18px;
+}

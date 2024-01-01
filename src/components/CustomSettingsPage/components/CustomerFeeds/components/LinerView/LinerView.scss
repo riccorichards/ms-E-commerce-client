@@ -14,4 +14,72 @@
   border-radius: 5px;
   box-shadow: 0 0 10px rgba($color: #0000000b, $alpha: 0.15);
   background-color: v.$sky;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+
+  &:hover {
+    .show-author {
+      opacity: 1;
+    }
+
+    .show-target {
+      opacity: 1;
+    }
+    .remove-liner-feed {
+      opacity: 1;
+    }
+  }
+
+  .show-author {
+    opacity: 0;
+    position: absolute;
+    top: 80%;
+    border-radius: 5.5px;
+    box-shadow: 0 0 10px rgba($color: #0000000b, $alpha: 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: v.$white;
+    transition: all 0.5s ease-in-out;
+    padding: 5px;
+  }
+
+  .show-target {
+    opacity: 0;
+    position: absolute;
+    top: 80%;
+    right: 5%;
+    border-radius: 5.5px;
+    box-shadow: 0 0 10px rgba($color: #0000000b, $alpha: 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: v.$white;
+    transition: all 0.5s ease-in-out;
+    padding: 5px;
+  }
+
+  .remove-liner-feed {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 98%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5.5px;
+    border: none;
+    background-color: v.$att_green;
+    color: v.$white;
+    transition: all 0.35s ease-in-out;
+    opacity: 0;
+
+    &:hover {
+      background-color: v.$orangered;
+      cursor: pointer;
+    }
+  }
 }

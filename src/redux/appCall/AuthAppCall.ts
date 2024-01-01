@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { EntireCustomerType } from "../type.slice";
+import { EntireCustomerType, FeedbackType } from "../type.slice";
 import {
   AddressInputType,
   BankInputType,
@@ -11,7 +11,7 @@ import {
   StateAddressType,
   StateBankInfoType,
   UpdateBasicCustomerInput,
-} from "../../pages/Settings/components/UpdateWrapper/update.validation";
+} from "../../components/CustomSettingsPage/components/UpdateWrapper/update.validation";
 
 export const fetchRegister = createAsyncThunk<
   string,
@@ -284,3 +284,26 @@ export const logOut = createAsyncThunk<
     return rejectWithValue("Error while adding an user bank info");
   }
 });
+
+export const getCustomerSpecData = createAsyncThunk<
+  FeedbackType[],
+  string,
+  { rejectValue: string | unknown }
+>(
+  "food/getCustomerSpecData",
+  async (specRequest: string, { rejectWithValue }) => {
+    try {
+      const { data } = await axios({
+        method: "get",
+        url: `http://localhost:8001/user-spec-data?field=${specRequest}`,
+        withCredentials: true,
+      });
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue(error);
+    }
+  }
+);

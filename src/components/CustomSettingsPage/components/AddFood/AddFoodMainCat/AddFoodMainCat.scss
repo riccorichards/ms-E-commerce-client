@@ -1,5 +1,11 @@
 @use "../../../../../assets/v.scss";
 
+.add-food-categories-wrapper {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
 .add-food-categories {
   display: flex;
   align-items: center;
@@ -15,6 +21,20 @@
   background-color: v.$darken;
   transition: all 0.25s ease-in-out;
   padding: 5px;
+  position: relative;
+
+  .complete-category-desc {
+    position: absolute;
+    top: 105%;
+    background-color: v.$grey;
+    color: v.$darken;
+    font-size: 14px;
+    padding: 5px;
+    z-index: 1;
+    border-radius: 3.5px;
+    box-shadow: 0 0 10px rgba($color: #0000000d, $alpha: 0.15);
+  }
+
   p {
     font-size: 14px;
   }

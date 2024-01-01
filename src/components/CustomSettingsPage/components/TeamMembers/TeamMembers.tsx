@@ -24,7 +24,7 @@ const TeamMembers = () => {
     if (file) {
       formData.append("upload", file[0]);
       formData.append("type", "profiles");
-      formData.append("isCreated", "1");
+      formData.append("isSendToService", "1");
     }
     dispatch(uploadMemberImage(formData));
   }
@@ -35,7 +35,7 @@ const TeamMembers = () => {
 
   return (
     <div className="vendor-team-member-wrapper">
-      <h2>
+      <h2 style={{ alignSelf: "flex-start" }}>
         {vendor?.name}'s <span style={{ color: "orangered" }}>Team Place</span>
       </h2>
       <div className="add-new-team-member-wrapper">

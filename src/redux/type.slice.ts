@@ -37,13 +37,15 @@ export interface EntireCustomerType extends CustomarBasicInfo {
   address: StateAddressType;
   bank: StateBankInfoType;
   wishlist: ProductType[];
-  feedback: [];
+  feedback: FeedbackType[];
   cart: FoodCardType[];
   order: [];
+  createdAt: string;
 }
 
 export type AuthState = {
   customer: EntireCustomerType | null;
+  myFeeds: FeedbackType[] | null;
   _id: string | null;
   currentPassword: boolean | null;
   status: string | null;
@@ -77,18 +79,16 @@ export interface AdminState {
 //////////////////////////////////////////////////////////////////
 //Vendor
 
-interface WorkingHrsType {
+export interface WorkingHrsType {
   workingDays: string;
   weekend: string;
 }
 
-interface VendorAddressType {
+export interface VendorAddressType {
   postalCode: string;
   street: string;
   city: string;
   country: string;
-  lat?: string;
-  lng?: string;
 }
 
 interface VendorFeedsType {
@@ -109,7 +109,22 @@ export interface VendorTeamMembersType {
   position: string;
 }
 
+export interface SocUrlType {
+  title: string;
+  url: string;
+}
 
+export interface GalleryType {
+  url: string;
+  title: string;
+  _id: string;
+  createdAt: string;
+}
+
+export interface RemovePhotoFromGallery {
+  title: string;
+  msg: string;
+}
 
 export interface VendorType {
   name: string;
@@ -117,21 +132,36 @@ export interface VendorType {
   about: string;
   pincode: string;
   phone: string;
-  profileImg: string;
+  image: string;
   email: string;
+  foods: ProductType[];
   rating: number;
   workingHrs: WorkingHrsType;
   address: VendorAddressType;
   feeds: VendorFeedsType[];
   teamMember: VendorTeamMembersType[];
-  gallery: string[];
-  socialMedia: { title: string; url: string }[];
+  gallery: GalleryType[];
+  socialMedia: SocUrlType[];
+}
+
+export interface VendorListType {
+  _id: string;
+  name: string;
+  phone: string;
+  image: string;
+  email: string;
+  rating: number;
+  workingHrs: WorkingHrsType;
+  address: VendorAddressType;
+  socialUrls: SocUrlType[];
 }
 
 interface VendorErrorWrapper {}
 
 export interface VendorState {
   vendor: VendorType | null;
+  vendorList: VendorListType[] | null;
+  specVendor: VendorType | null;
   imageUrl: string | null;
   status: string | null;
   error: VendorErrorWrapper | null;
@@ -151,9 +181,13 @@ export interface ProductType {
   id: number;
   title: string;
   image: string;
+  vendor_name: string;
+  address: string;
+  vendor_rating: number;
   discount: number;
   price: string;
   desc: string;
+  feedbacks: FeedbackType[];
 }
 
 export interface GetFilteredSubC {
@@ -161,6 +195,12 @@ export interface GetFilteredSubC {
   title: string;
   desc: string;
   Products: ProductType[];
+}
+
+export interface GetVendorSubC {
+  id: number;
+  title: string;
+  desc: string;
 }
 
 export interface WishlistToggleType {
@@ -173,10 +213,42 @@ export interface CartInputType {
   userId: string | undefined;
   unit: number;
 }
+
+export interface FeedbackType {
+  id: number;
+  userId: string;
+  author: string;
+  authorImg: string;
+  targetId: number;
+  forVendorId?: string;
+  targetImg: string;
+  targetTitle: string;
+  address: string;
+  review: string;
+  vendorRating?: number;
+  createdAt: string;
+  feedId: number;
+}
+
+export interface NewFeedbackInputType {
+  userId: string;
+  author: string;
+  authorImg: string;
+  targetId?: number;
+  targetTitle: string;
+  forVendorId?: string;
+  targetImg: string;
+  address: string;
+  review: string;
+  vendorRating?: number;
+}
+
 export interface FoodState {
   mainC: MainCType[] | null;
-  subC: GetFilteredSubC[] | null;
-  popularF: ProductType[] | null;
+  foodImageUrl: string | null;
+  subC: GetFilteredSubC[] | GetVendorSubC[] | null;
+  foods: ProductType[] | null;
+  vendorFoods: ProductType[] | null;
   state: string | null;
   error: string | null;
 }

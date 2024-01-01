@@ -1,6 +1,7 @@
 .vendor-sub-cat-wrapper {
   display: flex;
-  gap: 15px;
-  justify-content: space-evenly;
+  gap: 35px;
   flex-wrap: wrap;
+  justify-content: center;
+  width: 80%;
 }

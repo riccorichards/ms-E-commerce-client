@@ -44,6 +44,7 @@ const UpdateBankInfo = () => {
           result[key] = value[key];
         }
       }
+
       dispatch(updateBankInfo(result));
     } catch (error) {
       if (error instanceof Error) {

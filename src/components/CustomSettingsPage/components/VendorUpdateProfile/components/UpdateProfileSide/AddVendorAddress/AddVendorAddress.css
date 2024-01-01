@@ -1,0 +1,47 @@
+.add-vendor-address {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+}
+.add-vendor-address form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.add-vendor-address form .add-vendor-address-form-item {
+  border: 1px solid #008080;
+  padding: 2.5px;
+  position: relative;
+}
+.add-vendor-address form .add-vendor-address-form-item input {
+  background-color: transparent;
+  width: 100%;
+  border: none;
+  font-family: "Josefin Sans", sans-serif;
+}
+.add-vendor-address form .add-vendor-address-form-item input:focus {
+  outline: none;
+}
+.add-vendor-address form .add-vendor-address-form-item p {
+  position: absolute;
+  color: red;
+  font-size: 12px;
+  top: 100%;
+}
+.add-vendor-address form button {
+  background-color: #008080;
+  border: none;
+  padding: 5px;
+  width: -moz-fit-content;
+  width: fit-content;
+  font-family: "Josefin Sans", sans-serif;
+  border-radius: 2.5px;
+  color: #fff8e1;
+  cursor: pointer;
+}
+.add-vendor-address form button:active {
+  transform: scale(0.9);
+}

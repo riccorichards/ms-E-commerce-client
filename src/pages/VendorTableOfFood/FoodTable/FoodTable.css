@@ -1,0 +1,51 @@
+.vendor-food-table-wrapper {
+  display: flex;
+  gap: 25px;
+  flex-direction: column;
+}
+.vendor-food-table-wrapper .vendor-food-table-item {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  padding: 15px;
+  width: 100%;
+  position: relative;
+  transition: all 0.25s ease-in-out;
+}
+.vendor-food-table-wrapper .vendor-food-table-item:hover {
+  background-color: #87ceeb;
+}
+.vendor-food-table-wrapper .vendor-food-table-item:hover .table-food-id {
+  opacity: 1;
+}
+.vendor-food-table-wrapper .vendor-food-table-item:hover .table-food-remove {
+  opacity: 1;
+}
+.vendor-food-table-wrapper .vendor-food-table-item .table-food-id {
+  position: absolute;
+  bottom: 95%;
+  background-color: #fff8e1;
+  padding: 2.5px;
+  transition: all 0.25s ease-in-out;
+  opacity: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  border-radius: 2.5px;
+}
+.vendor-food-table-wrapper .vendor-food-table-item .table-food-remove {
+  transition: all 0.25s ease-in-out;
+  border: none;
+  font-size: 18px;
+  position: absolute;
+  right: 1.5%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #008080;
+  cursor: pointer;
+  top: 80%;
+  opacity: 0;
+}
+.vendor-food-table-wrapper .vendor-food-table-item .table-food-remove:hover {
+  background-color: red;
+}

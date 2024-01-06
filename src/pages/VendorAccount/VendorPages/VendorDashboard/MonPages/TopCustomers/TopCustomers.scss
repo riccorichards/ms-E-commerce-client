@@ -1,0 +1,21 @@
+@use "../../../../../../assets/v.scss";
+
+.top-customer-wrapper-vendor-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .top-customer-vendor-dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: v.$att_green;
+    border-radius: 5px;
+    padding: 5px;
+    color: #fff;
+
+    span {
+      font-size: 14px;
+    }
+  }
+}

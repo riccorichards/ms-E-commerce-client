@@ -2,7 +2,6 @@ import "./VendorMenu.scss";
 import { FaSearch } from "react-icons/fa";
 import VendorSubCat from "./VendorSubCat/VendorSubCat";
 import VendorFood from "./VendorFood/VendorFood";
-import Pagination from "../../components/pagination/Pagination";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import MainCars from "../UserDashboard/userPageComps/dashborad/dashComps/ProductList/Components/MainCats/MainCars";
@@ -58,7 +57,6 @@ const VendorMenu = () => {
       <VendorSubCat />
       <h2 style={{ marginTop: "25px", alignSelf: "flex-start" }}>Foods</h2>
       <VendorFood foods={vendorFoods} />
-      <Pagination num={12} />
     </div>
   );
 };

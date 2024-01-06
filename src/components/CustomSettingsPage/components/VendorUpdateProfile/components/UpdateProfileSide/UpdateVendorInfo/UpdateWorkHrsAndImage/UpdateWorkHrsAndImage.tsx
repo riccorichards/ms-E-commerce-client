@@ -30,14 +30,17 @@ const UpdateWorkHrsAndImage = () => {
 
   return (
     <div className="update-vendor-image-hrs">
-      <UploadImage
-        target={vendor}
-        to="vendor"
-        size="150px"
-        isSendToService="0"
-      />
+      <div style={{ alignSelf: "flex-start" }}>
+        <UploadImage
+          target={vendor}
+          address="vendor"
+          size="150px"
+          isSendToService="0"
+        />
+      </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-hrs-item">
+          <h5 style={{ position: "absolute", bottom: "100%" }}>Start:</h5>
           <input
             type="text"
             placeholder="workHrs => (00:00)"
@@ -50,6 +53,7 @@ const UpdateWorkHrsAndImage = () => {
           {errors.workingDays && <p>{errors.workingDays.message}</p>}
         </div>
         <div className="form-hrs-item">
+          <h5 style={{ position: "absolute", bottom: "100%" }}>End:</h5>
           <input
             type="text"
             placeholder="weekend => (00:00)"

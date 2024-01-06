@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { FoodState, GetVendorSubC } from "../type.slice";
 import {
   addFeedToFood,
+  createFood,
   createSubCat,
   fetchMainCategories,
   fetchMainCategorysSubCat,
@@ -94,6 +95,20 @@ const FoodSlice = createSlice({
         state.foods = action.payload;
       })
       .addCase(getFoods.rejected, (state, action) => {
+        state.state = "rejected";
+        state.error = action.error.message || null;
+      })
+      .addCase(createFood.pending, (state) => {
+        state.state = "pending";
+      })
+      .addCase(createFood.fulfilled, (state, action) => {
+        state.state = "fulfilled";
+        if (state.foods) {
+          state.foods.push(action.payload);
+          state.foodImageUrl = null;
+        }
+      })
+      .addCase(createFood.rejected, (state, action) => {
         state.state = "rejected";
         state.error = action.error.message || null;
       })

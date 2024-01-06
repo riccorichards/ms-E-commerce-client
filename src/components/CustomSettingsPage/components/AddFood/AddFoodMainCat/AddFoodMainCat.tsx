@@ -1,11 +1,10 @@
-import { FC, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../../redux/hook";
 import "./AddFoodMainCat.scss";
 import { fetchMainCategories } from "../../../../../redux/appCall/FoodAppCall";
+import AddFoodContext from "../AddFoodContext";
 
-const AddFoodMainCat: FC<{ setGetMainCId: (id: number) => void }> = ({
-  setGetMainCId,
-}) => {
+const AddFoodMainCat = () => {
   const dispatch = useAppDispatch();
   const { mainC } = useAppSelector((state) => state.food);
   const [hoveredElId, setHoveredElId] = useState<number | null>(null);
@@ -26,9 +25,11 @@ const AddFoodMainCat: FC<{ setGetMainCId: (id: number) => void }> = ({
     setHoveredElId(null);
   };
 
+  const getAddFoodContext = useContext(AddFoodContext);
+
   function onClick(mainCId: number, divId: string) {
     scrollToComponent(divId);
-    setGetMainCId(mainCId);
+    getAddFoodContext?.setGetMainCId(mainCId);
   }
 
   function scrollToComponent(divId: string) {

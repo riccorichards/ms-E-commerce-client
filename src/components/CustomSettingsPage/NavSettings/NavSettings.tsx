@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import "./NavSettings.scss";
-import { useAppDispatch } from "../../../redux/hook";
+import { useAppDispatch, useAppSelector } from "../../../redux/hook";
 import { logOut } from "../../../redux/appCall/AuthAppCall";
 import { FC } from "react";
 
@@ -10,8 +10,10 @@ interface SetNavLInkType {
   desc: string;
 }
 const NavSettings: FC<{ setNavLink: SetNavLInkType[] }> = ({ setNavLink }) => {
+  const { customer } = useAppSelector((state) => state.customer);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
   const handleLogOut = () => {
     try {
       dispatch(logOut());
@@ -45,9 +47,11 @@ const NavSettings: FC<{ setNavLink: SetNavLInkType[] }> = ({ setNavLink }) => {
           </div>
         </NavLink>
       ))}
-      <div className="nav-settigns-item" onClick={() => handleLogOut()}>
-        <h3>Log Out</h3>
-      </div>
+      {customer && (
+        <div className="nav-settigns-item" onClick={() => handleLogOut()}>
+          <h3>Log Out</h3>
+        </div>
+      )}
     </div>
   );
 };

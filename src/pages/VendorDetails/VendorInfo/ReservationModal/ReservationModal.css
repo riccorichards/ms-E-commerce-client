@@ -1,0 +1,69 @@
+.reservation-modal-wrapper {
+  position: absolute;
+  width: 70%;
+  height: 500px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  background-color: #fff;
+  z-index: 1;
+  padding: 15px;
+}
+.reservation-modal-wrapper .reservation-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.reservation-modal-wrapper .reservation-modal-header button {
+  border: none;
+  transition: all 0.25s ease-in-out;
+  padding: 8px 15px;
+  font-family: "Josefin Sans", sans-serif;
+  border-radius: 5px;
+  background-color: #87ceeb;
+}
+.reservation-modal-wrapper .reservation-modal-header button:hover {
+  transform: rotate(5deg);
+  cursor: pointer;
+  background-color: hsl(16, 100%, 50%);
+  color: #fff;
+}
+.reservation-modal-wrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+.reservation-modal-wrapper form .reservation-form-item {
+  width: 100%;
+  position: relative;
+  border: 1px solid #008080;
+  padding: 10px 15px;
+}
+.reservation-modal-wrapper form .reservation-form-item input {
+  width: 100%;
+  border: none;
+  line-height: 20px;
+  font-family: "Josefin Sans", sans-serif;
+}
+.reservation-modal-wrapper form .reservation-form-item input:focus {
+  outline: none;
+}
+.reservation-modal-wrapper form .reservation-form-item p {
+  position: absolute;
+  font-size: 14px;
+  color: red;
+  top: 100%;
+}
+.reservation-modal-wrapper form button {
+  line-height: 30px;
+  font-family: "Josefin Sans", sans-serif;
+  color: #fff;
+  cursor: pointer;
+  background-color: #87ceeb;
+  border: none;
+  border-radius: 2.5px;
+  transition: all 0.25s ease-in-out;
+}
+.reservation-modal-wrapper form button:hover {
+  background-color: #008080;
+}

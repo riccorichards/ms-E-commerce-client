@@ -9,7 +9,10 @@ import {
   fetchVendor,
   getAllVendors,
   getSpecVendor,
+  getVendorDashboardData,
   getVendorGallery,
+  getVendorSpecData,
+  refreshAccessToken,
   removeGalleryImg,
   removeMember,
   updateVendorProfileInfo,
@@ -20,12 +23,16 @@ import {
 } from "../appCall/VendorAppCall";
 import { uploadImage } from "../appCall/AuthAppCall";
 import { removeSocUrl } from "./../appCall/VendorAppCall";
+import { deleteFeed } from "../appCall/FoodAppCall";
 
 const initialState: VendorState = {
   vendor: null,
   vendorList: null,
   specVendor: null,
+  vendorFeeds: null,
   imageUrl: null,
+  dashboard: null,
+  ttl: null,
   status: null,
   error: null,
 };
@@ -41,7 +48,8 @@ const VendorSlice = createSlice({
       })
       .addCase(vendorLogin.fulfilled, (state, action) => {
         state.status = "fulfilled";
-        state.vendor = action.payload;
+        state.vendor = action.payload.vendor;
+        state.ttl = action.payload.ttl;
       })
       .addCase(vendorLogin.rejected, (state, action) => {
         state.status = "rejected";
@@ -52,7 +60,8 @@ const VendorSlice = createSlice({
       })
       .addCase(fetchVendor.fulfilled, (state, action) => {
         state.status = "fulfilled";
-        state.vendor = action.payload;
+        state.vendor = action.payload.vendor;
+        state.ttl = action.payload.ttl;
       })
       .addCase(fetchVendor.rejected, (state, action) => {
         state.status = "rejected";
@@ -257,6 +266,54 @@ const VendorSlice = createSlice({
         }
       })
       .addCase(getVendorGallery.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload || null;
+      })
+      .addCase(getVendorSpecData.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(getVendorSpecData.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        state.vendorFeeds = action.payload;
+      })
+      .addCase(getVendorSpecData.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload || null;
+      })
+      .addCase(deleteFeed.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(deleteFeed.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        if (state.vendorFeeds) {
+          state.vendorFeeds = state.vendorFeeds.filter(
+            (feed) => feed.feedId !== action.payload.id
+          );
+        }
+      })
+      .addCase(deleteFeed.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload || null;
+      })
+      .addCase(getVendorDashboardData.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(getVendorDashboardData.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        state.dashboard = action.payload;
+      })
+      .addCase(getVendorDashboardData.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload || null;
+      })
+      .addCase(refreshAccessToken.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(refreshAccessToken.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        state.ttl = action.payload.ttl;
+      })
+      .addCase(refreshAccessToken.rejected, (state, action) => {
         state.status = "rejected";
         state.error = action.payload || null;
       });

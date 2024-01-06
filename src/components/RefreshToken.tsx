@@ -1,58 +1,39 @@
-import axios from "axios";
-import { jwtDecode } from "jwt-decode";
-import { useEffect, useState } from "react";
+import { FC, useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../redux/hook";
+import { refreshAccessToken } from "../redux/appCall/VendorAppCall";
 
-interface DecodedType {
-  exp: number;
-}
-
-const RefreshToken = () => {
-  const [expTime, setExpTime] = useState<number | null>(null);
-
-  function getTokenFromCookies() {
-    const accessToken = document.cookie.split("=");
-    return accessToken ? accessToken[1] : null;
-  }
+const RefreshToken: FC<{ port: string }> = ({ port }) => {
+  const vendorTtl = useAppSelector((state) => state.vendor.ttl);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const token = getTokenFromCookies();
-    if (token) {
-      const decode: DecodedType = jwtDecode(token);
-      setExpTime(decode.exp * 1000);
-    }
-  }, []); //eslint-disable-line
+    let timeoutId: NodeJS.Timeout;
 
-  const refreshAccessToken = async (): Promise<number | undefined> => {
-    try {
-      const { data } = await axios({
-        method: "post",
-        url: "http://localhost:8001/refresh",
-        withCredentials: true,
-      });
-      const decoded: DecodedType = jwtDecode(data);
-      setExpTime(decoded.exp * 1000);
-      return decoded.exp * 1000;
-    } catch (error) {
-      if (error instanceof Error) {
-        Promise.reject(error.message);
+    function refreshToken() {
+      if (port) {
+        dispatch(refreshAccessToken(port));
+      }
+      scheduleRefresh();
+    }
+
+    function scheduleRefresh() {
+      const now = Date.now();
+      const targetTTL = (vendorTtl && Date.now() + vendorTtl * 1000) || null;
+      if (!targetTTL) return;
+
+      if (targetTTL < now) {
+        refreshToken();
+      } else {
+        const delay = targetTTL - now - 20 * 1000;
+        timeoutId = setTimeout(refreshToken, delay > 0 ? delay : 0);
       }
     }
-  };
 
-  useEffect(() => {
-    if (!expTime) return;
-    const now = Date.now();
-
-    if (expTime < now) {
-      refreshAccessToken();
-    } else {
-      const delay = expTime - now - 20 * 1000;
-
-      const timeoutId = setTimeout(refreshAccessToken, delay > 0 ? delay : 0);
-
-      return () => clearTimeout(timeoutId);
-    }
-  }, [expTime]);
+    scheduleRefresh();
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [vendorTtl, port, dispatch]);
 
   return null;
 };

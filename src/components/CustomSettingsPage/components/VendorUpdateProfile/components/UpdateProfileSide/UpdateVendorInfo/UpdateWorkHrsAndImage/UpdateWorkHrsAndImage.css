@@ -3,12 +3,13 @@
   flex-direction: column;
   gap: 15px;
   flex: 1;
-  align-items: center;
+  align-self: baseline;
 }
 .update-vendor-image-hrs form {
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
 }
 .update-vendor-image-hrs form .form-hrs-item {
   display: flex;

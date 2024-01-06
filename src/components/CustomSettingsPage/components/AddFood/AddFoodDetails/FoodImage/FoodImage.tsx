@@ -14,15 +14,17 @@ const FoodImage = () => {
     const formData = new FormData();
     if (file) {
       formData.append("upload", file[0]);
-      formData.append("type", "profiles");
-      formData.append("isSendToService", "0");
+      formData.append("type", "foods");
+      formData.append("address", "product");
+      formData.append("isSendToService", "1");
       dispatch(uploadImage(formData));
     }
   };
+  
   return (
     <div className="add-food-image-wrapper">
       {foodImageUrl ? (
-        foodImageUrl
+        <img style={{ width: "100%", height: "100%" }} src={foodImageUrl} />
       ) : (
         <div
           onClick={() => imageRef.current?.click()}
@@ -30,7 +32,12 @@ const FoodImage = () => {
         >
           <FaCameraRetro />
           <h5>Add Image for Food here...</h5>
-          <input type="text" hidden onChange={handleUploadImage} />
+          <input
+            type="file"
+            ref={imageRef}
+            hidden
+            onChange={handleUploadImage}
+          />
         </div>
       )}
     </div>

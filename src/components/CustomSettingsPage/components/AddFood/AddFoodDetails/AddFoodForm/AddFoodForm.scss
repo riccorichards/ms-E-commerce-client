@@ -5,5 +5,52 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-}
 
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: relative;
+
+    .add-food-form-item {
+      border: 1px solid v.$att_green;
+      padding: 5px;
+      position: relative;
+
+      input {
+        font-family: v.$title_font2;
+        background-color: transparent;
+        width: 100%;
+        border: none;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      p {
+        position: absolute;
+        font-size: 14px;
+        color: red;
+        top: 102%;
+        left: 0;
+      }
+    }
+
+    button {
+      font-family: v.$title_font2;
+      background-color: transparent;
+      box-shadow: 0 0 10px rgba($color: #00000018, $alpha: 0.15);
+      width: fit-content;
+      border: none;
+      padding: 10px;
+      border-radius: 4.5px;
+      cursor: pointer;
+      transition: all 0.25s ease-in-out;
+      &:hover {
+        background-color: v.$sky;
+        color: v.$white;
+      }
+    }
+  }
+}

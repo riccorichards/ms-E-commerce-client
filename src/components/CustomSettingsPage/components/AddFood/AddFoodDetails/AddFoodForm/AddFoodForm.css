@@ -4,3 +4,46 @@
   align-items: center;
   flex-direction: column;
 }
+.add-food-form-wrapper form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+}
+.add-food-form-wrapper form .add-food-form-item {
+  border: 1px solid #008080;
+  padding: 5px;
+  position: relative;
+}
+.add-food-form-wrapper form .add-food-form-item input {
+  font-family: "Josefin Sans", sans-serif;
+  background-color: transparent;
+  width: 100%;
+  border: none;
+}
+.add-food-form-wrapper form .add-food-form-item input:focus {
+  outline: none;
+}
+.add-food-form-wrapper form .add-food-form-item p {
+  position: absolute;
+  font-size: 14px;
+  color: red;
+  top: 102%;
+  left: 0;
+}
+.add-food-form-wrapper form button {
+  font-family: "Josefin Sans", sans-serif;
+  background-color: transparent;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  width: -moz-fit-content;
+  width: fit-content;
+  border: none;
+  padding: 10px;
+  border-radius: 4.5px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+.add-food-form-wrapper form button:hover {
+  background-color: #87ceeb;
+  color: #fff8e1;
+}

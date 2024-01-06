@@ -1,28 +1,28 @@
 import FoodCard from "../../../components/FoodCard/FoodCard";
-import Pagination from "../../../components/pagination/Pagination";
+import { useAppSelector } from "../../../redux/hook";
 import "./VendorPopularFood.scss";
 
-const fakeImage =
-  "https://i.pinimg.com/564x/b4/01/d0/b401d00f0bcacf136d267740ef994d90.jpg";
-
-const fakeData = [
-  { id: 1, image: fakeImage, title: "Pizza" },
-  { id: 2, image: fakeImage, title: "Pizza" },
-  { id: 3, image: fakeImage, title: "Pizza" },
-];
-
 const VendorPopularFood = () => {
+  const { specVendor, vendor } = useAppSelector((state) => state.vendor);
+
+  const targetFoodWrapper = specVendor?.foods || vendor?.foods;
+
   return (
     <div className="vendor-popular-food-wrapper">
       <h1 style={{ borderBottom: "2px solid orangered", width: "fit-content" }}>
         Popular Foods
       </h1>
       <div className="vendor-popular-food">
-        {fakeData.map((food) => (
-          <FoodCard key={food.id} food={food} />
-        ))}
+        {targetFoodWrapper &&
+          targetFoodWrapper
+            .slice(5, 8)
+            .map((food) => (
+              <FoodCard
+                key={typeof food === "object" ? food.title : food}
+                food={food}
+              />
+            ))}
       </div>
-      <Pagination num={3} />
     </div>
   );
 };

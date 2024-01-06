@@ -1,0 +1,22 @@
+.vendor-sub-cat-list-wrapper {
+  display: flex;
+  gap: 35px;
+  flex-wrap: wrap;
+}
+
+.vendor-sub-cat-list-item {
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  width: 30%;
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  background-color: #008080;
+  color: #fff8e1;
+  transition: all 0.25s ease-in-out;
+}
+.vendor-sub-cat-list-item:hover {
+  cursor: pointer;
+  background-color: hsl(16, 100%, 50%);
+}

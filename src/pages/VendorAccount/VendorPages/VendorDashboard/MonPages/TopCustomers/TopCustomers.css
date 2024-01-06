@@ -1,0 +1,17 @@
+.top-customer-wrapper-vendor-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.top-customer-wrapper-vendor-dashboard .top-customer-vendor-dashboard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #008080;
+  border-radius: 5px;
+  padding: 5px;
+  color: #fff;
+}
+.top-customer-wrapper-vendor-dashboard .top-customer-vendor-dashboard span {
+  font-size: 14px;
+}

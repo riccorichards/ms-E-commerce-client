@@ -1,0 +1,60 @@
+@use "../../../assets/v.scss";
+
+.vendor-food-table-wrapper {
+  display: flex;
+  gap: 25px;
+  flex-direction: column;
+
+  .vendor-food-table-item {
+    box-shadow: 0 0 10px rgba($color: #0000000f, $alpha: 0.15);
+    padding: 15px;
+    width: 100%;
+    position: relative;
+    transition: all 0.25s ease-in-out;
+
+    &:hover {
+      background-color: v.$sky;
+
+      .table-food-id {
+        opacity: 1;
+      }
+
+      .table-food-remove {
+        opacity: 1;
+      }
+    }
+
+    .table-food-id {
+      position: absolute;
+      bottom: 95%;
+      background-color: v.$white;
+      padding: 2.5px;
+      transition: all 0.25s ease-in-out;
+      opacity: 0;
+      box-shadow: 0 0 10px rgba($color: #0000000f, $alpha: 0.15);
+      border-radius: 2.5px;
+    }
+
+    .table-food-remove {
+      transition: all 0.25s ease-in-out;
+      border: none;
+      font-size: 18px;
+      position: absolute;
+      right: 1.5%;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      color: v.$att_green;
+      cursor: pointer;
+      top: 80%;
+      opacity: 0;
+
+      &:hover {
+        background-color: red;
+      }
+    }
+  }
+}

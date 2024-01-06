@@ -2,38 +2,82 @@ import React, { FC, useState } from "react";
 import "./FoodCard.scss";
 import { MdOutlineFavorite, MdFavoriteBorder } from "react-icons/md";
 import { IoMdAdd, IoMdTime } from "react-icons/io";
-import { ProductType } from "../../redux/type.slice";
+import { NewFeedbackInputType, ProductType } from "../../redux/type.slice";
 import { FiEdit2 } from "react-icons/fi";
 import { IoSend } from "react-icons/io5";
 import { VscFeedback } from "react-icons/vsc";
 import { IoAdd } from "react-icons/io5";
 import ImageWraper from "./../ImageWraper";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
+import {
+  addFeedToFood,
+  foodToCart,
+  wishlistToggle,
+} from "../../redux/appCall/FoodAppCall";
 
 const FoodCard: FC<{
   food: ProductType;
-  wishlistToggle: (productId: number) => void;
-  isPicked: boolean;
-  addFoodToCart: (productId: number) => void;
-  leaveFeed: (
-    feedback: string,
-    productId: number,
-    foodImg: string,
-    targetTitle: string
-  ) => void;
-}> = ({ food, wishlistToggle, isPicked, addFoodToCart, leaveFeed }) => {
+  from?: string;
+}> = ({ food, from }) => {
   const [isFeed, setIsFeed] = useState<boolean>(false);
   const [feedback, setFeedback] = useState<string | null>(null);
   const [isFoodsFeed, setIsFoodsFeed] = useState<boolean>(false);
-  const handleSendFeedProcess = (
-    foodId: number,
+  const dispatch = useAppDispatch();
+  const { customer } = useAppSelector((state) => state.customer);
+
+  const handleLeaveFeedback = (
+    productId: number,
     foodImg: string,
     targetTitle: string
   ) => {
-    leaveFeed(feedback || "", foodId, foodImg, targetTitle);
-    setFeedback(null);
-    setIsFeed(false);
+    if (
+      feedback &&
+      feedback.trim().length > 3 &&
+      feedback.trim().length < 150
+    ) {
+      if (customer) {
+        const newFeedback: NewFeedbackInputType = {
+          userId: customer._id,
+          author: customer.username,
+          authorImg: customer.image || "",
+          targetImg: foodImg,
+          targetTitle: targetTitle,
+          address: "product",
+          targetId: productId,
+          review: feedback,
+        };
+        dispatch(addFeedToFood(newFeedback));
+        setFeedback(null);
+        setIsFeed(false);
+      }
+    }
   };
 
+  const handleWishlistToggle = (productId: number) => {
+    const data = {
+      productId,
+      userId: customer?._id || "",
+    };
+    dispatch(wishlistToggle(data));
+  };
+
+  const isPickedFood = (id: number) => {
+    return Boolean(
+      customer && customer.wishlist.find((food) => food.id === id)
+    );
+  };
+
+  const handleAddFoodToCart = (productId: number) => {
+    const data = {
+      productId,
+      userId: customer?._id,
+      unit: 1,
+    };
+
+    dispatch(foodToCart(data));
+  };
+
+  const targetId = from === "mainDashboard" ? food.id : food.foodId;
   return (
     <div className="food-card-wrapper">
       <div className="leave-feedback" onClick={() => setIsFeed(!isFeed)}>
@@ -114,23 +158,15 @@ const FoodCard: FC<{
           >
             <button
               onClick={() =>
-                handleSendFeedProcess(food.id, food.image, food.title)
+                handleLeaveFeedback(targetId, food.image, food.title)
               }
             >
               <IoSend />
             </button>
-            <button
-              onClick={() =>
-                leaveFeed(feedback || "", food.id, food.image, food.title)
-              }
-              style={{ backgroundColor: isFoodsFeed ? "" : "orangered" }}
-            >
+            <button style={{ backgroundColor: isFoodsFeed ? "" : "orangered" }}>
               <IoAdd onClick={() => setIsFoodsFeed(false)} />
             </button>
             <button
-              onClick={() =>
-                leaveFeed(feedback || "", food.id, food.image, food.title)
-              }
               style={{
                 backgroundColor: isFoodsFeed ? "rgb(255, 179, 47)" : "",
               }}
@@ -163,13 +199,17 @@ const FoodCard: FC<{
         <div className="food-action-wrapper">
           <div
             className="add-to-wishlist"
-            onClick={() => wishlistToggle(food.id)}
+            onClick={() => handleWishlistToggle(targetId)}
           >
-            {isPicked ? <MdOutlineFavorite /> : <MdFavoriteBorder />}
+            {isPickedFood(targetId) ? (
+              <MdOutlineFavorite />
+            ) : (
+              <MdFavoriteBorder />
+            )}
           </div>
           <div
             className="add-to-cart-wrapper"
-            onClick={() => addFoodToCart(food.id)}
+            onClick={() => handleAddFoodToCart(targetId)}
           >
             <div className="add-to-cart">
               <span>Add to Cart</span>

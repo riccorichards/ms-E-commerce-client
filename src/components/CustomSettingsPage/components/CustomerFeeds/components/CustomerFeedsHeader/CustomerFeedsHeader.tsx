@@ -18,7 +18,7 @@ const CustomerFeedsHeader = () => {
     <header className="customer-feeds-to-vendor-header">
       <h2>
         {vendor?.name ? vendor?.name : customer?.username}'s{" "}
-        <span style={{ color: "orangered" }}>Customers Feeds</span>
+        <span style={{ color: "orangered" }}> Feeds</span>
       </h2>
       <div className="customer-feeds-to-vendor-view-btns">
         <button

@@ -32,7 +32,6 @@ const UploadImage: FC<{
       dispatch(uploadImage(formData));
     }
   };
-
   return (
     <div className="update-customer-image">
       <div className="customer-image-wrapper">

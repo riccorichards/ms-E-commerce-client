@@ -1,0 +1,6 @@
+.mon-pages-wrappers {
+  height: 50vh;
+  width: 100%;
+  overflow-y: auto;
+  margin-top: 25px;
+}

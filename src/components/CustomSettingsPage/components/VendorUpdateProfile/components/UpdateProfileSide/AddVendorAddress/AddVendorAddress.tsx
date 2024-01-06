@@ -31,6 +31,9 @@ const AddVendorAddress = () => {
     <div className="add-vendor-address">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="add-vendor-address-form-item">
+          <h5 style={{ position: "absolute", bottom: "102%", left: "0" }}>
+            Country
+          </h5>
           <input
             type="text"
             placeholder="Country"
@@ -40,6 +43,9 @@ const AddVendorAddress = () => {
           {errors.country && <p>{errors.country.message}</p>}
         </div>
         <div className="add-vendor-address-form-item">
+          <h5 style={{ position: "absolute", bottom: "102%", left: "0" }}>
+            City
+          </h5>
           <input
             type="text"
             placeholder="City"
@@ -49,6 +55,9 @@ const AddVendorAddress = () => {
           {errors.city && <p>{errors.city.message}</p>}
         </div>
         <div className="add-vendor-address-form-item">
+          <h5 style={{ position: "absolute", bottom: "102%", left: "0" }}>
+            St.
+          </h5>
           <input
             type="text"
             placeholder="Street"
@@ -58,6 +67,9 @@ const AddVendorAddress = () => {
           {errors.street && <p>{errors.street.message}</p>}
         </div>
         <div className="add-vendor-address-form-item">
+          <h5 style={{ position: "absolute", bottom: "102%", left: "0" }}>
+            Postal code
+          </h5>
           <input
             type="text"
             placeholder="Postal Code"

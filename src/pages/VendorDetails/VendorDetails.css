@@ -14,3 +14,9 @@
   display: flex;
   gap: 15px;
 }
+
+.vendor-details-feedback-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}

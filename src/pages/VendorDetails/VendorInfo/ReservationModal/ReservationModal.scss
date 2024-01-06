@@ -1,0 +1,80 @@
+@use "../../../../assets/v.scss";
+
+.reservation-modal-wrapper {
+  position: absolute;
+  width: 70%;
+  height: 500px;
+  box-shadow: 0 0 10px rgba($color: #00000007, $alpha: 0.15);
+  border-radius: 15px;
+  background-color: #fff;
+  z-index: 1;
+  padding: 15px;
+
+  .reservation-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    button {
+      border: none;
+      transition: all 0.25s ease-in-out;
+      padding: 8px 15px;
+      font-family: v.$title_font2;
+      border-radius: 5px;
+      background-color: v.$sky;
+
+      &:hover {
+        transform: rotate(5deg);
+        cursor: pointer;
+        background-color: v.$orangered;
+        color: #fff;
+      }
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 15px;
+
+    .reservation-form-item {
+      width: 100%;
+      position: relative;
+      border: 1px solid v.$att_green;
+      padding: 10px 15px;
+
+      input {
+        width: 100%;
+        border: none;
+        line-height: 20px;
+        font-family: v.$title_font2;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      p {
+        position: absolute;
+        font-size: 14px;
+        color: red;
+        top: 100%;
+      }
+    }
+    button {
+      line-height: 30px;
+      font-family: v.$title_font2;
+      color: #fff;
+      cursor: pointer;
+      background-color: v.$sky;
+      border: none;
+      border-radius: 2.5px;
+      transition: all 0.25s ease-in-out;
+
+      &:hover {
+        background-color: v.$att_green;
+      }
+    }
+  }
+}

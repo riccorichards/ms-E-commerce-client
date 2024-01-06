@@ -16,13 +16,15 @@ import {
   MdAccessTime,
 } from "react-icons/md";
 import { VendorType } from "../../../redux/type.slice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const VendorInfo: FC<{
   vendor: VendorType | null;
   isCustomer: boolean;
   id: string | undefined;
-}> = ({ vendor, isCustomer, id }) => {
+  setIsReservetion: (val: boolean) => void;
+}> = ({ vendor, isCustomer, id, setIsReservetion }) => {
+  const navigate = useNavigate();
   if (!vendor) return null;
   const rating = {
     rating: vendor.rating,
@@ -77,13 +79,26 @@ const VendorInfo: FC<{
       </div>
       <div className="vendor-info-action-btns">
         {isCustomer ? (
-          <Link to={`/customer/vendors/${id}/menu`}>
+          <Link
+            to={`/customer/vendors/${id}/menu`}
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
             <button className="vendor-info-action-btn">Order Now</button>
           </Link>
         ) : (
-          <button className="vendor-info-action-btn">Menu</button>
+          <button
+            className="vendor-info-action-btn"
+            onClick={() => navigate("/vendor/menu")}
+          >
+            Menu
+          </button>
         )}
-        <button className="vendor-info-action-btn">Reservation</button>
+        <button
+          className="vendor-info-action-btn"
+          onClick={() => setIsReservetion(true)}
+        >
+          Reservation
+        </button>
       </div>
     </div>
   );

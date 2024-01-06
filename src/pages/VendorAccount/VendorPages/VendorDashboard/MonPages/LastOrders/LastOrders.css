@@ -1,0 +1,20 @@
+.last-orders-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.last-orders-wrapper .last-order {
+  display: flex;
+  align-items: center;
+  background-color: #87ceeb;
+  justify-content: space-between;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  position: relative;
+}
+.last-orders-wrapper .last-order:hover {
+  background-color: #008080;
+}

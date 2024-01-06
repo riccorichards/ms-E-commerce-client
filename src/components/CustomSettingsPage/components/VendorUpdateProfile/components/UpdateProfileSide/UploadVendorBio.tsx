@@ -33,6 +33,7 @@ const UploadVendorBio = () => {
         gap: "5px",
       }}
     >
+      <h5>Bio</h5>
       <textarea
         placeholder="Vendor bio here... validation min(3) && max(150)"
         rows={4}

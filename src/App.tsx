@@ -5,13 +5,19 @@ import UserDashboard from "./pages/UserDashboard/UserDashboard";
 import { useAppSelector } from "./redux/hook";
 import Admin from "./pages/Admin/Admin";
 import VendorAccount from "./pages/VendorAccount/VendorAccount";
+import { useEffect, useState } from "react";
 
 function App() {
   const { customer } = useAppSelector((state) => state.customer);
   const { vendor } = useAppSelector((state) => state.vendor);
-  const token = () => {
-    return document.cookie.split("=")[1] ? document.cookie.split("=")[1] : null;
-  };
+  const [existingUser, setExistingUser] = useState<boolean>(
+    JSON.parse(localStorage.getItem("user") || "false")
+  );
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user") || "false");
+    setExistingUser(user);
+  }, []);
 
   return (
     <div className="App">
@@ -20,16 +26,18 @@ function App() {
         <Route
           path="/customer/*"
           element={
-            customer || token() ? <UserDashboard /> : <Navigate to="/" />
+            customer || existingUser ? <UserDashboard /> : <Navigate to="/" />
           }
         />
         <Route
           path="/admin/*"
-          element={customer || token() ? <Admin /> : <Navigate to="/" />}
+          element={customer || existingUser ? <Admin /> : <Navigate to="/" />}
         />
         <Route
           path="/vendor/*"
-          element={vendor || token() ? <VendorAccount /> : <Navigate to="/" />}
+          element={
+            vendor || existingUser ? <VendorAccount /> : <Navigate to="/" />
+          }
         />
       </Routes>
     </div>

@@ -1,0 +1,55 @@
+@use "../../assets/v.scss";
+
+.vendor-menu-wrapper {
+  flex: 5;
+  background-color: v.$white;
+  height: 100%;
+  padding: 30px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.vendor-menu-search-wrapper {
+  border: 1px solid v.$orangered;
+  padding: 5px 10px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 5px;
+
+  .vendor-menu-search {
+    border: none;
+    font-family: v.$p_font2;
+    letter-spacing: 1.5px;
+    height: 100%;
+    width: 95%;
+    background-color: transparent;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .vendor-menu-search-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: v.$darken;
+    border: none;
+    background-color: v.$orangered;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+}

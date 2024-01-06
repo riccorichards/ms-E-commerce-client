@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import UpdateWrapper from "./UpdateWrapper/UpdateWrapper";
-//import MyFeeds from "./MyFeeds/MyFeeds";
 import Invoice from "./Invoice/Invoice";
 import CustomerFeeds from "./CustomerFeeds/CustomerFeeds";
 

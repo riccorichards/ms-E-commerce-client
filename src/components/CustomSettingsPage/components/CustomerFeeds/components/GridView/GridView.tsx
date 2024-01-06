@@ -4,18 +4,23 @@ import { useAppSelector } from "../../../../../../redux/hook";
 
 const GridView = () => {
   const { myFeeds, customer } = useAppSelector((state) => state.customer);
+  const { vendorFeeds, vendor } = useAppSelector((state) => state.vendor);
 
-  if (!customer) return null;
+  if (!customer && !vendor) return null;
+
+  const targetFeeds = myFeeds || vendorFeeds;
 
   return (
     <div className="feeds-grid-view-wrapper">
       <div className="feeds-grid-view">
-        {myFeeds &&
-          myFeeds.map((feed) => (
+        {targetFeeds &&
+          targetFeeds.map((feed) => (
             <FeedTemplate
               key={feed.review}
               feed={feed}
-              since={customer.createdAt}
+              since={
+                customer?.createdAt ? customer.createdAt : vendor?.createdAt
+              }
             />
           ))}
       </div>

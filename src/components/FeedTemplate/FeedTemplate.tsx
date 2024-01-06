@@ -14,13 +14,12 @@ const timeFormat = (str: string) => {
 
 const FeedTemplate: FC<{
   feed: FeedbackType;
-  since: string;
+  since?: string | undefined;
 }> = ({ feed, since }) => {
   const [isOption, setIsOption] = useState<boolean>(false);
 
-  const getFeedContext = useContext(FeedContext);
-  if (!getFeedContext) return null;
-  const handleDeleteFeed = getFeedContext.handleDeleteFeedProcess;
+  const getFeedContext = useContext(FeedContext)!;
+  const handleDeleteFeed = getFeedContext?.handleDeleteFeedProcess;
 
   if (!feed) return null;
 
@@ -35,14 +34,16 @@ const FeedTemplate: FC<{
         <ImageWraper image={feed?.authorImg} size="50px" nonCircle />
         <div className="customer-details-in-feed">
           <h5>{feed.author}</h5>
-          <p style={{ fontSize: "12px" }}>{timeFormat(since)}</p>
+          <p style={{ fontSize: "12px" }}>{timeFormat(since || "")}</p>
         </div>
-        <button
-          className="feed-option-btn"
-          onClick={() => setIsOption((prev) => !prev)}
-        >
-          <MdMoreHoriz />
-        </button>
+        {getFeedContext && (
+          <button
+            className="feed-option-btn"
+            onClick={() => setIsOption((prev) => !prev)}
+          >
+            <MdMoreHoriz />
+          </button>
+        )}
         {isOption && (
           <div className="feed-options-wrapper">
             <div

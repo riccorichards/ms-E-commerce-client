@@ -56,7 +56,9 @@ const Login = () => {
     } else if (vendor) {
       navigate("/vendor/home");
     }
-
+    if (customer || vendor) {
+      localStorage.setItem("user", JSON.stringify(true));
+    }
     reset();
   }, [customer, vendor]); //eslint-disable-line
 

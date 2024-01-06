@@ -91,16 +91,6 @@ export interface VendorAddressType {
   country: string;
 }
 
-interface VendorFeedsType {
-  author: string;
-  profileImg?: string;
-  to: string;
-  forVendor: string;
-  review: string;
-  rating: number;
-  feedId: number;
-}
-
 export interface VendorTeamMembersType {
   _id?: string;
   name: string;
@@ -138,10 +128,16 @@ export interface VendorType {
   rating: number;
   workingHrs: WorkingHrsType;
   address: VendorAddressType;
-  feeds: VendorFeedsType[];
+  feeds: FeedbackType[];
   teamMember: VendorTeamMembersType[];
   gallery: GalleryType[];
   socialMedia: SocUrlType[];
+  createdAt: string;
+}
+
+export interface GetvendorData {
+  vendor: VendorType;
+  ttl: number;
 }
 
 export interface VendorListType {
@@ -162,6 +158,9 @@ export interface VendorState {
   vendor: VendorType | null;
   vendorList: VendorListType[] | null;
   specVendor: VendorType | null;
+  vendorFeeds: FeedbackType[] | null;
+  ttl: number | null;
+  dashboard: TargetDashboardData[] | null;
   imageUrl: string | null;
   status: string | null;
   error: VendorErrorWrapper | null;
@@ -179,6 +178,7 @@ export interface MainCType {
 
 export interface ProductType {
   id: number;
+  foodId: number;
   title: string;
   image: string;
   vendor_name: string;
@@ -187,13 +187,26 @@ export interface ProductType {
   discount: number;
   price: string;
   desc: string;
+  subCatId: number;
   feedbacks: FeedbackType[];
 }
 
+export interface CreateFoodInputType {
+  title: string;
+  image: string;
+  vendor_name: string;
+  address: string;
+  vendor_rating: number;
+  discount: string;
+  price: string;
+  desc: string;
+  subCatId: number;
+}
 export interface GetFilteredSubC {
   id: number;
   title: string;
   desc: string;
+  mainCatId: number;
   Products: ProductType[];
 }
 
@@ -201,6 +214,7 @@ export interface GetVendorSubC {
   id: number;
   title: string;
   desc: string;
+  mainCatId: number;
 }
 
 export interface WishlistToggleType {
@@ -228,6 +242,16 @@ export interface FeedbackType {
   vendorRating?: number;
   createdAt: string;
   feedId: number;
+}
+
+export interface DashboardDataInput {
+  field: string;
+  time: string;
+}
+
+export interface TargetDashboardData {
+  date: string;
+  value: number;
 }
 
 export interface NewFeedbackInputType {

@@ -1,0 +1,25 @@
+@use "../../../assets/v.scss";
+
+.vendor-sub-cat-list-wrapper {
+  display: flex;
+  gap: 35px;
+  flex-wrap: wrap;
+}
+
+.vendor-sub-cat-list-item {
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba($color: #00000011, $alpha: 0.15);
+  width: 30%;
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  background-color: v.$att_green;
+  color: v.$white;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    cursor: pointer;
+    background-color: v.$orangered;
+  }
+}

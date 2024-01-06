@@ -1,9 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import {
+  DashboardDataInput,
+  FeedbackType,
   GalleryType,
+  GetvendorData,
   RemovePhotoFromGallery,
   SocUrlType,
+  TargetDashboardData,
   VendorAddressType,
   VendorListType,
   VendorTeamMembersType,
@@ -16,7 +20,7 @@ import { SocUrlValidatorSchemaType } from "../../components/CustomSettingsPage/c
 import { updateVendorFormType } from "../../components/CustomSettingsPage/components/VendorUpdateProfile/components/UpdateProfileSide/UpdateVendorInfo/UpdateVendorForm/updateVendorFormschema";
 
 export const vendorLogin = createAsyncThunk<
-  VendorType,
+  GetvendorData,
   { email: string; password: string },
   { rejectValue: string }
 >(
@@ -43,7 +47,7 @@ export const vendorLogin = createAsyncThunk<
 );
 
 export const fetchVendor = createAsyncThunk<
-  VendorType,
+  GetvendorData,
   undefined,
   { rejectValue: string }
 >("vendor/fetchVendor", async (_: undefined, { rejectWithValue }) => {
@@ -81,6 +85,7 @@ export const getAllVendors = createAsyncThunk<
     return rejectWithValue(error + "<============ Unknown Error!!!");
   }
 });
+
 export const getSpecVendor = createAsyncThunk<
   VendorType,
   string,
@@ -100,6 +105,52 @@ export const getSpecVendor = createAsyncThunk<
     return rejectWithValue(error + "<============ Unknown Error!!!");
   }
 });
+
+export const getVendorSpecData = createAsyncThunk<
+  FeedbackType[],
+  string,
+  { rejectValue: string | unknown }
+>(
+  "food/getVendorSpecData",
+  async (specRequest: string, { rejectWithValue }) => {
+    try {
+      const { data } = await axios({
+        method: "get",
+        url: `http://localhost:8004/vendor-spec-data?field=${specRequest}`,
+        withCredentials: true,
+      });
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const getVendorDashboardData = createAsyncThunk<
+  TargetDashboardData[],
+  DashboardDataInput,
+  { rejectValue: string | unknown }
+>(
+  "food/getVendorDashboardData",
+  async (specRequest: DashboardDataInput, { rejectWithValue }) => {
+    try {
+      const { data } = await axios({
+        method: "get",
+        url: `http://localhost:8004/vendor-dashboard?field=${specRequest.field}&time=${specRequest.time}`,
+        withCredentials: true,
+      });
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue(error);
+    }
+  }
+);
 
 export const uploadMemberImage = createAsyncThunk<
   string,
@@ -364,6 +415,26 @@ export const getVendorGallery = createAsyncThunk<
     const { data } = await axios({
       method: "get",
       url: "http://localhost:8004/vendor-gallery",
+      withCredentials: true,
+    });
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      return rejectWithValue(error.message);
+    }
+    return rejectWithValue(error);
+  }
+});
+
+export const refreshAccessToken = createAsyncThunk<
+  { ttl: number },
+  string,
+  { rejectValue: string | unknown }
+>("vendor/refreshAccessToken", async (port: string, { rejectWithValue }) => {
+  try {
+    const { data } = await axios({
+      method: "post",
+      url: `http://localhost:${port}/refresh-token`,
       withCredentials: true,
     });
     return data;

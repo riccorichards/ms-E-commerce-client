@@ -28,6 +28,7 @@ type OrderType = {
   }[];
   total: string;
 };
+
 const OrderTemplate: FC<{ order: OrderType }> = ({ order }) => {
   return (
     <div className="order-template-wrapper">

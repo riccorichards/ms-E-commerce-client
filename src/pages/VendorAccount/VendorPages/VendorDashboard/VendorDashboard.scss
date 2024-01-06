@@ -1,1 +1,181 @@
 @use "../../../../assets/v.scss";
+
+.vendor-dashboard-wrapper {
+  position: relative;
+
+  .vendor-dashboard-header {
+    padding: 5px 15px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    position: relative;
+
+    .Time-Frames {
+      background-color: v.$orangered;
+      color: v.$white;
+      padding: 5px;
+      font-size: 14px;
+      border-radius: 0 0px 10px 0px;
+      cursor: pointer;
+      position: relative;
+
+      &:hover {
+        ul {
+          opacity: 1;
+        }
+      }
+
+      ul {
+        position: absolute;
+        height: 100%;
+        left: 105%;
+        top: 0;
+        list-style-type: none;
+        display: flex;
+        transition: all 0.25s ease-in-out;
+        align-items: center;
+        gap: 5px;
+        opacity: 0;
+
+        li {
+          background-color: v.$sky;
+          color: v.$white;
+          width: 30px;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 2.5px;
+          z-index: 1;
+          transition: all 0.25s ease-in-out;
+
+          &:hover {
+            cursor: pointer;
+            background-color: v.$att_green;
+          }
+        }
+      }
+    }
+
+    .vendor-dashboard-header-Options {
+      background-color: v.$att_green;
+      color: v.$white;
+      padding: 5px;
+      font-size: 14px;
+      border-radius: 0 10px 0px 0px;
+      cursor: pointer;
+      position: relative;
+
+      &:hover {
+        ul {
+          opacity: 1;
+        }
+      }
+
+      ul {
+        position: absolute;
+        height: 100%;
+        left: 105%;
+        top: 0;
+        list-style-type: none;
+        display: flex;
+        transition: all 0.25s ease-in-out;
+        align-items: center;
+        gap: 5px;
+        opacity: 0;
+
+        li {
+          background-color: v.$sky;
+          color: v.$white;
+          height: 100%;
+          padding: 0 5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 2.5px;
+          z-index: 1;
+          transition: all 0.25s ease-in-out;
+
+          &:hover {
+            cursor: pointer;
+            background-color: v.$orangered;
+          }
+        }
+      }
+    }
+
+    .monitoring-wrapper {
+      box-shadow: 0 0 10px rgba($color: #0000000d, $alpha: 0.15);
+      padding: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+      position: relative;
+    }
+    .monitoring {
+      position: absolute;
+      right: 15px;
+      background-color: #fff;
+      top: 50%;
+      width: 350px;
+      padding: 5px;
+      z-index: 1;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      .monitoring-header {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+
+        .monitoring-header-options {
+          background-color: v.$orangered;
+          color: v.$white;
+          padding: 5px;
+          font-size: 14px;
+          border-radius: 0 0px 10px 0px;
+          cursor: pointer;
+          position: relative;
+
+          &:hover {
+            ul {
+              opacity: 1;
+            }
+          }
+        }
+        ul {
+          position: absolute;
+          right: 0;
+          top: 115%;
+          width: 100%;
+          list-style-type: none;
+          display: flex;
+          transition: all 0.25s ease-in-out;
+          flex-direction: column;
+          gap: 5px;
+          opacity: 0;
+          z-index: 1;
+
+          li {
+            background-color: v.$sky;
+            color: v.$white;
+            border: 1px solid v.$darken;
+            height: 100%;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 2.5px;
+            transition: all 0.25s ease-in-out;
+
+            &:hover {
+              cursor: pointer;
+              background-color: v.$att_green;
+            }
+          }
+        }
+      }
+    }
+  }
+}

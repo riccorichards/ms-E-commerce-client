@@ -2,10 +2,7 @@ import React from "react";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hook";
 import MemberTemplate from "./MemberTemplate/MemberTemplate";
 import "./TeamMembers.scss";
-import {
-  removeMember,
-  uploadMemberImage,
-} from "../../../../redux/appCall/VendorAppCall";
+import { uploadMemberImage } from "../../../../redux/appCall/VendorAppCall";
 import { VendorTeamMembersType } from "../../../../redux/type.slice";
 import ExistingMember from "./ExistingMember/ExistingMember";
 
@@ -29,10 +26,6 @@ const TeamMembers = () => {
     dispatch(uploadMemberImage(formData));
   }
 
-  function handleRemoveMember(memberId: string | undefined) {
-    dispatch(removeMember(memberId));
-  }
-
   return (
     <div className="vendor-team-member-wrapper">
       <h2 style={{ alignSelf: "flex-start" }}>
@@ -41,11 +34,7 @@ const TeamMembers = () => {
       <div className="add-new-team-member-wrapper">
         {teamMember &&
           teamMember.map((member) => (
-            <ExistingMember
-              member={member}
-              key={member._id}
-              removeMember={handleRemoveMember}
-            />
+            <ExistingMember member={member} key={member._id} />
           ))}
         <MemberTemplate uploadMemberImage={handleUploadImageToMember} />
       </div>

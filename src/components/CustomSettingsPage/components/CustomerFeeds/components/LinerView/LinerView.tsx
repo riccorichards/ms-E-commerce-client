@@ -13,15 +13,20 @@ const timeFormat = (str: string) => {
 
 const LinerView = () => {
   const { myFeeds, customer } = useAppSelector((state) => state.customer);
-
+  const { vendorFeeds, vendor } = useAppSelector((state) => state.vendor);
   const getFeedContext = useContext(FeedContext);
+
+  if (!customer && !vendor) return null;
+
+  const targetFeeds = myFeeds || vendorFeeds;
+
   if (!getFeedContext) return null;
   const handleRemoveFeed = getFeedContext.handleDeleteFeedProcess;
-  if (!customer) return null;
+
   return (
     <div className="liner-view-wrapper">
-      {myFeeds &&
-        myFeeds.map((feed) => (
+      {targetFeeds &&
+        targetFeeds.map((feed) => (
           <div className="liner-view" key={feed.feedId}>
             <span
               style={{ fontSize: "16px", color: "#008080" }}
@@ -31,7 +36,7 @@ const LinerView = () => {
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <h4>{feed.author}</h4>
                 <span style={{ fontSize: "12px" }}>
-                  {timeFormat(customer.createdAt)}
+                  {timeFormat(customer?.createdAt || vendor?.createdAt || "")}
                 </span>
               </div>
             </div>

@@ -1,11 +1,11 @@
 import Settings from "../../../components/CustomSettingsPage/Settings";
 import VendorDetails from "../../VendorDetails/VendorDetails";
-import VendorMenu from "../../VendorMenu/VendorMenu";
 import "./VendorPages.scss";
 import { Routes } from "react-router-dom";
 import { Route } from "react-router-dom";
 import VendorDashboard from "./VendorDashboard/VendorDashboard";
 import Orders from "../../Orders/Orders";
+import VendorTableOfFood from "../../VendorTableOfFood/VendorTableOfFood";
 
 const settingOptions = {
   target: "vendor",
@@ -43,7 +43,7 @@ const VendorPages = () => {
       <Routes>
         <Route path="/home" element={<VendorDetails />} />
         <Route path="/dashboard" element={<VendorDashboard />} />
-        <Route path="/menu" element={<VendorMenu />} />
+        <Route path="/menu" element={<VendorTableOfFood />} />
         <Route path="/orders" element={<Orders />} />
         <Route
           path="/settings/*"

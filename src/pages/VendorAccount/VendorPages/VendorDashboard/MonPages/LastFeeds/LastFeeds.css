@@ -1,0 +1,45 @@
+.last-feed-wrapper-vendor-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto;
+  height: 50vh;
+  padding: 5px;
+}
+.last-feed-wrapper-vendor-dashboard .last-feed-vendor-dashboard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #008080;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px;
+  position: relative;
+}
+.last-feed-wrapper-vendor-dashboard .last-feed-vendor-dashboard:hover .last-feed-id-wrapper {
+  opacity: 1;
+}
+.last-feed-wrapper-vendor-dashboard .last-feed-vendor-dashboard:hover .last-feed-date-wrapper {
+  opacity: 1;
+}
+.last-feed-wrapper-vendor-dashboard .last-feed-vendor-dashboard .last-feed-id-wrapper {
+  position: absolute;
+  top: 85%;
+  color: #87ceeb;
+  transition: all 0.25s ease-in-out;
+  opacity: 0;
+  background-color: #008080;
+  border-radius: 2.5px;
+  padding: 0 2.5px;
+}
+.last-feed-wrapper-vendor-dashboard .last-feed-vendor-dashboard .last-feed-date-wrapper {
+  position: absolute;
+  top: 85%;
+  color: #87ceeb;
+  right: 5px;
+  transition: all 0.25s ease-in-out;
+  opacity: 0;
+  background-color: #008080;
+  border-radius: 2.5px;
+  padding: 0 2.5px;
+}

@@ -10,6 +10,7 @@ const VendorNavLinks = () => {
   const handleLogOut = () => {
     try {
       dispatch(vendorLogOut());
+      localStorage.removeItem("user");
     } catch (error) {
       if (error instanceof Error) {
         console.log(error.message);

@@ -20,3 +20,8 @@
   flex-direction: column;
   gap: 25px;
 }
+.vendor-details-feedback-wrapper .vendor-details-feedback {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}

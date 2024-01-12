@@ -1,0 +1,113 @@
+.about-deliveryman-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.about-deliveryman-wrapper .about-deliveryman-details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.about-deliveryman-wrapper .about-deliveryman-details p {
+  width: 75%;
+}
+.about-deliveryman-wrapper .about-deliveryman-img {
+  display: flex;
+  justify-content: center;
+  border: 5px solid;
+  align-items: center;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 10px rgba(255, 69, 0, 0.75);
+  position: relative;
+}
+.about-deliveryman-wrapper .about-deliveryman-img .deliveryman-noti-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  position: absolute;
+  left: 0;
+  top: 70%;
+  border-radius: 50%;
+  border: none;
+  background-color: yellow;
+  color: #87ceeb;
+  cursor: pointer;
+  border: 1px solid #333333;
+  transition: all 0.25s ease-in-out;
+}
+.about-deliveryman-wrapper .about-deliveryman-img .deliveryman-noti-wrapper:hover {
+  background-color: hsl(16, 100%, 50%);
+  color: #fff8e1;
+}
+.about-deliveryman-wrapper .about-deliveryman-img .deliveryman-noti-wrapper button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  position: relative;
+  border: none;
+  background-color: transparent;
+  color: #87ceeb;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+.about-deliveryman-wrapper .about-deliveryman-img .deliveryman-noti-wrapper button:hover {
+  transform: rotate(25deg);
+}
+.about-deliveryman-wrapper .about-deliveryman-img .deliveryman-noti-wrapper .deliveryman-noti-indicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #333333;
+  position: absolute;
+  z-index: 2;
+  top: -10%;
+  right: -10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.about-deliveryman-wrapper .about-deliveryman-img .deliveryman-upload-img {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff8e1;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(51, 51, 51, 0.15);
+  cursor: pointer;
+  top: 93%;
+  transition: all 0.25s ease-in-out;
+}
+.about-deliveryman-wrapper .about-deliveryman-img .deliveryman-upload-img:hover {
+  background-color: hsl(16, 100%, 50%);
+  color: #fff8e1;
+}
+.about-deliveryman-wrapper .about-deliveryman-img .deliveryman-logout {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff8e1;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(51, 51, 51, 0.15);
+  cursor: pointer;
+  top: 15%;
+  right: 2%;
+  transition: all 0.25s ease-in-out;
+}
+.about-deliveryman-wrapper .about-deliveryman-img .deliveryman-logout:hover {
+  background-color: red;
+  color: #fff8e1;
+}

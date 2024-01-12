@@ -1,0 +1,58 @@
+@use "../../../../../../assets/v.scss";
+
+.shipping-page-wrapper {
+  padding: 30px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 35px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .shipping-form-item {
+      position: relative;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      p {
+        position: absolute;
+        color: red;
+        top: 100%;
+        font-size: 14px;
+      }
+
+      input {
+        padding: 5px;
+        width: 100%;
+        border: 1px solid v.$att_green;
+        font-family: v.$title_font2;
+        background-color: transparent;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    button {
+      font-family: v.$title_font2;
+      padding: 5px 12px;
+      background-color: v.$att_green;
+      border: none;
+      color: v.$white;
+      cursor: pointer;
+
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+}

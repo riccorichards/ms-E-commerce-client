@@ -1,52 +1,55 @@
 import "./OrderInfo.scss";
 import ImageWraper from "./../../../../components/ImageWraper";
-import RatingCalculation from "../../../../components/RatingCalculation";
-import { FaRegStar } from "react-icons/fa";
+import { useAppSelector } from "../../../../redux/hook";
 
-const food =
-  "https://i.pinimg.com/564x/4c/71/01/4c7101fd5fd553cf80cc29f757134d64.jpg";
 const OrderInfo = () => {
-  const rating = {
-    icon: FaRegStar,
-    rating: 5,
-  };
+  const { order } = useAppSelector((state) => state.shopping);
+  if (!order) return null;
+
   return (
     <div className="current-order-information">
-      <div className="current-order-page-switcher">
-        <button className="page-switcher-btn">Current Order</button>
-        <button className="page-switcher-btn">Order Track</button>
-      </div>
       <table className="order-table">
         <thead className="order-thead">
           <tr className="order-tr">
             <th className="order-th">Item</th>
-            <th>Qty</th>
-            <th>Price</th>
-            <th>Total Price</th>
+            <th className="order-th">Qty</th>
+            <th className="order-th">Price</th>
+            <th className="order-th">Total Price</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="order-td">
-              <div
-                style={{ display: "flex", alignItems: "center", gap: "10px" }}
-              >
-                <ImageWraper image={food} size="75px" />
-                <div>
-                  <h2>RiccoFood</h2>
-                  <span style={{ display: "flex", flexDirection: "column" }}>
-                    <span>
-                      <RatingCalculation rating={rating} />
-                    </span>
-                    <span>Review 1k</span>
-                  </span>
-                </div>
-              </div>
-            </td>
-            <td>x1</td>
-            <td>$ 12.56</td>
-            <td>$ 12.56</td>
-          </tr>
+          {order.orderItem &&
+            order.orderItem.map((food) => (
+              <tr className="order-tr" key={food.productId}>
+                <td className="order-td">
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "10px",
+                      width: "100%",
+                    }}
+                  >
+                    <div>
+                      <ImageWraper image={food.product_image} size="75px" />
+                    </div>
+                    <div style={{}}>
+                      <h4>{food.product_name}</h4>
+                      <span
+                        style={{ display: "flex", flexDirection: "column" }}
+                      >
+                        <span>{food.product_address}</span>
+                      </span>
+                    </div>
+                  </div>
+                </td>
+                <td className="order-td">x{food.qty}</td>
+                <td className="order-td">$ {food.product_price}</td>
+                <td className="order-td">
+                  $ {(parseFloat(food.product_price) * food.qty).toFixed(2)}
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
     </div>

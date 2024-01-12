@@ -21,4 +21,28 @@
   background-color: #fff8e1;
   border-radius: 15px;
   gap: 25px;
+  padding: 15px;
+}
+.current-order-main-bar .current-order-page-switcher {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.current-order-main-bar .page-switcher-btn {
+  background-color: #333333;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1px;
+  border: none;
+  padding: 8px 12px;
+  font-weight: 800;
+  color: #fff8e1;
+  border-radius: 5px;
+}
+.current-order-main-bar .page-switcher-btn:hover {
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  color: #c0c0c0;
+}
+.current-order-main-bar .page-switcher-btn:active {
+  transform: scale(0.9);
 }

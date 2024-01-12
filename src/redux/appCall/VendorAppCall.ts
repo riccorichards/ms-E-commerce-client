@@ -9,6 +9,7 @@ import {
   SocUrlType,
   TargetDashboardData,
   VendorAddressType,
+  VendorCoordsType,
   VendorListType,
   VendorTeamMembersType,
   VendorType,
@@ -435,6 +436,26 @@ export const refreshAccessToken = createAsyncThunk<
     const { data } = await axios({
       method: "post",
       url: `http://localhost:${port}/refresh-token`,
+      withCredentials: true,
+    });
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      return rejectWithValue(error.message);
+    }
+    return rejectWithValue(error);
+  }
+});
+
+export const getVendorCoords = createAsyncThunk<
+  VendorCoordsType,
+  string,
+  { rejectValue: string | unknown }
+>("vendor/getVendorCoords", async (vendorId: string, { rejectWithValue }) => {
+  try {
+    const { data } = await axios({
+      method: "get",
+      url: `http://localhost:8007/goole-map-for-vendor/${vendorId}`,
       withCredentials: true,
     });
     return data;

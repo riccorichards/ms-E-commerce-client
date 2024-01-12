@@ -3,12 +3,10 @@ import { z } from "zod";
 export interface EmployeeFormInput {
   name: string;
   email: string;
+  currentAddress: string;
   password: string;
   confPass: string;
-  lat: string;
-  lng: string;
 }
-
 export const EmployeeValidationSchema = z
   .object({
     name: z.string().min(3).trim(),
@@ -21,8 +19,7 @@ export const EmployeeValidationSchema = z
       .string()
       .min(8, "Password must be at least 8 characters")
       .trim(),
-    lat: z.string().min(1).trim(),
-    lng: z.string().min(1).trim(),
+    currentAddress: z.string().min(1, { message: "Addres is required" }).trim(),
   })
   .refine((value) => value.password === value.confPass, {
     message: "Password does not match!",

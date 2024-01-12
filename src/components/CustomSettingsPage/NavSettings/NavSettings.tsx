@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./NavSettings.scss";
 import { useAppDispatch, useAppSelector } from "../../../redux/hook";
 import { logOut } from "../../../redux/appCall/AuthAppCall";
@@ -12,12 +12,11 @@ interface SetNavLInkType {
 const NavSettings: FC<{ setNavLink: SetNavLInkType[] }> = ({ setNavLink }) => {
   const { customer } = useAppSelector((state) => state.customer);
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
 
   const handleLogOut = () => {
     try {
       dispatch(logOut());
-      navigate("/");
+      localStorage.removeItem("user");
     } catch (error) {
       if (error instanceof Error) {
         throw new Error(error.message);

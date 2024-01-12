@@ -1,0 +1,25 @@
+@use "../../assets/v.scss";
+
+.deliveryman-dashboard-wrapper {
+  backdrop-filter: blur(25px);
+  height: calc(100vh - 60px);
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba($color: #00000026, $alpha: 0.2);
+  gap: 10px;
+  font-family: v.$title_font2;
+  padding: 30px;
+  display: flex;
+  gap: 75px;
+  color: v.$darken;
+}
+
+.deliveryman-dashboard-left {
+  display: flex;
+  flex-direction: column;
+  gap: 55px;
+  flex: 1.7;
+}
+
+.deliveryman-dashboard-right {
+  flex: 1;
+}

@@ -9,6 +9,7 @@ import {
   fetchVendor,
   getAllVendors,
   getSpecVendor,
+  getVendorCoords,
   getVendorDashboardData,
   getVendorGallery,
   getVendorSpecData,
@@ -32,6 +33,7 @@ const initialState: VendorState = {
   vendorFeeds: null,
   imageUrl: null,
   dashboard: null,
+  coords: null,
   ttl: null,
   status: null,
   error: null,
@@ -303,6 +305,17 @@ const VendorSlice = createSlice({
         state.dashboard = action.payload;
       })
       .addCase(getVendorDashboardData.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload || null;
+      })
+      .addCase(getVendorCoords.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(getVendorCoords.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        state.coords = action.payload;
+      })
+      .addCase(getVendorCoords.rejected, (state, action) => {
         state.status = "rejected";
         state.error = action.payload || null;
       })

@@ -4,6 +4,7 @@ import {
   addAddress,
   addBankInfo,
   checkCurrentPassword,
+  coordsOfCustomer,
   fetchLogin,
   findCustomerById,
   getCustomerSpecData,
@@ -15,10 +16,13 @@ import {
 } from "../appCall/AuthAppCall";
 import { fetchRegister } from "./../appCall/AuthAppCall";
 import { deleteFeed, foodToCart, wishlistToggle } from "../appCall/FoodAppCall";
+import { sendCartToServer } from "../appCall/ShoppingApiCall";
 
 const initialState: AuthState = {
   customer: null,
   myFeeds: null,
+  ttl: null,
+  coords: null,
   _id: null,
   currentPassword: null,
   status: null,
@@ -47,7 +51,8 @@ const AuthSlice = createSlice({
       })
       .addCase(fetchLogin.fulfilled, (state, action) => {
         state.status = "fulfilled";
-        state.customer = action.payload;
+        state.customer = action.payload.customer;
+        state.ttl = action.payload.ttl;
       })
       .addCase(fetchLogin.rejected, (state, action) => {
         state.status = "rejected";
@@ -93,7 +98,8 @@ const AuthSlice = createSlice({
       })
       .addCase(findCustomerById.fulfilled, (state, action) => {
         state.status = "fulfilled";
-        state.customer = action.payload;
+        state.customer = action.payload.customer;
+        state.ttl = action.payload.ttl;
       })
       .addCase(findCustomerById.rejected, (state, action) => {
         state.status = "rejected";
@@ -115,7 +121,8 @@ const AuthSlice = createSlice({
       })
       .addCase(updateBasicCustomerInfo.fulfilled, (state, action) => {
         state.status = "fulfilled";
-        state.customer = action.payload;
+        state.customer = action.payload.customer;
+        state.ttl = action.payload.ttl;
         state.currentPassword = null;
       })
       .addCase(updateBasicCustomerInfo.rejected, (state, action) => {
@@ -201,6 +208,17 @@ const AuthSlice = createSlice({
         state.status = "rejected";
         state.error = action.payload || null;
       })
+      .addCase(coordsOfCustomer.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(coordsOfCustomer.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        state.coords = action.payload;
+      })
+      .addCase(coordsOfCustomer.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload || null;
+      })
       .addCase(deleteFeed.pending, (state) => {
         state.status = "pending";
       })
@@ -213,6 +231,19 @@ const AuthSlice = createSlice({
         }
       })
       .addCase(deleteFeed.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload || null;
+      })
+      .addCase(sendCartToServer.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(sendCartToServer.fulfilled, (state) => {
+        state.status = "fulfilled";
+        if (state.customer) {
+          state.customer.cart = [];
+        }
+      })
+      .addCase(sendCartToServer.rejected, (state, action) => {
         state.status = "rejected";
         state.error = action.payload || null;
       })

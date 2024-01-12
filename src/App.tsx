@@ -6,10 +6,12 @@ import { useAppSelector } from "./redux/hook";
 import Admin from "./pages/Admin/Admin";
 import VendorAccount from "./pages/VendorAccount/VendorAccount";
 import { useEffect, useState } from "react";
+import Deliveryman from "./pages/Deliveryman/Deliveryman";
 
 function App() {
   const { customer } = useAppSelector((state) => state.customer);
   const { vendor } = useAppSelector((state) => state.vendor);
+  const { deliveyman } = useAppSelector((state) => state.deliveryman);
   const [existingUser, setExistingUser] = useState<boolean>(
     JSON.parse(localStorage.getItem("user") || "false")
   );
@@ -17,7 +19,7 @@ function App() {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user") || "false");
     setExistingUser(user);
-  }, []);
+  }, [customer, vendor, deliveyman]);
 
   return (
     <div className="App">
@@ -37,6 +39,12 @@ function App() {
           path="/vendor/*"
           element={
             vendor || existingUser ? <VendorAccount /> : <Navigate to="/" />
+          }
+        />
+        <Route
+          path="/deliveryman"
+          element={
+            deliveyman || existingUser ? <Deliveryman /> : <Navigate to="/" />
           }
         />
       </Routes>

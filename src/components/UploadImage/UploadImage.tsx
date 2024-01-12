@@ -1,7 +1,7 @@
 import React, { FC, useRef } from "react";
 import "./UploadImage.scss";
 import { TbPhotoEdit } from "react-icons/tb";
-import { useAppDispatch } from "../../redux/hook";
+import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import { uploadImage } from "../../redux/appCall/AuthAppCall";
 import ImageWraper from "../ImageWraper";
 import { EntireCustomerType, VendorType } from "../../redux/type.slice";
@@ -9,13 +9,14 @@ import { EntireCustomerType, VendorType } from "../../redux/type.slice";
 type TargetType = EntireCustomerType | VendorType;
 
 const UploadImage: FC<{
-  target: TargetType;
+  target?: TargetType;
   isSendToService: string;
   size: string;
   address: string;
 }> = ({ target, isSendToService, size, address }) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const dispatch = useAppDispatch();
+  const { imageUrl } = useAppSelector((state) => state.admin);
 
   const submitFile = (
     event: React.ChangeEvent<HTMLInputElement | undefined>
@@ -36,7 +37,7 @@ const UploadImage: FC<{
     <div className="update-customer-image">
       <div className="customer-image-wrapper">
         <ImageWraper
-          image={target ? target.image : undefined}
+          image={target ? target.image : imageUrl ? imageUrl : undefined}
           size={size}
           nonCircle
           radiusSize="15px"

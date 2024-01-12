@@ -4,6 +4,8 @@ import { refreshAccessToken } from "../redux/appCall/VendorAppCall";
 
 const RefreshToken: FC<{ port: string }> = ({ port }) => {
   const vendorTtl = useAppSelector((state) => state.vendor.ttl);
+  const deliverymanTtl = useAppSelector((state) => state.deliveryman.ttl);
+  const customerTtl = useAppSelector((state) => state.customer.ttl);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -18,13 +20,17 @@ const RefreshToken: FC<{ port: string }> = ({ port }) => {
 
     function scheduleRefresh() {
       const now = Date.now();
-      const targetTTL = (vendorTtl && Date.now() + vendorTtl * 1000) || null;
+      const targetTTL =
+        (vendorTtl && Date.now() + vendorTtl * 1000) ||
+        (deliverymanTtl && Date.now() + deliverymanTtl * 1000) ||
+        (customerTtl && Date.now() + customerTtl * 1000);
+
       if (!targetTTL) return;
 
       if (targetTTL < now) {
         refreshToken();
       } else {
-        const delay = targetTTL - now - 20 * 1000;
+        const delay = targetTTL - now - 300 * 1000;
         timeoutId = setTimeout(refreshToken, delay > 0 ? delay : 0);
       }
     }
@@ -33,7 +39,7 @@ const RefreshToken: FC<{ port: string }> = ({ port }) => {
     return () => {
       clearTimeout(timeoutId);
     };
-  }, [vendorTtl, port, dispatch]);
+  }, [vendorTtl, deliverymanTtl, port, dispatch, customerTtl]);
 
   return null;
 };

@@ -12,6 +12,7 @@ import { findCustomerById } from "../../redux/appCall/AuthAppCall";
 import Settings from "../../components/CustomSettingsPage/Settings";
 import AllSubCat from "../AllSubCat/AllSubCat";
 import VendorMenu from "../VendorMenu/VendorMenu";
+import CurrentOrder from "../CurrentOrder/CurrentOrder";
 
 //for custom setting pages
 const settingOptions = {
@@ -51,10 +52,11 @@ const UserDashboard = () => {
   return (
     <div className="user-dashboard-wrapper">
       <NavigationBar />
-      <RefreshToken />
+      <RefreshToken port="8001" />
       <Routes>
         <Route path="/home/*" element={<Dashboard />} />
         <Route path="/home/sub-category" element={<AllSubCat />} />
+        <Route path="/home/current-order" element={<CurrentOrder />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/vendors" element={<VendorList />} />
         <Route path="/vendors/:id" element={<VendorDetails />} />

@@ -1,0 +1,43 @@
+@use "../../../../assets/v.scss";
+
+.order-track-wrapper {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 90%;
+  position: relative;
+
+  .router-info-wrapper {
+    position: absolute;
+    top: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    button {
+      font-family: v.$title_font2;
+      background-color: v.$white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+
+    .router-info {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      border-radius: 5px;
+      background-color: v.$white;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba($color: #0000002e, $alpha: 0.15);
+    }
+  }
+}

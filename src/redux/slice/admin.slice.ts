@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { AdminState } from "../type.slice";
-import { createVendor, uploadVendorImage } from "../appCall/AdminAppCall";
+import {
+  createDeliveryman,
+  createVendor,
+  uploadVendorImage,
+} from "../appCall/AdminAppCall";
+import { uploadImage } from "../appCall/AuthAppCall";
 
 const initialState: AdminState = {
   createdVendor: null,
@@ -29,6 +34,18 @@ const AdminSlice = createSlice({
         state.status = "rejected";
         state.error = action.error;
       })
+      .addCase(createDeliveryman.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(createDeliveryman.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        state.createdDeliveryman = action.payload;
+        state.imageUrl = null;
+      })
+      .addCase(createDeliveryman.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.error;
+      })
       .addCase(uploadVendorImage.pending, (state) => {
         state.status = "pending";
       })
@@ -39,6 +56,19 @@ const AdminSlice = createSlice({
         }
       })
       .addCase(uploadVendorImage.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.error;
+      })
+      .addCase(uploadImage.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(uploadImage.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        if (state) {
+          state.imageUrl = action.payload;
+        }
+      })
+      .addCase(uploadImage.rejected, (state, action) => {
         state.status = "rejected";
         state.error = action.error;
       });

@@ -1,0 +1,37 @@
+.order-track-wrapper {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 90%;
+  position: relative;
+}
+.order-track-wrapper .router-info-wrapper {
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.order-track-wrapper .router-info-wrapper button {
+  font-family: "Josefin Sans", sans-serif;
+  background-color: #fff8e1;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.order-track-wrapper .router-info-wrapper button:active {
+  transform: scale(0.9);
+}
+.order-track-wrapper .router-info-wrapper .router-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 5px;
+  background-color: #fff8e1;
+  padding: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}

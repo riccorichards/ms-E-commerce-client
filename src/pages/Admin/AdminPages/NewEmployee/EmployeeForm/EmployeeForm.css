@@ -15,6 +15,7 @@
   align-items: center;
   gap: 25px;
   padding: 15px;
+  position: relative;
 }
 #employee-form .employee-form-item {
   width: 90%;

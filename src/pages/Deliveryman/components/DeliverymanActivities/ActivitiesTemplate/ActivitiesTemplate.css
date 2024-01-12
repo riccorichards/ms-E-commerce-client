@@ -1,0 +1,12 @@
+.activities-wrapper {
+  height: 10vh;
+  width: 100%;
+  background-color: #fff8e1;
+  border-radius: 5px;
+  transition: all 0.25s ease-in-out;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+.activities-wrapper:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}

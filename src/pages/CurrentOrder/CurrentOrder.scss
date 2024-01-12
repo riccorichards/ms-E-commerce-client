@@ -23,4 +23,32 @@
   background-color: v.$white;
   border-radius: 15px;
   gap: 25px;
+  padding: 15px;
+
+  .current-order-page-switcher {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .page-switcher-btn {
+    background-color: v.$darken;
+    font-family: v.$p_font2;
+    letter-spacing: 1px;
+    border: none;
+    padding: 8px 12px;
+    font-weight: 800;
+    color: v.$white;
+    border-radius: 5px;
+
+    &:hover {
+      cursor: pointer;
+      transition: all 0.25s ease-in-out;
+      color: v.$grey;
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
 }

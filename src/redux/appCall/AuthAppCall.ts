@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { EntireCustomerType, FeedbackType } from "../type.slice";
+import { CustomerCoordsType, FeedbackType, GetCustomer } from "../type.slice";
 import {
   AddressInputType,
   BankInputType,
@@ -38,7 +38,7 @@ export const fetchRegister = createAsyncThunk<
 );
 
 export const fetchLogin = createAsyncThunk<
-  EntireCustomerType,
+  GetCustomer,
   LoginInputType,
   { rejectValue: string }
 >("customer/fetchLogin", async (user: LoginInputType, { rejectWithValue }) => {
@@ -164,7 +164,7 @@ export const checkCurrentPassword = createAsyncThunk<
 );
 
 export const findCustomerById = createAsyncThunk<
-  EntireCustomerType,
+  GetCustomer,
   undefined,
   { rejectValue: string }
 >("customer/findCustomerById", async (_: undefined, { rejectWithValue }) => {
@@ -185,8 +185,30 @@ export const findCustomerById = createAsyncThunk<
   }
 });
 
+export const coordsOfCustomer = createAsyncThunk<
+  CustomerCoordsType,
+  string,
+  { rejectValue: string }
+>("customer/coordsOfCustomer", async (address: string, { rejectWithValue }) => {
+  try {
+    const { data } = await axios({
+      method: "get",
+      url: `http://localhost:8007/coords/${address}`,
+      withCredentials: true,
+    });
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      return rejectWithValue(
+        "Error while adding an user bank info" + error.message
+      );
+    }
+    return rejectWithValue("Error while adding an user bank info");
+  }
+});
+
 export const updateBasicCustomerInfo = createAsyncThunk<
-  EntireCustomerType,
+  GetCustomer,
   UpdateBasicCustomerInput,
   { rejectValue: string }
 >(

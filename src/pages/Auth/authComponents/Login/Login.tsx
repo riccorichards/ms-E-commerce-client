@@ -9,6 +9,7 @@ import { useAppDispatch, useAppSelector } from "../../../../redux/hook";
 import { fetchLogin } from "../../../../redux/appCall/AuthAppCall";
 import { Link, useNavigate } from "react-router-dom";
 import { vendorLogin } from "../../../../redux/appCall/VendorAppCall";
+import { loginDeliveryman } from "../../../../redux/appCall/DeliverymanAppCall";
 
 const Login = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -16,6 +17,7 @@ const Login = () => {
   const dispatch = useAppDispatch();
   const { customer } = useAppSelector((state) => state.customer);
   const { vendor } = useAppSelector((state) => state.vendor);
+  const { deliveyman } = useAppSelector((state) => state.deliveryman);
   const navigate = useNavigate();
   const {
     register,
@@ -36,10 +38,16 @@ const Login = () => {
 
   const onSubmit = (value: LoginInputType) => {
     try {
-      if (user === "customer") {
-        dispatch(fetchLogin(value));
-      } else if (user === "vendor") {
-        dispatch(vendorLogin(value));
+      switch (user) {
+        case "customer":
+          dispatch(fetchLogin(value));
+          break;
+        case "vendor":
+          dispatch(vendorLogin(value));
+          break;
+        case "deliveryman":
+          dispatch(loginDeliveryman(value));
+          break;
       }
     } catch (error) {
       if (error instanceof Error) {
@@ -55,12 +63,14 @@ const Login = () => {
       navigate(customer.isAdmin ? "/admin/home" : "/customer/home");
     } else if (vendor) {
       navigate("/vendor/home");
+    } else if (deliveyman) {
+      navigate("/deliveryman");
     }
-    if (customer || vendor) {
+    if (customer || vendor || deliveyman) {
       localStorage.setItem("user", JSON.stringify(true));
     }
     reset();
-  }, [customer, vendor]); //eslint-disable-line
+  }, [customer, vendor, deliveyman]); //eslint-disable-line
 
   return (
     <div className="login-wrapper">

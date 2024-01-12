@@ -24,6 +24,7 @@ export interface FoodCardType {
   title: string;
   desc: string;
   image: string;
+  address: string;
   price: string;
   unit: number;
 }
@@ -39,13 +40,24 @@ export interface EntireCustomerType extends CustomarBasicInfo {
   wishlist: ProductType[];
   feedback: FeedbackType[];
   cart: FoodCardType[];
-  order: [];
   createdAt: string;
+}
+
+export interface GetCustomer {
+  customer: EntireCustomerType;
+  ttl: number;
+}
+
+export interface CustomerCoordsType {
+  latitude: number;
+  longitude: number;
 }
 
 export type AuthState = {
   customer: EntireCustomerType | null;
   myFeeds: FeedbackType[] | null;
+  ttl: number | null;
+  coords: CustomerCoordsType | null;
   _id: string | null;
   currentPassword: boolean | null;
   status: string | null;
@@ -66,12 +78,20 @@ export interface BasicVendorType {
   password: string;
 }
 
+export interface BasicDeliverymanType {
+  name: string;
+  email: string;
+  password?: string;
+  image: string;
+  currentAddress: string;
+}
+
 interface AdminErrorWrapper {}
 
 export interface AdminState {
   createdVendor: BasicVendorType | null;
   imageUrl: string | null;
-  createdDeliveryman: BasicVendorType | null;
+  createdDeliveryman: BasicDeliverymanType | null;
   status: string | null;
   error: AdminErrorWrapper | null;
 }
@@ -117,6 +137,7 @@ export interface RemovePhotoFromGallery {
 }
 
 export interface VendorType {
+  _id: string;
   name: string;
   ownerName: string;
   about: string;
@@ -154,12 +175,18 @@ export interface VendorListType {
 
 interface VendorErrorWrapper {}
 
+export interface VendorCoordsType {
+  latitude: number;
+  longitude: number;
+}
+
 export interface VendorState {
   vendor: VendorType | null;
   vendorList: VendorListType[] | null;
   specVendor: VendorType | null;
   vendorFeeds: FeedbackType[] | null;
   ttl: number | null;
+  coords: VendorCoordsType | null;
   dashboard: TargetDashboardData[] | null;
   imageUrl: string | null;
   status: string | null;
@@ -202,6 +229,7 @@ export interface CreateFoodInputType {
   desc: string;
   subCatId: number;
 }
+
 export interface GetFilteredSubC {
   id: number;
   title: string;
@@ -274,5 +302,116 @@ export interface FoodState {
   foods: ProductType[] | null;
   vendorFoods: ProductType[] | null;
   state: string | null;
+  error: string | null;
+}
+
+////////////////////////////////////////////////
+// Deliveryman
+
+export interface DeliveryLoginType {
+  email: string;
+  password: string;
+}
+
+export interface DeliverymanType {
+  id: number;
+  name: string;
+  email: string;
+  image: string;
+  createdAt: string;
+}
+
+export interface GetDeliveryMan {
+  deliveryman: DeliverymanType;
+  ttl: number;
+}
+
+export interface DeliverymanState {
+  deliveyman: DeliverymanType | null;
+  ttl: number | null;
+  status: string | null;
+  error: string | null;
+}
+
+//////////////////////////////////////////
+//Shoppijng
+
+export interface NearestDeliverymanType {
+  lat: number;
+  lng: number;
+  name: string;
+  image: string;
+}
+
+export interface NearestDeliverymanResponseType {
+  nearestPersons: NearestDeliverymanType[];
+  orderId: number;
+}
+
+export interface CartItemsType {
+  productId: number;
+  product_name: string;
+  product_address: string;
+  product_price: string;
+  product_image: string;
+  qty: number;
+}
+
+export interface CreateShippingInputType {
+  username: string;
+  email: string;
+  orderId: number;
+  personName: string;
+  address: string;
+  payment_method: string;
+  debit_card: string;
+  note: string;
+}
+
+export interface OrderType {
+  id: number;
+  order_status: string;
+  total_amount: number;
+  deliverymanName: string;
+  customerId: string;
+  createdAt: string;
+  note: string;
+  orderItem: CartItemsType[];
+}
+
+export interface DeliverymanInOrderType {
+  name: string;
+  image: string;
+  createdAt: string;
+  email: string;
+  currentAddress: string;
+  latitude: number;
+  longitude: number;
+}
+
+export interface VendorInOrderType {
+  name: string;
+  image: string;
+  rating: number;
+  email: string;
+  address: string;
+  phone: string;
+  latitude: number;
+  longitude: number;
+}
+
+export interface SendCartToServerType {
+  total_amount: number;
+  customerId: string;
+  cartItems: CartItemsType[];
+}
+
+export interface ShoppingStateType {
+  nearestDeliveryman: NearestDeliverymanType[] | null;
+  orderId: number | null;
+  order: OrderType | null;
+  deliverymanForOrder: DeliverymanInOrderType | null;
+  vendorForOrder: VendorInOrderType[];
+  status: string | null;
   error: string | null;
 }

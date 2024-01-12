@@ -1,0 +1,74 @@
+.nearest-deliveryman-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.4666666667);
+}
+.nearest-deliveryman-wrapper .nearest-deliveryman-container {
+  display: flex;
+  gap: 35px;
+  background-color: #008080;
+  padding: 15px;
+  border-radius: 10px;
+  perspective: 1000px;
+  position: relative;
+}
+.nearest-deliveryman-wrapper .nearest-deliveryman-container:hover button {
+  opacity: 1;
+}
+.nearest-deliveryman-wrapper .nearest-deliveryman-container:hover h3 {
+  opacity: 1;
+}
+.nearest-deliveryman-wrapper .nearest-deliveryman-container h3 {
+  position: absolute;
+  color: #fff8e1;
+  background-color: #87ceeb;
+  padding: 5px;
+  border-radius: 5px;
+  top: -20px;
+  left: 0;
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
+}
+.nearest-deliveryman-wrapper .nearest-deliveryman-container button {
+  position: absolute;
+  right: 0;
+  top: -20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  background-color: hsl(16, 100%, 50%);
+  font-family: "Josefin Sans", sans-serif;
+  padding: 8px;
+  color: #fff8e1;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
+}
+.nearest-deliveryman-wrapper .nearest-deliveryman-container button:hover {
+  background-color: red;
+}
+.nearest-deliveryman-wrapper .nearest-deliveryman-container button:active {
+  transform: scale(0.9);
+}
+.nearest-deliveryman-wrapper .nearest-deliveryman-container .nearest-deliveryman {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 10px;
+  transition: all 0.25s ease-in-out;
+  color: #fff8e1;
+}
+.nearest-deliveryman-wrapper .nearest-deliveryman-container .nearest-deliveryman:hover {
+  background-color: #87ceeb;
+  transform: rotate3d(1, 0, 0, 25deg);
+  color: #333333;
+}

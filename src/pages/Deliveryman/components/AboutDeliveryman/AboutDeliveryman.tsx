@@ -1,0 +1,79 @@
+import ImageWraper from "../../../../components/ImageWraper";
+import "./AboutDeliveryman.scss";
+import { IoNotificationsSharp } from "react-icons/io5";
+import { TbExclamationMark } from "react-icons/tb";
+import { FaCameraRetro } from "react-icons/fa";
+import { useAppDispatch, useAppSelector } from "../../../../redux/hook";
+import { AiOutlineLogout } from "react-icons/ai";
+import { deliverymanlogOut } from "../../../../redux/appCall/DeliverymanAppCall";
+import React, { useRef } from "react";
+import { uploadImage } from "../../../../redux/appCall/AuthAppCall";
+
+const AboutDeliveryman = () => {
+  const { deliveyman } = useAppSelector((state) => state.deliveryman);
+  const dispatch = useAppDispatch();
+  const imageRef = useRef<HTMLInputElement | null>(null);
+  if (!deliveyman) return null;
+
+  const deliveryLogout = () => {
+    dispatch(deliverymanlogOut());
+    localStorage.removeItem("user");
+  };
+
+  const fileUploading = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files;
+    const formData = new FormData();
+    if (file) {
+      formData.append("upload", file[0]);
+      formData.append("type", "profiles");
+      formData.append("isSendToService", "0");
+      formData.append("address", "deliveryman");
+      dispatch(uploadImage(formData));
+    }
+  };
+  return (
+    <div className="about-deliveryman-wrapper">
+      <div className="about-deliveryman-details">
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <h1>{deliveyman.name}</h1>
+          <span>1k+ Revievs</span>
+          <span>{deliveyman.createdAt}</span>
+        </div>
+
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque,
+          animi voluptates mollitia, perspiciatis, laboriosam quae repellat
+          officiis molestias vero voluptatem assumenda placeat.
+        </p>
+        <span style={{ fontSize: "18px", textDecoration: "underline" }}>
+          {deliveyman.email}
+        </span>
+      </div>
+      <div>
+        <div className="about-deliveryman-img">
+          <ImageWraper image={deliveyman.image} size="320px" />
+          <div className="deliveryman-noti-wrapper">
+            <button>
+              <IoNotificationsSharp />
+            </button>
+            <div className="deliveryman-noti-indicator">
+              <TbExclamationMark />
+            </div>
+          </div>
+          <div
+            className="deliveryman-upload-img"
+            onClick={() => imageRef.current?.click()}
+          >
+            <FaCameraRetro />
+          </div>
+          <input type="file" hidden ref={imageRef} onChange={fileUploading} />
+          <div className="deliveryman-logout" onClick={deliveryLogout}>
+            <AiOutlineLogout />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AboutDeliveryman;

@@ -4,36 +4,72 @@ import { MdAlternateEmail } from "react-icons/md";
 import ImageWraper from "./../../../../components/ImageWraper";
 import RatingCalculation from "../../../../components/RatingCalculation";
 import { FaRegStar } from "react-icons/fa";
+import { useAppSelector } from "../../../../redux/hook";
+import { useState } from "react";
 
-const image =
-  "https://i.pinimg.com/564x/04/be/f6/04bef61884051d5695ad0d2ce37632f2.jpg";
 const VendorInfo = () => {
-  const rating = {
-    icon: FaRegStar,
-    rating: 5,
+  const { vendorForOrder } = useAppSelector((state) => state.shopping);
+  const [vendorIndex, setVendorIndex] = useState<number>(0);
+
+  if (vendorForOrder.length === 0) return null;
+
+  const vendor = vendorForOrder[vendorIndex];
+
+  const handleVendorDisplay = (i: number) => {
+    setVendorIndex(i);
   };
+
   return (
     <div className="current-order-vendor-info">
       <div className="current-order-vendor-info-header">
-        <ImageWraper image={image} size="75px" />
+        <div>
+          <ImageWraper image={vendor.image} size="75px" />
+        </div>
         <div className="current-order-vendor-title">
-          <h2>RiccoFood</h2>
-          {<RatingCalculation rating={rating} />}
+          <h2>{vendor.name}</h2>
+          {
+            <RatingCalculation
+              rating={{ icon: FaRegStar, rating: vendor.rating }}
+            />
+          }
         </div>
       </div>
-      <div className="current-order-vendor-header-additional-info">
-        <div className="current-vendor-info-phone">
-          <IoCallOutline />
-          <span>+95 155 322 145</span>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "5px",
+          width: "80%",
+        }}
+      >
+        <div style={{ display: "flex", gap: "15px" }}>
+          <div>
+            <IoCallOutline />
+          </div>
+          <span>{vendor.phone}</span>
         </div>
-        <div className="current-vendor-info-email">
-          <MdAlternateEmail />
-          <span>ricco@richards.com</span>
+        <div style={{ display: "flex", gap: "15px" }}>
+          <div>
+            <MdAlternateEmail />
+          </div>
+          <span style={{ wordBreak: "break-all" }}>{vendor.email}</span>
         </div>
-        <div className="current-vendor-info-address">
-          <IoLocationOutline />
-          <span>St. peterson N165</span>
+        <div style={{ display: "flex", gap: "15px" }}>
+          <div>
+            <IoLocationOutline />
+          </div>
+          <span>{vendor.address}</span>
         </div>
+      </div>
+      <div className="current-order-vendor-switcher-wrapper">
+        {vendorForOrder.map((_, i) => (
+          <div
+            className="vendor-info-switcher"
+            key={i}
+            onClick={() => handleVendorDisplay(i)}
+            style={{ backgroundColor: i === vendorIndex ? "orangered" : "" }}
+          />
+        ))}
       </div>
     </div>
   );

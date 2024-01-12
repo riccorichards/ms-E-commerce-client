@@ -1,0 +1,24 @@
+.deliveryman-dashboard-wrapper {
+  -webkit-backdrop-filter: blur(25px);
+          backdrop-filter: blur(25px);
+  height: calc(100vh - 60px);
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  gap: 10px;
+  font-family: "Josefin Sans", sans-serif;
+  padding: 30px;
+  display: flex;
+  gap: 75px;
+  color: #333333;
+}
+
+.deliveryman-dashboard-left {
+  display: flex;
+  flex-direction: column;
+  gap: 55px;
+  flex: 1.7;
+}
+
+.deliveryman-dashboard-right {
+  flex: 1;
+}

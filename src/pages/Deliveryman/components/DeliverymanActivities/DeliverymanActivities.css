@@ -1,0 +1,7 @@
+.deliveryman-activity-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+  height: 100%;
+}

@@ -47,7 +47,8 @@ const VendorInfo: FC<{
           </span>
           <span style={{ display: "flex", alignItems: "center", gap: "15px" }}>
             <MdAccessTime />
-            {`${vendor.workingHrs.workingDays}-${vendor.workingHrs.weekend}`}
+            {vendor.workingHrs &&
+              `${vendor?.workingHrs.workingDays}-${vendor?.workingHrs.weekend}`}
           </span>
         </div>
         <div>
@@ -72,8 +73,7 @@ const VendorInfo: FC<{
             <MdAlternateEmail /> {vendor.email}
           </span>
           <span style={{ display: "flex", alignItems: "center", gap: "15px" }}>
-            <MdOutlineLocationOn />{" "}
-            {`${vendor.address.country}, ${vendor.address.city}, ${vendor.address.street}`}
+            <MdOutlineLocationOn /> {vendor.address}
           </span>
         </div>
       </div>

@@ -1,0 +1,42 @@
+.vendor-order-modal-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+.vendor-order-modal-wrapper .vendor-order-modal-content {
+  width: 100%;
+  height: 80%;
+  background-color: #fff8e1;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+  position: relative;
+}
+.vendor-order-modal-wrapper .vendor-order-modal-content:hover button {
+  opacity: 1;
+}
+.vendor-order-modal-wrapper .vendor-order-modal-content button {
+  position: absolute;
+  background-color: hsl(16, 100%, 50%);
+  font-family: "Josefin Sans", sans-serif;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff8e1;
+  cursor: pointer;
+  top: 98%;
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
+}
+.vendor-order-modal-wrapper .vendor-order-modal-content button:hover {
+  background-color: red;
+}

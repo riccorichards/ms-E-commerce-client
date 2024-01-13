@@ -1,0 +1,24 @@
+.order-template-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 5px;
+  border-bottom: 2px solid hsl(16, 100%, 50%);
+}
+
+.order-template-date {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.order-template-deliveryman {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.order-template-deliveryman .deliveryman-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}

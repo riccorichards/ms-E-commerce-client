@@ -1,0 +1,15 @@
+.vendor-order-header-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.vendor-order-header-info .vendor-order-info-part {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.vendor-order-header-info .vendor-order-customer-part {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}

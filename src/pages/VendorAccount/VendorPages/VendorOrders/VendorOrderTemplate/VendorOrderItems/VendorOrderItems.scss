@@ -1,0 +1,22 @@
+@use "../../../../../../assets/v.scss";
+
+.vendor-order-items {
+  display: flex;
+  gap: 15px;
+  border-bottom: v.$grey 1px solid;
+}
+
+.vendor-order-more-btn {
+  border: none;
+  background-color: v.$orangered;
+  padding: 10px;
+  font-family: v.$title_font2;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+
+  &:hover {
+    background-color: v.$att_green;
+  }
+}

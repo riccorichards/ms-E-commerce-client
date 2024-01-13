@@ -1,0 +1,13 @@
+@use "../../../assets/v.scss";
+
+.order-template-payment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    color: v.$darken;
+    font-size: 24px;
+    font-weight: 700;
+  }
+}

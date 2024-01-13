@@ -1,0 +1,48 @@
+.order-template-locational-info {
+  display: flex;
+  align-items: first baseline;
+  justify-content: space-between;
+  border-bottom: 2px solid hsl(16, 100%, 50%);
+  padding-bottom: 15px;
+}
+.order-template-locational-info .delivery-address-wrapper {
+  flex: 1;
+}
+.order-template-locational-info .order-template-vendor-info-wrapper {
+  flex: 1.5;
+}
+
+.delivery-address-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.delivery-address-wrapper .delivery-address {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.order-template-vendor-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.order-template-vendor-info-wrapper .order-template-vendor-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.order-template-vendor-info-wrapper .order-template-vendor-info .order-template-vendor-additional-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.order-template-vendor-switcher {
+  width: 10px;
+  height: 10px;
+  background-color: #333333;
+  border-radius: 50%;
+  cursor: pointer;
+}

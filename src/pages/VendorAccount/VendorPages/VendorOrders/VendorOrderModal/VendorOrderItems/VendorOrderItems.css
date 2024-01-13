@@ -1,0 +1,12 @@
+.vendor-order-items-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 50vh;
+  overflow-y: auto;
+}
+.vendor-order-items-wrapper .vendor-order-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

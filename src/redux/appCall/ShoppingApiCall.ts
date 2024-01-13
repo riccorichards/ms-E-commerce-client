@@ -3,6 +3,7 @@ import {
   CreateShippingInputType,
   DeliverymanInOrderType,
   NearestDeliverymanResponseType,
+  OrderListType,
   OrderType,
   SendCartToServerType,
   VendorInOrderType,
@@ -90,7 +91,7 @@ export const getDeliverymanForOrder = createAsyncThunk<
     try {
       const { data } = await axios({
         method: "get",
-        url: `http://localhost:8005/deliveryman/${personName}`,
+        url: `http://localhost:8005/deliveryman/${personName}?isCoords=true`,
         withCredentials: true,
       });
       return data;
@@ -125,3 +126,43 @@ export const getVendorForOrder = createAsyncThunk<
     }
   }
 );
+
+export const getOrderList = createAsyncThunk<
+  OrderListType[],
+  undefined,
+  { rejectValue: string | unknown }
+>("shopping/getOrderList", async (_: undefined, { rejectWithValue }) => {
+  try {
+    const { data } = await axios({
+      method: "get",
+      url: "http://localhost:8003/orders-list",
+      withCredentials: true,
+    });
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      return rejectWithValue(error.message);
+    }
+    return rejectWithValue(error);
+  }
+});
+
+export const findOrderById = createAsyncThunk<
+  OrderType,
+  number,
+  { rejectValue: string | unknown }
+>("shopping/findOrderById", async (orderId: number, { rejectWithValue }) => {
+  try {
+    const { data } = await axios({
+      method: "get",
+      url: `http://localhost:8003/order/${orderId}`,
+      withCredentials: true,
+    });
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      return rejectWithValue(error.message);
+    }
+    return rejectWithValue(error);
+  }
+});

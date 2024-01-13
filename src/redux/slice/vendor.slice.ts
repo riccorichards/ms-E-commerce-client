@@ -8,10 +8,14 @@ import {
   addWorkingHrs,
   fetchVendor,
   getAllVendors,
+  getCustomerForVendorOrder,
+  getDeliverymanForVendorOrder,
   getSpecVendor,
   getVendorCoords,
   getVendorDashboardData,
   getVendorGallery,
+  getVendorOrderItemsById,
+  getVendorOrders,
   getVendorSpecData,
   refreshAccessToken,
   removeGalleryImg,
@@ -34,6 +38,10 @@ const initialState: VendorState = {
   imageUrl: null,
   dashboard: null,
   coords: null,
+  orderCustomerInfo: null,
+  vendorOrders: null,
+  vendorOrderItems: null,
+  orderDeliverymanInfo: null,
   ttl: null,
   status: null,
   error: null,
@@ -187,7 +195,7 @@ const VendorSlice = createSlice({
       .addCase(addVendorAddress.fulfilled, (state, action) => {
         state.status = "fulfilled";
         if (state.vendor) {
-          state.vendor.address = action.payload;
+          state.vendor.address = action.payload.street;
         }
       })
       .addCase(addVendorAddress.rejected, (state, action) => {
@@ -316,6 +324,50 @@ const VendorSlice = createSlice({
         state.coords = action.payload;
       })
       .addCase(getVendorCoords.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload || null;
+      })
+      .addCase(getVendorOrders.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(getVendorOrders.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        state.vendorOrders = action.payload;
+      })
+      .addCase(getVendorOrders.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload || null;
+      })
+      .addCase(getCustomerForVendorOrder.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(getCustomerForVendorOrder.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        state.orderCustomerInfo = action.payload;
+      })
+      .addCase(getCustomerForVendorOrder.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload || null;
+      })
+      .addCase(getDeliverymanForVendorOrder.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(getDeliverymanForVendorOrder.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        state.orderDeliverymanInfo = action.payload;
+      })
+      .addCase(getDeliverymanForVendorOrder.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload || null;
+      })
+      .addCase(getVendorOrderItemsById.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(getVendorOrderItemsById.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        state.vendorOrderItems = action.payload;
+      })
+      .addCase(getVendorOrderItemsById.rejected, (state, action) => {
         state.status = "rejected";
         state.error = action.payload || null;
       })

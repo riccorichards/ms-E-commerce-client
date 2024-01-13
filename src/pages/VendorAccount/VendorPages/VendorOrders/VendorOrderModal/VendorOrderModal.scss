@@ -1,0 +1,50 @@
+@use "../../../../../assets/v.scss";
+
+.vendor-order-modal-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+
+  .vendor-order-modal-content {
+    width: 100%;
+    height: 80%;
+    background-color: v.$white;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba($color: #00000021, $alpha: 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    position: relative;
+
+    &:hover {
+      button {
+        opacity: 1;
+      }
+    }
+
+    button {
+      position: absolute;
+      background-color: v.$orangered;
+      font-family: v.$title_font2;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      color: v.$white;
+      cursor: pointer;
+      top: 98%;
+      opacity: 0;
+      transition: all 0.25s ease-in-out;
+
+      &:hover {
+        background-color: red;
+      }
+    }
+  }
+}

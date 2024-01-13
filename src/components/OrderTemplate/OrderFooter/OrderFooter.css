@@ -1,0 +1,10 @@
+.order-template-payment {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.order-template-payment span {
+  color: #333333;
+  font-size: 24px;
+  font-weight: 700;
+}

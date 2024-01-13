@@ -148,7 +148,7 @@ export interface VendorType {
   foods: ProductType[];
   rating: number;
   workingHrs: WorkingHrsType;
-  address: VendorAddressType;
+  address: string;
   feeds: FeedbackType[];
   teamMember: VendorTeamMembersType[];
   gallery: GalleryType[];
@@ -180,6 +180,29 @@ export interface VendorCoordsType {
   longitude: number;
 }
 
+export interface VendorOrdersWrapper {
+  order_status: string;
+  total_amount: number;
+  deliverymanName: string;
+  customerId: string;
+  orderId: number;
+  createdAt: string;
+}
+
+export interface OrderCustomerInfo {
+  image: string;
+  username: string;
+  email: string;
+  address: string;
+}
+
+export interface OrderDeliverymanInfo {
+  image: string;
+  name: string;
+  email: string;
+  currentAddress: string;
+}
+
 export interface VendorState {
   vendor: VendorType | null;
   vendorList: VendorListType[] | null;
@@ -187,6 +210,10 @@ export interface VendorState {
   vendorFeeds: FeedbackType[] | null;
   ttl: number | null;
   coords: VendorCoordsType | null;
+  orderCustomerInfo: OrderCustomerInfo | null;
+  vendorOrders: VendorOrdersWrapper[] | null;
+  vendorOrderItems: CartItemsType[] | null;
+  orderDeliverymanInfo: OrderDeliverymanInfo | null;
   dashboard: TargetDashboardData[] | null;
   imageUrl: string | null;
   status: string | null;
@@ -406,12 +433,19 @@ export interface SendCartToServerType {
   cartItems: CartItemsType[];
 }
 
+export interface OrderListType {
+  orderId: number;
+  total_amount: number;
+  createdAt: string;
+}
+
 export interface ShoppingStateType {
   nearestDeliveryman: NearestDeliverymanType[] | null;
   orderId: number | null;
   order: OrderType | null;
   deliverymanForOrder: DeliverymanInOrderType | null;
   vendorForOrder: VendorInOrderType[];
+  ordersList: OrderListType[];
   status: string | null;
   error: string | null;
 }

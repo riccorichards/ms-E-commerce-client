@@ -1,16 +1,20 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import {
+  CartItemsType,
   DashboardDataInput,
   FeedbackType,
   GalleryType,
   GetvendorData,
+  OrderCustomerInfo,
+  OrderDeliverymanInfo,
   RemovePhotoFromGallery,
   SocUrlType,
   TargetDashboardData,
   VendorAddressType,
   VendorCoordsType,
   VendorListType,
+  VendorOrdersWrapper,
   VendorTeamMembersType,
   VendorType,
   WorkingHrsType,
@@ -466,6 +470,95 @@ export const getVendorCoords = createAsyncThunk<
     return rejectWithValue(error);
   }
 });
+
+export const getVendorOrders = createAsyncThunk<
+  VendorOrdersWrapper[],
+  undefined,
+  { rejectValue: string | unknown }
+>("vendor/getVendorOrders", async (_: undefined, { rejectWithValue }) => {
+  try {
+    const { data } = await axios({
+      method: "get",
+      url: "http://localhost:8004/vendor-orders",
+      withCredentials: true,
+    });
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      return rejectWithValue(error.message);
+    }
+    return rejectWithValue(error);
+  }
+});
+
+export const getVendorOrderItemsById = createAsyncThunk<
+  CartItemsType[],
+  number,
+  { rejectValue: string | unknown }
+>(
+  "vendor/getVendorOrderItemsById",
+  async (orderId: number, { rejectWithValue }) => {
+    try {
+      const { data } = await axios({
+        method: "get",
+        url: `http://localhost:8004/vendor-order-items/${orderId}`,
+        withCredentials: true,
+      });
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const getCustomerForVendorOrder = createAsyncThunk<
+  OrderCustomerInfo,
+  string,
+  { rejectValue: string | unknown }
+>(
+  "vendor/getCustomerForVendorOrder",
+  async (customerId: string, { rejectWithValue }) => {
+    try {
+      const { data } = await axios({
+        method: "get",
+        url: `http://localhost:8001/order-customer-info/${customerId}`,
+        withCredentials: true,
+      });
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const getDeliverymanForVendorOrder = createAsyncThunk<
+  OrderDeliverymanInfo,
+  string,
+  { rejectValue: string | unknown }
+>(
+  "vendor/getDeliverymanForVendorOrder",
+  async (deliverymanName: string, { rejectWithValue }) => {
+    try {
+      const { data } = await axios({
+        method: "get",
+        url: `http://localhost:8005/deliveryman/${deliverymanName}?isCoords=false`,
+        withCredentials: true,
+      });
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue(error);
+    }
+  }
+);
 
 export const vendorLogOut = createAsyncThunk<
   null,

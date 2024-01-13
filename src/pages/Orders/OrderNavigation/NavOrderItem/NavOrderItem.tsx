@@ -1,21 +1,27 @@
 import { FC } from "react";
 import "./NavOrderItem.scss";
 import { IoCaretForwardOutline } from "react-icons/io5";
+import { OrderListType } from "../../../../redux/type.slice";
 
-type OrderItemType = {
-  orderN: number;
-  date: string;
-  total: string;
+const dateFormatter = (str: string) => {
+  return str.split("T");
 };
-const NavOrderItem: FC<{ orderItem: OrderItemType }> = ({ orderItem }) => {
+
+const NavOrderItem: FC<{
+  orderItem: OrderListType;
+  handleOrderId: (val: number) => void;
+}> = ({ orderItem, handleOrderId }) => {
   return (
-    <div className="nav-order-item">
+    <div
+      className="nav-order-item"
+      onClick={() => handleOrderId(orderItem.orderId)}
+    >
       <div className="order-item-header">
-        <h3>{`Order #${orderItem.orderN}`}</h3>
-        <span>{orderItem.date}</span>
+        <h3>{`Order #${orderItem.orderId}`}</h3>
+        <span>{dateFormatter(orderItem.createdAt)[0]}</span>
       </div>
       <div className="order-item-total">
-        {orderItem.total}
+        ${orderItem.total_amount.toFixed(2)}
         <button className="order-item-btn">
           <IoCaretForwardOutline />
         </button>

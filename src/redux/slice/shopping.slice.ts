@@ -3,7 +3,9 @@ import { ShoppingStateType } from "../type.slice";
 import {
   cancelOrderingProcess,
   createShipping,
+  findOrderById,
   getDeliverymanForOrder,
+  getOrderList,
   getVendorForOrder,
   sendCartToServer,
 } from "../appCall/ShoppingApiCall";
@@ -15,6 +17,7 @@ const initialState: ShoppingStateType = {
   order: null,
   deliverymanForOrder: null,
   vendorForOrder: [],
+  ordersList: [],
   status: null,
   error: null,
 };
@@ -72,6 +75,31 @@ const ShoppingSlice = createSlice({
         state.status = "rejected";
         state.error = action.error.message || null;
       })
+      .addCase(getOrderList.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(getOrderList.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        state.ordersList = action.payload;
+      })
+      .addCase(getOrderList.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.error.message || null;
+      })
+      .addCase(findOrderById.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(findOrderById.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        if (state.vendorForOrder.length > 0) {
+          state.vendorForOrder = [];
+        }
+        state.order = action.payload;
+      })
+      .addCase(findOrderById.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.error.message || null;
+      })
       .addCase(foodToCart.pending, (state) => {
         state.status = "pending";
       })
@@ -80,6 +108,7 @@ const ShoppingSlice = createSlice({
         if (action.payload) {
           state.deliverymanForOrder = null;
           state.vendorForOrder = [];
+          state.order = null;
         }
       })
       .addCase(foodToCart.rejected, (state, action) => {

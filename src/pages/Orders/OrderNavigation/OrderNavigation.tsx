@@ -1,25 +1,29 @@
+import { FC } from "react";
 import NavOrderItem from "./NavOrderItem/NavOrderItem";
 import "./OrderNavigation.scss";
+import { useAppSelector } from "../../../redux/hook";
 
-const fakeData = [
-  { orderN: 1, date: "02-23", total: "$ 13.59" },
-  { orderN: 2, date: "02-23", total: "$ 13.59" },
-  { orderN: 3, date: "02-23", total: "$ 13.59" },
-  { orderN: 4, date: "02-23", total: "$ 13.59" },
-  { orderN: 5, date: "02-23", total: "$ 13.59" },
-  { orderN: 6, date: "02-23", total: "$ 13.59" },
-  { orderN: 7, date: "02-23", total: "$ 13.59" },
-  { orderN: 8, date: "02-23", total: "$ 13.59" },
-  { orderN: 9, date: "02-23", total: "$ 13.59" },
-];
-const OrderNavigation = () => {
+const OrderNavigation: FC<{
+  setOrderId: (val: number) => void;
+}> = ({ setOrderId }) => {
+  const { ordersList } = useAppSelector((state) => state.shopping);
+
+  const handleTakingOrderId = (id: number) => {
+    setOrderId(id);
+  };
+
   return (
     <div className="order-navigation-wrapper">
       <h1>Order History</h1>
       <div className="order-navigation-items">
-        {fakeData.map((orderItem) => (
-          <NavOrderItem orderItem={orderItem} />
-        ))}
+        {ordersList &&
+          ordersList.map((orderItem) => (
+            <NavOrderItem
+              orderItem={orderItem}
+              handleOrderId={handleTakingOrderId}
+              key={orderItem.orderId}
+            />
+          ))}
       </div>
     </div>
   );

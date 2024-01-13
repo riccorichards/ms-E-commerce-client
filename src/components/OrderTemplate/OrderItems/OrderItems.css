@@ -1,0 +1,28 @@
+.order-template-menu-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  height: 50vh;
+  overflow-y: auto;
+  padding-right: 15px;
+  border-bottom: 2px solid hsl(16, 100%, 50%);
+  padding-bottom: 15px;
+}
+
+.order-template-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.order-template-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-item-left-side {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}

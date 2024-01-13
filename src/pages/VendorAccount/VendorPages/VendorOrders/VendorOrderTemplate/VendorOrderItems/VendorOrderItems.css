@@ -1,0 +1,19 @@
+.vendor-order-items {
+  display: flex;
+  gap: 15px;
+  border-bottom: #c0c0c0 1px solid;
+}
+
+.vendor-order-more-btn {
+  border: none;
+  background-color: hsl(16, 100%, 50%);
+  padding: 10px;
+  font-family: "Josefin Sans", sans-serif;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+.vendor-order-more-btn:hover {
+  background-color: #008080;
+}

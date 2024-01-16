@@ -1,283 +1,43 @@
-import ImageWraper from "../../../../../../components/ImageWraper";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../../../../../redux/hook";
 import "./LastOrders.scss";
+import { getVendorOrders } from "../../../../../../redux/appCall/VendorAppCall";
+import ImageWraper from "../../../../../../components/ImageWraper";
+import { OrderCustomerInfo } from "../../../../../../redux/type.slice";
 
-const food =
-  "https://i.pinimg.com/564x/bb/58/04/bb580461b29d28e2dea9ef033c6f4c99.jpg";
-
-const user =
-  "https://i.pinimg.com/564x/ea/c7/23/eac7233c981021d0fb85a287221f7925.jpg";
-const fake = [
-  {
-    image: user,
-    name: "anastasia",
-    since: "2023-02-24",
-    items: [
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-    ],
-    totalAmount: "153.43",
-    date: "2024-02-01 23:45",
-  },
-  {
-    image: user,
-    name: "anastasia",
-    since: "2023-02-24",
-    items: [
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-    ],
-    totalAmount: "153.43",
-    date: "2024-02-01 23:45",
-  },
-  {
-    image: user,
-    name: "anastasia",
-    since: "2023-02-24",
-    items: [
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-    ],
-    totalAmount: "153.43",
-    date: "2024-02-01 23:45",
-  },
-  {
-    image: user,
-    name: "anastasia",
-    since: "2023-02-24",
-    items: [
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-    ],
-    totalAmount: "153.43",
-    date: "2024-02-01 23:45",
-  },
-  {
-    image: user,
-    name: "anastasia",
-    since: "2023-02-24",
-    items: [
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-    ],
-    totalAmount: "153.43",
-    date: "2024-02-01 23:45",
-  },
-  {
-    image: user,
-    name: "anastasia",
-    since: "2023-02-24",
-    items: [
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-    ],
-    totalAmount: "153.43",
-    date: "2024-02-01 23:45",
-  },
-  {
-    image: user,
-    name: "anastasia",
-    since: "2023-02-24",
-    items: [
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-    ],
-    totalAmount: "153.43",
-    date: "2024-02-01 23:45",
-  },
-  {
-    image: user,
-    name: "anastasia",
-    since: "2023-02-24",
-    items: [
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-    ],
-    totalAmount: "153.43",
-    date: "2024-02-01 23:45",
-  },
-  {
-    image: user,
-    name: "anastasia",
-    since: "2023-02-24",
-    items: [
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-    ],
-    totalAmount: "153.43",
-    date: "2024-02-01 23:45",
-  },
-  {
-    image: user,
-    name: "anastasia",
-    since: "2023-02-24",
-    items: [
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-    ],
-    totalAmount: "153.43",
-    date: "2024-02-01 23:45",
-  },
-  {
-    image: user,
-    name: "anastasia",
-    since: "2023-02-24",
-    items: [
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-    ],
-    totalAmount: "153.43",
-    date: "2024-02-01 23:45",
-  },
-  {
-    image: user,
-    name: "anastasia",
-    since: "2023-02-24",
-    items: [
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-    ],
-    totalAmount: "153.43",
-    date: "2024-02-01 23:45",
-  },
-  {
-    image: user,
-    name: "anastasia",
-    since: "2023-02-24",
-    items: [
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-    ],
-    totalAmount: "153.43",
-    date: "2024-02-01 23:45",
-  },
-  {
-    image: user,
-    name: "anastasia",
-    since: "2023-02-24",
-    items: [
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-    ],
-    totalAmount: "153.43",
-    date: "2024-02-01 23:45",
-  },
-  {
-    image: user,
-    name: "anastasia",
-    since: "2023-02-24",
-    items: [
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-    ],
-    totalAmount: "153.43",
-    date: "2024-02-01 23:45",
-  },
-  {
-    image: user,
-    name: "anastasia",
-    since: "2023-02-24",
-    items: [
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-    ],
-    totalAmount: "153.43",
-    date: "2024-02-01 23:45",
-  },
-  {
-    image: user,
-    name: "anastasia",
-    since: "2023-02-24",
-    items: [
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-    ],
-    totalAmount: "153.43",
-    date: "2024-02-01 23:45",
-  },
-  {
-    image: user,
-    name: "anastasia",
-    since: "2023-02-24",
-    items: [
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-      { foodImage: food, amount: 2, price: "18.98", title: "Food name" },
-    ],
-    totalAmount: "153.43",
-    date: "2024-02-01 23:45",
-  },
-];
-
-function formatTime(str: string) {
-  return {
-    date: str.split(" ")[0],
-    time: str.split(" ")[1],
-  };
-}
 const LastOrders = () => {
+  const dispatch = useAppDispatch();
+  const { vendorOrders } = useAppSelector((s) => s.vendor);
+
+  useEffect(() => {
+    dispatch(getVendorOrders(true));
+  }, [dispatch]);
+
+  if (!vendorOrders) return null;
+
   return (
     <div className="last-orders-wrapper">
-      {fake &&
-        fake.map((order) => (
-          <div className="last-order">
+      {vendorOrders.length > 0 &&
+        vendorOrders.map((order) => (
+          <div className="last-order" key={order.orderId}>
             <div>
-              <ImageWraper image={order.image} size="40px" />
+              <ImageWraper
+                image={(order.customer as OrderCustomerInfo).image}
+                size="40px"
+              />
             </div>
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
                 gap: "5px",
+                width:'120px'
               }}
             >
-              <span>{order.name}</span>
-              <span style={{ fontSize: "12px" }}>{order.since}</span>
-            </div>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "5px",
-                alignItems: "center",
-              }}
-            >
-              <span>Items</span>
-              <span>x{order.items.length}</span>
+              <span>{(order.customer as OrderCustomerInfo).username}</span>
+              <span style={{ fontSize: "12px" }}>
+                {(order.customer as OrderCustomerInfo).email}
+              </span>
             </div>
             <div
               style={{
@@ -288,7 +48,7 @@ const LastOrders = () => {
               }}
             >
               <span>Total</span>
-              <span>${order.totalAmount}</span>
+              <span>${order.total_amount.toFixed(2)}</span>
             </div>
             <div
               style={{
@@ -298,8 +58,8 @@ const LastOrders = () => {
                 gap: "5px",
               }}
             >
-              <span>{formatTime(order.date).date}</span>
-              <span>{formatTime(order.date).time}</span>
+              <span>{order.createdAt.split("T")[0]}</span>
+              <span>{order.createdAt.split("T")[1].split(".")[0]}</span>
             </div>
           </div>
         ))}

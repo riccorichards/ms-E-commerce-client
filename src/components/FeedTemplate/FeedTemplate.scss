@@ -12,7 +12,7 @@
   .feed-template-header {
     display: flex;
     align-items: center;
-    gap: 15px;
+    justify-content: space-between;
     position: relative;
 
     .customer-details-in-feed {

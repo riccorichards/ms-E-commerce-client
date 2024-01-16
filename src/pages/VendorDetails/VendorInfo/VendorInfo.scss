@@ -6,11 +6,50 @@
   flex-direction: column;
   gap: 25px;
   position: relative;
+
+  .create-new-feedback-for-vendor {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    p {
+      font-size: 12px;
+      color: red;
+    }
+    input {
+      padding: 5px;
+      font-size: 16px;
+      font-family: v.$title_font2;
+      border: 1px solid v.$att_green;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    button {
+      width: fit-content;
+      border: none;
+      padding: 5px;
+      font-family: v.$title_font2;
+      cursor: pointer;
+      background-color: v.$att_green;
+      color: #fff;
+
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
 }
 
 .vendor-info-header {
   display: flex;
   gap: 15px;
+  align-items: center;
 }
 
 .vendor-additional-info {

@@ -11,7 +11,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 const ReservationModal: FC<{
   setIsReservetion: (val: boolean) => void;
 }> = ({ setIsReservetion }) => {
-  const { vendor } = useAppSelector((state) => state.vendor);
+  const { vendor, specVendor } = useAppSelector((state) => state.vendor);
+
   const {
     register,
     handleSubmit,
@@ -19,20 +20,24 @@ const ReservationModal: FC<{
   } = useForm<ReservationValType>({
     resolver: zodResolver(ReservationVal),
   });
-  if (!vendor) return null;
+
+  const target = vendor || specVendor;
+
+  if (!target) return null;
 
   const onSubmit = (values: ReservationValType) => {
     console.log(values);
   };
+
   return (
     <div className="reservation-modal-wrapper">
       <div className="reservation-modal-header">
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-          <ImageWraper image={vendor.image} size="55px" />
+          <ImageWraper image={target.image} size="55px" />
           <div>
-            <h3>{vendor.name}</h3>
+            <h3>{target.name}</h3>
             <RatingCalculation
-              rating={{ icon: FaRegStar, rating: vendor.rating }}
+              rating={{ icon: FaRegStar, rating: target.rating }}
             />
           </div>
         </div>

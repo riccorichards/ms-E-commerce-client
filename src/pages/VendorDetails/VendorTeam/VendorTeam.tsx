@@ -9,17 +9,30 @@ const VendorTeam = () => {
 
   return (
     <div className="vendor-team-wrapper">
-      <h1 style={{ borderBottom: "2px solid orangered", width: "fit-content" }}>
+      <h2 style={{ borderBottom: "2px solid orangered", width: "fit-content" }}>
         Our master shefs
-      </h1>
+      </h2>
       <div className="vendor-teams">
-        {target &&
+        {target && target?.length > 0 ? (
           target.map((member) => (
             <ExistingMember
               member={member}
               key={typeof member === "object" ? member._id : member}
             />
-          ))}
+          ))
+        ) : (
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "100%",
+              height: "100%",
+            }}
+          >
+            <h3>Not added Personal Yet!!!</h3>
+          </div>
+        )}
       </div>
     </div>
   );

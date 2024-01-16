@@ -7,7 +7,6 @@ const GoogleMapApis: FC<{ coords: VendorCoordsType | null }> = ({ coords }) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: googleMapsApiKey,
   });
-
   if (!coords) return null;
 
   if (loadError)

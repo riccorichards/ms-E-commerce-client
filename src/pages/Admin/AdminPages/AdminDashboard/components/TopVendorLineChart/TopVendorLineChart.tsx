@@ -1,63 +1,46 @@
 import EchartLine from "echarts-for-react";
 import "./TopVendorLineChart.scss";
 import { IoRestaurant } from "react-icons/io5";
-
-const example = [
-  {
-    name: "vendor 1",
-    type: "line",
-    stack: "Total",
-    areaStyle: {},
-    emphasis: {
-      focus: "series",
-    },
-    data: [120, 132, 101, 134, 90, 230, 210],
-  },
-  {
-    name: "vendor 2",
-    type: "line",
-    stack: "Total",
-    areaStyle: {},
-    emphasis: {
-      focus: "series",
-    },
-    data: [220, 182, 191, 234, 290, 330, 310],
-  },
-  {
-    name: "vendor 3",
-    type: "line",
-    stack: "Total",
-    areaStyle: {},
-    emphasis: {
-      focus: "series",
-    },
-    data: [820, 932, 901, 934, 1290, 1330, 1320],
-  },
-  {
-    name: "vendor 4",
-    type: "line",
-    stack: "Total",
-    areaStyle: {},
-    emphasis: {
-      focus: "series",
-    },
-    data: [320, 320, 301, 304, 390, 300, 300],
-  },
-];
-
-interface ObjType {
-  name: string;
-  type: string;
-  stack: string;
-  data: number[];
-}
+import { useAppDispatch, useAppSelector } from "../../../../../../redux/hook";
+import { useEffect } from "react";
+import { getTopVendors } from "../../../../../../redux/appCall/AdminAppCall";
 
 const LineChartOverview = () => {
-  const updatedData = example.map((obj: ObjType) => {
-    let sum = 0;
+  const dispatch = useAppDispatch();
+  const { topVendors } = useAppSelector((s) => s.admin);
+  useEffect(() => {
+    dispatch(getTopVendors());
+  }, [dispatch]);
+
+  if (!topVendors) return <h1>Not Data Available</h1>;
+
+  const weekDays = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+
+  const uniqueVendors = new Set();
+  weekDays.forEach((day) => {
+    topVendors[day].forEach((vendorInfo) => {
+      uniqueVendors.add(vendorInfo.vendor);
+    });
+  });
+
+  const series = Array.from(uniqueVendors).map((vendor) => {
+    const data = weekDays.map((day) => {
+      const vendorDayData = topVendors[day].find((v) => v.vendor === vendor);
+      return vendorDayData ? vendorDayData.totalAmount : 0;
+    });
+
     return {
-      ...obj,
-      avg: obj.data.map((num) => (sum += num) / obj.data.length),
+      name: vendor,
+      type: "line",
+      data: data,
     };
   });
 
@@ -66,7 +49,7 @@ const LineChartOverview = () => {
       trigger: "axis",
     },
     legend: {
-      data: ["vendor 1", "vendor 2", "vendor 3", "vendor 4"],
+      data: Array.from(uniqueVendors),
       bottom: "0%",
     },
     grid: {
@@ -84,12 +67,12 @@ const LineChartOverview = () => {
     xAxis: {
       type: "category",
       boundaryGap: false,
-      data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+      data: weekDays,
     },
     yAxis: {
       type: "value",
     },
-    series: updatedData.sort((a, b) => a.avg[0] - b.avg[0]),
+    series: series,
   };
 
   return (

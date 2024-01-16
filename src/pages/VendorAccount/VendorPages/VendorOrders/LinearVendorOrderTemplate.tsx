@@ -48,7 +48,7 @@ const LinearVendorOrderTemplate: FC<{
         onMouseEntry(
           order.orderId,
           order.createdAt,
-          order.customerId,
+          order.customer as string,
           order.deliverymanName
         )
       }
@@ -67,7 +67,7 @@ const LinearVendorOrderTemplate: FC<{
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
         <h5>Customer ID</h5>
-        <span>{order.customerId}</span>
+        <span>{order.customer as string}</span>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
         <h5>Deliveryman name</h5>

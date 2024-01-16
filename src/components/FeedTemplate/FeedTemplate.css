@@ -10,7 +10,7 @@
 .feed-template-wrapper .feed-template-header {
   display: flex;
   align-items: center;
-  gap: 15px;
+  justify-content: space-between;
   position: relative;
 }
 .feed-template-wrapper .feed-template-header .customer-details-in-feed {

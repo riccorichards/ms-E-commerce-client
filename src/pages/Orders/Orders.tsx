@@ -18,11 +18,11 @@ const Orders = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (ordersList.length > 0 && orderId == null) {
+    if (ordersList && orderId == null) {
       const firstOrderId = ordersList[0].orderId;
       setOrderId(firstOrderId);
     }
-  }, [ordersList]); //eslint-disable-line
+  }, [ordersList, orderId]);
 
   useEffect(() => {
     if (orderId != null) {
@@ -32,7 +32,7 @@ const Orders = () => {
 
   return (
     <div className="order-wrapper">
-      <OrderNavigation setOrderId={setOrderId} />
+      <OrderNavigation setOrderId={setOrderId} orderId={orderId} />
       <OrderTemplate />
     </div>
   );

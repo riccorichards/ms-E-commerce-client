@@ -1,12 +1,21 @@
+import { useEffect } from "react";
 import ImageWraper from "../../../../components/ImageWraper";
 import Pagination from "../../../../components/pagination/Pagination";
+import { useAppDispatch, useAppSelector } from "../../../../redux/hook";
 import "./Employees.scss";
 import { FaRunning } from "react-icons/fa";
-
-const image =
-  "https://i.pinimg.com/736x/80/2a/eb/802aeb74aff33833c32f850b096defe2.jpg";
+import { getEmployees } from "../../../../redux/appCall/AdminAppCall";
 
 const Employees = () => {
+  const dispatch = useAppDispatch();
+  const { employees } = useAppSelector((s) => s.admin);
+
+  useEffect(() => {
+    dispatch(getEmployees());
+  }, [dispatch]);
+
+  if (!employees) return null;
+
   return (
     <div className="employees-wrapper">
       <div className="employee-header">
@@ -28,130 +37,34 @@ const Employees = () => {
               <th className="employees-th">ID</th>
               <th className="employees-th">Employee</th>
               <th className="employees-th">Address</th>
-              <th className="employees-th">Phone</th>
               <th className="employees-th">Email</th>
               <th className="employees-th">Status</th>
             </tr>
           </thead>
-          <tbody>
-            <tr className="employees-tr">
-              <td className="employees-td">#00023</td>
-              <td className="employees-td">
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
-                >
-                  <ImageWraper image={image} size="35px" />
-                  <h3>Anastasia</h3>
-                </div>
-              </td>
-              <td className="employees-td">st. Holy Park №13</td>
-              <td className="employees-td">+95 554 546</td>
-              <td className="employees-td">ricco@gmail.com</td>
-              <td className="employees-td">work</td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr className="employees-tr">
-              <td className="employees-td">#00023</td>
-              <td className="employees-td">
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
-                >
-                  <ImageWraper image={image} size="35px" />
-                  <h3>Anastasia</h3>
-                </div>
-              </td>
-              <td className="employees-td">st. Holy Park №13</td>
-              <td className="employees-td">+95 554 546</td>
-              <td className="employees-td">ricco@gmail.com</td>
-              <td className="employees-td">work</td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr className="employees-tr">
-              <td className="employees-td">#00023</td>
-              <td className="employees-td">
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
-                >
-                  <ImageWraper image={image} size="35px" />
-                  <h3>Anastasia</h3>
-                </div>
-              </td>
-              <td className="employees-td">st. Holy Park №13</td>
-              <td className="employees-td">+95 554 546</td>
-              <td className="employees-td">ricco@gmail.com</td>
-              <td className="employees-td">work</td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr className="employees-tr">
-              <td className="employees-td">#00023</td>
-              <td className="employees-td">
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
-                >
-                  <ImageWraper image={image} size="35px" />
-                  <h3>Anastasia</h3>
-                </div>
-              </td>
-              <td className="employees-td">st. Holy Park №13</td>
-              <td className="employees-td">+95 554 546</td>
-              <td className="employees-td">ricco@gmail.com</td>
-              <td className="employees-td">work</td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr className="employees-tr">
-              <td className="employees-td">#00023</td>
-              <td className="employees-td">
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
-                >
-                  <ImageWraper image={image} size="35px" />
-                  <h3>Anastasia</h3>
-                </div>
-              </td>
-              <td className="employees-td">st. Holy Park №13</td>
-              <td className="employees-td">+95 554 546</td>
-              <td className="employees-td">ricco@gmail.com</td>
-              <td className="employees-td">work</td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr className="employees-tr">
-              <td className="employees-td">#00023</td>
-              <td className="employees-td">
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
-                >
-                  <ImageWraper image={image} size="35px" />
-                  <h3>Anastasia</h3>
-                </div>
-              </td>
-              <td className="employees-td">st. Holy Park №13</td>
-              <td className="employees-td">+95 554 546</td>
-              <td className="employees-td">ricco@gmail.com</td>
-              <td className="employees-td">work</td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr className="employees-tr">
-              <td className="employees-td">#00023</td>
-              <td className="employees-td">
-                <div
-                  style={{ display: "flex", alignItems: "center", gap: "10px" }}
-                >
-                  <ImageWraper image={image} size="35px" />
-                  <h3>Anastasia</h3>
-                </div>
-              </td>
-              <td className="employees-td">st. Holy Park №13</td>
-              <td className="employees-td">+95 554 546</td>
-              <td className="employees-td">ricco@gmail.com</td>
-              <td className="employees-td">work</td>
-            </tr>
-          </tbody>
+          {employees.map((employee) => (
+            <tbody key={employee.id}>
+              <tr className="employees-tr">
+                <td className="employees-td">{`#000${employee.id}`}</td>
+                <td className="employees-td">
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "10px",
+                    }}
+                  >
+                    <div>
+                      <ImageWraper image={employee.image} size="35px" />
+                    </div>
+                    <h4>{employee.name}</h4>
+                  </div>
+                </td>
+                <td className="employees-td">{employee.currentAddress}</td>
+                <td className="employees-td">{employee.email}</td>
+                <td className="employees-td">work</td>
+              </tr>
+            </tbody>
+          ))}
         </table>
       </div>
       <Pagination num={3} />

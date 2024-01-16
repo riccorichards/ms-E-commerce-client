@@ -23,21 +23,32 @@
   gap: 15px;
 
   .admin-dashboard-header-body {
-    width: 100%;
-    height: 8vh;
-    padding: 5px;
-    border-radius: 7.5px;
-    box-shadow: 0 0 10px rgba($color: #00000020, $alpha: 0.1);
+    flex: 1.5;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+    height: 100%;
 
-    svg {
-      font-size: 24px;
-      border: 1px solid v.$darken;
-      border-radius: 50%;
-    }
+    .admin-dashboard-header-body-item {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 5px;
+      border-radius: 7.5px;
+      background-color: v.$white;
+      box-shadow: 0 0 10px rgba($color: #00000020, $alpha: 0.1);
 
-    span {
-      font-weight: 900;
-      font-size: 24px;
+      svg {
+        font-size: 24px;
+        border: 1px solid v.$darken;
+        border-radius: 50%;
+      }
+
+      span {
+        font-weight: 900;
+        font-size: 24px;
+      }
     }
   }
 }

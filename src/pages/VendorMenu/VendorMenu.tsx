@@ -1,5 +1,4 @@
 import "./VendorMenu.scss";
-import { FaSearch } from "react-icons/fa";
 import VendorSubCat from "./VendorSubCat/VendorSubCat";
 import VendorFood from "./VendorFood/VendorFood";
 import { useEffect } from "react";
@@ -11,6 +10,7 @@ import {
 } from "../../redux/appCall/FoodAppCall";
 import { getSpecVendor } from "../../redux/appCall/VendorAppCall";
 import { useParams } from "react-router-dom";
+import VendorMenuHeader from "./VendorMenuHeader/VendorMenuHeader";
 
 const VendorMenu = () => {
   const { id } = useParams();
@@ -22,7 +22,7 @@ const VendorMenu = () => {
     if (id) {
       dispatch(getSpecVendor(id));
     }
-  }, []); //eslint-disable-line
+  }, [id, dispatch]);
 
   useEffect(() => {
     if (specVendor) {
@@ -36,19 +36,7 @@ const VendorMenu = () => {
 
   return (
     <div className="vendor-menu-wrapper">
-      <h1 style={{ alignSelf: "flex-start" }}>
-        RiccoFood's <span style={{ color: "orangered" }}>Menu</span>
-      </h1>
-      <div className="vendor-menu-search-wrapper">
-        <input
-          type="text"
-          placeholder="Enter a food name or use '@' for sub-categories"
-          className="vendor-menu-search"
-        />
-        <button className="vendor-menu-search-btn">
-          <FaSearch />
-        </button>
-      </div>
+      <VendorMenuHeader />
       <h2 style={{ alignSelf: "flex-start" }}>Categories</h2>
       <MainCars />
       <h3 style={{ marginTop: "25px", alignSelf: "flex-start" }}>

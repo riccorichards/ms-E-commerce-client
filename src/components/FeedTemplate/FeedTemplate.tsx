@@ -31,10 +31,14 @@ const FeedTemplate: FC<{
   return (
     <div className="feed-template-wrapper">
       <div className="feed-template-header">
-        <ImageWraper image={feed?.authorImg} size="50px" nonCircle />
-        <div className="customer-details-in-feed">
-          <h5>{feed.author}</h5>
-          <p style={{ fontSize: "12px" }}>{timeFormat(since || "")}</p>
+        <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <div>
+            <ImageWraper image={feed.authorImg} size="50px" nonCircle />
+          </div>
+          <div className="customer-details-in-feed">
+            <h5>{feed.author}</h5>
+            <p style={{ fontSize: "12px" }}>{timeFormat(since || "")}</p>
+          </div>
         </div>
         {getFeedContext && (
           <button

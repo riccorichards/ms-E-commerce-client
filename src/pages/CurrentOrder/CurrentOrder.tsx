@@ -40,7 +40,7 @@ const CurrentOrder = () => {
         <DeliveryPerson />
         <VendorInfo />
       </div>
-      
+
       <div className="current-order-main-bar">
         <div className="current-order-page-switcher">
           <button

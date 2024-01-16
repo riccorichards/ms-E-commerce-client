@@ -8,7 +8,6 @@ import {
   GetFilteredSubC,
   GetVendorSubC,
   MainCType,
-  NewFeedbackInputType,
   ProductType,
   WishlistToggleType,
 } from "../type.slice";
@@ -259,50 +258,6 @@ export const foodToCart = createAsyncThunk<
     }
   }
 );
-
-export const addFeedToFood = createAsyncThunk<
-  FeedbackType,
-  NewFeedbackInputType,
-  { rejectValue: string | unknown }
->(
-  "food/addFeedToFood",
-  async (newFeedback: NewFeedbackInputType, { rejectWithValue }) => {
-    try {
-      const { data } = await axios({
-        method: "post",
-        url: "http://localhost:8006/feedback",
-        data: newFeedback,
-        withCredentials: true,
-      });
-      return data;
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        return rejectWithValue(error.message);
-      }
-      return rejectWithValue(error);
-    }
-  }
-);
-
-export const deleteFeed = createAsyncThunk<
-  FeedbackType,
-  number,
-  { rejectValue: string | unknown }
->("food/updateFeed", async (feedId: number, { rejectWithValue }) => {
-  try {
-    const { data } = await axios({
-      method: "delete",
-      url: `http://localhost:8006/feedback/${feedId}`,
-      withCredentials: true,
-    });
-    return data;
-  } catch (error) {
-    if (axios.isAxiosError(error)) {
-      return rejectWithValue(error.message);
-    }
-    return rejectWithValue(error);
-  }
-});
 
 export const getFeedsOfFood = createAsyncThunk<
   FeedbackType[],

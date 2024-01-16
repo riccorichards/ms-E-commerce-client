@@ -10,11 +10,17 @@ const dateFormatter = (str: string) => {
 const NavOrderItem: FC<{
   orderItem: OrderListType;
   handleOrderId: (val: number) => void;
-}> = ({ orderItem, handleOrderId }) => {
+  orderId: number | null;
+}> = ({ orderItem, handleOrderId, orderId }) => {
+  const t = orderId && orderId === orderItem.orderId;
   return (
     <div
       className="nav-order-item"
       onClick={() => handleOrderId(orderItem.orderId)}
+      style={{
+        backgroundColor: t ? "#008080" : "",
+        color: t ? "#fff" : "",
+      }}
     >
       <div className="order-item-header">
         <h3>{`Order #${orderItem.orderId}`}</h3>

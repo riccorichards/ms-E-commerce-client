@@ -5,7 +5,8 @@ import { useAppSelector } from "../../../redux/hook";
 
 const OrderNavigation: FC<{
   setOrderId: (val: number) => void;
-}> = ({ setOrderId }) => {
+  orderId: number | null;
+}> = ({ setOrderId, orderId }) => {
   const { ordersList } = useAppSelector((state) => state.shopping);
 
   const handleTakingOrderId = (id: number) => {
@@ -19,6 +20,7 @@ const OrderNavigation: FC<{
         {ordersList &&
           ordersList.map((orderItem) => (
             <NavOrderItem
+              orderId={orderId}
               orderItem={orderItem}
               handleOrderId={handleTakingOrderId}
               key={orderItem.orderId}

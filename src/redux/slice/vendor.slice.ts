@@ -11,6 +11,7 @@ import {
   getCustomerForVendorOrder,
   getDeliverymanForVendorOrder,
   getSpecVendor,
+  getTopCustomers,
   getVendorCoords,
   getVendorDashboardData,
   getVendorGallery,
@@ -26,9 +27,8 @@ import {
   vendorLogOut,
   vendorLogin,
 } from "../appCall/VendorAppCall";
-import { uploadImage } from "../appCall/AuthAppCall";
+import { deleteFeedback, uploadImage } from "../appCall/AuthAppCall";
 import { removeSocUrl } from "./../appCall/VendorAppCall";
-import { deleteFeed } from "../appCall/FoodAppCall";
 
 const initialState: VendorState = {
   vendor: null,
@@ -41,6 +41,7 @@ const initialState: VendorState = {
   orderCustomerInfo: null,
   vendorOrders: null,
   vendorOrderItems: null,
+  topCustomers: null,
   orderDeliverymanInfo: null,
   ttl: null,
   status: null,
@@ -290,10 +291,10 @@ const VendorSlice = createSlice({
         state.status = "rejected";
         state.error = action.payload || null;
       })
-      .addCase(deleteFeed.pending, (state) => {
+      .addCase(deleteFeedback.pending, (state) => {
         state.status = "pending";
       })
-      .addCase(deleteFeed.fulfilled, (state, action) => {
+      .addCase(deleteFeedback.fulfilled, (state, action) => {
         state.status = "fulfilled";
         if (state.vendorFeeds) {
           state.vendorFeeds = state.vendorFeeds.filter(
@@ -301,7 +302,7 @@ const VendorSlice = createSlice({
           );
         }
       })
-      .addCase(deleteFeed.rejected, (state, action) => {
+      .addCase(deleteFeedback.rejected, (state, action) => {
         state.status = "rejected";
         state.error = action.payload || null;
       })
@@ -357,6 +358,17 @@ const VendorSlice = createSlice({
         state.orderDeliverymanInfo = action.payload;
       })
       .addCase(getDeliverymanForVendorOrder.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload || null;
+      })
+      .addCase(getTopCustomers.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(getTopCustomers.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        state.topCustomers = action.payload;
+      })
+      .addCase(getTopCustomers.rejected, (state, action) => {
         state.status = "rejected";
         state.error = action.payload || null;
       })

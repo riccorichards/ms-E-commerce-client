@@ -17,7 +17,7 @@ const initialState: ShoppingStateType = {
   order: null,
   deliverymanForOrder: null,
   vendorForOrder: [],
-  ordersList: [],
+  ordersList: null,
   status: null,
   error: null,
 };
@@ -59,6 +59,7 @@ const ShoppingSlice = createSlice({
         state.status = "fulfilled";
         state.order = action.payload;
         state.nearestDeliveryman = null;
+        state.vendorForOrder = [];
       })
       .addCase(createShipping.rejected, (state, action) => {
         state.status = "rejected";
@@ -108,6 +109,7 @@ const ShoppingSlice = createSlice({
         if (action.payload) {
           state.deliverymanForOrder = null;
           state.vendorForOrder = [];
+          state.ordersList = null;
           state.order = null;
         }
       })

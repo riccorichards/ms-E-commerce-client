@@ -1,9 +1,57 @@
-.customer-info-wrapper {
+.deliveryman-info-wrapper {
   display: flex;
   align-items: center;
   flex-direction: column;
   gap: 25px;
   padding: 15px;
+  position: relative;
+}
+.deliveryman-info-wrapper .leave-feedback-to-deliveryman {
+  position: absolute;
+  top: 45%;
+  right: 0%;
+  width: 100%;
+  padding: 0 15px;
+}
+.deliveryman-info-wrapper .leave-feedback-to-deliveryman .open-leave-feedback-to-deliveryman-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #87ceeb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+.deliveryman-info-wrapper .leave-feedback-to-deliveryman .open-leave-feedback-to-deliveryman-btn:active {
+  transform: scale(0.9);
+}
+.deliveryman-info-wrapper .leave-feedback-to-deliveryman .create-new-feed-for-deliveryman {
+  background-color: #008080;
+  padding: 10px 5px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.deliveryman-info-wrapper .leave-feedback-to-deliveryman .create-new-feed-for-deliveryman p {
+  font-size: 12px;
+  color: red;
+}
+.deliveryman-info-wrapper .leave-feedback-to-deliveryman .create-new-feed-for-deliveryman .send-create-new-feed-for-deliveryman-btn {
+  font-family: "Josefin Sans", sans-serif;
+  padding: 5px;
+  background-color: #87ceeb;
+  border: none;
+  border-radius: 2.5px;
+  color: #fff8e1;
+  cursor: pointer;
+}
+.deliveryman-info-wrapper .leave-feedback-to-deliveryman .create-new-feed-for-deliveryman .send-create-new-feed-for-deliveryman-btn:active {
+  transform: scale(0.9);
 }
 
 .status-wrapper {
@@ -14,19 +62,19 @@
   border-radius: 3.5px;
 }
 
-.customer-contact-wrapper {
+.deliveryman-contact-wrapper {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-.customer-info-phone {
+.deliveryman-info-phone {
   display: flex;
   align-items: center;
   gap: 15px;
 }
 
-.customer-info-address {
+.deliveryman-info-address {
   display: flex;
   align-items: center;
   gap: 15px;

@@ -1,6 +1,6 @@
 import "./VendorTableOfFood.scss";
 import { FaSearch } from "react-icons/fa";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import MainCars from "../UserDashboard/userPageComps/dashborad/dashComps/ProductList/Components/MainCats/MainCars";
 import {
@@ -14,6 +14,7 @@ const VendorTableOfFood = () => {
   const dispatch = useAppDispatch();
   const { vendor } = useAppSelector((state) => state.vendor);
   const { vendorFoods } = useAppSelector((state) => state.food);
+  const [titleWrapper, setTitleWrapper] = useState<string>("");
   useEffect(() => {
     dispatch(fetchMainCategories());
   }, []); //eslint-disable-line
@@ -29,7 +30,7 @@ const VendorTableOfFood = () => {
   return (
     <div className="vendor-menu-wrapper">
       <h1 style={{ alignSelf: "flex-start" }}>
-        RiccoFood's <span style={{ color: "orangered" }}>Menu</span>
+        {vendor.name}'s <span style={{ color: "orangered" }}>Menu</span>
       </h1>
       <div className="vendor-menu-search-wrapper">
         <input
@@ -42,12 +43,15 @@ const VendorTableOfFood = () => {
         </button>
       </div>
       <h2 style={{ alignSelf: "flex-start" }}>Categories</h2>
-      <MainCars />
+      <MainCars setTitleWrapper={setTitleWrapper} />
       <h3 style={{ marginTop: "25px", alignSelf: "flex-start" }}>
         Sub-categories
       </h3>
       <VendorSubCatList />
-      <h2 style={{ marginTop: "25px", alignSelf: "flex-start" }}>Foods</h2>
+      <div style={{ marginTop: "25px", alignSelf: "flex-start" }}>
+        <h2>Foods</h2>
+        <p>{titleWrapper}/</p>
+      </div>
       <FoodTable foods={vendorFoods} />
     </div>
   );

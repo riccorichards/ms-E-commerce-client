@@ -88,9 +88,60 @@ export interface BasicDeliverymanType {
 
 interface AdminErrorWrapper {}
 
+export interface TotalOrdersDataType {
+  length: number;
+  total: number;
+}
+
+export interface VendorTotal {
+  vendor: string;
+  totalAmount: number;
+}
+
+export interface WeeklyTopVendors {
+  [key: string]: VendorTotal[];
+}
+
+export interface PopularItems {
+  foodName: string;
+  image: string;
+  length: number;
+}
+
+export interface PopularFoodsType {
+  popularItems: PopularItems[];
+  amount: number;
+}
+
+export interface EmployeeType {
+  id: number;
+  name: string;
+  email: string;
+  image: string;
+  currentAddress: string;
+}
+
+export interface EmployeeType {
+  id: number;
+  name: string;
+  email: string;
+  image: string;
+  currentAddress: string;
+}
+
 export interface AdminState {
   createdVendor: BasicVendorType | null;
   imageUrl: string | null;
+  ordersLength: number | null;
+  employees: EmployeeType[] | null;
+  orders: OrderType[] | null;
+  popularItems: PopularFoodsType | null;
+  topVendors: WeeklyTopVendors | null;
+  topCustomers: OrderCustomerInfo[] | null;
+  ordersTotalAmount: number | null;
+  feedbacksLength: number | null;
+  customersLength: number | null;
+  foodsLength: number | null;
   createdDeliveryman: BasicDeliverymanType | null;
   status: string | null;
   error: AdminErrorWrapper | null;
@@ -180,20 +231,25 @@ export interface VendorCoordsType {
   longitude: number;
 }
 
-export interface VendorOrdersWrapper {
-  order_status: string;
-  total_amount: number;
-  deliverymanName: string;
-  customerId: string;
-  orderId: number;
-  createdAt: string;
-}
-
 export interface OrderCustomerInfo {
   image: string;
   username: string;
   email: string;
   address: string;
+}
+
+export interface VendorOrdersWrapper {
+  order_status: string;
+  total_amount: number;
+  deliverymanName: string;
+  customer: OrderCustomerInfo | string;
+  orderId: number;
+  createdAt: string;
+}
+
+export interface VendorTopCustomers {
+  total_amount: number;
+  customer: OrderCustomerInfo;
 }
 
 export interface OrderDeliverymanInfo {
@@ -214,6 +270,7 @@ export interface VendorState {
   vendorOrders: VendorOrdersWrapper[] | null;
   vendorOrderItems: CartItemsType[] | null;
   orderDeliverymanInfo: OrderDeliverymanInfo | null;
+  topCustomers: VendorTopCustomers[] | null;
   dashboard: TargetDashboardData[] | null;
   imageUrl: string | null;
   status: string | null;
@@ -407,6 +464,7 @@ export interface OrderType {
 }
 
 export interface DeliverymanInOrderType {
+  id: number;
   name: string;
   image: string;
   createdAt: string;
@@ -445,7 +503,7 @@ export interface ShoppingStateType {
   order: OrderType | null;
   deliverymanForOrder: DeliverymanInOrderType | null;
   vendorForOrder: VendorInOrderType[];
-  ordersList: OrderListType[];
+  ordersList: OrderListType[] | null;
   status: string | null;
   error: string | null;
 }

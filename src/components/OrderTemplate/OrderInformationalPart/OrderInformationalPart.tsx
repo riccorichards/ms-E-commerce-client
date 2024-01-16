@@ -18,11 +18,13 @@ const OrderInformationalPart = () => {
       const uniqueAddresses = new Set(
         order.orderItem.map((item) => item.product_address)
       );
-      uniqueAddresses.forEach((address) => {
-        dispatch(getVendorForOrder(address));
-      });
+      if (vendorForOrder.length < 1) {
+        uniqueAddresses.forEach((address) => {
+          dispatch(getVendorForOrder(address));
+        });
+      }
     }
-  }, [order]); //eslint-disable-line
+  }, [order, dispatch]); //eslint-disable-line
 
   const vendor = vendorForOrder[vendorIndex];
   if (!customer || !order || vendorForOrder.length < 1 || !vendor) return null;
@@ -30,7 +32,6 @@ const OrderInformationalPart = () => {
   const handleVendorDisplay = (i: number) => {
     setVendorIndex(i);
   };
-
   return (
     <div className="order-template-locational-info">
       <div className="delivery-address-wrapper">

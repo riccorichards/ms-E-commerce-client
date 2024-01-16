@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { FoodState, GetVendorSubC } from "../type.slice";
 import {
-  addFeedToFood,
   createFood,
   createSubCat,
   fetchMainCategories,
@@ -11,7 +10,7 @@ import {
   getFoods,
   getVendorFoods,
 } from "../appCall/FoodAppCall";
-import { uploadImage } from "../appCall/AuthAppCall";
+import { addFeedback, uploadImage } from "../appCall/AuthAppCall";
 
 const initialState: FoodState = {
   mainC: null,
@@ -134,10 +133,10 @@ const FoodSlice = createSlice({
         state.state = "rejected";
         state.error = action.error.message || null;
       })
-      .addCase(addFeedToFood.pending, (state) => {
+      .addCase(addFeedback.pending, (state) => {
         state.state = "pending";
       })
-      .addCase(addFeedToFood.fulfilled, (state, action) => {
+      .addCase(addFeedback.fulfilled, (state, action) => {
         state.state = "fulfilled";
         if (state.foods) {
           state.foods.forEach((food) => {
@@ -153,7 +152,7 @@ const FoodSlice = createSlice({
           });
         }
       })
-      .addCase(addFeedToFood.rejected, (state, action) => {
+      .addCase(addFeedback.rejected, (state, action) => {
         state.state = "rejected";
         state.error = action.error.message || null;
       });

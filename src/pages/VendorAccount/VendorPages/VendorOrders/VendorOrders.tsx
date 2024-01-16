@@ -23,7 +23,7 @@ const VendorOrders = () => {
   const { vendorOrders } = useAppSelector((s) => s.vendor);
 
   useEffect(() => {
-    dispatch(getVendorOrders());
+    dispatch(getVendorOrders(false));
   }, [dispatch]);
 
   if (!vendorOrders) return null;

@@ -16,6 +16,7 @@ import {
   VendorListType,
   VendorOrdersWrapper,
   VendorTeamMembersType,
+  VendorTopCustomers,
   VendorType,
   WorkingHrsType,
 } from "../type.slice";
@@ -455,31 +456,57 @@ export const getVendorCoords = createAsyncThunk<
   VendorCoordsType,
   string,
   { rejectValue: string | unknown }
->("vendor/getVendorCoords", async (vendorId: string, { rejectWithValue }) => {
-  try {
-    const { data } = await axios({
-      method: "get",
-      url: `http://localhost:8007/goole-map-for-vendor/${vendorId}`,
-      withCredentials: true,
-    });
-    return data;
-  } catch (error) {
-    if (axios.isAxiosError(error)) {
-      return rejectWithValue(error.message);
+>(
+  "vendor/getVendorCoords",
+  async (vendorAddress: string, { rejectWithValue }) => {
+    try {
+      const { data } = await axios({
+        method: "get",
+        url: `http://localhost:8007/coords/${vendorAddress}`,
+        withCredentials: true,
+      });
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue(error);
     }
-    return rejectWithValue(error);
   }
-});
+);
 
 export const getVendorOrders = createAsyncThunk<
   VendorOrdersWrapper[],
+  boolean,
+  { rejectValue: string | unknown }
+>(
+  "vendor/getVendorOrders",
+  async (withCustomerInfo: boolean, { rejectWithValue }) => {
+    try {
+      const { data } = await axios({
+        method: "get",
+        url: `http://localhost:8004/vendor-orders?withCustomerInfo=${withCustomerInfo}`,
+        withCredentials: true,
+      });
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const getTopCustomers = createAsyncThunk<
+  VendorTopCustomers[],
   undefined,
   { rejectValue: string | unknown }
->("vendor/getVendorOrders", async (_: undefined, { rejectWithValue }) => {
+>("vendor/getTopCustomers", async (_: undefined, { rejectWithValue }) => {
   try {
     const { data } = await axios({
       method: "get",
-      url: "http://localhost:8004/vendor-orders",
+      url: "http://localhost:8004/vendor-top-customers",
       withCredentials: true,
     });
     return data;

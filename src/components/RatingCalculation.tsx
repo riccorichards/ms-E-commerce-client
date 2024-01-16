@@ -6,7 +6,7 @@ interface RatingType {
 }
 const RatingCalculation: FC<{ rating: RatingType }> = ({ rating }) => {
   const result = [];
-  if (rating.rating) {
+  if (typeof rating.rating === "number") {
     for (let i = 1; i <= rating.rating; i++) {
       result.push(<rating.icon key={i} />);
     }

@@ -1,9 +1,14 @@
+import { FC } from "react";
 import "./MarketableFoodTemplate.scss";
 import EchartPie from "echarts-for-react";
 
-const image =
-  "https://i.pinimg.com/564x/3b/32/03/3b320331548aa8011974683cdcf3d89b.jpg";
-const MarketableFoodTemplate = () => {
+const MarketableFoodTemplate: FC<{
+  image: string;
+  amount: number;
+  name: string;
+  length: number;
+}> = ({ name, image, amount, length }) => {
+  const percentage = ((length / amount) * 100).toFixed(2);
   const option = {
     series: [
       {
@@ -24,13 +29,17 @@ const MarketableFoodTemplate = () => {
           show: false,
         },
         data: [
-          { value: 1048, name: "65%" },
-          { value: 735, name: "35%" },
+          { value: parseFloat(percentage), name: "" },
+          {
+            value: 100 - parseFloat(percentage),
+            name: "",
+          },
         ],
         color: ["orangered", "#c0c0c087"],
       },
     ],
   };
+
   return (
     <div className="marketable-food-template-wrapper">
       <div className="marketable-food-template-content">
@@ -39,9 +48,8 @@ const MarketableFoodTemplate = () => {
           <img src={image} alt="image-fake" className="marketable-food-img" />
         </div>
       </div>
-
-      <p style={{ fontSize: "18px" }}>65%</p>
-      <h2>Food name</h2>
+      <p style={{ fontSize: "18px" }}>{percentage}%</p>
+      <h4 style={{ textAlign: "center" }}>{name}</h4>
     </div>
   );
 };

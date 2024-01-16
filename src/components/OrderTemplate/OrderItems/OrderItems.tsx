@@ -1,4 +1,3 @@
-import React from "react";
 import "./OrderItems.scss";
 import { useAppSelector } from "../../../redux/hook";
 const OrderItems = () => {

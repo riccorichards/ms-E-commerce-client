@@ -6,7 +6,6 @@
 
 .vendor-popular-food {
   display: flex;
-  justify-content: space-around;
   gap: 25px;
   flex-wrap: wrap;
 }

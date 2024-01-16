@@ -9,11 +9,8 @@ import { VscFeedback } from "react-icons/vsc";
 import { IoAdd } from "react-icons/io5";
 import ImageWraper from "./../ImageWraper";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
-import {
-  addFeedToFood,
-  foodToCart,
-  wishlistToggle,
-} from "../../redux/appCall/FoodAppCall";
+import { foodToCart, wishlistToggle } from "../../redux/appCall/FoodAppCall";
+import { addFeedback } from "../../redux/appCall/AuthAppCall";
 
 const FoodCard: FC<{
   food: ProductType;
@@ -46,7 +43,7 @@ const FoodCard: FC<{
           targetId: productId,
           review: feedback,
         };
-        dispatch(addFeedToFood(newFeedback));
+        dispatch(addFeedback(newFeedback));
         setFeedback(null);
         setIsFeed(false);
       }

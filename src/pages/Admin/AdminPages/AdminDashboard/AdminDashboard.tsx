@@ -3,8 +3,6 @@ import TopVendorLineChart from "./components/TopVendorLineChart/TopVendorLineCha
 import MarketableFoods from "./components/MarketableFoods/MarketableFoods";
 import AdminDashboardHeader from "./components/AdminDashboardHeader/AdminDashboardHeader";
 import TopCustomer from "./components/TopCustomer/TopCustomer";
-import TotalProfit from "./components/TotalProfit/TotalProfit";
-import LastOrders from "./components/LastOrders/LastOrders";
 
 const AdminDashboard = () => {
   return (
@@ -14,10 +12,6 @@ const AdminDashboard = () => {
         <TopVendorLineChart />
         <MarketableFoods />
         <TopCustomer />
-      </div>
-      <div className="admin-rightside-home-wrapper">
-        <TotalProfit />
-        <LastOrders />
       </div>
     </div>
   );

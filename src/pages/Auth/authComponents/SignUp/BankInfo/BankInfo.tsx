@@ -16,7 +16,6 @@ const BankInfo = () => {
     handleSubmit,
     reset,
   } = useForm<BankInputType>({ resolver: zodResolver(bankSchema) });
-  console.log(_id);
   const onSubmit = (values: BankInputType) => {
     try {
       if (_id) {

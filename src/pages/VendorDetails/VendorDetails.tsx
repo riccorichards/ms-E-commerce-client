@@ -35,9 +35,9 @@ const VendorDetails = () => {
 
   useEffect(() => {
     if (vendor) {
-      dispatch(getVendorCoords(vendor._id));
+      dispatch(getVendorCoords(vendor.address));
     } else if (specVendor) {
-      dispatch(getVendorCoords(specVendor._id));
+      dispatch(getVendorCoords(specVendor.address));
     }
   }, [specVendor, vendor, dispatch]);
 
@@ -45,7 +45,6 @@ const VendorDetails = () => {
     <div className="vendor-details">
       <div className="vendor-introduction">
         <VendorInfo
-          vendor={specVendor || vendor}
           isCustomer={Boolean(id)}
           id={id}
           setIsReservetion={setIsReservetion}
@@ -58,16 +57,29 @@ const VendorDetails = () => {
       <VendorPopularFood />
       <VendorTeam />
       <div className="vendor-details-feedback-wrapper">
-        <h1
+        <h2
           style={{ borderBottom: "2px solid orangered", width: "fit-content" }}
         >
           Our Customers feedbacks
-        </h1>
+        </h2>
         <div className="vendor-details-feedback">
-          {targetFeedWrapper &&
+          {targetFeedWrapper && targetFeedWrapper.length > 0 ? (
             targetFeedWrapper.map((feed) => (
               <FeedTemplate feed={feed} key={feed.feedId} />
-            ))}
+            ))
+          ) : (
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "100%",
+                height: "100%",
+              }}
+            >
+              <h3>Not added feedback Yet!!!</h3>
+            </div>
+          )}
         </div>
       </div>
       <div>

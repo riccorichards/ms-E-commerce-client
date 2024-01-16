@@ -4,8 +4,9 @@
   color: #87ceeb;
   background-color: #008080;
   border-radius: 15px;
-  height: 30vh;
+  height: 50vh;
   padding: 15px;
+  border: 1px solid;
 }
 
 .each-vendor-image-wrapper {

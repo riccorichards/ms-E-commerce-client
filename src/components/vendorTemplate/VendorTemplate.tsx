@@ -45,12 +45,12 @@ const VendorTemplate: FC<{ vendor: VendorListType }> = ({ vendor }) => {
           <MdOutlineLocalPhone /> {vendor.phone}
         </div>
         <div className="each-vendor-the-rest-items">
-          <MdOutlineLocationOn />{" "}
-          {`${vendor.address.country}, ${vendor.address.city}, ${vendor.address.street}`}
+          <MdOutlineLocationOn /> {vendor.address.street}
         </div>
         <div className="each-vendor-the-rest-items">
           <MdAccessTime />
-          {`${vendor.workingHrs.workingDays}-${vendor.workingHrs.weekend}`}
+          {vendor.workingHrs &&
+            `${vendor.workingHrs.workingDays}-${vendor.workingHrs.weekend}`}
         </div>
         <div className="each-vendor-the-rest-items">
           {<RatingCalculation rating={rating} />}

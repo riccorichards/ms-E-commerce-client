@@ -16,7 +16,7 @@ const GridView = () => {
         {targetFeeds &&
           targetFeeds.map((feed) => (
             <FeedTemplate
-              key={feed.review}
+              key={feed.feedId}
               feed={feed}
               since={
                 customer?.createdAt ? customer.createdAt : vendor?.createdAt

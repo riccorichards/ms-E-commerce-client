@@ -4,8 +4,10 @@ import CustomerFeedsHeader from "./components/CustomerFeedsHeader/CustomerFeedsH
 import GridView from "./components/GridView/GridView";
 import LinerView from "./components/LinerView/LinerView";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hook";
-import { getCustomerSpecData } from "../../../../redux/appCall/AuthAppCall";
-import { deleteFeed } from "../../../../redux/appCall/FoodAppCall";
+import {
+  deleteFeedback,
+  getCustomerSpecData,
+} from "../../../../redux/appCall/AuthAppCall";
 import FeedContext from "./FeedContext";
 import { getVendorSpecData } from "../../../../redux/appCall/VendorAppCall";
 
@@ -24,7 +26,7 @@ const CustomerFeeds = () => {
   }, [customer, vendor]); //eslint-disable-line
 
   const handleDeleteFeedProcess = (feedId: number) => {
-    dispatch(deleteFeed(feedId));
+    dispatch(deleteFeedback(feedId));
   };
 
   const contextValues = {

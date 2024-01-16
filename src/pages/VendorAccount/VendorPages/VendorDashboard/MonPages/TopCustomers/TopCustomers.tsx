@@ -1,60 +1,34 @@
-import ImageWraper from "../../../../../../components/ImageWraper";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../../../../../redux/hook";
 import "./TopCustomers.scss";
-const image =
-  "https://i.pinimg.com/564x/da/12/21/da12217f7256aca02951a3b2409fbadb.jpg";
-
-const fakeCustomers = [
-  {
-    image: image,
-    user: "anastasia",
-    email: "ricco@gmail.com",
-    phone: "+95 505 550",
-    since: "2023-02-24",
-  },
-  {
-    image: image,
-    user: "anastasia",
-    email: "ricco@gmail.com",
-    phone: "+95 505 550",
-    since: "2023-02-24",
-  },
-  {
-    image: image,
-    user: "anastasia",
-    email: "ricco@gmail.com",
-    phone: "+95 505 550",
-    since: "2023-02-24",
-  },
-  {
-    image: image,
-    user: "anastasia",
-    email: "ricco@gmail.com",
-    phone: "+95 505 550",
-    since: "2023-02-24",
-  },
-  {
-    image: image,
-    user: "anastasia",
-    email: "ricco@gmail.com",
-    phone: "+95 505 550",
-    since: "2023-02-24",
-  },
-]; //the vendor should to take customer from their orders
+import { getTopCustomers } from "../../../../../../redux/appCall/VendorAppCall";
+import ImageWraper from "../../../../../../components/ImageWraper";
 
 const TopCustomers = () => {
+  const dispatch = useAppDispatch();
+  const { topCustomers } = useAppSelector((s) => s.vendor);
+
+  useEffect(() => {
+    dispatch(getTopCustomers());
+  }, [dispatch]);
+
+  if (!topCustomers) return null;
+
   return (
     <div className="top-customer-wrapper-vendor-dashboard">
-      {fakeCustomers.map((user, i) => (
+      {topCustomers.map((item, i) => (
         <div key={i} className="top-customer-vendor-dashboard">
           <div>
-            <ImageWraper image={user.image} size="35px" />
+            <ImageWraper image={item.customer.image} size="35px" />
+          </div>
+          <div style={{ width: "170px" }}>
+            <h4>{item.customer.username}</h4>
+            <span>{item.customer.email}</span>
           </div>
           <div>
-            <h4>{user.user}</h4>
-            <span>{user.since}</span>
+            <h5>Total amount</h5>
+            <span>${item.total_amount}</span>
           </div>
-          <span>{user.email}</span>
-          <span>{user.phone}</span>
         </div>
       ))}
     </div>

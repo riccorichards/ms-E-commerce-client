@@ -5,9 +5,11 @@ import {
   useAppSelector,
 } from "../../../../../../../../redux/hook";
 import { fetchMainCategorysSubCat } from "../../../../../../../../redux/appCall/FoodAppCall";
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
-const MainCars = () => {
+const MainCars: FC<{ setTitleWrapper?: (str: string) => void }> = ({
+  setTitleWrapper,
+}) => {
   const dispatch = useAppDispatch();
   const { mainC } = useAppSelector((state) => state.food);
   const [isSelected, setIsSelected] = useState<number | null>(null);
@@ -16,12 +18,18 @@ const MainCars = () => {
     if (mainC) {
       dispatch(fetchMainCategorysSubCat(mainC[0].id));
       setIsSelected(mainC[0].id);
+      if (setTitleWrapper) {
+        setTitleWrapper(mainC[0].title);
+      }
     }
-  }, [dispatch, mainC]);
+  }, [dispatch, mainC]); //eslint-disable-line
 
-  const clickOnTheMainCat = (id: number) => {
+  const clickOnTheMainCat = (id: number, title: string) => {
     setIsSelected(id);
     dispatch(fetchMainCategorysSubCat(id));
+    if (setTitleWrapper) {
+      setTitleWrapper(title);
+    }
   };
 
   return (

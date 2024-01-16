@@ -5,6 +5,7 @@ import {
   addBankInfo,
   checkCurrentPassword,
   coordsOfCustomer,
+  deleteFeedback,
   fetchLogin,
   findCustomerById,
   getCustomerSpecData,
@@ -15,7 +16,7 @@ import {
   uploadImage,
 } from "../appCall/AuthAppCall";
 import { fetchRegister } from "./../appCall/AuthAppCall";
-import { deleteFeed, foodToCart, wishlistToggle } from "../appCall/FoodAppCall";
+import { foodToCart, wishlistToggle } from "../appCall/FoodAppCall";
 import { sendCartToServer } from "../appCall/ShoppingApiCall";
 
 const initialState: AuthState = {
@@ -219,10 +220,10 @@ const AuthSlice = createSlice({
         state.status = "rejected";
         state.error = action.payload || null;
       })
-      .addCase(deleteFeed.pending, (state) => {
+      .addCase(deleteFeedback.pending, (state) => {
         state.status = "pending";
       })
-      .addCase(deleteFeed.fulfilled, (state, action) => {
+      .addCase(deleteFeedback.fulfilled, (state, action) => {
         state.status = "fulfilled";
         if (state.myFeeds) {
           state.myFeeds = state.myFeeds.filter(
@@ -230,7 +231,7 @@ const AuthSlice = createSlice({
           );
         }
       })
-      .addCase(deleteFeed.rejected, (state, action) => {
+      .addCase(deleteFeedback.rejected, (state, action) => {
         state.status = "rejected";
         state.error = action.payload || null;
       })

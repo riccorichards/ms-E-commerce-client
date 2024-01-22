@@ -7,12 +7,12 @@ import TopCustomer from "./components/TopCustomer/TopCustomer";
 const AdminDashboard = () => {
   return (
     <div className="admin-home-wrapper">
-      <div className="admin-main-home-wrapper">
+      <main className="admin-main-home-wrapper">
         <AdminDashboardHeader />
         <TopVendorLineChart />
         <MarketableFoods />
         <TopCustomer />
-      </div>
+      </main>
     </div>
   );
 };

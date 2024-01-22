@@ -15,12 +15,12 @@ const ProductList = () => {
   }, []); //eslint-disable-line
 
   return (
-    <div className="product-list">
+    <main className="product-list">
       <DashHeader />
       <MainCars />
       <SubCats />
       <PopularFoods />
-    </div>
+    </main>
   );
 };
 

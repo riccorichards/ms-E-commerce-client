@@ -2,7 +2,7 @@ import "./DeliverymanModal.scss";
 import ImageWraper from "../../../../components/ImageWraper";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hook";
 import { FC, useContext, useEffect } from "react";
-import { DeliverymanOrdersType } from "../../../../redux/type.slice";
+import { OrderType } from "../../../../redux/type.slice";
 import DeliveryContext from "../../DeliveryContext";
 import { addressWrapper, capitalized } from "../../../../utils/utils";
 import { getVendorForOrder } from "../../../../redux/appCall/ShoppingApiCall";
@@ -10,7 +10,7 @@ import RatingCalculation from "../../../../components/RatingCalculation";
 import { FaRegStar } from "react-icons/fa";
 import { resetVendorForOrder } from "../../../../redux/slice/shopping.slice";
 const DeliverymanModal: FC<{
-  order: DeliverymanOrdersType | null | undefined;
+  order: OrderType | null | undefined;
 }> = ({ order }) => {
   const { deliverymanOrders } = useAppSelector((s) => s.deliveryman);
   const { vendorForOrder } = useAppSelector((s) => s.shopping);
@@ -39,7 +39,7 @@ const DeliverymanModal: FC<{
 
   const { customer } = order;
   return (
-    <div className="more-detailed-activities-wrapper">
+    <main className="more-detailed-activities-wrapper">
       <div className="more-detailed-activities">
         <button onClick={handleClose}>Close</button>
         <header style={{ display: "flex", gap: "15px", height: "28vh" }}>
@@ -111,7 +111,7 @@ const DeliverymanModal: FC<{
           ${order.total_amount.toFixed(2)}
         </footer>
       </div>
-    </div>
+    </main>
   );
 };
 export default DeliverymanModal;

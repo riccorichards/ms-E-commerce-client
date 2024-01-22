@@ -33,8 +33,8 @@ const OrderInformationalPart = () => {
     setVendorIndex(i);
   };
   return (
-    <div className="order-template-locational-info">
-      <div className="delivery-address-wrapper">
+    <main className="order-template-locational-info">
+      <section className="delivery-address-wrapper">
         <h5>Delivery Address</h5>
         <div className="delivery-address">
           <p
@@ -45,12 +45,9 @@ const OrderInformationalPart = () => {
           >
             <IoLocationOutline /> {customer.address.street}
           </p>
-          <span className="delivery-note">
-            <span style={{ color: "orangered" }}>Note:</span> {order.note}
-          </span>
         </div>
-      </div>
-      <div className="order-template-vendor-info-wrapper">
+      </section>
+      <section className="order-template-vendor-info-wrapper">
         <h5>Restaurant</h5>
         <div className="order-template-vendor-info">
           <img src={vendor.image} alt="vendor-img" className="vendor-img" />
@@ -76,8 +73,8 @@ const OrderInformationalPart = () => {
             />
           ))}
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 export default OrderInformationalPart;

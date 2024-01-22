@@ -36,12 +36,12 @@ const CurrentOrder = () => {
 
   return (
     <div className="current-order-wrapper">
-      <div className="current-order-side-bar">
+      <aside className="current-order-side-bar">
         <DeliveryPerson />
         <VendorInfo />
-      </div>
+      </aside>
 
-      <div className="current-order-main-bar">
+      <main className="current-order-main-bar">
         <div className="current-order-page-switcher">
           <button
             style={{ backgroundColor: isOrderItem ? "orangered" : "" }}
@@ -59,7 +59,7 @@ const CurrentOrder = () => {
           </button>
         </div>
         {isOrderItem ? <OrderInfo /> : <OrderTrack />}
-      </div>
+      </main>
     </div>
   );
 };

@@ -58,11 +58,11 @@ const Deliveryman = () => {
     <DeliveryContext.Provider value={values}>
       <div className="deliveryman-dashboard-wrapper">
         <RefreshToken port="8005" />
-        <div className="deliveryman-dashboard-left">
+        <aside className="deliveryman-dashboard-left">
           <AboutDeliveryman />
           <DeliveryOverview />
-        </div>
-        <div className="deliveryman-dashboard-right">
+        </aside>
+        <main className="deliveryman-dashboard-right">
           <div>
             <h2>
               {options === "Orders"
@@ -82,7 +82,7 @@ const Deliveryman = () => {
           {options === "Earning" && <DeliverymanEarning />}
           {options === "Orders" && <DeliverymanActivities />}
           {options === "Feedbacks" && <DeliverymanFeedbacks />}
-        </div>
+        </main>
         {isMoreDetails && <DeliverymanModal order={order} />}
       </div>
     </DeliveryContext.Provider>

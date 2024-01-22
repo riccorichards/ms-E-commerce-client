@@ -7,12 +7,12 @@ const SubCats = () => {
   const subC = useAppSelector((state) => state.food.subC) as GetFilteredSubC[];
 
   return (
-    <div className="sub-cat-wrapper">
+    <section className="sub-cat-wrapper">
       <h1>Sub Categories</h1>
       <div className="sub-cat-cards">
         {subC && subC.map((sub) => <CustomSubCat sub={sub} key={sub.id} />)}
       </div>
-    </div>
+    </section>
   );
 };
 

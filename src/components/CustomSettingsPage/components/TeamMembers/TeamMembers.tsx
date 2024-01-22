@@ -31,13 +31,13 @@ const TeamMembers = () => {
       <h2 style={{ alignSelf: "flex-start" }}>
         {vendor?.name}'s <span style={{ color: "orangered" }}>Team Place</span>
       </h2>
-      <div className="add-new-team-member-wrapper">
+      <main className="add-new-team-member-wrapper">
         {teamMember &&
           teamMember.map((member) => (
             <ExistingMember member={member} key={member._id} />
           ))}
         <MemberTemplate uploadMemberImage={handleUploadImageToMember} />
-      </div>
+      </main>
     </div>
   );
 };

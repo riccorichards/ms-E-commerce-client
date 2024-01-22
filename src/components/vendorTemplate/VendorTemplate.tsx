@@ -24,11 +24,11 @@ const VendorTemplate: FC<{ vendor: VendorListType }> = ({ vendor }) => {
     rating: vendor.rating,
   };
   return (
-    <div className="each-vendor">
-      <div className="each-vendor-image-wrapper">
+    <main className="each-vendor">
+      <section className="each-vendor-image-wrapper">
         <ImageWraper image={vendor.image} size="200px" nonCircle />
-      </div>
-      <div className="each-vendor-the-rest">
+      </section>
+      <section className="each-vendor-the-rest">
         <Link
           to={`/customer/vendors/${vendor._id}`}
           style={{
@@ -72,8 +72,8 @@ const VendorTemplate: FC<{ vendor: VendorListType }> = ({ vendor }) => {
               ))
             : "N/A"}
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

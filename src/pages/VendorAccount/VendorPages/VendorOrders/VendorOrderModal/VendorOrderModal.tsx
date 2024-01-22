@@ -7,7 +7,7 @@ const VendorOrderModal: FC<{ setIsOpen: (v: boolean) => void }> = ({
   setIsOpen,
 }) => {
   return (
-    <div className="vendor-order-modal-wrapper">
+    <section className="vendor-order-modal-wrapper">
       <div className="vendor-order-modal-content">
         <button onClick={() => setIsOpen(false)}>Close</button>
         <VendorOrderHeaderInfo />
@@ -20,7 +20,7 @@ const VendorOrderModal: FC<{ setIsOpen: (v: boolean) => void }> = ({
         />
         <VendorOrderItems />
       </div>
-    </div>
+    </section>
   );
 };
 

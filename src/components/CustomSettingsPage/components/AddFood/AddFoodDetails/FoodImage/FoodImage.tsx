@@ -22,7 +22,7 @@ const FoodImage = () => {
   };
   
   return (
-    <div className="add-food-image-wrapper">
+    <section className="add-food-image-wrapper">
       {foodImageUrl ? (
         <img style={{ width: "100%", height: "100%" }} src={foodImageUrl} />
       ) : (
@@ -40,7 +40,7 @@ const FoodImage = () => {
           />
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

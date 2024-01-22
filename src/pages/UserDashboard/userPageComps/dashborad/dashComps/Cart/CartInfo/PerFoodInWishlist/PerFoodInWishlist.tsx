@@ -12,7 +12,7 @@ const PerFoodInWishlist: FC<{
     return str.length > 40 ? str.slice(0, 40) + "..." : str;
   };
   return (
-    <div className="perfood-in-wishlist">
+    <section className="perfood-in-wishlist">
       <div
         className="remove-food-from-wishlist"
         onClick={() => deleteFoodFromWishlist(food.id)}
@@ -22,7 +22,7 @@ const PerFoodInWishlist: FC<{
       <div>
         <ImageWraper image={food.image} size="75px" />
       </div>
-      <div className="food-details-in-wishlist">
+      <main className="food-details-in-wishlist">
         <h4>{food.title}</h4>
         <p>{shortenDesc(food.desc)}</p>
         <span
@@ -30,8 +30,8 @@ const PerFoodInWishlist: FC<{
         >
           {`$ ${food.price}`}
         </span>
-      </div>
-    </div>
+      </main>
+    </section>
   );
 };
 

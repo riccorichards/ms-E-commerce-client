@@ -18,7 +18,7 @@ const Employees = () => {
 
   return (
     <div className="employees-wrapper">
-      <div className="employee-header">
+      <header className="employee-header">
         <h1>List Of Employees</h1>
         <div className="filter-section">
           <input
@@ -29,8 +29,8 @@ const Employees = () => {
             <FaRunning />
           </button>
         </div>
-      </div>
-      <div className="employee-body">
+      </header>
+      <main className="employee-body">
         <table className="employees-table">
           <thead className="employees-thead">
             <tr className="employees-tr">
@@ -66,7 +66,7 @@ const Employees = () => {
             </tbody>
           ))}
         </table>
-      </div>
+      </main>
       <Pagination setPage={setPage} totalPage={adminPagination.totalPages} />
     </div>
   );

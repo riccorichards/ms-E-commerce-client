@@ -23,7 +23,7 @@ const UploadVendorBio = () => {
   };
 
   return (
-    <div
+    <section
       style={{
         padding: "5px",
         backgroundColor: "#fff",
@@ -61,7 +61,7 @@ const UploadVendorBio = () => {
       >
         <AiOutlineSend />
       </button>
-    </div>
+    </section>
   );
 };
 

@@ -4,10 +4,10 @@ import UpdateWorkHrsAndImage from "./UpdateWorkHrsAndImage/UpdateWorkHrsAndImage
 
 const UpdateVendorInfo = () => {
   return (
-    <div className="update-vendor-info-wrapper">
+    <section className="update-vendor-info-wrapper">
       <UpdateWorkHrsAndImage />
       <UpdateVendorForm />
-    </div>
+    </section>
   );
 };
 

@@ -11,7 +11,7 @@ const Pagination: FC<{ totalPage: number; setPage: (val: number) => void }> = ({
   }
 
   return (
-    <div className="pagination-wrapper">
+    <footer className="pagination-wrapper">
       {pages.map((page) => (
         <button
           className="each-pagination-btn"
@@ -21,7 +21,7 @@ const Pagination: FC<{ totalPage: number; setPage: (val: number) => void }> = ({
           {page}
         </button>
       ))}
-    </div>
+    </footer>
   );
 };
 

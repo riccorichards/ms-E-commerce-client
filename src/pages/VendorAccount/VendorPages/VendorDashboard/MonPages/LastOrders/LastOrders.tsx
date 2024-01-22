@@ -16,10 +16,10 @@ const LastOrders = () => {
   if (!vendorOrders) return null;
 
   return (
-    <div className="last-orders-wrapper">
+    <section className="last-orders-wrapper">
       {vendorOrders.length > 0 &&
         vendorOrders.map((order) => (
-          <div className="last-order" key={order.orderId}>
+          <main className="last-order" key={order.orderId}>
             <div>
               <ImageWraper
                 image={(order.customer as OrderCustomerInfo).image}
@@ -31,7 +31,7 @@ const LastOrders = () => {
                 display: "flex",
                 flexDirection: "column",
                 gap: "5px",
-                width:'120px'
+                width: "120px",
               }}
             >
               <span>{(order.customer as OrderCustomerInfo).username}</span>
@@ -61,9 +61,9 @@ const LastOrders = () => {
               <span>{order.createdAt.split("T")[0]}</span>
               <span>{order.createdAt.split("T")[1].split(".")[0]}</span>
             </div>
-          </div>
+          </main>
         ))}
-    </div>
+    </section>
   );
 };
 

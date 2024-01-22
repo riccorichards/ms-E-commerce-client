@@ -39,7 +39,7 @@ const MemberTemplate: FC<{
   };
 
   return (
-    <div className="add-new-team-member">
+    <main className="add-new-team-member">
       <div className="add-new-team-member-img">
         <ImageWraper
           image={memberImage ? memberImage : undefined}
@@ -86,7 +86,7 @@ const MemberTemplate: FC<{
         </div>
         <button type="submit">Save new member</button>
       </form>
-    </div>
+    </main>
   );
 };
 

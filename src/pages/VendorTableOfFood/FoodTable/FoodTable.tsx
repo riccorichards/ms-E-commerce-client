@@ -6,10 +6,10 @@ import { MdNoFood } from "react-icons/md";
 
 const FoodTable: FC<{ foods: ProductType[] | null }> = ({ foods }) => {
   return (
-    <div className="vendor-food-table-wrapper">
+    <section className="vendor-food-table-wrapper">
       {foods &&
         foods.slice(0, 5).map((food) => (
-          <div key={food.id} className="vendor-food-table-item">
+          <main key={food.id} className="vendor-food-table-item">
             <div className="table-food-id">{`#000${food.id}`}</div>
             <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
               <div>
@@ -30,9 +30,9 @@ const FoodTable: FC<{ foods: ProductType[] | null }> = ({ foods }) => {
             <button className="table-food-remove">
               <MdNoFood />
             </button>
-          </div>
+          </main>
         ))}
-    </div>
+    </section>
   );
 };
 

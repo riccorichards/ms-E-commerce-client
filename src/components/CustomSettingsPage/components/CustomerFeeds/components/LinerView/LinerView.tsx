@@ -23,7 +23,7 @@ const LinerView = () => {
   const handleRemoveFeed = getFeedContext.handleDeleteFeedProcess;
 
   return (
-    <div className="liner-view-wrapper">
+    <main className="liner-view-wrapper">
       {targetFeeds &&
         targetFeeds.map((feed) => (
           <div className="liner-view" key={feed.feedId}>
@@ -71,7 +71,7 @@ const LinerView = () => {
             </button>
           </div>
         ))}
-    </div>
+    </main>
   );
 };
 

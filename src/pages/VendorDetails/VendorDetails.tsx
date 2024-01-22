@@ -62,8 +62,8 @@ const VendorDetails = () => {
     navigate(`/customer/vendors/${id}/feedbacks`);
   };
   return (
-    <div className="vendor-details">
-      <div className="vendor-introduction">
+    <main className="vendor-details">
+      <section className="vendor-introduction">
         <VendorInfo
           isCustomer={Boolean(id)}
           id={id}
@@ -73,18 +73,18 @@ const VendorDetails = () => {
         {isReservation && (
           <ReservationModal setIsReservetion={setIsReservetion} />
         )}
-      </div>
+      </section>
       <VendorPopularFood />
       <VendorTeam />
-      <div className="vendor-details-feedback-wrapper">
+      <section className="vendor-details-feedback-wrapper">
         <h2
           style={{ borderBottom: "2px solid orangered", width: "fit-content" }}
         >
           Our Customers feedbacks
         </h2>
-        <div className="vendor-details-feedback">
+        <main className="vendor-details-feedback">
           {targetFeedWrapper && targetFeedWrapper.length > 0 ? (
-            <div
+            <section
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -97,9 +97,9 @@ const VendorDetails = () => {
                 <FeedTemplate feed={feed} key={feed.feedId} />
               ))}
               {id && <button onClick={handleMore}>See more</button>}
-            </div>
+            </section>
           ) : (
-            <div
+            <section
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -109,11 +109,11 @@ const VendorDetails = () => {
               }}
             >
               <h3>Not added feedback Yet!!!</h3>
-            </div>
+            </section>
           )}
-        </div>
-      </div>
-      <div>
+        </main>
+      </section>
+      <section>
         {letShowMap && (
           <GoogleMapApis
             coords={coords}
@@ -122,8 +122,8 @@ const VendorDetails = () => {
             rating={target?.rating}
           />
         )}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

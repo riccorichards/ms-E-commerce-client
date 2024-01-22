@@ -30,7 +30,7 @@ const Dashboard = () => {
   }, [status]);
 
   return (
-    <div className="user-dashboard">
+    <main className="user-dashboard">
       {isLoader && <Loader />}
       {personName ? (
         <ShippingPage personName={personName} />
@@ -43,7 +43,7 @@ const Dashboard = () => {
           )}
         </>
       )}
-    </div>
+    </main>
   );
 };
 

@@ -11,7 +11,7 @@ const GridView = () => {
   const targetFeeds = myFeeds || vendorFeeds;
 
   return (
-    <div className="feeds-grid-view-wrapper">
+    <main className="feeds-grid-view-wrapper">
       <div className="feeds-grid-view">
         {targetFeeds &&
           targetFeeds.map((feed) => (
@@ -24,7 +24,7 @@ const GridView = () => {
             />
           ))}
       </div>
-    </div>
+    </main>
   );
 };
 

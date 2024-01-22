@@ -34,7 +34,7 @@ const UploadImage: FC<{
     }
   };
   return (
-    <div className="update-customer-image">
+    <section className="update-customer-image">
       <div className="customer-image-wrapper">
         <ImageWraper
           image={target ? target.image : imageUrl ? imageUrl : undefined}
@@ -50,7 +50,7 @@ const UploadImage: FC<{
         </div>
       </div>
       <input type="file" hidden ref={inputRef} onChange={submitFile} />
-    </div>
+    </section>
   );
 };
 

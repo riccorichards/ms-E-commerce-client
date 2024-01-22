@@ -39,7 +39,7 @@ const Invoice = () => {
   };
 
   return (
-    <div className="invoice-wrapper">
+    <main className="invoice-wrapper">
       <h1>My Invoice</h1>
       <div className="table-wrapper">
         <table className="invoice-table">
@@ -76,7 +76,7 @@ const Invoice = () => {
       {orderPagination.totalPages > 1 && (
         <Pagination totalPage={orderPagination.totalPages} setPage={setPage} />
       )}
-    </div>
+    </main>
   );
 };
 export default Invoice;

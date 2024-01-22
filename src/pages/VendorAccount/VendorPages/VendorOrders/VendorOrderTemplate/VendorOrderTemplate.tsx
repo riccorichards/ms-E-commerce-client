@@ -35,17 +35,17 @@ const VendorOrderTemplate = () => {
   };
 
   return (
-    <div className="vendor-order-template-wrapper">
+    <section className="vendor-order-template-wrapper">
       <VendorOrderHeader />
       <VendorOrderItems />
-      <div className="vendor-order-vendor-info">
+      <main className="vendor-order-vendor-info">
         <div>
           <h3>{vendor.name}</h3>
           <RatingCalculation rating={rating} />
         </div>
         <ImageWraper image={vendor.image} size="45px" />
-      </div>
-    </div>
+      </main>
+    </section>
   );
 };
 

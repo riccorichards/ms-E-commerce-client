@@ -33,7 +33,7 @@ const LinearVendorOrderTemplate: FC<{
     setIsHovered(false);
   };
   return (
-    <div
+    <main
       style={{
         display: "flex",
         alignItems: "center",
@@ -82,7 +82,7 @@ const LinearVendorOrderTemplate: FC<{
         <span>{order.order_status}</span>
       </div>
       {isHovered && <VendorOrderTemplate />}
-    </div>
+    </main>
   );
 };
 

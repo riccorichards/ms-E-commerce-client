@@ -37,21 +37,21 @@ const EmployeeForm = () => {
     }
   }, [imageUrl]);
   return (
-    <div className="employee-from-wrapper">
+    <section className="employee-from-wrapper">
       <form id="employee-form" onSubmit={handleSubmit(onSubmit)}>
-        <div className="employee-form-item">
+        <section className="employee-form-item">
           <input type="text" placeholder="Name" {...register("name")} />
           {errors.name && (
             <p className="errors-wrapper">{errors.name.message}</p>
           )}
-        </div>
-        <div className="employee-form-item">
+        </section>
+        <section className="employee-form-item">
           <input type="email" placeholder="Email" {...register("email")} />
           {errors.email && (
             <p className="errors-wrapper">{errors.email.message}</p>
           )}
-        </div>
-        <div className="employee-form-item">
+        </section>
+        <section className="employee-form-item">
           <input
             type="text"
             placeholder="Current address"
@@ -60,8 +60,8 @@ const EmployeeForm = () => {
           {errors.currentAddress && (
             <p className="errors-wrapper">{errors.currentAddress.message}</p>
           )}
-        </div>
-        <div className="employee-form-item">
+        </section>
+        <section className="employee-form-item">
           <input
             type="password"
             placeholder="Password"
@@ -70,8 +70,8 @@ const EmployeeForm = () => {
           {errors.password && (
             <p className="errors-wrapper">{errors.password.message}</p>
           )}
-        </div>
-        <div className="employee-form-item">
+        </section>
+        <section className="employee-form-item">
           <input
             type="password"
             placeholder="Confirm Password"
@@ -80,7 +80,7 @@ const EmployeeForm = () => {
           {errors.confPass && (
             <p className="errors-wrapper">{errors.confPass.message}</p>
           )}
-        </div>
+        </section>
         <button type="submit">Add new Employee</button>
         {isEmptyImage && (
           <p style={{ position: "absolute", bottom: "0", color: "red" }}>
@@ -88,7 +88,7 @@ const EmployeeForm = () => {
           </p>
         )}
       </form>
-    </div>
+    </section>
   );
 };
 

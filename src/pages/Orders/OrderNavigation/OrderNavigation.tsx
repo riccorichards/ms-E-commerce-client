@@ -14,9 +14,9 @@ const OrderNavigation: FC<{
   };
 
   return (
-    <div className="order-navigation-wrapper">
+    <nav className="order-navigation-wrapper">
       <h1>Order History</h1>
-      <div className="order-navigation-items">
+      <main className="order-navigation-items">
         {ordersList &&
           ordersList.map((orderItem) => (
             <NavOrderItem
@@ -26,8 +26,8 @@ const OrderNavigation: FC<{
               key={orderItem.orderId}
             />
           ))}
-      </div>
-    </div>
+      </main>
+    </nav>
   );
 };
 

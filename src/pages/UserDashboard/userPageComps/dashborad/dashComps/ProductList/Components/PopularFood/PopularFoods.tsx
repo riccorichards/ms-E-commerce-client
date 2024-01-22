@@ -19,16 +19,16 @@ const PopularFoods = () => {
 
   if (!foods || !foodPagination) return null;
   return (
-    <div className="popular-food-wrappe">
+    <section className="popular-food-wrappe">
       <h1>Foods</h1>
-      <div className="popular-foods">
+      <main className="popular-foods">
         {foods &&
           foods.map((food) => (
             <FoodCard key={food.id} food={food} from="mainDashboard" />
           ))}
-      </div>
+      </main>
       <Pagination totalPage={foodPagination.totalPages} setPage={setPage} />
-    </div>
+    </section>
   );
 };
 

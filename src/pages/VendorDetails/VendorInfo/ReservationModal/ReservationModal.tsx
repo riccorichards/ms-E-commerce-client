@@ -31,7 +31,7 @@ const ReservationModal: FC<{
 
   return (
     <div className="reservation-modal-wrapper">
-      <div className="reservation-modal-header">
+      <header className="reservation-modal-header">
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <ImageWraper image={target.image} size="55px" />
           <div>
@@ -42,8 +42,8 @@ const ReservationModal: FC<{
           </div>
         </div>
         <button onClick={() => setIsReservetion(false)}>Close</button>
-      </div>
-      <div
+      </header>
+      <main
         style={{
           width: "100%",
           height: "2px",

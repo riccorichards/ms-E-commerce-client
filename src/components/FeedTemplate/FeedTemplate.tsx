@@ -30,7 +30,7 @@ const FeedTemplate: FC<{
 
   return (
     <div className="feed-template-wrapper">
-      <div className="feed-template-header">
+      <header className="feed-template-header">
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <div>
             <ImageWraper image={feed.authorImg} size="50px" nonCircle />
@@ -61,10 +61,10 @@ const FeedTemplate: FC<{
             </div>
           </div>
         )}
-      </div>
+      </header>
       <div className="decor-line-in-feed" />
-      <div className="target-header-in-feed">
-        <div className="vendor-details-in-feed">
+      <main className="target-header-in-feed">
+        <section className="vendor-details-in-feed">
           <div>
             <ImageWraper image={feed.targetImg} size="50px" nonCircle />
           </div>
@@ -76,7 +76,7 @@ const FeedTemplate: FC<{
               </p>
             )}
           </div>
-        </div>
+        </section>
         <p
           style={{
             display: "flex",
@@ -92,7 +92,7 @@ const FeedTemplate: FC<{
         <span style={{ fontSize: "12px", alignSelf: "flex-end" }}>
           {timeFormat(feed.createdAt)}
         </span>
-      </div>
+      </main>
     </div>
   );
 };

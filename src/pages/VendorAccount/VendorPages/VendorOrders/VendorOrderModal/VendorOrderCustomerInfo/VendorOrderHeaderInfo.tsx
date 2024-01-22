@@ -16,7 +16,7 @@ const VendorOrderHeaderInfo = () => {
   if (!orderDate || !orderId) return null;
 
   return (
-    <div className="vendor-order-header-info">
+    <section className="vendor-order-header-info">
       <div className="vendor-order-info-part">
         <h2>Order #{orderId}</h2>
         <p>{orderDate.split("T")[0]}</p>
@@ -37,7 +37,7 @@ const VendorOrderHeaderInfo = () => {
           <ImageWraper image={image} size="55px" />
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

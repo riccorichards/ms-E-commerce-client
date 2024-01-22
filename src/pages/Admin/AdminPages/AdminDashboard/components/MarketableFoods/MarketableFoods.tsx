@@ -16,14 +16,14 @@ const MarketableFoods = () => {
   if (!popularItems) return null;
 
   return (
-    <div className="marketable-foods-wrapper">
-      <div className="marketable-header-wrapper">
+    <section className="marketable-foods-wrapper">
+      <header className="marketable-header-wrapper">
         <div className="marketable-header">
           <IoFastFood />
           <h3>Marketable Foods</h3>
         </div>
-      </div>
-      <div className="marketable-body">
+      </header>
+      <main className="marketable-body">
         {popularItems.popularItems.map((item) => (
           <MarketableFoodTemplate
             key={item.foodName}
@@ -33,8 +33,8 @@ const MarketableFoods = () => {
             length={item.length}
           />
         ))}
-      </div>
-    </div>
+      </main>
+    </section>
   );
 };
 

@@ -7,7 +7,7 @@ import { HiUserAdd } from "react-icons/hi";
 
 const AdminNavItem = () => {
   return (
-    <div className="admin-navigations-wrapper">
+    <nav className="admin-navigations-wrapper">
       <NavLink
         to="/admin/home"
         style={{
@@ -83,7 +83,7 @@ const AdminNavItem = () => {
           Orders
         </div>
       </NavLink>
-    </div>
+    </nav>
   );
 };
 

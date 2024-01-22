@@ -33,7 +33,7 @@ const MainCars: FC<{ setTitleWrapper?: (str: string) => void }> = ({
   };
 
   return (
-    <div className="main-cats-wrapper">
+    <section className="main-cats-wrapper">
       {mainC &&
         mainC.map((mc) => (
           <MainCatsTemp
@@ -43,7 +43,7 @@ const MainCars: FC<{ setTitleWrapper?: (str: string) => void }> = ({
             isClicked={mc.id === isSelected}
           />
         ))}
-    </div>
+    </section>
   );
 };
 

@@ -9,19 +9,19 @@ const DeliverymanActivities = () => {
   const { deliverymanOrders } = useAppSelector((s) => s.deliveryman);
 
   useEffect(() => {
-    dispatch(getdeliverymanOrders(false));
+    dispatch(getdeliverymanOrders({ isStats: false }));
   }, [dispatch]);
 
   if (!deliverymanOrders) return null;
 
   return (
-    <div className="deliveryman-activity-wrapper">
+    <section className="deliveryman-activity-wrapper">
       <div className="deliveryman-activities">
         {deliverymanOrders.map((order) => (
           <ActivitiesTemplate key={order.id} order={order} />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

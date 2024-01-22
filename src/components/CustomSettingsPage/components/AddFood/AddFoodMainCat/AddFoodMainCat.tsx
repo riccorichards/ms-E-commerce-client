@@ -40,7 +40,7 @@ const AddFoodMainCat = () => {
   }
 
   return (
-    <div className="add-food-categories-wrapper">
+    <section className="add-food-categories-wrapper">
       <h4>Choose Main Category</h4>
       <div className="add-food-categories">
         {mainC &&
@@ -61,7 +61,7 @@ const AddFoodMainCat = () => {
             </div>
           ))}
       </div>
-    </div>
+    </section>
   );
 };
 

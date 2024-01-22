@@ -29,7 +29,7 @@ const NavSettings: FC<{ setNavLink: SetNavLInkType[] }> = ({ setNavLink }) => {
   };
 
   return (
-    <div className="nav-settings-wrapper">
+    <nav className="nav-settings-wrapper">
       {setNavLink.map((nav, index) => (
         <NavLink
           key={index}
@@ -51,7 +51,7 @@ const NavSettings: FC<{ setNavLink: SetNavLInkType[] }> = ({ setNavLink }) => {
           <h3>Log Out</h3>
         </div>
       )}
-    </div>
+    </nav>
   );
 };
 

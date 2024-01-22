@@ -16,13 +16,13 @@ const VendorOrderHeader = () => {
   if (!orderCustomerInfo || !orderDate || !orderId) return null;
 
   return (
-    <div className="vendor-order-header">
+    <header className="vendor-order-header">
       <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
         <h3>Order #{orderId}</h3>
         <span>{orderDate.split("T")[0]}</span>
       </div>
       <ImageWraper image={orderCustomerInfo.image} size="45px" />
-    </div>
+    </header>
   );
 };
 

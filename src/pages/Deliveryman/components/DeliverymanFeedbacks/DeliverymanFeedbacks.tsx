@@ -15,8 +15,8 @@ const DeliverymanFeedbacks = () => {
   if (!deliveryFeedbacks) return null;
 
   return (
-    <div className="deliveryman-feedbacks-wrapper">
-      <div className="deliveryman-feedbacks">
+    <section className="deliveryman-feedbacks-wrapper">
+      <main className="deliveryman-feedbacks">
         {deliveryFeedbacks.map((feed) => (
           <div className="deliveryman-feedback" key={feed.feedId}>
             <div className="deliveryman-feedback-customer-info">
@@ -35,8 +35,8 @@ const DeliverymanFeedbacks = () => {
             <span>"{feed.review}"</span>
           </div>
         ))}
-      </div>
-    </div>
+      </main>
+    </section>
   );
 };
 

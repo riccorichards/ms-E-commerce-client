@@ -19,8 +19,8 @@ const NearestDeliverymen: FC<{
     }
   };
   return (
-    <div className="nearest-deliveryman-wrapper">
-      <div className="nearest-deliveryman-container">
+    <main className="nearest-deliveryman-wrapper">
+      <section className="nearest-deliveryman-container">
         <button onClick={handleCancel}>Cancel Order</button>
         <h3>Choose the nearest deliverymen</h3>
         {nearestDeliveryman &&
@@ -38,8 +38,8 @@ const NearestDeliverymen: FC<{
               </div>
             </div>
           ))}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

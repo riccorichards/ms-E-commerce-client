@@ -15,7 +15,7 @@ const TopCustomers = () => {
   if (!topCustomers) return null;
 
   return (
-    <div className="top-customer-wrapper-vendor-dashboard">
+    <section className="top-customer-wrapper-vendor-dashboard">
       {topCustomers.map((item, i) => (
         <div key={i} className="top-customer-vendor-dashboard">
           <div>
@@ -31,7 +31,7 @@ const TopCustomers = () => {
           </div>
         </div>
       ))}
-    </div>
+    </section>
   );
 };
 

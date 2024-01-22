@@ -6,10 +6,10 @@ const NewVendor = () => {
   return (
     <div className="new-vendor-wrapper">
       <h1>Create a new vendor</h1>
-      <div className="new-vendor">
+      <main className="new-vendor">
         <UploadVendorImage />
         <VendorForm />
-      </div>
+      </main>
     </div>
   );
 };

@@ -55,7 +55,7 @@ const UpdateBankInfo = () => {
     }
   };
   return (
-    <div className="update-bank-info">
+    <section className="update-bank-info">
       <h3>Update your bank</h3>
       <form id="update-bank-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="update-bank-wrapper">
@@ -92,7 +92,7 @@ const UpdateBankInfo = () => {
         </div>
         <button className="update-bank-btn">Save Changes</button>
       </form>
-    </div>
+    </section>
   );
 };
 

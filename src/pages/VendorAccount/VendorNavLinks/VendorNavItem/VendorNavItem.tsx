@@ -5,7 +5,7 @@ import { MdOutlineMenuBook, MdHistoryEdu } from "react-icons/md";
 
 const VendorNavItem = () => {
   return (
-    <div className="vendor-navigations-wrapper">
+    <nav className="vendor-navigations-wrapper">
       <NavLink
         to="/vendor/home"
         style={{
@@ -81,7 +81,7 @@ const VendorNavItem = () => {
           Settings
         </div>
       </NavLink>
-    </div>
+    </nav>
   );
 };
 

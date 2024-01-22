@@ -15,13 +15,13 @@ const TopCustomer = () => {
 
   if (!topCustomers) return null;
   return (
-    <div className="top-customer-wrapper">
-      <div className="top-customer-header-wrapper">
+    <section className="top-customer-wrapper">
+      <header className="top-customer-header-wrapper">
         <div className="top-customer-header ">
           <GiPodiumWinner />
           <h3>Top Customer</h3>
         </div>
-      </div>
+      </header>
       <table className="top-customer-table">
         <thead className="top-customer-thead">
           <tr className="top-customer-tr">
@@ -48,7 +48,7 @@ const TopCustomer = () => {
           </tbody>
         ))}
       </table>
-    </div>
+    </section>
   );
 };
 

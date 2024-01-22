@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 
 const Navigations = () => {
   return (
-    <div className="user-navigations-wrapper">
+    <nav className="user-navigations-wrapper">
       <NavLink
         to="/customer/home"
         style={{
@@ -67,7 +67,7 @@ const Navigations = () => {
           Settings
         </div>
       </NavLink>
-    </div>
+    </nav>
   );
 };
 

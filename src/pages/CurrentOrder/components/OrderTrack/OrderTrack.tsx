@@ -107,7 +107,7 @@ const OrderTrack = () => {
     return null;
 
   return (
-    <div className="order-track-wrapper">
+    <section className="order-track-wrapper">
       <LoadScriptNext
         googleMapsApiKey={googleMapsApiKey}
         onLoad={() => setIsMapsLoaded(true)}
@@ -208,7 +208,7 @@ const OrderTrack = () => {
           )}
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

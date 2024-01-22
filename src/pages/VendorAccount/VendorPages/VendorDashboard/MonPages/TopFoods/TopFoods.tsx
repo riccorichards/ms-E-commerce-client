@@ -93,9 +93,9 @@ const TopFoods = () => {
     ],
   };
   return (
-    <div className="top-foods-wrapper">
+    <section className="top-foods-wrapper">
       <EChartsReact option={option} style={{ width: "100%", height: "50vh" }} />
-    </div>
+    </section>
   );
 };
 

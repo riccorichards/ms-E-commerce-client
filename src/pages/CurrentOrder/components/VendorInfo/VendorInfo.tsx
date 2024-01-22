@@ -20,7 +20,7 @@ const VendorInfo = () => {
   };
 
   return (
-    <div className="current-order-vendor-info">
+    <section className="current-order-vendor-info">
       <div className="current-order-vendor-info-header">
         <div>
           <ImageWraper image={vendor.image} size="75px" />
@@ -71,7 +71,7 @@ const VendorInfo = () => {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

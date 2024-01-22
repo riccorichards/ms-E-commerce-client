@@ -19,19 +19,19 @@ const VendorPopularFood = () => {
   if (!vendorFoods) return null;
 
   return (
-    <div className="vendor-popular-food-wrapper">
+    <section className="vendor-popular-food-wrapper">
       <h2 style={{ borderBottom: "2px solid orangered", width: "fit-content" }}>
         Popular Foods
       </h2>
-      <div className="vendor-popular-food">
+      <main className="vendor-popular-food">
         {vendorFoods.map((food) => (
           <FoodCard
             key={typeof food === "object" ? food.title : food}
             food={food}
           />
         ))}
-      </div>
-    </div>
+      </main>
+    </section>
   );
 };
 

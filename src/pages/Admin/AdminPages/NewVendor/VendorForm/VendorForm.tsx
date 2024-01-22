@@ -29,7 +29,7 @@ const VendorForm = () => {
     }
   };
   return (
-    <div className="vendor-from-wrapper">
+    <section className="vendor-from-wrapper">
       <form id="vendor-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="vendor-form-item">
           <input type="text" placeholder="Name" {...register("name")} />
@@ -87,7 +87,7 @@ const VendorForm = () => {
         </div>
         <button type="submit">Add new Vendor</button>
       </form>
-    </div>
+    </section>
   );
 };
 

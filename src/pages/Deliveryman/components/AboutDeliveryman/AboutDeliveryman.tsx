@@ -30,8 +30,8 @@ const AboutDeliveryman = () => {
     }
   };
   return (
-    <div className="about-deliveryman-wrapper">
-      <div className="about-deliveryman-details">
+    <section className="about-deliveryman-wrapper">
+      <header className="about-deliveryman-details">
         <div style={{ display: "flex", flexDirection: "column" }}>
           <h1>{deliveyman.name}</h1>
           <span>1k+ Revievs</span>
@@ -46,8 +46,8 @@ const AboutDeliveryman = () => {
         <span style={{ fontSize: "18px", textDecoration: "underline" }}>
           {deliveyman.email}
         </span>
-      </div>
-      <div>
+      </header>
+      <main>
         <div className="about-deliveryman-img">
           <ImageWraper image={deliveyman.image} size="320px" />
           <div
@@ -61,8 +61,8 @@ const AboutDeliveryman = () => {
             <AiOutlineLogout />
           </div>
         </div>
-      </div>
-    </div>
+      </main>
+    </section>
   );
 };
 

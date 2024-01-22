@@ -46,7 +46,7 @@ const VendorSocialUrl = () => {
     dispatch(removeSocUrl(urlTitle));
   };
   return (
-    <div className="vendor-social-url-wrapper">
+    <section className="vendor-social-url-wrapper">
       <h3>Social Urls</h3>
       <form onSubmit={handleSubmit(onSubmit)}>
         <span style={{ color: "orangered" }}>
@@ -91,7 +91,7 @@ const VendorSocialUrl = () => {
             </div>
           </div>
         ))}
-    </div>
+    </section>
   );
 };
 

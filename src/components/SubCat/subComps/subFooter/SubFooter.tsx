@@ -12,20 +12,20 @@ const SubFooter = () => {
   };
 
   return (
-    <div className="main_subcat-footer">
-      <div className="sub-footer-item" onClick={() => goSubC()}>
+    <footer className="main_subcat-footer">
+      <section className="sub-footer-item" onClick={() => goSubC()}>
         <FaRegEye />
-      </div>
-      <div className="sub-footer-item">
+      </section>
+      <section className="sub-footer-item">
         <TbShoppingCart />
-      </div>
-      <div className="sub-footer-item">
+      </section>
+      <section className="sub-footer-item">
         <FaRegHeart />
-      </div>
-      <div className="sub-footer-item">
+      </section>
+      <section className="sub-footer-item">
         <MdChecklist />
-      </div>
-    </div>
+      </section>
+    </footer>
   );
 };
 export default SubFooter;

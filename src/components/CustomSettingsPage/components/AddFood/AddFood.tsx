@@ -21,11 +21,11 @@ const AddFood = () => {
       <h2>
         Add new <span style={{ color: "orangered" }}>Food</span>
       </h2>
-      <div className="add-food-wrapper">
+      <main className="add-food-wrapper">
         <AddFoodMainCat />
         <AddFoodSubC />
         <AddFoodDetails />
-      </div>
+      </main>
     </AddFoodContext.Provider>
   );
 };

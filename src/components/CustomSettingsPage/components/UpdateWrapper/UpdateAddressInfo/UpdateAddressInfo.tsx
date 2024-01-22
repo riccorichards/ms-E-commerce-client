@@ -54,7 +54,7 @@ const UpdateAddressInfo = () => {
   };
 
   return (
-    <div className="customer-update-address">
+    <section className="customer-update-address">
       <h3>Update your address</h3>
       <form id="update-address-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="update-address-wrapper">
@@ -128,7 +128,7 @@ const UpdateAddressInfo = () => {
           Save Changes
         </button>
       </form>
-    </div>
+    </section>
   );
 };
 

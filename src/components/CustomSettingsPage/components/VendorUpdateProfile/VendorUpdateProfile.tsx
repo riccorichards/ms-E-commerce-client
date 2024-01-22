@@ -11,9 +11,9 @@ const VendorUpdateProfile = () => {
         {vendor?.name}'s{" "}
         <span style={{ color: "orangered" }}>Update Profile</span>
       </h2>
-      <div className="vendor-update-profile-components">
+      <main className="vendor-update-profile-components">
         <UpdateProfileSide />
-      </div>
+      </main>
     </div>
   );
 };

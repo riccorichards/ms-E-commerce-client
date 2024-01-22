@@ -16,7 +16,7 @@ const OrderHeader = () => {
   if (!order || !deliverymanForOrder) return null;
 
   return (
-    <div className="order-template-header">
+    <header className="order-template-header">
       <div className="order-template-date">
         <h2>{`Order#${order.id}`}</h2>
         <span>{order.createdAt.split("T")[0]}</span>
@@ -32,7 +32,7 @@ const OrderHeader = () => {
           <span>{deliverymanForOrder.createdAt.split("T")[0]}</span>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 

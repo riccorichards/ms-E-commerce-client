@@ -76,22 +76,22 @@ const LineChartOverview = () => {
   };
 
   return (
-    <div className="echart-line-wrapper">
-      <div className="echart-line-header-wrapper">
+    <section className="echart-line-wrapper">
+      <header className="echart-line-header-wrapper">
         <div className="echart-line-header">
           <IoRestaurant />
           <h3>Vendors by Orders</h3>
         </div>
-      </div>
-      <div className="echart-line-body">
+      </header>
+      <main className="echart-line-body">
         <EchartLine
           option={option}
           style={{
             width: "100%",
           }}
         />
-      </div>
-    </div>
+      </main>
+    </section>
   );
 };
 

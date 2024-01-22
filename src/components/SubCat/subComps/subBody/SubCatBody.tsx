@@ -13,8 +13,8 @@ const SubCatBody: FC<{ product: ProductType | null }> = ({ product }) => {
   };
 
   return (
-    <div className="main_subcat-body">
-      <div className="main_subcat-content">
+    <main className="main_subcat-body">
+      <section className="main_subcat-content">
         <div className="sub-content-item">
           <p>Details</p>
           <h3>{product?.title ? product.title : null}</h3>
@@ -39,16 +39,16 @@ const SubCatBody: FC<{ product: ProductType | null }> = ({ product }) => {
             <FaRegHandPointRight />
           </button>
         </div>
-      </div>
-      <div className="subcat-image">
+      </section>
+      <section className="subcat-image">
         <div className="food-image-place">
           <ImageWraper
             image={product?.image ? product.image : undefined}
             size="155px"
           />
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

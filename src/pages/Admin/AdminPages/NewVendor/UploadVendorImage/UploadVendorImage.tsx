@@ -23,7 +23,7 @@ const UploadVendorImage = () => {
   const style = { color: "orangered", fontWeight: "700" };
 
   return (
-    <div className="upload-vendor-image">
+    <section className="upload-vendor-image">
       <div
         style={{
           border: "5px solid #008080",
@@ -50,7 +50,7 @@ const UploadVendorImage = () => {
         Valide Extensions <span style={style}>jpeg</span>/
         <span style={style}>jpg</span>/<span style={style}>png</span>
       </p>
-    </div>
+    </section>
   );
 };
 

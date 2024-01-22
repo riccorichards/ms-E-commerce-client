@@ -9,15 +9,15 @@ const SubCatTemplate: FC<{ sub: GetFilteredSubC }> = ({ sub }) => {
   const product = sub.Products.length > 0 ? sub.Products[0] : null;
 
   return (
-    <div className="main-subcat">
-      <div className="main-subcat-header">
+    <main className="main-subcat">
+      <header className="main-subcat-header">
         <SubSearch />
         <h2>{sub.title}</h2>
-      </div>
+      </header>
       <SubCatBody product={product ? product : null} />
       <p style={{ textAlign: "center" }}>{sub.desc}</p>
       <SubFooter />
-    </div>
+    </main>
   );
 };
 

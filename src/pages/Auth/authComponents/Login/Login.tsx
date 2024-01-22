@@ -73,9 +73,9 @@ const Login = () => {
   }, [customer, vendor, deliveyman]); //eslint-disable-line
 
   return (
-    <div className="login-wrapper">
+    <main className="login-wrapper">
       <h2>Welcome to RiccoFood</h2>
-      <div className="switch-user-btns-wrapper">
+      <section className="switch-user-btns-wrapper">
         <button
           className="switch-user-btn"
           style={{
@@ -103,7 +103,7 @@ const Login = () => {
         >
           Deliveryman
         </button>
-      </div>
+      </section>
       <form id="login-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="login-input-wrapper">
           <input type="email" placeholder="Email" {...register("email")} />
@@ -138,7 +138,7 @@ const Login = () => {
           Log in
         </button>
       </form>
-      <div className="navigate-to-login">
+      <section className="navigate-to-login">
         <div className="forgot-password">forgot password?</div>
         Have not an account yet?{" "}
         <span style={{ color: "orangered", cursor: "pointer" }}>
@@ -146,8 +146,8 @@ const Login = () => {
             Sign In
           </Link>
         </span>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

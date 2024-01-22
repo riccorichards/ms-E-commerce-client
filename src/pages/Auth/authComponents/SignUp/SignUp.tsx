@@ -5,11 +5,11 @@ import "./SignUp.scss";
 
 const SignUp = () => {
   return (
-    <div className="auth-path">
+    <main className="auth-path">
       <BasicInfo />
       <AddressInfo />
       <BankInfo />
-    </div>
+    </main>
   );
 };
 

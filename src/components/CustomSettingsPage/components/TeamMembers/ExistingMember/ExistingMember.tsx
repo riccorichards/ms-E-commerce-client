@@ -15,7 +15,7 @@ const ExistingMember: FC<{
   }
 
   return (
-    <div className="existing-member-wrapper">
+    <section className="existing-member-wrapper">
       {!customer && (
         <button
           className="remove-team-member"
@@ -39,7 +39,7 @@ const ExistingMember: FC<{
           <p>{member.description}</p>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -6,7 +6,7 @@ const UserProfile = () => {
   const customer = useAppSelector((state) => state.customer.customer);
 
   return (
-    <div className="user-profile-wrapper">
+    <header className="user-profile-wrapper">
       {customer && (
         <>
           <div className="image-wrapper">
@@ -19,7 +19,7 @@ const UserProfile = () => {
           <h2>{customer.username}</h2>
         </>
       )}
-    </div>
+    </header>
   );
 };
 

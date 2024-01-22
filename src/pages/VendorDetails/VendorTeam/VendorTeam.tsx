@@ -8,11 +8,11 @@ const VendorTeam = () => {
   const target = specVendor?.teamMember || vendor?.teamMember;
 
   return (
-    <div className="vendor-team-wrapper">
+    <section className="vendor-team-wrapper">
       <h2 style={{ borderBottom: "2px solid orangered", width: "fit-content" }}>
         Our master shefs
       </h2>
-      <div className="vendor-teams">
+      <main className="vendor-teams">
         {target && target?.length > 0 ? (
           target.map((member) => (
             <ExistingMember
@@ -21,7 +21,7 @@ const VendorTeam = () => {
             />
           ))
         ) : (
-          <div
+          <section
             style={{
               display: "flex",
               alignItems: "center",
@@ -31,10 +31,10 @@ const VendorTeam = () => {
             }}
           >
             <h3>Not added Personal Yet!!!</h3>
-          </div>
+          </section>
         )}
-      </div>
-    </div>
+      </main>
+    </section>
   );
 };
 

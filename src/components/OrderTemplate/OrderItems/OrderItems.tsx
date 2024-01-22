@@ -6,9 +6,9 @@ const OrderItems = () => {
   if (!order) return null;
 
   return (
-    <div className="order-template-menu-wrapper">
+    <main className="order-template-menu-wrapper">
       <h5>Order Menu</h5>
-      <div className="order-template-menu">
+      <section className="order-template-menu">
         {order.orderItem.map((item) => (
           <div className="order-template-menu-item" key={item.productId}>
             <div className="menu-item-left-side">
@@ -29,8 +29,8 @@ const OrderItems = () => {
             <span className="food-item-price">${item.product_price}</span>
           </div>
         ))}
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

@@ -53,7 +53,7 @@ const DeliveryPerson = () => {
   };
 
   return (
-    <div className="deliveryman-info-wrapper">
+    <section className="deliveryman-info-wrapper">
       <ImageWraper image={deliverymanForOrder.image} size="100px" />
       <div
         style={{
@@ -106,7 +106,7 @@ const DeliveryPerson = () => {
         </div>
       </div>
       <div className="status-wrapper">Vendors</div>
-    </div>
+    </section>
   );
 };
 

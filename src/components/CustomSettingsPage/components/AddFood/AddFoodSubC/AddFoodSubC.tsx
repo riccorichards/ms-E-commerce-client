@@ -44,7 +44,7 @@ const AddFoodSubC = () => {
     getAddFoodContext?.setGetSubCId(subId);
   }
   return (
-    <div className="add-food-sub-cat-wrapper" id="subCategory">
+    <section className="add-food-sub-cat-wrapper" id="subCategory">
       <header className="add-food-sub-cat-header">
         <h3>Choose or create sub category</h3>
         <button onClick={() => setIsAdd((prev) => !prev)}>
@@ -91,7 +91,7 @@ const AddFoodSubC = () => {
             </div>
           ))}
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -20,7 +20,7 @@ const Wishlist = () => {
   };
 
   return (
-    <div className="wishlist-wrapper">
+    <main className="wishlist-wrapper">
       {customer && customer.wishlist.length > 0 ? (
         customer.wishlist.map((food) => (
           <PerFoodInWishlist
@@ -32,7 +32,7 @@ const Wishlist = () => {
       ) : (
         <EmptyCartPlace title="Not Wishlisted Food" />
       )}
-    </div>
+    </main>
   );
 };
 

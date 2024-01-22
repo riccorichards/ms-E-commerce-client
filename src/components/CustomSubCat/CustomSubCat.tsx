@@ -53,7 +53,7 @@ const CustomSubCat: FC<{ sub: GetFilteredSubC }> = ({ sub }) => {
 
     dispatch(foodToCart(data));
   };
-  
+
   const maxLength = sub.Products.length;
 
   function handleFoodSwitcher(type: string) {
@@ -65,15 +65,15 @@ const CustomSubCat: FC<{ sub: GetFilteredSubC }> = ({ sub }) => {
   }
 
   return (
-    <div className="custom-sub-category-wrapper">
-      <div className="custom-sub-caterory-header">
+    <main className="custom-sub-category-wrapper">
+      <header className="custom-sub-caterory-header">
         <h5>{sub.title}</h5>
         <div className="info-of-incoming-food" onClick={infoToggle}>
           <FaInfo />
         </div>
         {isInfo && <HoverFoodInfo food={product} />}
-      </div>
-      <div className="custom-sub-caterory-body">
+      </header>
+      <section className="custom-sub-caterory-body">
         <button
           className="foot-switcher-pointer-left"
           onClick={() => handleFoodSwitcher("left")}
@@ -88,8 +88,8 @@ const CustomSubCat: FC<{ sub: GetFilteredSubC }> = ({ sub }) => {
           <FaHandPointRight />
         </button>
         <h5 style={{ textAlign: "center" }}>{product.title}</h5>
-      </div>
-      <div className="custom-sub-caterory-footer">
+      </section>
+      <footer className="custom-sub-caterory-footer">
         <button
           className="custom-sub-caterory-footer-item"
           onClick={() => handleAddFoodToCart(product.id)}
@@ -114,8 +114,8 @@ const CustomSubCat: FC<{ sub: GetFilteredSubC }> = ({ sub }) => {
         </button>
         {isList && <ListFoodInSubCat foods={sub.Products} />}
         <div className="food-number">{`0${index + 1}`}</div>
-      </div>
-    </div>
+      </footer>
+    </main>
   );
 };
 

@@ -76,16 +76,16 @@ const VendorInfo: FC<{
   };
 
   return (
-    <div className="vendor-info-wrapper">
-      <div className="vendor-info-header">
+    <section className="vendor-info-wrapper">
+      <header className="vendor-info-header">
         <ImageWraper image={target.image} size="75px" />
         <div className="vendor-info-name">
           <h2>{target.name}</h2>
           <RatingCalculation rating={rating} />
         </div>
-      </div>
-      <div className="vendor-additional-info">
-        <div className="vendor-info-about">
+      </header>
+      <main className="vendor-additional-info">
+        <section className="vendor-info-about">
           <span style={{ display: "flex", alignItems: "center", gap: "15px" }}>
             <FaInfoCircle /> <span>{target.about ? target.about : "N/A"}</span>
           </span>
@@ -95,8 +95,8 @@ const VendorInfo: FC<{
               ? `${target.workingHrs.workingDays}-${target.workingHrs.weekend}`
               : "N/A"}
           </span>
-        </div>
-        <div>
+        </section>
+        <section>
           <h2>Our Social Medias</h2>
           {target.socialMedia.length < 0
             ? target.socialMedia.map((url) =>
@@ -109,8 +109,8 @@ const VendorInfo: FC<{
                 )
               )
             : "N/A"}
-        </div>
-        <div className="vendor-info-contactus">
+        </section>
+        <section className="vendor-info-contactus">
           <h2>Contact Us</h2>
           <span style={{ display: "flex", alignItems: "center", gap: "15px" }}>
             <MdOutlineLocalPhone /> {target.phone}
@@ -121,9 +121,9 @@ const VendorInfo: FC<{
           <span style={{ display: "flex", alignItems: "center", gap: "15px" }}>
             <MdOutlineLocationOn /> {target.address}
           </span>
-        </div>
-      </div>
-      <div className="vendor-info-action-btns">
+        </section>
+      </main>
+      <nav className="vendor-info-action-btns">
         {isCustomer ? (
           <Link
             to={`/customer/vendors/${id}/menu`}
@@ -164,8 +164,8 @@ const VendorInfo: FC<{
             <button onClick={sendFeedback}>Send</button>
           </div>
         )}
-      </div>
-    </div>
+      </nav>
+    </section>
   );
 };
 

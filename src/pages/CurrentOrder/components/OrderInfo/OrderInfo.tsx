@@ -7,7 +7,7 @@ const OrderInfo = () => {
   if (!order) return null;
 
   return (
-    <div className="current-order-information">
+    <section className="current-order-information">
       <table className="order-table">
         <thead className="order-thead">
           <tr className="order-tr">
@@ -52,7 +52,7 @@ const OrderInfo = () => {
             ))}
         </tbody>
       </table>
-    </div>
+    </section>
   );
 };
 

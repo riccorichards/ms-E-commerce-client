@@ -28,7 +28,7 @@ const AddVendorAddress = () => {
     dispatch(addVendorAddress(values));
   };
   return (
-    <div className="add-vendor-address">
+    <section className="add-vendor-address">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="add-vendor-address-form-item">
           <h5 style={{ position: "absolute", bottom: "102%", left: "0" }}>
@@ -38,49 +38,13 @@ const AddVendorAddress = () => {
             type="text"
             placeholder="Country"
             {...register("country")}
-            defaultValue={vendor.address.country}
+            defaultValue={vendor.address}
           />
           {errors.country && <p>{errors.country.message}</p>}
         </div>
-        <div className="add-vendor-address-form-item">
-          <h5 style={{ position: "absolute", bottom: "102%", left: "0" }}>
-            City
-          </h5>
-          <input
-            type="text"
-            placeholder="City"
-            {...register("city")}
-            defaultValue={vendor.address.city}
-          />
-          {errors.city && <p>{errors.city.message}</p>}
-        </div>
-        <div className="add-vendor-address-form-item">
-          <h5 style={{ position: "absolute", bottom: "102%", left: "0" }}>
-            St.
-          </h5>
-          <input
-            type="text"
-            placeholder="Street"
-            {...register("street")}
-            defaultValue={vendor.address.street}
-          />
-          {errors.street && <p>{errors.street.message}</p>}
-        </div>
-        <div className="add-vendor-address-form-item">
-          <h5 style={{ position: "absolute", bottom: "102%", left: "0" }}>
-            Postal code
-          </h5>
-          <input
-            type="text"
-            placeholder="Postal Code"
-            {...register("postalCode")}
-            defaultValue={vendor.address.postalCode}
-          />
-          {errors.postalCode && <p>{errors.postalCode.message}</p>}
-        </div>
         <button type="submit">save address</button>
       </form>
-    </div>
+    </section>
   );
 };
 

@@ -18,13 +18,13 @@ const AdminNavLinks = () => {
     }
   };
   return (
-    <div className="admin-navlink-wrapper">
+    <nav className="admin-navlink-wrapper">
       <AdminHeader />
       <AdminNavItem />
       <button className="admin-logOut-btn" onClick={() => handleLogOut()}>
         <FaPowerOff />
       </button>
-    </div>
+    </nav>
   );
 };
 

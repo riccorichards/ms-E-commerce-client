@@ -5,11 +5,11 @@ import UserProfile from "./userProfile/UserProfile";
 
 const NavigationBar = () => {
   return (
-    <div className="navigation-bar">
+    <aside className="navigation-bar">
       <UserProfile />
       <Navigations />
       <Promo />
-    </div>
+    </aside>
   );
 };
 

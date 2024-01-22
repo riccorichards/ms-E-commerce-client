@@ -34,7 +34,7 @@ const AddFoodForm = () => {
             subCatId: getSubCId,
             image: foodImageUrl,
             vendor_name: vendor.name,
-            address: `${vendor.address.country}, ${vendor.address.city}, ${vendor.address.street}`,
+            address: vendor.address,
             vendor_rating: vendor.rating,
           })
         );
@@ -46,24 +46,24 @@ const AddFoodForm = () => {
   };
 
   return (
-    <div className="add-food-form-wrapper">
+    <main className="add-food-form-wrapper">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="add-food-form-item">
+        <section className="add-food-form-item">
           <input type="text" placeholder="Title" {...register("title")} />
           {errors.title && <p>{errors.title.message}</p>}
-        </div>
-        <div className="add-food-form-item">
+        </section>
+        <section className="add-food-form-item">
           <input type="text" placeholder="Description" {...register("desc")} />
           {errors.desc && <p>{errors.desc.message}</p>}
-        </div>
-        <div className="add-food-form-item">
+        </section>
+        <section className="add-food-form-item">
           <input type="text" placeholder="Price" {...register("price")} />
           {errors.price && <p>{errors.price.message}</p>}
-        </div>
-        <div className="add-food-form-item">
+        </section>
+        <section className="add-food-form-item">
           <input type="text" placeholder="Discount" {...register("discount")} />
           {errors.discount && <p>{errors.discount.message}</p>}
-        </div>
+        </section>
         {imgError && (
           <p
             style={{
@@ -78,7 +78,7 @@ const AddFoodForm = () => {
         )}
         <button type="submit">Add new food</button>
       </form>
-    </div>
+    </main>
   );
 };
 

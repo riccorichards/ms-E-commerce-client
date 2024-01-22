@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const EmptyCartPlace: FC<{ title: string }> = ({ title }) => {
   return (
-    <div
+    <section
       style={{
         height: "30vh",
         display: "flex",
@@ -37,7 +37,7 @@ const EmptyCartPlace: FC<{ title: string }> = ({ title }) => {
           </span>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

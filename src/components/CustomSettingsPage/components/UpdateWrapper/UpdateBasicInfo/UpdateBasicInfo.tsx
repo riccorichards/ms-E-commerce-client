@@ -65,7 +65,6 @@ const UpdateBasicInfo = () => {
     e.preventDefault();
     try {
       dispatch(checkCurrentPassword(passwordValue));
-      
     } catch (error) {
       if (error instanceof Error) {
         console.error("Update password failed:", error.message);
@@ -75,7 +74,7 @@ const UpdateBasicInfo = () => {
     }
   };
   return (
-    <div className="customer-basic-update">
+    <section className="customer-basic-update">
       <h3>Update your profile</h3>
       <form id="customer-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="customer-update-input-wrapper">
@@ -156,7 +155,7 @@ const UpdateBasicInfo = () => {
         )}
         <button className="basic-update-btn">Save Changes</button>
       </form>
-    </div>
+    </section>
   );
 };
 

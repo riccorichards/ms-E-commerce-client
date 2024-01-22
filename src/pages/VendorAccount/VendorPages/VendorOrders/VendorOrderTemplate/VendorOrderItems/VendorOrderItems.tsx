@@ -16,7 +16,7 @@ const VendorOrderItems = () => {
   if (!vendorOrderItems) return null;
 
   return (
-    <div
+    <main
       style={{
         display: "flex",
         flexDirection: "column",
@@ -54,7 +54,7 @@ const VendorOrderItems = () => {
       <button className="vendor-order-more-btn" onClick={() => setIsOpen(true)}>
         More
       </button>
-    </div>
+    </main>
   );
 };
 

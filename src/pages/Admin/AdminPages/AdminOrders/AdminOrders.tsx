@@ -16,9 +16,9 @@ const AdminOrders = () => {
   return (
     <div className="admin-orders-wrapper">
       <h1>Admin orders</h1>
-      <div className="admin-orders">
+      <main className="admin-orders">
         {orders.map((order) => (
-          <div key={order.id} className="admin-order-item">
+          <section key={order.id} className="admin-order-item">
             <div style={{ display: "flex", flexDirection: "column" }}>
               <span>{`#000${order.id}`}</span>
               <span>{order.createdAt.split("T")[0]}</span>
@@ -39,9 +39,9 @@ const AdminOrders = () => {
               <h5>Status</h5>
               <span>{order.order_status}</span>
             </div>
-          </div>
+          </section>
         ))}
-      </div>
+      </main>
     </div>
   );
 };

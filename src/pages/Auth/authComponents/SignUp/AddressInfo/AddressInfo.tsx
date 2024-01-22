@@ -31,7 +31,7 @@ const AddressInfo = () => {
     }
   };
   return (
-    <div className="sign-up-address-wrapper">
+    <section className="sign-up-address-wrapper">
       <h1>Address</h1>
       <form id="sign-up-address-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="sign-up-address-input-wrapper">
@@ -66,7 +66,7 @@ const AddressInfo = () => {
           Submit Address
         </button>
       </form>
-    </div>
+    </section>
   );
 };
 

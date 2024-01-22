@@ -8,7 +8,7 @@ const VendorOrderItems = () => {
   if (!vendorOrderItems) return null;
 
   return (
-    <div className="vendor-order-items-wrapper">
+    <section className="vendor-order-items-wrapper">
       {vendorOrderItems.map((item) => (
         <div className="vendor-order-items" key={item.productId}>
           <div>
@@ -25,7 +25,7 @@ const VendorOrderItems = () => {
           </div>
         </div>
       ))}
-    </div>
+    </section>
   );
 };
 

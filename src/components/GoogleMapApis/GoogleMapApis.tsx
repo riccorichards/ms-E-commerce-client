@@ -55,7 +55,7 @@ const GoogleMapApis: FC<{
               }}
               mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
             >
-              <div
+              <main
                 style={{
                   display: "flex",
                   backgroundColor: "#ffffff",
@@ -76,7 +76,7 @@ const GoogleMapApis: FC<{
                     <RatingCalculation rating={{ icon: FaRegStar, rating }} />
                   </span>
                 </div>
-              </div>
+              </main>
             </OverlayView>
           )}
         </GoogleMap>

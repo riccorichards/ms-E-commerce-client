@@ -44,7 +44,7 @@ const ShippingPage: FC<{ personName: string | null }> = ({ personName }) => {
 
   const { city, country, street } = customer.address;
   return (
-    <div className="shipping-page-wrapper">
+    <main className="shipping-page-wrapper">
       <h2>Shipping page</h2>
       <form onSubmit={handleSubmit(onClick)}>
         <div className="shipping-form-item">
@@ -100,7 +100,7 @@ const ShippingPage: FC<{ personName: string | null }> = ({ personName }) => {
         </div>
         <button type="submit">Submit</button>
       </form>
-    </div>
+    </main>
   );
 };
 

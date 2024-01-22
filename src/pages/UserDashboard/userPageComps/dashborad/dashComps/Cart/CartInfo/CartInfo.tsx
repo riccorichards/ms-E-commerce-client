@@ -74,15 +74,15 @@ const CartInfo: FC<{ setShowCart: (val: boolean) => void }> = ({
     dispatch(sendCartToServer(sendingCartData));
   };
   return (
-    <div className="cart-info-wrapper">
+    <aside className="cart-info-wrapper">
       <>
         {" "}
         <button className="close-cart-btn" onClick={() => setShowCart(false)}>
           Close
         </button>
         <h2>Your account</h2>
-        <div className="cart-info-header">
-          <div className="cart-info-switcher">
+        <main className="cart-info-header">
+          <section className="cart-info-switcher">
             <button
               className="cart-info-switcher-btn"
               onClick={() => setIsCart(true)}
@@ -99,12 +99,12 @@ const CartInfo: FC<{ setShowCart: (val: boolean) => void }> = ({
             >
               My Wishlist
             </button>
-          </div>
+          </section>
           <div className="cart-info-icon">
             <IoIosCart />
             <div className="shows-cart-food">{customer?.cart.length}</div>
           </div>
-        </div>
+        </main>
         {isCart ? (
           <div className="cart-foods-place">
             {customer?.cart && customer.cart.length > 0 ? (
@@ -129,7 +129,7 @@ const CartInfo: FC<{ setShowCart: (val: boolean) => void }> = ({
           <Wishlist />
         )}
       </>
-    </div>
+    </aside>
   );
 };
 

@@ -19,13 +19,13 @@ const VendorNavLinks = () => {
     }
   };
   return (
-    <div className="vendor-navlink-wrapper">
+    <aside className="vendor-navlink-wrapper">
       <VendorHeader />
       <VendorNavItem />
       <button className="vendor-logOut-btn" onClick={() => handleLogOut()}>
         <FaPowerOff />
       </button>
-    </div>
+    </aside>
   );
 };
 

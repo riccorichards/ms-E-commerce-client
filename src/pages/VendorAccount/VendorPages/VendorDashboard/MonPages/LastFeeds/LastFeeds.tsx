@@ -18,7 +18,7 @@ const LastFeeds = () => {
     return str.split("T")[0];
   }
   return (
-    <div className="last-feed-wrapper-vendor-dashboard">
+    <section className="last-feed-wrapper-vendor-dashboard">
       {vendorFeeds.length > 0 ? (
         vendorFeeds.map((feed) => (
           <Link
@@ -67,7 +67,7 @@ const LastFeeds = () => {
           </Link>
         ))
       ) : (
-        <div
+        <section
           style={{
             display: "flex",
             alignItems: "center",
@@ -80,9 +80,9 @@ const LastFeeds = () => {
             <span style={{ color: "orangered" }}>{vendor.name}</span> does not
             has feedbacks yet!{" "}
           </h5>
-        </div>
+        </section>
       )}
-    </div>
+    </section>
   );
 };
 

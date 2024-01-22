@@ -27,14 +27,14 @@ const AdminDashboardHeader = () => {
   if (!ordersLength || !feedbacksLength || !foodsLength || !customersLength)
     return null;
   return (
-    <div className="admin-dashboard-header-wrapper">
-      <div className="admin-dashboard-header">
+    <header className="admin-dashboard-header-wrapper">
+      <header className="admin-dashboard-header">
         <h2>Admin Dashboard</h2>
-      </div>
-      <div className="admin-dashboard-header-body-wrapper">
+      </header>
+      <main className="admin-dashboard-header-body-wrapper">
         <TotalProfit />
         <div className="admin-dashboard-header-body">
-          <div className="admin-dashboard-header-body-item">
+          <section className="admin-dashboard-header-body-item">
             <div
               style={{
                 width: "fit-content",
@@ -61,8 +61,8 @@ const AdminDashboardHeader = () => {
             >
               <span style={{ fontSize: "42px" }}>{ordersLength}</span>
             </div>
-          </div>
-          <div className="admin-dashboard-header-body-item">
+          </section>
+          <section className="admin-dashboard-header-body-item">
             <div
               style={{
                 width: "fit-content",
@@ -89,8 +89,8 @@ const AdminDashboardHeader = () => {
             >
               <span style={{ fontSize: "42px" }}>{customersLength}</span>
             </div>
-          </div>
-          <div className="admin-dashboard-header-body-item">
+          </section>
+          <section className="admin-dashboard-header-body-item">
             <div
               style={{
                 width: "fit-content",
@@ -117,8 +117,8 @@ const AdminDashboardHeader = () => {
             >
               <span style={{ fontSize: "42px" }}>{foodsLength}</span>
             </div>
-          </div>
-          <div className="admin-dashboard-header-body-item">
+          </section>
+          <section className="admin-dashboard-header-body-item">
             <div
               style={{
                 width: "fit-content",
@@ -145,10 +145,10 @@ const AdminDashboardHeader = () => {
             >
               <span style={{ fontSize: "42px" }}>{feedbacksLength || 0}</span>
             </div>
-          </div>
+          </section>
         </div>
-      </div>
-    </div>
+      </main>
+    </header>
   );
 };
 

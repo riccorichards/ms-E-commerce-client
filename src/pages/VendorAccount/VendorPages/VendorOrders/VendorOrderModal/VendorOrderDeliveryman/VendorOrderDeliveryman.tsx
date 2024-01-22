@@ -20,7 +20,7 @@ const VendorOrderDeliveryman = () => {
   if (!orderDeliverymanInfo) return null;
   const { image, email, currentAddress, name } = orderDeliverymanInfo;
   return (
-    <div className="vendor-order-deliveryman-wrapper">
+    <main className="vendor-order-deliveryman-wrapper">
       <div>
         <ImageWraper image={image} size="55px" />
       </div>
@@ -29,7 +29,7 @@ const VendorOrderDeliveryman = () => {
         <p>{email}</p>
         <p>{currentAddress}</p>
       </div>
-    </div>
+    </main>
   );
 };
 

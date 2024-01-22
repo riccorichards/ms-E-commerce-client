@@ -13,20 +13,20 @@ const TotalProfit = () => {
   }, [dispatch]);
 
   if (!ordersTotalAmount) return null;
-  
+
   return (
-    <div className="total-profit-wrapper">
-      <div className="total-profile-header-wrapper">
+    <section className="total-profit-wrapper">
+      <header className="total-profile-header-wrapper">
         <div className="total-profile-header">
           <FaDollarSign />
           <h4>Total Profit</h4>
         </div>
-      </div>
-      <div className="total-profile-body">
+      </header>
+      <main className="total-profile-body">
         <span>$ {ordersTotalAmount.toFixed(2)}</span>
         <p style={{ fontSize: "18px" }}>This is all restaurants' profites</p>
-      </div>
-    </div>
+      </main>
+    </section>
   );
 };
 

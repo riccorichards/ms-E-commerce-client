@@ -19,10 +19,10 @@ const Admin = () => {
     }
   }, [dispatch]);
   return (
-    <div className="admin-dashboard-wrapper">
+    <main className="admin-dashboard-wrapper">
       <AdminNavLinks />
       <AdminPages />
-    </div>
+    </main>
   );
 };
 

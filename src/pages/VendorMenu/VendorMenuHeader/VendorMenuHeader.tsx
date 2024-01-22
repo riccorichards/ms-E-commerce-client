@@ -5,7 +5,7 @@ const VendorMenuHeader = () => {
   const { vendor } = useAppSelector((state) => state.vendor);
 
   return (
-    <div>
+    <header>
       <h1 style={{ alignSelf: "flex-start" }}>
         {vendor?.name}'s <span style={{ color: "orangered" }}>Menu</span>
       </h1>
@@ -19,7 +19,7 @@ const VendorMenuHeader = () => {
           <FaSearch />
         </button>
       </div>
-    </div>
+    </header>
   );
 };
 

@@ -43,14 +43,14 @@ const DeliverymanEarning = () => {
   };
 
   return (
-    <div className="deliveryman-earning-wrapper">
+    <section className="deliveryman-earning-wrapper">
       <div className="deliveryman-earning-echart">
         <EChartsReact
           option={option}
           style={{ width: "100%", height: "70vh" }}
         />
       </div>
-    </div>
+    </section>
   );
 };
 

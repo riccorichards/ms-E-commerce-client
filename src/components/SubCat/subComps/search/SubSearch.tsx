@@ -17,12 +17,12 @@ import "../search/SubSearch.scss";
 
 const SubSearch = () => {
   return (
-    <div className="search-wrapper">
+    <section className="search-wrapper">
       <div className="search-icon">
         <CiSearch />
       </div>
       <input type="search" placeholder="search..." className="search-input" />
-    </div>
+    </section>
   );
 };
 

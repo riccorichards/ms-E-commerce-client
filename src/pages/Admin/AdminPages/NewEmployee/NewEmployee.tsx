@@ -7,16 +7,16 @@ const NewEmployee = () => {
   return (
     <div className="new-employee-wrapper">
       <h1>Create a new employee</h1>
-      <div className="new-employee">
-        <div>
+      <main className="new-employee">
+        <section>
           <UploadImage size="300px" isSendToService="1" address="deliveryman" />
           <p style={{ marginTop: "15px" }}>
             Valide Extensions <span style={style}>jpeg</span>/
             <span style={style}>jpg</span>/<span style={style}>png</span>
           </p>
-        </div>
+        </section>
         <EmployeeForm />
-      </div>
+      </main>
     </div>
   );
 };

@@ -36,7 +36,7 @@ const BankInfo = () => {
   };
 
   return (
-    <div className="sign-up-bank-wrapper">
+    <section className="sign-up-bank-wrapper">
       <h1>Bank</h1>
       <form id="sign-up-bank-form" onSubmit={handleSubmit(onSubmit)}>
         <div className="sign-up-bank-input-wrapper">
@@ -59,7 +59,7 @@ const BankInfo = () => {
           Submit Bank
         </button>
       </form>
-    </div>
+    </section>
   );
 };
 

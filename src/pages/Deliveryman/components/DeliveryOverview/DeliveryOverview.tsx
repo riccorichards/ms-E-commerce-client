@@ -33,8 +33,8 @@ const DeliveryOverview = () => {
   };
 
   return (
-    <div className="deliveryman-overview-wrapper">
-      <div
+    <main className="deliveryman-overview-wrapper">
+      <section
         className="deliveryman-overview-item"
         onClick={() => handleOption("Earning")}
         style={{ backgroundColor: options === "Earning" ? "#87ceeb" : "" }}
@@ -44,8 +44,8 @@ const DeliveryOverview = () => {
           <GiProfit />
           <span>${ordersLen * 2.5}</span>
         </div>
-      </div>
-      <div
+      </section>
+      <section
         className="deliveryman-overview-item"
         onClick={() => handleOption("Orders")}
         style={{ backgroundColor: options === "Orders" ? "#87ceeb" : "" }}
@@ -55,8 +55,8 @@ const DeliveryOverview = () => {
           <FaAmericanSignLanguageInterpreting />
           <span>{ordersLen}</span>
         </div>
-      </div>
-      <div
+      </section>
+      <section
         className="deliveryman-overview-item"
         onClick={() => handleOption("Feedbacks")}
         style={{ backgroundColor: options === "Feedbacks" ? "#87ceeb" : "" }}
@@ -66,8 +66,8 @@ const DeliveryOverview = () => {
           <VscFeedback />
           <span>{deliveyman.feedCount}</span>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

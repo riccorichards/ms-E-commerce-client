@@ -31,7 +31,7 @@ const VendorOrders = () => {
   const values = { newRequest, setNewRequest, isOpen, setIsOpen };
   return (
     <VendorOrderContext.Provider value={values}>
-      <div className="vendor-orders-wrapper">
+      <section className="vendor-orders-wrapper">
         <h1>Vendor orders</h1>
         <div className="vendor-orders">
           {vendorOrders.map((order) => (
@@ -39,7 +39,7 @@ const VendorOrders = () => {
           ))}
         </div>
         {isOpen && <VendorOrderModal setIsOpen={setIsOpen} />}
-      </div>
+      </section>
     </VendorOrderContext.Provider>
   );
 };

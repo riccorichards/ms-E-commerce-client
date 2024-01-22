@@ -5,7 +5,7 @@ import "./VendorSubCatList.scss";
 const VendorSubCatList = () => {
   const subC = useAppSelector((state) => state.food.subC) as GetFilteredSubC[];
   return (
-    <div className="vendor-sub-cat-list-wrapper">
+    <section className="vendor-sub-cat-list-wrapper">
       {subC &&
         subC.map((sub) => (
           <div className="vendor-sub-cat-list-item" key={sub.id}>
@@ -13,7 +13,7 @@ const VendorSubCatList = () => {
             <p>{sub.desc}</p>
           </div>
         ))}
-    </div>
+    </section>
   );
 };
 

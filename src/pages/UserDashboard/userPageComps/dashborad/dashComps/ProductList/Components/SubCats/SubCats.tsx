@@ -2,14 +2,13 @@ import CustomSubCat from "../../../../../../../../components/CustomSubCat/Custom
 import { useAppSelector } from "../../../../../../../../redux/hook";
 import { GetFilteredSubC } from "../../../../../../../../redux/type.slice";
 import "./SubCats.scss";
-import SubCatHeader from "./subCatHeader/SubCatHeader";
 
 const SubCats = () => {
   const subC = useAppSelector((state) => state.food.subC) as GetFilteredSubC[];
 
   return (
     <div className="sub-cat-wrapper">
-      <SubCatHeader />
+      <h1>Sub Categories</h1>
       <div className="sub-cat-cards">
         {subC && subC.map((sub) => <CustomSubCat sub={sub} key={sub.id} />)}
       </div>

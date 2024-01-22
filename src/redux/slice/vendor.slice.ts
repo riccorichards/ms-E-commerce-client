@@ -11,13 +11,14 @@ import {
   getCustomerForVendorOrder,
   getDeliverymanForVendorOrder,
   getSpecVendor,
+  getSpecVendorsFeeds,
   getTopCustomers,
   getVendorCoords,
   getVendorDashboardData,
   getVendorGallery,
   getVendorOrderItemsById,
   getVendorOrders,
-  getVendorSpecData,
+  getVendorFeeds,
   refreshAccessToken,
   removeGalleryImg,
   removeMember,
@@ -34,8 +35,8 @@ const initialState: VendorState = {
   vendor: null,
   vendorList: null,
   specVendor: null,
-  vendorFeeds: null,
   imageUrl: null,
+  vendorFeeds: null,
   dashboard: null,
   coords: null,
   orderCustomerInfo: null,
@@ -43,6 +44,7 @@ const initialState: VendorState = {
   vendorOrderItems: null,
   topCustomers: null,
   orderDeliverymanInfo: null,
+  vendorPagination: null,
   ttl: null,
   status: null,
   error: null,
@@ -206,9 +208,11 @@ const VendorSlice = createSlice({
       .addCase(vendorLogOut.pending, (state) => {
         state.status = "pending";
       })
-      .addCase(vendorLogOut.fulfilled, (state, action) => {
-        state.status = "fulfilled";
-        state.vendor = action.payload;
+      .addCase(vendorLogOut.fulfilled, () => {
+        return {
+          ...initialState,
+          status: "fulfilled",
+        };
       })
       .addCase(vendorLogOut.rejected, (state, action) => {
         state.status = "rejected";
@@ -280,14 +284,14 @@ const VendorSlice = createSlice({
         state.status = "rejected";
         state.error = action.payload || null;
       })
-      .addCase(getVendorSpecData.pending, (state) => {
+      .addCase(getVendorFeeds.pending, (state) => {
         state.status = "pending";
       })
-      .addCase(getVendorSpecData.fulfilled, (state, action) => {
+      .addCase(getVendorFeeds.fulfilled, (state, action) => {
         state.status = "fulfilled";
         state.vendorFeeds = action.payload;
       })
-      .addCase(getVendorSpecData.rejected, (state, action) => {
+      .addCase(getVendorFeeds.rejected, (state, action) => {
         state.status = "rejected";
         state.error = action.payload || null;
       })
@@ -358,6 +362,18 @@ const VendorSlice = createSlice({
         state.orderDeliverymanInfo = action.payload;
       })
       .addCase(getDeliverymanForVendorOrder.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload || null;
+      })
+      .addCase(getSpecVendorsFeeds.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(getSpecVendorsFeeds.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        state.vendorFeeds = action.payload.vendorFeeds;
+        state.vendorPagination = action.payload.pagination;
+      })
+      .addCase(getSpecVendorsFeeds.rejected, (state, action) => {
         state.status = "rejected";
         state.error = action.payload || null;
       })

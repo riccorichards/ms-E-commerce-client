@@ -15,7 +15,6 @@ const LinerView = () => {
   const { myFeeds, customer } = useAppSelector((state) => state.customer);
   const { vendorFeeds, vendor } = useAppSelector((state) => state.vendor);
   const getFeedContext = useContext(FeedContext);
-
   if (!customer && !vendor) return null;
 
   const targetFeeds = myFeeds || vendorFeeds;
@@ -40,7 +39,9 @@ const LinerView = () => {
                 </span>
               </div>
             </div>
-            <p>"{feed.review}"</p>
+            <p style={{ width: "80%", textAlign: "center", fontSize: "14px" }}>
+              "{feed.review}"
+            </p>
             <div className="show-target">
               <ImageWraper image={feed.targetImg} size="35px" />
               <div style={{ display: "flex", flexDirection: "column" }}>
@@ -59,7 +60,7 @@ const LinerView = () => {
                 )}
               </div>
             </div>
-            <span style={{ fontSize: "14px" }}>
+            <span style={{ fontSize: "12px" }}>
               {timeFormat(feed.createdAt)}
             </span>
             <button

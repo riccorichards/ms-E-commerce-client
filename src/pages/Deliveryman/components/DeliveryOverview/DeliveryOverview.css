@@ -10,7 +10,12 @@
   flex-direction: column;
   gap: 15px;
   border-radius: 7.5px;
+  cursor: pointer;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.25s ease-in-out;
+}
+.deliveryman-overview-wrapper .deliveryman-overview-item:hover {
+  background-color: #87ceeb;
 }
 .deliveryman-overview-wrapper .deliveryman-overview-item .deliveryman-overview-item-content {
   display: flex;

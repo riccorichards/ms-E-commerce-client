@@ -1,12 +1,25 @@
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../../../redux/hook";
 import ActivitiesTemplate from "./ActivitiesTemplate/ActivitiesTemplate";
 import "./DeliverymanActivities.scss";
+import { getdeliverymanOrders } from "../../../../redux/appCall/DeliverymanAppCall";
 
 const DeliverymanActivities = () => {
+  const dispatch = useAppDispatch();
+  const { deliverymanOrders } = useAppSelector((s) => s.deliveryman);
+
+  useEffect(() => {
+    dispatch(getdeliverymanOrders(false));
+  }, [dispatch]);
+
+  if (!deliverymanOrders) return null;
+
   return (
     <div className="deliveryman-activity-wrapper">
-      <h2>Last Activities</h2>
       <div className="deliveryman-activities">
-        <ActivitiesTemplate />
+        {deliverymanOrders.map((order) => (
+          <ActivitiesTemplate key={order.id} order={order} />
+        ))}
       </div>
     </div>
   );

@@ -1,0 +1,9 @@
+.deliveryman-earning-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.deliveryman-earning-wrapper .deliveryman-earning-echart {
+  background-color: #333333;
+  border-radius: 15px;
+}

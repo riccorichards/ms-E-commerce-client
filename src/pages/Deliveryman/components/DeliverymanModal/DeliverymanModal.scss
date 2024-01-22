@@ -1,0 +1,119 @@
+@use "../../../../assets/v.scss";
+
+.more-detailed-activities-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  border-radius: 15px;
+  background-color: rgba($color: #000000, $alpha: 0.55);
+
+  .more-detailed-activities {
+    width: 75%;
+    height: 550px;
+    border-radius: 15px;
+    background-color: v.$white;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+
+    button {
+      font-size: 18px;
+      border: 5px solid v.$white;
+      display: flex;
+      border-radius: 5px;
+      font-family: v.$title_font2;
+      padding: 5px 10px;
+      align-items: center;
+      justify-content: center;
+      background-color: v.$orangered;
+      color: v.$white;
+      position: absolute;
+      right: 5%;
+      bottom: 95%;
+      cursor: pointer;
+      transition: all 0.25s ease-in-out;
+
+      &:hover {
+        background-color: red;
+        border: 5px solid v.$orangered;
+      }
+    }
+
+    &:hover {
+      .more-detailed-activities-footer {
+        opacity: 1;
+      }
+    }
+    .more-detailed-customer-info {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: fit-content;
+      background-color: v.$sky;
+      border-radius: 5px;
+      color: v.$white;
+      box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.15);
+    }
+    .more-detailed-vendors-info-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      height: 100%;
+
+      .more-detailed-vendor-info {
+        padding: 10px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        background-color: v.$att_green;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.15);
+        color: v.$white;
+        height: 100%;
+      }
+    }
+
+    .more-detailed-activities-menu-wrapper {
+      height: 40vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+
+      .more-detailed-activities-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        .more-detailed-activities-food {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+    }
+
+    .more-detailed-activities-footer {
+      position: absolute;
+      right: 5%;
+      top: 98%;
+      padding: 10px;
+      font-size: 24px;
+      background-color: v.$att_green;
+      border-radius: 5px;
+      color: v.$white;
+      opacity: 0;
+      transition: all 0.25s ease-in-out;
+    }
+  }
+}

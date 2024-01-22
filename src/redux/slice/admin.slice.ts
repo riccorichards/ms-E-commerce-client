@@ -23,6 +23,7 @@ const initialState: AdminState = {
   orders: null,
   topVendors: null,
   employees: null,
+  adminPagination: null,
   topCustomers: null,
   popularItems: null,
   feedbacksLength: null,
@@ -189,7 +190,8 @@ const AdminSlice = createSlice({
       .addCase(getEmployees.fulfilled, (state, action) => {
         state.status = "fulfilled";
         if (state) {
-          state.employees = action.payload;
+          state.employees = action.payload.employees;
+          state.adminPagination = action.payload.pagination;
         }
       })
       .addCase(getEmployees.rejected, (state, action) => {

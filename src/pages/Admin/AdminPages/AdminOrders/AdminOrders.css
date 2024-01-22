@@ -10,4 +10,11 @@
   gap: 15px;
   grid-template-columns: repeat(3, 1fr);
   height: 65vh;
+  padding: 15px;
+}
+.admin-orders .admin-order-item {
+  background-color: #008080;
+  border-radius: 5px;
+  padding: 5px;
+  color: #fff8e1;
 }

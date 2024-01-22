@@ -6,28 +6,38 @@ import LinerView from "./components/LinerView/LinerView";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hook";
 import {
   deleteFeedback,
-  getCustomerSpecData,
+  getCustomerFeeds,
 } from "../../../../redux/appCall/AuthAppCall";
 import FeedContext from "./FeedContext";
-import { getVendorSpecData } from "../../../../redux/appCall/VendorAppCall";
+import { getSpecVendorsFeeds } from "../../../../redux/appCall/VendorAppCall";
+import Pagination from "../../../pagination/Pagination";
 
 const CustomerFeeds = () => {
   const [isGridView, setGrigView] = useState<boolean>(true);
-  const { vendor } = useAppSelector((state) => state.vendor);
-  const { customer } = useAppSelector((state) => state.customer);
+  const { vendor, vendorFeeds, vendorPagination } = useAppSelector(
+    (state) => state.vendor
+  );
+  const { customer, customerPagination } = useAppSelector(
+    (state) => state.customer
+  );
   const dispatch = useAppDispatch();
+  const [page, setPage] = useState<number>(1);
 
   useEffect(() => {
     if (customer) {
-      dispatch(getCustomerSpecData("feedback"));
+      dispatch(getCustomerFeeds(page));
     } else if (vendor) {
-      dispatch(getVendorSpecData("feeds"));
+      
+      dispatch(getSpecVendorsFeeds({ vendorId: vendor._id, page }));
     }
-  }, [customer, vendor]); //eslint-disable-line
+  }, [customer, vendor, page]); //eslint-disable-line
 
   const handleDeleteFeedProcess = (feedId: number) => {
     dispatch(deleteFeedback(feedId));
   };
+
+  if (!customer && !customerPagination && !vendorFeeds && !vendorPagination)
+    return null;
 
   const contextValues = {
     isGridView,
@@ -35,11 +45,21 @@ const CustomerFeeds = () => {
     handleDeleteFeedProcess,
   };
 
+  const targetPagination = customerPagination || vendorPagination;
+
+  if (!targetPagination) return null;
+
   return (
     <FeedContext.Provider value={contextValues}>
       <div className="customer-feeds-to-vendor">
         <CustomerFeedsHeader />
         {isGridView ? <GridView /> : <LinerView />}
+        {targetPagination.totalPages > 1 && (
+          <Pagination
+            setPage={setPage}
+            totalPage={targetPagination.totalPages}
+          />
+        )}
       </div>
     </FeedContext.Provider>
   );

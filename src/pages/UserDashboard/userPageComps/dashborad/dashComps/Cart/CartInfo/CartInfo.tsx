@@ -75,57 +75,60 @@ const CartInfo: FC<{ setShowCart: (val: boolean) => void }> = ({
   };
   return (
     <div className="cart-info-wrapper">
-      <button className="close-cart-btn" onClick={() => setShowCart(false)}>
-        Close
-      </button>
-      <h2>Your account</h2>
-      <div className="cart-info-header">
-        <div className="cart-info-switcher">
-          <button
-            className="cart-info-switcher-btn"
-            onClick={() => setIsCart(true)}
-            style={{
-              backgroundColor: isCart ? "orangered" : "",
-            }}
-          >
-            My Cart
-          </button>
-          <button
-            className="cart-info-switcher-btn"
-            onClick={() => setIsCart(false)}
-            style={{ backgroundColor: !isCart ? "orangered" : "" }}
-          >
-            My Wishlist
-          </button>
-        </div>
-        <div className="cart-info-icon">
-          <IoIosCart />
-          <div className="shows-cart-food">{customer?.cart.length}</div>
-        </div>
-      </div>
-      {isCart ? (
-        <div className="cart-foods-place">
-          {customer?.cart && customer.cart.length > 0 ? (
-            customer.cart.map((food) => (
-              <PerFoodInCart
-                key={food.id}
-                food={food}
-                handleUpdateCart={handleUpdateFoodInCart}
-                removeFood={handleDeleteFoodInCart}
-              />
-            ))
-          ) : (
-            <EmptyCartPlace title="Not Food in the cart" />
-          )}
-          {customer && customer.cart.length > 0 && (
-            <button className="checkout" onClick={handleSendCartProcess}>
-              Check out <span>{totalPrice.toFixed(2)}$</span>
+      <>
+        {" "}
+        <button className="close-cart-btn" onClick={() => setShowCart(false)}>
+          Close
+        </button>
+        <h2>Your account</h2>
+        <div className="cart-info-header">
+          <div className="cart-info-switcher">
+            <button
+              className="cart-info-switcher-btn"
+              onClick={() => setIsCart(true)}
+              style={{
+                backgroundColor: isCart ? "orangered" : "",
+              }}
+            >
+              My Cart
             </button>
-          )}
+            <button
+              className="cart-info-switcher-btn"
+              onClick={() => setIsCart(false)}
+              style={{ backgroundColor: !isCart ? "orangered" : "" }}
+            >
+              My Wishlist
+            </button>
+          </div>
+          <div className="cart-info-icon">
+            <IoIosCart />
+            <div className="shows-cart-food">{customer?.cart.length}</div>
+          </div>
         </div>
-      ) : (
-        <Wishlist />
-      )}
+        {isCart ? (
+          <div className="cart-foods-place">
+            {customer?.cart && customer.cart.length > 0 ? (
+              customer.cart.map((food) => (
+                <PerFoodInCart
+                  key={food.id}
+                  food={food}
+                  handleUpdateCart={handleUpdateFoodInCart}
+                  removeFood={handleDeleteFoodInCart}
+                />
+              ))
+            ) : (
+              <EmptyCartPlace title="Not Food in the cart" />
+            )}
+            {customer && customer.cart.length > 0 && (
+              <button className="checkout" onClick={handleSendCartProcess}>
+                Check out <span>{totalPrice.toFixed(2)}$</span>
+              </button>
+            )}
+          </div>
+        ) : (
+          <Wishlist />
+        )}
+      </>
     </div>
   );
 };

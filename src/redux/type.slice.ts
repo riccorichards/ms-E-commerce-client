@@ -53,10 +53,16 @@ export interface CustomerCoordsType {
   longitude: number;
 }
 
+export interface FeedbacksResponse {
+  feedResult: FeedbackType[];
+  pagination: PagnationType;
+}
+
 export type AuthState = {
   customer: EntireCustomerType | null;
   myFeeds: FeedbackType[] | null;
   ttl: number | null;
+  customerPagination: PagnationType | null;
   coords: CustomerCoordsType | null;
   _id: string | null;
   currentPassword: boolean | null;
@@ -129,11 +135,17 @@ export interface EmployeeType {
   currentAddress: string;
 }
 
+export interface EmployeeResponseType {
+  employees: EmployeeType[];
+  pagination: PagnationType;
+}
+
 export interface AdminState {
   createdVendor: BasicVendorType | null;
   imageUrl: string | null;
   ordersLength: number | null;
   employees: EmployeeType[] | null;
+  adminPagination: PagnationType | null;
   orders: OrderType[] | null;
   popularItems: PopularFoodsType | null;
   topVendors: WeeklyTopVendors | null;
@@ -220,7 +232,7 @@ export interface VendorListType {
   email: string;
   rating: number;
   workingHrs: WorkingHrsType;
-  address: VendorAddressType;
+  address: string;
   socialUrls: SocUrlType[];
 }
 
@@ -259,10 +271,16 @@ export interface OrderDeliverymanInfo {
   currentAddress: string;
 }
 
+export interface VendorFeedResponseType {
+  vendorFeeds: FeedbackType[];
+  pagination: PagnationType;
+}
+
 export interface VendorState {
   vendor: VendorType | null;
   vendorList: VendorListType[] | null;
   specVendor: VendorType | null;
+  vendorPagination: PagnationType | null;
   vendorFeeds: FeedbackType[] | null;
   ttl: number | null;
   coords: VendorCoordsType | null;
@@ -300,6 +318,18 @@ export interface ProductType {
   desc: string;
   subCatId: number;
   feedbacks: FeedbackType[];
+}
+
+export interface PagnationType {
+  page: number;
+  totalPages: number;
+  pageSize: number;
+  totalCount: number;
+}
+
+export interface FoodResponseType {
+  products: ProductType[];
+  pagination: PagnationType;
 }
 
 export interface CreateFoodInputType {
@@ -384,6 +414,7 @@ export interface FoodState {
   foodImageUrl: string | null;
   subC: GetFilteredSubC[] | GetVendorSubC[] | null;
   foods: ProductType[] | null;
+  foodPagination: PagnationType | null;
   vendorFoods: ProductType[] | null;
   state: string | null;
   error: string | null;
@@ -403,6 +434,7 @@ export interface DeliverymanType {
   email: string;
   image: string;
   createdAt: string;
+  feedCount: number;
 }
 
 export interface GetDeliveryMan {
@@ -410,9 +442,30 @@ export interface GetDeliveryMan {
   ttl: number;
 }
 
+export interface EarnStats {
+  day: string;
+  result: number;
+}
+
+export interface EarnStatsResponse {
+  res: EarnStats[];
+  isStats: boolean;
+  len: number;
+}
+
+export interface DeliverymanOrdersTypeResponse {
+  res: OrderType[];
+  len: number;
+  isStats: boolean;
+}
+
 export interface DeliverymanState {
   deliveyman: DeliverymanType | null;
   ttl: number | null;
+  ordersLen: number | null;
+  deliveryFeedbacks: FeedbackType[] | null;
+  earnStats: EarnStats[] | null;
+  deliverymanOrders: OrderType[] | null;
   status: string | null;
   error: string | null;
 }
@@ -458,8 +511,8 @@ export interface OrderType {
   total_amount: number;
   deliverymanName: string;
   customerId: string;
+  customer: OrderCustomerInfo;
   createdAt: string;
-  note: string;
   orderItem: CartItemsType[];
 }
 
@@ -497,10 +550,16 @@ export interface OrderListType {
   createdAt: string;
 }
 
+export interface OrderListResponseType {
+  orderList: OrderListType[];
+  pagination: PagnationType;
+}
+
 export interface ShoppingStateType {
   nearestDeliveryman: NearestDeliverymanType[] | null;
   orderId: number | null;
   order: OrderType | null;
+  orderPagination: PagnationType | null;
   deliverymanForOrder: DeliverymanInOrderType | null;
   vendorForOrder: VendorInOrderType[];
   ordersList: OrderListType[] | null;

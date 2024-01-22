@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import "./VendorGallery.scss";
 import { SiAmazoncloudwatch } from "react-icons/si";
 import { FaRegEye } from "react-icons/fa";
@@ -11,15 +10,13 @@ const img3 =
   "https://i.pinimg.com/564x/76/19/9e/76199ed6bbc20bd7a44b7f41dcc53feb.jpg";
 
 const VendorGallery = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="verdor-gallery">
       <h2>Gallery</h2>
       <div className="gallery-wrapper">
         <div className="first-one-wrapper">
           <div className="hover-btn-wrapper">
-            <button onClick={() => navigate("/vendor/settings/gallery")}>
+            <button>
               <SiAmazoncloudwatch />
             </button>
             <button>

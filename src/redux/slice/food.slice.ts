@@ -17,6 +17,7 @@ const initialState: FoodState = {
   subC: null,
   foodImageUrl: null,
   foods: null,
+  foodPagination: null,
   vendorFoods: null,
   state: null,
   error: null,
@@ -91,7 +92,8 @@ const FoodSlice = createSlice({
       })
       .addCase(getFoods.fulfilled, (state, action) => {
         state.state = "fulfilled";
-        state.foods = action.payload;
+        state.foods = action.payload.products;
+        state.foodPagination = action.payload.pagination;
       })
       .addCase(getFoods.rejected, (state, action) => {
         state.state = "rejected";

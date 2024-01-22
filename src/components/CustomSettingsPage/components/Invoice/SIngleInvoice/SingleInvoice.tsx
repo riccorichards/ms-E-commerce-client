@@ -1,6 +1,23 @@
+import { FC, useEffect } from "react";
 import "./SingleInvoice.scss";
+import { useAppDispatch, useAppSelector } from "../../../../../redux/hook";
+import { findOrderById } from "../../../../../redux/appCall/ShoppingApiCall";
 
-const SingleInvoice = () => {
+const SingleInvoice: FC<{ orderIdWrapper: number | null }> = ({
+  orderIdWrapper,
+}) => {
+  const dispatch = useAppDispatch();
+  const { order } = useAppSelector((s) => s.shopping);
+  const { customer } = useAppSelector((s) => s.customer);
+
+  useEffect(() => {
+    if (orderIdWrapper) {
+      dispatch(findOrderById(orderIdWrapper));
+    }
+  }, [orderIdWrapper, dispatch]);
+
+  if (!order || !customer) return null;
+
   return (
     <div className="single-invoice-wrapper">
       <div className="single-invoice">
@@ -23,14 +40,14 @@ const SingleInvoice = () => {
           </div>
           <div className="single-invoice-header-to">
             <p style={{ fontWeight: "800" }}>To:</p>
-            <h3>Anastasia</h3>
+            <h3>{customer.username}</h3>
             <p>
               <span style={{ fontWeight: "800" }}>Address:</span>
-              Lorem, ipsum dolor.
+              {customer.address.street}
             </p>
             <p>
               <span style={{ fontWeight: "800" }}>Email:</span>
-              ricco@gmail.com
+              {customer.email}
             </p>
             <p>
               <span style={{ fontWeight: "800" }}>Phone:</span>
@@ -44,36 +61,30 @@ const SingleInvoice = () => {
               <tr className="single-invoice-tr">
                 <th className="single-invoice-th">#</th>
                 <th className="single-invoice-th">Item</th>
-                <th className="single-invoice-th">Description</th>
                 <th className="single-invoice-th">Price</th>
-                <th className="single-invoice-th">Discount</th>
-                <th className="single-invoice-th">Shopping</th>
                 <th className="single-invoice-th">Qty</th>
                 <th className="single-invoice-th">Total</th>
               </tr>
             </thead>
             <tbody className="single-invoice-tbody">
-              <tr className="single-invoice-tr">
-                <td className="single-invoice-td">1</td>
-                <td className="single-invoice-td">Tolma</td>
-                <td className="single-invoice-td">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing. Lorem
-                  ipsum dolor sit amet, consectetur adipisicing. Lorem ipsum
-                  dolor sit amet, consectetur adipisicing.
-                </td>
-                <td className="single-invoice-td">$0</td>
-                <td className="single-invoice-td">$2.59</td>
-                <td className="single-invoice-td">$19.59</td>
-                <td className="single-invoice-td">1</td>
-                <td className="single-invoice-td">$19.59</td>
-              </tr>
+              {order.orderItem.map((item) => (
+                <tr className="single-invoice-tr" key={item.productId}>
+                  <td className="single-invoice-td">{item.productId}#</td>
+                  <td className="single-invoice-td">{item.product_name}</td>
+                  <td className="single-invoice-td">${item.product_price}</td>
+                  <td className="single-invoice-td">{item.qty}</td>
+                  <td className="single-invoice-td">
+                    ${(item.qty * parseFloat(item.product_price)).toFixed(2)}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
         <div className="single-invoice-sum">
           <div className="single-invoice-sum-item">
             <span style={{ fontWeight: "800" }}>SubTotal</span>
-            <p>$56.59</p>
+            <p>${order.total_amount.toFixed(2)}</p>
           </div>
           <div className="single-invoice-sum-item">
             <span style={{ fontWeight: "800" }}>Discount</span>
@@ -81,11 +92,13 @@ const SingleInvoice = () => {
           </div>
           <div className="single-invoice-sum-item">
             <span style={{ fontWeight: "800" }}>Shopping</span>
-            <p>$7.48</p>
+            <p>$2.50</p>
           </div>
           <div className="single-invoice-sum-item">
             <span style={{ fontWeight: "800" }}>Total</span>
-            <h3 style={{ fontWeight: "800" }}>$56.59</h3>
+            <h3 style={{ fontWeight: "800" }}>
+              ${(order.total_amount + 2.5).toFixed(2)}
+            </h3>
           </div>
         </div>
       </div>

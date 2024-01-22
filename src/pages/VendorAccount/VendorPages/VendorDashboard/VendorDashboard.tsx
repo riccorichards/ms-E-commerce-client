@@ -4,6 +4,7 @@ import EChartsReact from "echarts-for-react";
 import MonPages from "./MonPages/MonPages";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hook";
 import { getVendorDashboardData } from "../../../../redux/appCall/VendorAppCall";
+import { TargetDashboardData } from "../../../../redux/type.slice";
 
 const VendorDashboard = () => {
   const [isMonitoring, setIsMonitoring] = useState<boolean>(false);
@@ -26,6 +27,19 @@ const VendorDashboard = () => {
     },
     yAxis: {
       type: "value",
+    },
+    tooltip: {
+      trigger: "axis",
+      axisPointer: {
+        type: "shadow",
+      },
+      formatter: function (params: TargetDashboardData[]) {
+        let tooltipContent = "";
+        params.forEach(function (item) {
+          tooltipContent += item.value.toFixed(2);
+        });
+        return tooltipContent;
+      },
     },
     series: [
       {

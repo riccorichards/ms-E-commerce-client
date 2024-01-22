@@ -8,5 +8,5 @@
 .sub-cat-cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 35px;
+  gap: 55px;
 }

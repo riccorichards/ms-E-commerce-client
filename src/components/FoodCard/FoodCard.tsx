@@ -184,7 +184,7 @@ const FoodCard: FC<{
             <span style={{ fontWeight: "600" }}>25 min</span>
           </div>
         </div>
-        <p>{food.desc}</p>
+        <p style={{ height: "10vh" }}>{food.desc}</p>
       </div>
       <div className="shopping-option">
         <div className="price-wrapper">

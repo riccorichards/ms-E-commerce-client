@@ -2,6 +2,7 @@ import { FC } from "react";
 import NavSettings from "./NavSettings/NavSettings";
 import "./Settings.scss";
 import SetComponents from "./components/SetComponents";
+import { useAppSelector } from "../../redux/hook";
 
 interface SettingOptions {
   setNavLInk: {
@@ -16,8 +17,13 @@ interface SettingOptions {
 const Settings: FC<{ settingOptions: SettingOptions }> = ({
   settingOptions,
 }) => {
+  const { customer } = useAppSelector((s) => s.customer);
+
   return (
-    <div className="customer-settings-wrapper">
+    <div
+      className="customer-settings-wrapper"
+      style={{ padding: customer ? "30px" : "" }}
+    >
       <NavSettings setNavLink={settingOptions.setNavLInk} />
       <SetComponents target={settingOptions.target} />
     </div>

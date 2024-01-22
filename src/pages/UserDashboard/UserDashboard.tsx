@@ -13,6 +13,7 @@ import Settings from "../../components/CustomSettingsPage/Settings";
 import AllSubCat from "../AllSubCat/AllSubCat";
 import VendorMenu from "../VendorMenu/VendorMenu";
 import CurrentOrder from "../CurrentOrder/CurrentOrder";
+import AllVendorFeeds from "../VendorDetails/AllVendorFeeds/AllVendorFeeds";
 
 //for custom setting pages
 const settingOptions = {
@@ -61,6 +62,7 @@ const UserDashboard = () => {
         <Route path="/vendors" element={<VendorList />} />
         <Route path="/vendors/:id" element={<VendorDetails />} />
         <Route path="/vendors/:id/menu" element={<VendorMenu />} />
+        <Route path="/vendors/:id/feedbacks" element={<AllVendorFeeds />} />
         <Route
           path="/settings/*"
           element={<Settings settingOptions={settingOptions} />}

@@ -3,7 +3,7 @@ import axios from "axios";
 import {
   BasicDeliverymanType,
   BasicVendorType,
-  EmployeeType,
+  EmployeeResponseType,
   OrderCustomerInfo,
   OrderType,
   PopularFoodsType,
@@ -262,14 +262,14 @@ export const getTopCustomers = createAsyncThunk<
 });
 
 export const getEmployees = createAsyncThunk<
-  EmployeeType[],
-  undefined,
+  EmployeeResponseType,
+  number,
   { rejectValue: string | unknown }
->("admin/getEmployees", async (_: undefined, { rejectWithValue }) => {
+>("admin/getEmployees", async (page: number, { rejectWithValue }) => {
   try {
     const { data } = await axios({
       method: "get",
-      url: "http://localhost:8005/all-deliveryman",
+      url: `http://localhost:8005/all-deliveryman?page=${page}`,
       withCredentials: true,
     });
     return data;

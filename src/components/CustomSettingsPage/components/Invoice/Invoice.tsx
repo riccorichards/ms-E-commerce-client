@@ -1,15 +1,20 @@
 import { useEffect, useState, MouseEvent } from "react";
-import Pagination from "../../../../components/pagination/Pagination";
 import "./Invoice.scss";
 import SingleInvoice from "./SIngleInvoice/SingleInvoice";
+import { useAppDispatch, useAppSelector } from "../../../../redux/hook";
+import { getOrderList } from "../../../../redux/appCall/ShoppingApiCall";
+import Pagination from "../../../pagination/Pagination";
 
 const Invoice = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useAppDispatch();
+  const { ordersList, orderPagination } = useAppSelector((s) => s.shopping);
+  const [orderIdWrapper, setOrderIdWrapper] = useState<number | null>(null);
+  const [page, setPage] = useState<number>(1);
 
-  const openModal = (event: MouseEvent) => {
-    event.stopPropagation();
-    setIsOpen(true);
-  };
+  useEffect(() => {
+    dispatch(getOrderList(page));
+  }, [dispatch, page]);
 
   const handleClick = () => {
     if (isOpen) {
@@ -25,6 +30,14 @@ const Invoice = () => {
     };
   }, [isOpen]); //eslint-disable-line
 
+  if (!ordersList || !orderPagination) return null;
+
+  const openModal = (event: MouseEvent, id: number) => {
+    event.stopPropagation();
+    setIsOpen(true);
+    setOrderIdWrapper(id);
+  };
+
   return (
     <div className="invoice-wrapper">
       <h1>My Invoice</h1>
@@ -33,243 +46,36 @@ const Invoice = () => {
           <thead className="invoice-thead">
             <tr className="invoice-tr">
               <th className="invoice-th">Invoice#</th>
-              <th className="invoice-th">Vendor</th>
               <th className="invoice-th">Date</th>
               <th className="invoice-th">Amount</th>
-              <th className="invoice-th">Discount</th>
-              <th className="invoice-th">Shipping price</th>
+              <th className="invoice-th">Shipping</th>
               <th className="invoice-th">Total</th>
             </tr>
           </thead>
           <tbody className="invoice-tbody">
-            <tr
-              className="invoice-tr"
-              style={{ cursor: "pointer" }}
-              onClick={openModal}
-            >
-              <td className="invoice-td">INV-0001</td>
-              <td className="invoice-td">RiccoFood</td>
-              <td className="invoice-td">2023-12-06</td>
-              <td className="invoice-td">$ 19.59</td>
-              <td className="invoice-td">$ 0</td>
-              <td className="invoice-td">$ 4.59</td>
-              <td className="invoice-td">$ 19.59</td>
-            </tr>
-          </tbody>
-          <tbody className="invoice-tbody">
-            <tr
-              className="invoice-tr"
-              style={{ cursor: "pointer" }}
-              onClick={openModal}
-            >
-              <td className="invoice-td">INV-0001</td>
-              <td className="invoice-td">RiccoFood</td>
-              <td className="invoice-td">2023-12-06</td>
-              <td className="invoice-td">$ 19.59</td>
-              <td className="invoice-td">$ 0</td>
-              <td className="invoice-td">$ 4.59</td>
-              <td className="invoice-td">$ 19.59</td>
-            </tr>
-          </tbody>
-          <tbody className="invoice-tbody">
-            <tr
-              className="invoice-tr"
-              style={{ cursor: "pointer" }}
-              onClick={openModal}
-            >
-              <td className="invoice-td">INV-0001</td>
-              <td className="invoice-td">RiccoFood</td>
-              <td className="invoice-td">2023-12-06</td>
-              <td className="invoice-td">$ 19.59</td>
-              <td className="invoice-td">$ 0</td>
-              <td className="invoice-td">$ 4.59</td>
-              <td className="invoice-td">$ 19.59</td>
-            </tr>
-          </tbody>
-          <tbody className="invoice-tbody">
-            <tr
-              className="invoice-tr"
-              style={{ cursor: "pointer" }}
-              onClick={openModal}
-            >
-              <td className="invoice-td">INV-0001</td>
-              <td className="invoice-td">RiccoFood</td>
-              <td className="invoice-td">2023-12-06</td>
-              <td className="invoice-td">$ 19.59</td>
-              <td className="invoice-td">$ 0</td>
-              <td className="invoice-td">$ 4.59</td>
-              <td className="invoice-td">$ 19.59</td>
-            </tr>
-          </tbody>
-          <tbody className="invoice-tbody">
-            <tr
-              className="invoice-tr"
-              style={{ cursor: "pointer" }}
-              onClick={openModal}
-            >
-              <td className="invoice-td">INV-0001</td>
-              <td className="invoice-td">RiccoFood</td>
-              <td className="invoice-td">2023-12-06</td>
-              <td className="invoice-td">$ 19.59</td>
-              <td className="invoice-td">$ 0</td>
-              <td className="invoice-td">$ 4.59</td>
-              <td className="invoice-td">$ 19.59</td>
-            </tr>
-          </tbody>
-          <tbody className="invoice-tbody">
-            <tr
-              className="invoice-tr"
-              style={{ cursor: "pointer" }}
-              onClick={openModal}
-            >
-              <td className="invoice-td">INV-0001</td>
-              <td className="invoice-td">RiccoFood</td>
-              <td className="invoice-td">2023-12-06</td>
-              <td className="invoice-td">$ 19.59</td>
-              <td className="invoice-td">$ 0</td>
-              <td className="invoice-td">$ 4.59</td>
-              <td className="invoice-td">$ 19.59</td>
-            </tr>
-          </tbody>
-          <tbody className="invoice-tbody">
-            <tr
-              className="invoice-tr"
-              style={{ cursor: "pointer" }}
-              onClick={openModal}
-            >
-              <td className="invoice-td">INV-0001</td>
-              <td className="invoice-td">RiccoFood</td>
-              <td className="invoice-td">2023-12-06</td>
-              <td className="invoice-td">$ 19.59</td>
-              <td className="invoice-td">$ 0</td>
-              <td className="invoice-td">$ 4.59</td>
-              <td className="invoice-td">$ 19.59</td>
-            </tr>
-          </tbody>
-          <tbody className="invoice-tbody">
-            <tr
-              className="invoice-tr"
-              style={{ cursor: "pointer" }}
-              onClick={openModal}
-            >
-              <td className="invoice-td">INV-0001</td>
-              <td className="invoice-td">RiccoFood</td>
-              <td className="invoice-td">2023-12-06</td>
-              <td className="invoice-td">$ 19.59</td>
-              <td className="invoice-td">$ 0</td>
-              <td className="invoice-td">$ 4.59</td>
-              <td className="invoice-td">$ 19.59</td>
-            </tr>
-          </tbody>
-          <tbody className="invoice-tbody">
-            <tr
-              className="invoice-tr"
-              style={{ cursor: "pointer" }}
-              onClick={openModal}
-            >
-              <td className="invoice-td">INV-0001</td>
-              <td className="invoice-td">RiccoFood</td>
-              <td className="invoice-td">2023-12-06</td>
-              <td className="invoice-td">$ 19.59</td>
-              <td className="invoice-td">$ 0</td>
-              <td className="invoice-td">$ 4.59</td>
-              <td className="invoice-td">$ 19.59</td>
-            </tr>
-          </tbody>
-          <tbody className="invoice-tbody">
-            <tr
-              className="invoice-tr"
-              style={{ cursor: "pointer" }}
-              onClick={openModal}
-            >
-              <td className="invoice-td">INV-0001</td>
-              <td className="invoice-td">RiccoFood</td>
-              <td className="invoice-td">2023-12-06</td>
-              <td className="invoice-td">$ 19.59</td>
-              <td className="invoice-td">$ 0</td>
-              <td className="invoice-td">$ 4.59</td>
-              <td className="invoice-td">$ 19.59</td>
-            </tr>
-          </tbody>
-          <tbody className="invoice-tbody">
-            <tr
-              className="invoice-tr"
-              style={{ cursor: "pointer" }}
-              onClick={openModal}
-            >
-              <td className="invoice-td">INV-0001</td>
-              <td className="invoice-td">RiccoFood</td>
-              <td className="invoice-td">2023-12-06</td>
-              <td className="invoice-td">$ 19.59</td>
-              <td className="invoice-td">$ 0</td>
-              <td className="invoice-td">$ 4.59</td>
-              <td className="invoice-td">$ 19.59</td>
-            </tr>
-          </tbody>
-          <tbody className="invoice-tbody">
-            <tr
-              className="invoice-tr"
-              style={{ cursor: "pointer" }}
-              onClick={openModal}
-            >
-              <td className="invoice-td">INV-0001</td>
-              <td className="invoice-td">RiccoFood</td>
-              <td className="invoice-td">2023-12-06</td>
-              <td className="invoice-td">$ 19.59</td>
-              <td className="invoice-td">$ 0</td>
-              <td className="invoice-td">$ 4.59</td>
-              <td className="invoice-td">$ 19.59</td>
-            </tr>
-          </tbody>
-          <tbody className="invoice-tbody">
-            <tr
-              className="invoice-tr"
-              style={{ cursor: "pointer" }}
-              onClick={openModal}
-            >
-              <td className="invoice-td">INV-0001</td>
-              <td className="invoice-td">RiccoFood</td>
-              <td className="invoice-td">2023-12-06</td>
-              <td className="invoice-td">$ 19.59</td>
-              <td className="invoice-td">$ 0</td>
-              <td className="invoice-td">$ 4.59</td>
-              <td className="invoice-td">$ 19.59</td>
-            </tr>
-          </tbody>
-          <tbody className="invoice-tbody">
-            <tr
-              className="invoice-tr"
-              style={{ cursor: "pointer" }}
-              onClick={openModal}
-            >
-              <td className="invoice-td">INV-0001</td>
-              <td className="invoice-td">RiccoFood</td>
-              <td className="invoice-td">2023-12-06</td>
-              <td className="invoice-td">$ 19.59</td>
-              <td className="invoice-td">$ 0</td>
-              <td className="invoice-td">$ 4.59</td>
-              <td className="invoice-td">$ 19.59</td>
-            </tr>
-          </tbody>
-          <tbody className="invoice-tbody">
-            <tr
-              className="invoice-tr"
-              style={{ cursor: "pointer" }}
-              onClick={openModal}
-            >
-              <td className="invoice-td">INV-0001</td>
-              <td className="invoice-td">RiccoFood</td>
-              <td className="invoice-td">2023-12-06</td>
-              <td className="invoice-td">$ 19.59</td>
-              <td className="invoice-td">$ 0</td>
-              <td className="invoice-td">$ 4.59</td>
-              <td className="invoice-td">$ 19.59</td>
-            </tr>
+            {ordersList.map((order) => (
+              <tr
+                key={order.orderId}
+                className="invoice-tr"
+                style={{ cursor: "pointer" }}
+                onClick={(e: MouseEvent) => openModal(e, order.orderId)}
+              >
+                <td className="invoice-td">{`INV-000${order.orderId}`}</td>
+                <td className="invoice-td">{order.createdAt.split("T")[0]}</td>
+                <td className="invoice-td">{order.total_amount.toFixed(2)}</td>
+                <td className="invoice-td">$ 2.50</td>
+                <td className="invoice-td">
+                  $ {(order.total_amount + 2.5).toFixed(2)}
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
-      <Pagination num={4} />
-      {isOpen && <SingleInvoice />}
+      {isOpen && <SingleInvoice orderIdWrapper={orderIdWrapper} />}
+      {orderPagination.totalPages > 1 && (
+        <Pagination totalPage={orderPagination.totalPages} setPage={setPage} />
+      )}
     </div>
   );
 };

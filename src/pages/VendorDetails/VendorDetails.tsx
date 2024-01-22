@@ -3,13 +3,13 @@ import VendorInfo from "./VendorInfo/VendorInfo";
 import VendorGallery from "./VendorGallery/VendorGallery";
 import VendorPopularFood from "./VendorPopularFood/VendorPopularFood";
 import VendorTeam from "./VendorTeam/VendorTeam";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import {
   getSpecVendor,
   getVendorCoords,
-  getVendorSpecData,
+  getVendorFeeds,
 } from "../../redux/appCall/VendorAppCall";
 import ReservationModal from "./VendorInfo/ReservationModal/ReservationModal";
 import FeedTemplate from "../../components/FeedTemplate/FeedTemplate";
@@ -17,6 +17,8 @@ import GoogleMapApis from "../../components/GoogleMapApis/GoogleMapApis";
 
 const VendorDetails = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const [letShowMap, setLetShowMap] = useState<boolean>(false);
   const { specVendor, vendor, vendorFeeds, coords } = useAppSelector(
     (state) => state.vendor
   );
@@ -27,12 +29,12 @@ const VendorDetails = () => {
     if (id) {
       dispatch(getSpecVendor(id));
     } else {
-      dispatch(getVendorSpecData("feeds"));
+      dispatch(getVendorFeeds(3));
     }
   }, [id]); //eslint-disable-line
 
   const targetFeedWrapper = specVendor?.feeds || vendorFeeds;
-
+  const target = specVendor || vendor;
   useEffect(() => {
     if (vendor) {
       dispatch(getVendorCoords(vendor.address));
@@ -41,6 +43,24 @@ const VendorDetails = () => {
     }
   }, [specVendor, vendor, dispatch]);
 
+  const currentUrl = window.location.href;
+  const splitedUrl = currentUrl.split("/");
+
+  useEffect(() => {
+    if (id) {
+      if (splitedUrl[splitedUrl.length - 1] === id) {
+        setLetShowMap(true);
+      }
+    } else if (vendor) {
+      if (splitedUrl[splitedUrl.length - 1] === "home") {
+        setLetShowMap(true);
+      }
+    }
+  }, [id, currentUrl, vendor, splitedUrl]);
+
+  const handleMore = () => {
+    navigate(`/customer/vendors/${id}/feedbacks`);
+  };
   return (
     <div className="vendor-details">
       <div className="vendor-introduction">
@@ -64,9 +84,20 @@ const VendorDetails = () => {
         </h2>
         <div className="vendor-details-feedback">
           {targetFeedWrapper && targetFeedWrapper.length > 0 ? (
-            targetFeedWrapper.map((feed) => (
-              <FeedTemplate feed={feed} key={feed.feedId} />
-            ))
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                width: "100%",
+                position: "relative",
+              }}
+            >
+              {targetFeedWrapper.slice(0, 3).map((feed) => (
+                <FeedTemplate feed={feed} key={feed.feedId} />
+              ))}
+              {id && <button onClick={handleMore}>See more</button>}
+            </div>
           ) : (
             <div
               style={{
@@ -83,7 +114,14 @@ const VendorDetails = () => {
         </div>
       </div>
       <div>
-        <GoogleMapApis coords={coords} />
+        {letShowMap && (
+          <GoogleMapApis
+            coords={coords}
+            name={target?.name}
+            image={target?.image}
+            rating={target?.rating}
+          />
+        )}
       </div>
     </div>
   );

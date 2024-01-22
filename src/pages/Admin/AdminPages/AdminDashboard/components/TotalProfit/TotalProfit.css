@@ -1,11 +1,12 @@
 .total-profit-wrapper {
-  width: 97.5%;
+  flex: 1;
   background-color: hsl(16, 100%, 50%);
   border-radius: 15px;
   padding: 15px;
   display: flex;
   flex-direction: column;
   gap: 15px;
+  height: 100%;
 }
 
 .total-profile-header-wrapper {

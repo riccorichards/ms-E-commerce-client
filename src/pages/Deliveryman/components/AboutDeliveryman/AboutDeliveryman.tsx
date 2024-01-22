@@ -1,7 +1,5 @@
 import ImageWraper from "../../../../components/ImageWraper";
 import "./AboutDeliveryman.scss";
-import { IoNotificationsSharp } from "react-icons/io5";
-import { TbExclamationMark } from "react-icons/tb";
 import { FaCameraRetro } from "react-icons/fa";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hook";
 import { AiOutlineLogout } from "react-icons/ai";
@@ -52,14 +50,6 @@ const AboutDeliveryman = () => {
       <div>
         <div className="about-deliveryman-img">
           <ImageWraper image={deliveyman.image} size="320px" />
-          <div className="deliveryman-noti-wrapper">
-            <button>
-              <IoNotificationsSharp />
-            </button>
-            <div className="deliveryman-noti-indicator">
-              <TbExclamationMark />
-            </div>
-          </div>
           <div
             className="deliveryman-upload-img"
             onClick={() => imageRef.current?.click()}

@@ -15,6 +15,7 @@ const initialState: ShoppingStateType = {
   nearestDeliveryman: null,
   orderId: null,
   order: null,
+  orderPagination: null,
   deliverymanForOrder: null,
   vendorForOrder: [],
   ordersList: null,
@@ -24,7 +25,11 @@ const initialState: ShoppingStateType = {
 
 const ShoppingSlice = createSlice({
   name: "shopping",
-  reducers: {},
+  reducers: {
+    resetVendorForOrder(state) {
+      state.vendorForOrder = [];
+    },
+  },
   initialState,
   extraReducers(builder) {
     builder
@@ -81,7 +86,8 @@ const ShoppingSlice = createSlice({
       })
       .addCase(getOrderList.fulfilled, (state, action) => {
         state.status = "fulfilled";
-        state.ordersList = action.payload;
+        state.ordersList = action.payload.orderList;
+        state.orderPagination = action.payload.pagination;
       })
       .addCase(getOrderList.rejected, (state, action) => {
         state.status = "rejected";
@@ -132,5 +138,7 @@ const ShoppingSlice = createSlice({
       });
   },
 });
+
+export const { resetVendorForOrder } = ShoppingSlice.actions;
 
 export default ShoppingSlice.reducer;

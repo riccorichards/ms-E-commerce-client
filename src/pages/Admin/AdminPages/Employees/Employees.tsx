@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ImageWraper from "../../../../components/ImageWraper";
 import Pagination from "../../../../components/pagination/Pagination";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hook";
@@ -8,13 +8,13 @@ import { getEmployees } from "../../../../redux/appCall/AdminAppCall";
 
 const Employees = () => {
   const dispatch = useAppDispatch();
-  const { employees } = useAppSelector((s) => s.admin);
-
+  const { employees, adminPagination } = useAppSelector((s) => s.admin);
+  const [page, setPage] = useState<number>(1);
   useEffect(() => {
-    dispatch(getEmployees());
-  }, [dispatch]);
+    dispatch(getEmployees(page));
+  }, [dispatch, page]);
 
-  if (!employees) return null;
+  if (!employees || !adminPagination) return null;
 
   return (
     <div className="employees-wrapper">
@@ -67,7 +67,7 @@ const Employees = () => {
           ))}
         </table>
       </div>
-      <Pagination num={3} />
+      <Pagination setPage={setPage} totalPage={adminPagination.totalPages} />
     </div>
   );
 };

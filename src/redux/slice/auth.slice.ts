@@ -8,7 +8,7 @@ import {
   deleteFeedback,
   fetchLogin,
   findCustomerById,
-  getCustomerSpecData,
+  getCustomerFeeds,
   logOut,
   updateAddressInfo,
   updateBankInfo,
@@ -24,6 +24,7 @@ const initialState: AuthState = {
   myFeeds: null,
   ttl: null,
   coords: null,
+  customerPagination: null,
   _id: null,
   currentPassword: null,
   status: null,
@@ -198,14 +199,15 @@ const AuthSlice = createSlice({
         state.status = "rejected";
         state.error = action.payload || null;
       })
-      .addCase(getCustomerSpecData.pending, (state) => {
+      .addCase(getCustomerFeeds.pending, (state) => {
         state.status = "pending";
       })
-      .addCase(getCustomerSpecData.fulfilled, (state, action) => {
+      .addCase(getCustomerFeeds.fulfilled, (state, action) => {
         state.status = "fulfilled";
-        state.myFeeds = action.payload;
+        state.myFeeds = action.payload.feedResult;
+        state.customerPagination = action.payload.pagination;
       })
-      .addCase(getCustomerSpecData.rejected, (state, action) => {
+      .addCase(getCustomerFeeds.rejected, (state, action) => {
         state.status = "rejected";
         state.error = action.payload || null;
       })

@@ -84,6 +84,7 @@ const FeedTemplate: FC<{
             gap: "5px",
             wordBreak: "break-all",
             fontSize: "14px",
+            height: "5vh",
           }}
         >
           {`"${feed.review}"`}

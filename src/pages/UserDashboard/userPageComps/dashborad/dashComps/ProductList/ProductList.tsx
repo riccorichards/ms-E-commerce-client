@@ -9,7 +9,7 @@ import { fetchMainCategories } from "../../../../../../redux/appCall/FoodAppCall
 
 const ProductList = () => {
   const dispatch = useAppDispatch();
-  
+
   useEffect(() => {
     dispatch(fetchMainCategories());
   }, []); //eslint-disable-line

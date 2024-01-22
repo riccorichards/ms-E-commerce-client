@@ -10,6 +10,7 @@
   display: flex;
   gap: 75px;
   color: #333333;
+  position: relative;
 }
 
 .deliveryman-dashboard-left {
@@ -21,4 +22,28 @@
 
 .deliveryman-dashboard-right {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 15px;
+}
+.deliveryman-dashboard-right .fetch-amount-btns-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.deliveryman-dashboard-right .fetch-amount-btns-wrapper button {
+  border: none;
+  background-color: #333333;
+  font-family: "Josefin Sans", sans-serif;
+  padding: 5px 10px;
+  color: #fff8e1;
+  border-radius: 2.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.deliveryman-dashboard-right .fetch-amount-btns-wrapper button:active {
+  transform: scale(0.9);
 }

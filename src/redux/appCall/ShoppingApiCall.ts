@@ -3,7 +3,7 @@ import {
   CreateShippingInputType,
   DeliverymanInOrderType,
   NearestDeliverymanResponseType,
-  OrderListType,
+  OrderListResponseType,
   OrderType,
   SendCartToServerType,
   VendorInOrderType,
@@ -128,24 +128,27 @@ export const getVendorForOrder = createAsyncThunk<
 );
 
 export const getOrderList = createAsyncThunk<
-  OrderListType[],
-  undefined,
+  OrderListResponseType,
+  number | undefined,
   { rejectValue: string | unknown }
->("shopping/getOrderList", async (_: undefined, { rejectWithValue }) => {
-  try {
-    const { data } = await axios({
-      method: "get",
-      url: "http://localhost:8003/orders-list",
-      withCredentials: true,
-    });
-    return data;
-  } catch (error) {
-    if (axios.isAxiosError(error)) {
-      return rejectWithValue(error.message);
+>(
+  "shopping/getOrderList",
+  async (page: number | undefined, { rejectWithValue }) => {
+    try {
+      const { data } = await axios({
+        method: "get",
+        url: `http://localhost:8003/orders-list?page=${page}`,
+        withCredentials: true,
+      });
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue(error);
     }
-    return rejectWithValue(error);
   }
-});
+);
 
 export const findOrderById = createAsyncThunk<
   OrderType,

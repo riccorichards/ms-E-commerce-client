@@ -25,6 +25,21 @@
   .vendor-details-feedback {
     display: flex;
     gap: 15px;
-    flex-wrap: wrap;
+
+    button {
+      position: absolute;
+      top: 105%;
+      background-color: v.$att_green;
+      border: none;
+      padding: 5px;
+      font-family: v.$title_font2;
+      border-radius: 3.5px;
+      color: v.$white;
+      cursor: pointer;
+
+      &:active {
+        transform: scale(0.9);
+      }
+    }
   }
 }

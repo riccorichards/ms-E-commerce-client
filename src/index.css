@@ -12,6 +12,8 @@
 body {
   background-image: url("./assets/images/forMsEcommerce.jpeg");
   background-size: cover;
+  width: 85%;
+  margin: 0 auto;
 }
 
 ::-webkit-scrollbar {

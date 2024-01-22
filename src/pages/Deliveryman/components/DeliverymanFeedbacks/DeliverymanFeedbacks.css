@@ -1,0 +1,40 @@
+.deliveryman-feedbacks-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  overflow-y: auto;
+  height: 70vh;
+}
+.deliveryman-feedbacks-wrapper .deliveryman-feedbacks {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.deliveryman-feedbacks-wrapper .deliveryman-feedbacks .deliveryman-feedback {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  background-color: #fff8e1;
+  align-items: center;
+  border-radius: 5px;
+  height: 10vh;
+  position: relative;
+}
+.deliveryman-feedbacks-wrapper .deliveryman-feedbacks .deliveryman-feedback:hover .deliveryman-feedback-customer-info {
+  opacity: 1;
+}
+.deliveryman-feedbacks-wrapper .deliveryman-feedbacks .deliveryman-feedback .deliveryman-feedback-customer-info {
+  position: absolute;
+  top: 80%;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: #fff8e1;
+  padding: 5px;
+  z-index: 1;
+  left: 0;
+  border-radius: 5px;
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
+}

@@ -53,6 +53,7 @@ const CustomSubCat: FC<{ sub: GetFilteredSubC }> = ({ sub }) => {
 
     dispatch(foodToCart(data));
   };
+  
   const maxLength = sub.Products.length;
 
   function handleFoodSwitcher(type: string) {

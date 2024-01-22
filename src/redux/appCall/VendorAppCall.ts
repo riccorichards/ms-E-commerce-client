@@ -13,6 +13,7 @@ import {
   TargetDashboardData,
   VendorAddressType,
   VendorCoordsType,
+  VendorFeedResponseType,
   VendorListType,
   VendorOrdersWrapper,
   VendorTeamMembersType,
@@ -112,17 +113,17 @@ export const getSpecVendor = createAsyncThunk<
   }
 });
 
-export const getVendorSpecData = createAsyncThunk<
-  FeedbackType[],
-  string,
-  { rejectValue: string | unknown }
+export const getSpecVendorsFeeds = createAsyncThunk<
+  VendorFeedResponseType,
+  { vendorId: string; page: number },
+  { rejectValue: string }
 >(
-  "food/getVendorSpecData",
-  async (specRequest: string, { rejectWithValue }) => {
+  "vendor/getSpecVendorsFeeds",
+  async (query: { vendorId: string; page: number }, { rejectWithValue }) => {
     try {
       const { data } = await axios({
         method: "get",
-        url: `http://localhost:8004/vendor-spec-data?field=${specRequest}`,
+        url: `http://localhost:8004/vendor-feedbacks/${query.vendorId}?page=${query.page}`,
         withCredentials: true,
       });
       return data;
@@ -130,10 +131,30 @@ export const getVendorSpecData = createAsyncThunk<
       if (axios.isAxiosError(error)) {
         return rejectWithValue(error.message);
       }
-      return rejectWithValue(error);
+      return rejectWithValue(error + "<============ Unknown Error!!!");
     }
   }
 );
+
+export const getVendorFeeds = createAsyncThunk<
+  FeedbackType[],
+  number,
+  { rejectValue: string | unknown }
+>("food/getVendorFeeds", async (amount: number, { rejectWithValue }) => {
+  try {
+    const { data } = await axios({
+      method: "get",
+      url: `http://localhost:8004/vendor-feeds?amount=${amount}`,
+      withCredentials: true,
+    });
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      return rejectWithValue(error.message);
+    }
+    return rejectWithValue(error);
+  }
+});
 
 export const getVendorDashboardData = createAsyncThunk<
   TargetDashboardData[],

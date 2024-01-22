@@ -1,7 +1,11 @@
 import { FC } from "react";
 import "./ListFoodInSubCat.scss";
-import { SubSingleProduct } from "../../../redux/type.slice";
 import ImageWraper from "./../../ImageWraper";
+
+interface SubSingleProduct {
+  title: string;
+  image: string;
+}
 
 const ListFoodInSubCat: FC<{ foods: SubSingleProduct[] }> = ({ foods }) => {
   return (

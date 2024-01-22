@@ -1,6 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { CustomerCoordsType, FeedbackType, GetCustomer, NewFeedbackInputType } from "../type.slice";
+import {
+  CustomerCoordsType,
+  FeedbackType,
+  FeedbacksResponse,
+  GetCustomer,
+  NewFeedbackInputType,
+} from "../type.slice";
 import {
   AddressInputType,
   BankInputType,
@@ -307,28 +313,25 @@ export const logOut = createAsyncThunk<
   }
 });
 
-export const getCustomerSpecData = createAsyncThunk<
-  FeedbackType[],
-  string,
+export const getCustomerFeeds = createAsyncThunk<
+  FeedbacksResponse,
+  number,
   { rejectValue: string | unknown }
->(
-  "food/getCustomerSpecData",
-  async (specRequest: string, { rejectWithValue }) => {
-    try {
-      const { data } = await axios({
-        method: "get",
-        url: `http://localhost:8001/user-spec-data?field=${specRequest}`,
-        withCredentials: true,
-      });
-      return data;
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        return rejectWithValue(error.message);
-      }
-      return rejectWithValue(error);
+>("food/getCustomerSpecData", async (page: number, { rejectWithValue }) => {
+  try {
+    const { data } = await axios({
+      method: "get",
+      url: `http://localhost:8001/customer-feeds?page=${page}`,
+      withCredentials: true,
+    });
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      return rejectWithValue(error.message);
     }
+    return rejectWithValue(error);
   }
-);
+});
 
 export const addFeedback = createAsyncThunk<
   FeedbackType,

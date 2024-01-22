@@ -5,6 +5,7 @@ import {
   CreateFoodInputType,
   FeedbackType,
   FoodCardType,
+  FoodResponseType,
   GetFilteredSubC,
   GetVendorSubC,
   MainCType,
@@ -172,14 +173,14 @@ export const createFood = createAsyncThunk<
 });
 
 export const getFoods = createAsyncThunk<
-  ProductType[],
-  undefined,
+  FoodResponseType,
+  number,
   { rejectValue: string | unknown }
->("food/getPopularFoods", async (_: undefined, { rejectWithValue }) => {
+>("food/getPopularFoods", async (page: number, { rejectWithValue }) => {
   try {
     const { data } = await axios({
       method: "get",
-      url: "http://localhost:8002/product",
+      url: `http://localhost:8002/product/${page}`,
       withCredentials: true,
     });
     return data;

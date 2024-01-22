@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { DeliverymanState } from "../type.slice";
+import { DeliverymanState, EarnStats, OrderType } from "../type.slice";
 import {
   deliverymanlogOut,
   getDeliveryman,
+  getdeliverymanFeeds,
+  getdeliverymanOrders,
   loginDeliveryman,
 } from "../appCall/DeliverymanAppCall";
 import { refreshAccessToken } from "../appCall/VendorAppCall";
@@ -11,6 +13,10 @@ import { uploadImage } from "../appCall/AuthAppCall";
 const initialState: DeliverymanState = {
   deliveyman: null,
   ttl: null,
+  ordersLen: null,
+  deliveryFeedbacks: null,
+  earnStats: null,
+  deliverymanOrders: null,
   status: null,
   error: null,
 };
@@ -76,6 +82,33 @@ const DeliverymanSlice = createSlice({
         state.deliveyman = action.payload;
       })
       .addCase(deliverymanlogOut.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.error.message || null;
+      })
+      .addCase(getdeliverymanFeeds.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(getdeliverymanFeeds.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        state.deliveryFeedbacks = action.payload;
+      })
+      .addCase(getdeliverymanFeeds.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.error.message || null;
+      })
+      .addCase(getdeliverymanOrders.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(getdeliverymanOrders.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        if (action.payload.isStats) {
+          state.earnStats = action.payload.res as EarnStats[];
+        } else {
+          state.deliverymanOrders = action.payload.res as OrderType[];
+        }
+        state.ordersLen = action.payload.len;
+      })
+      .addCase(getdeliverymanOrders.rejected, (state, action) => {
         state.status = "rejected";
         state.error = action.error.message || null;
       });

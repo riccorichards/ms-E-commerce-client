@@ -12,8 +12,14 @@
     flex-direction: column;
     gap: 15px;
     border-radius: 7.5px;
+    cursor: pointer;
     box-shadow: 0 0 10px rgba($color: #00000011, $alpha: 0.15);
+    transition: all 0.25s ease-in-out;
 
+    &:hover {
+      background-color: v.$sky;
+    }
+    
     .deliveryman-overview-item-content {
       display: flex;
       align-items: center;

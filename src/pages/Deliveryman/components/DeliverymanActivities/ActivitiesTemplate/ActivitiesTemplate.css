@@ -1,12 +1,41 @@
 .activities-wrapper {
-  height: 10vh;
   width: 100%;
   background-color: #fff8e1;
   border-radius: 5px;
   transition: all 0.25s ease-in-out;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+  padding: 10px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  position: relative;
+}
+.activities-wrapper .activities-details {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+.activities-wrapper .activities-customer-info {
+  display: flex;
+  justify-content: space-between;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  top: 0;
+  left: 0;
+  background-color: #008080;
+  color: #fff8e1;
+  transition: all 0.5s ease-in-out;
+  border-radius: 5px;
+  transform: translateX(-100%);
 }
 .activities-wrapper:hover {
-  transform: scale(1.2);
   cursor: pointer;
+}
+.activities-wrapper:hover .activities-customer-info {
+  opacity: 1;
+  transform: translateX(0%);
 }

@@ -6,6 +6,8 @@
   flex-direction: column;
   gap: 15px;
   width: 220px;
+  height: -moz-fit-content;
+  height: fit-content;
 }
 .feed-template-wrapper .feed-template-header {
   display: flex;

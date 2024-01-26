@@ -1,7 +1,7 @@
 import EChartsReact from "echarts-for-react";
 import { useAppDispatch, useAppSelector } from "../../../../../../redux/hook";
 import { useEffect } from "react";
-import { getVendorFoods } from "../../../../../../redux/appCall/FoodAppCall";
+import { getVendorFoods } from "@redux/appCall/VendorAppCall";
 
 interface FormatterParams {
   name: string;

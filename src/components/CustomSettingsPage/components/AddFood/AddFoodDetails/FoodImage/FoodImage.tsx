@@ -6,7 +6,7 @@ import { FaCameraRetro } from "react-icons/fa";
 
 const FoodImage = () => {
   const dispatch = useAppDispatch();
-  const foodImageUrl = useAppSelector((state) => state.food.foodImageUrl);
+  const { foodImage } = useAppSelector((state) => state.food);
   const imageRef = useRef<HTMLInputElement | null>(null);
 
   const handleUploadImage = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -16,15 +16,14 @@ const FoodImage = () => {
       formData.append("upload", file[0]);
       formData.append("type", "foods");
       formData.append("address", "product");
-      formData.append("isSendToService", "1");
+      formData.append("toShare", "1");
       dispatch(uploadImage(formData));
     }
   };
-  
   return (
     <section className="add-food-image-wrapper">
-      {foodImageUrl ? (
-        <img style={{ width: "100%", height: "100%" }} src={foodImageUrl} />
+      {foodImage?.url ? (
+        <img style={{ width: "100%", height: "100%" }} src={foodImage.url} />
       ) : (
         <div
           onClick={() => imageRef.current?.click()}

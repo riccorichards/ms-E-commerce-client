@@ -12,6 +12,7 @@ import {
 import { updateBankInfo } from "../../../../../redux/appCall/AuthAppCall";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import useSnackBar from "../../../../SnackBar/useSnackBar";
 
 const UpdateBankInfo = () => {
   const [isEditable, setIsEditable] = useState<EditableFields>({});
@@ -27,6 +28,8 @@ const UpdateBankInfo = () => {
   } = useForm<StateBankInfoType>({
     resolver: zodResolver(updateBankSchema),
   });
+  
+  const triggerSnackBar = useSnackBar();
   if (!customer) return null;
 
   const handleEdit = (fieldname: string) => {
@@ -46,6 +49,7 @@ const UpdateBankInfo = () => {
       }
 
       dispatch(updateBankInfo(result));
+      triggerSnackBar();
     } catch (error) {
       if (error instanceof Error) {
         console.error("Update failed:", error.message);

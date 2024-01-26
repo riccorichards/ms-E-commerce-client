@@ -4,11 +4,11 @@ import { useAppDispatch, useAppSelector } from "../../../../redux/hook";
 import { FC, useContext, useEffect } from "react";
 import { OrderType } from "../../../../redux/type.slice";
 import DeliveryContext from "../../DeliveryContext";
-import { addressWrapper, capitalized } from "../../../../utils/utils";
 import { getVendorForOrder } from "../../../../redux/appCall/ShoppingApiCall";
 import RatingCalculation from "../../../../components/RatingCalculation";
 import { FaRegStar } from "react-icons/fa";
 import { resetVendorForOrder } from "../../../../redux/slice/shopping.slice";
+import Utils from "../../../../utils/utils";
 const DeliverymanModal: FC<{
   order: OrderType | null | undefined;
 }> = ({ order }) => {
@@ -21,10 +21,11 @@ const DeliverymanModal: FC<{
   useEffect(() => {
     if (order) {
       if (vendorForOrder.length < 1) {
-        addressWrapper(order.orderItem).forEach((address) => {
+        Utils.addressWrapper(order.orderItem).forEach((address) => {
           dispatch(getVendorForOrder(address));
         });
       }
+      
     }
   }, [dispatch, vendorForOrder.length, order]);
 
@@ -47,7 +48,7 @@ const DeliverymanModal: FC<{
             <div>
               <ImageWraper image={customer.image} size="100px" />
             </div>
-            <h3>{capitalized(customer.username)}</h3>
+            <h3>{Utils.capitalized(customer.username)}</h3>
             <span>{customer.address}</span>
             <span>{customer.email}</span>
           </div>

@@ -28,20 +28,27 @@ const VendorDetails = () => {
   useEffect(() => {
     if (id) {
       dispatch(getSpecVendor(id));
-    } else {
-      dispatch(getVendorFeeds(3));
+      dispatch(getVendorFeeds({ id, amount: 3 }));
     }
-  }, [id]); //eslint-disable-line
+  }, [id, dispatch]);
 
-  const targetFeedWrapper = specVendor?.feeds || vendorFeeds;
-  const target = specVendor || vendor;
   useEffect(() => {
     if (vendor) {
-      dispatch(getVendorCoords(vendor.address));
-    } else if (specVendor) {
-      dispatch(getVendorCoords(specVendor.address));
+      dispatch(getVendorFeeds({ id: vendor._id, amount: 3 }));
     }
-  }, [specVendor, vendor, dispatch]);
+  }, [vendor, dispatch]);
+
+  const target = specVendor || vendor;
+
+  useEffect(() => {
+    if (target?.address) {
+      if (vendor) {
+        dispatch(getVendorCoords(vendor.address));
+      } else if (specVendor) {
+        dispatch(getVendorCoords(specVendor.address));
+      }
+    }
+  }, [specVendor, vendor, dispatch, target?.address]);
 
   const currentUrl = window.location.href;
   const splitedUrl = currentUrl.split("/");
@@ -61,6 +68,7 @@ const VendorDetails = () => {
   const handleMore = () => {
     navigate(`/customer/vendors/${id}/feedbacks`);
   };
+
   return (
     <main className="vendor-details">
       <section className="vendor-introduction">
@@ -83,17 +91,18 @@ const VendorDetails = () => {
           Our Customers feedbacks
         </h2>
         <main className="vendor-details-feedback">
-          {targetFeedWrapper && targetFeedWrapper.length > 0 ? (
+          {vendorFeeds && vendorFeeds.length > 0 ? (
             <section
               style={{
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "space-between",
+                justifyContent: vendorFeeds.length > 2 ? "space-between" : "",
+                gap: vendorFeeds.length <= 2 ? "15px" : "",
                 width: "100%",
                 position: "relative",
               }}
             >
-              {targetFeedWrapper.slice(0, 3).map((feed) => (
+              {vendorFeeds.slice(0, 3).map((feed) => (
                 <FeedTemplate feed={feed} key={feed.feedId} />
               ))}
               {id && <button onClick={handleMore}>See more</button>}
@@ -114,11 +123,11 @@ const VendorDetails = () => {
         </main>
       </section>
       <section>
-        {letShowMap && (
+        {0 && target?.address && letShowMap && (
           <GoogleMapApis
             coords={coords}
             name={target?.name}
-            image={target?.image}
+            image={target?.url}
             rating={target?.rating}
           />
         )}

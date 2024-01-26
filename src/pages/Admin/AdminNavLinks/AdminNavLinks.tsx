@@ -7,9 +7,11 @@ import { FaPowerOff } from "react-icons/fa";
 
 const AdminNavLinks = () => {
   const dispatch = useAppDispatch();
+
   const handleLogOut = () => {
     try {
       dispatch(logOut());
+      localStorage.removeItem("user");
     } catch (error) {
       if (error instanceof Error) {
         console.log(error.message);
@@ -17,6 +19,7 @@ const AdminNavLinks = () => {
       throw new Error("Unknown Error while LogOut");
     }
   };
+
   return (
     <nav className="admin-navlink-wrapper">
       <AdminHeader />

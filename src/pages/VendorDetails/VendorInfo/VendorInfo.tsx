@@ -19,6 +19,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../redux/hook";
 import { addFeedback } from "../../../redux/appCall/AuthAppCall";
 import { NewFeedbackInputType } from "../../../redux/type.slice";
+import useSnackBar from "../../../components/SnackBar/useSnackBar";
 
 const VendorInfo: FC<{
   isCustomer: boolean;
@@ -30,9 +31,10 @@ const VendorInfo: FC<{
   const { customer } = useAppSelector((s) => s.customer);
   const [isFeedback, setIsFeedback] = useState<boolean>(false);
   const [feedback, setFeedback] = useState<string>("");
+
   const [feedbackError, setFeedbackError] = useState<string | null>(null);
   const dispatch = useAppDispatch();
-
+  const triggerSnackBar = useSnackBar();
   const target = vendor || specVendor;
 
   useEffect(() => {
@@ -69,6 +71,7 @@ const VendorInfo: FC<{
 
         dispatch(addFeedback(newFeedback));
         setIsFeedback(false);
+        triggerSnackBar();
       }
     } else {
       setFeedbackError("Feedback should be between 3 - 150 symbols");
@@ -78,7 +81,7 @@ const VendorInfo: FC<{
   return (
     <section className="vendor-info-wrapper">
       <header className="vendor-info-header">
-        <ImageWraper image={target.image} size="75px" />
+        {target.url && <ImageWraper image={target.url} size="75px" />}
         <div className="vendor-info-name">
           <h2>{target.name}</h2>
           <RatingCalculation rating={rating} />
@@ -98,7 +101,7 @@ const VendorInfo: FC<{
         </section>
         <section>
           <h2>Our Social Medias</h2>
-          {target.socialMedia.length < 0
+          {target.socialMedia.length > 0
             ? target.socialMedia.map((url) =>
                 url.title === "facebook" ? (
                   <FaFacebookSquare key={url.title} />
@@ -148,7 +151,7 @@ const VendorInfo: FC<{
         {isCustomer && (
           <button
             className="vendor-info-action-btn"
-            onClick={() => setIsFeedback(true)}
+            onClick={() => setIsFeedback((prev) => !prev)}
           >
             Add Feedback
           </button>

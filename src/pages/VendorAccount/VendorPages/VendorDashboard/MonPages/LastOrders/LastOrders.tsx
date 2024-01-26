@@ -4,27 +4,25 @@ import "./LastOrders.scss";
 import { getVendorOrders } from "../../../../../../redux/appCall/VendorAppCall";
 import ImageWraper from "../../../../../../components/ImageWraper";
 import { OrderCustomerInfo } from "../../../../../../redux/type.slice";
+import Utils from "../../../../../../utils/utils";
 
 const LastOrders = () => {
   const dispatch = useAppDispatch();
-  const { vendorOrders } = useAppSelector((s) => s.vendor);
+  const { lastOrders } = useAppSelector((s) => s.vendor);
 
   useEffect(() => {
     dispatch(getVendorOrders(true));
   }, [dispatch]);
 
-  if (!vendorOrders) return null;
+  if (!lastOrders) return null;
 
   return (
     <section className="last-orders-wrapper">
-      {vendorOrders.length > 0 &&
-        vendorOrders.map((order) => (
+      {lastOrders.length > 0 &&
+        lastOrders.map((order) => (
           <main className="last-order" key={order.orderId}>
             <div>
-              <ImageWraper
-                image={(order.customer as OrderCustomerInfo).image}
-                size="40px"
-              />
+              <ImageWraper image={order.customer.image} size="40px" />
             </div>
             <div
               style={{
@@ -58,8 +56,8 @@ const LastOrders = () => {
                 gap: "5px",
               }}
             >
-              <span>{order.createdAt.split("T")[0]}</span>
-              <span>{order.createdAt.split("T")[1].split(".")[0]}</span>
+              <span>{Utils.dateFormatter(order.createdAt).date}</span>
+              <span>{Utils.dateFormatter(order.createdAt).time}</span>
             </div>
           </main>
         ))}

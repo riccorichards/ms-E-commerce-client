@@ -4,6 +4,7 @@ import {
   BasicDeliverymanType,
   BasicVendorType,
   EmployeeResponseType,
+  ImageWrapperType,
   OrderCustomerInfo,
   OrderType,
   PopularFoodsType,
@@ -68,7 +69,7 @@ export const createDeliveryman = createAsyncThunk<
 );
 
 export const uploadVendorImage = createAsyncThunk<
-  string,
+  ImageWrapperType,
   FormData,
   { rejectValue: string | unknown }
 >("admin/uploadVendorImage", async (image: FormData, { rejectWithValue }) => {

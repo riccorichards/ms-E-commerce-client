@@ -7,10 +7,10 @@ import { findCustomerById } from "../../redux/appCall/AuthAppCall";
 
 const Admin = () => {
   const dispatch = useAppDispatch();
+  
   useEffect(() => {
     try {
       dispatch(findCustomerById());
-      localStorage.removeItem("user");
     } catch (error) {
       if (error instanceof Error) {
         throw new Error(error.message);

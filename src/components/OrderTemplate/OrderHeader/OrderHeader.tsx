@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../../redux/hook";
 import { getDeliverymanForOrder } from "../../../redux/appCall/ShoppingApiCall";
 import "./OrderHeader.scss";
+import Utils from "../../../utils/utils";
 
 const OrderHeader = () => {
   const { order, deliverymanForOrder } = useAppSelector((s) => s.shopping);
@@ -19,7 +20,7 @@ const OrderHeader = () => {
     <header className="order-template-header">
       <div className="order-template-date">
         <h2>{`Order#${order.id}`}</h2>
-        <span>{order.createdAt.split("T")[0]}</span>
+        <span>{Utils.dateFormatter(order.createdAt).date}</span>
       </div>
       <div className="order-template-deliveryman">
         <img
@@ -29,7 +30,7 @@ const OrderHeader = () => {
         />
         <div className="deliveryman-info">
           <h3>{deliverymanForOrder.name}</h3>
-          <span>{deliverymanForOrder.createdAt.split("T")[0]}</span>
+          <span>{Utils.dateFormatter(deliverymanForOrder.createdAt).date}</span>
         </div>
       </div>
     </header>

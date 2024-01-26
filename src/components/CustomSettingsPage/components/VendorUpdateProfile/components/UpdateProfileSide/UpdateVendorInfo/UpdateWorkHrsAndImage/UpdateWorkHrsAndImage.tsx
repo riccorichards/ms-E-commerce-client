@@ -9,6 +9,7 @@ import {
   useAppSelector,
 } from "../../../../../../../../redux/hook";
 import { addWorkingHrs } from "../../../../../../../../redux/appCall/VendorAppCall";
+import useSnackBar from "../../../../../../../SnackBar/useSnackBar";
 
 const UpdateWorkHrsAndImage = () => {
   const { vendor } = useAppSelector((state) => state.vendor);
@@ -21,11 +22,14 @@ const UpdateWorkHrsAndImage = () => {
   } = useForm<workingHrsSchemaType>({
     resolver: zodResolver(workingHrsSchema),
   });
+
+  const triggerSnackBar = useSnackBar();
   if (!vendor) return null;
 
   const onSubmit = (values: workingHrsSchemaType) => {
     dispatch(addWorkingHrs(values));
     reset();
+    triggerSnackBar();
   };
 
   return (
@@ -35,7 +39,7 @@ const UpdateWorkHrsAndImage = () => {
           target={vendor}
           address="vendor"
           size="150px"
-          isSendToService="0"
+          toShare="1"
         />
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>

@@ -3,6 +3,7 @@ import ImageWraper from "../../../../components/ImageWraper";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hook";
 import "./DeliverymanFeedbacks.scss";
 import { getdeliverymanFeeds } from "../../../../redux/appCall/DeliverymanAppCall";
+import Utils from "../../../../utils/utils";
 
 const DeliverymanFeedbacks = () => {
   const { deliveryFeedbacks } = useAppSelector((s) => s.deliveryman);
@@ -28,7 +29,7 @@ const DeliverymanFeedbacks = () => {
               >
                 <h4>{feed.author}</h4>
                 <span style={{ fontSize: "12px" }}>
-                  {feed.createdAt.split("T")[0]}
+                  {Utils.dateFormatter(feed.createdAt).date}
                 </span>
               </div>
             </div>

@@ -1,5 +1,5 @@
 .verdor-gallery {
-  flex: 1;
+  flex: 1.5;
   border-radius: 15px;
   padding: 0 15px;
 }
@@ -59,6 +59,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  height: 20vh;
 }
 
 .left-image-wrapper {

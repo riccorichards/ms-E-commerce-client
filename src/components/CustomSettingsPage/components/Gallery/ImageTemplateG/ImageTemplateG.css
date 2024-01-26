@@ -40,14 +40,22 @@
   display: flex;
   width: 100%;
   top: 100%;
-  height: 5vh;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  align-items: center;
-  padding: 15px 5px;
-  gap: 15px;
-  transition: all 0.25s ease-in-out;
+  gap: 5px;
+  padding: 5px;
+  flex-direction: column;
 }
-.gallery-img-option:hover {
+.gallery-img-option button {
+  transition: all 0.25s ease-in-out;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  padding: 5px;
+  font-family: "Josefin Sans", sans-serif;
+  align-items: center;
+  gap: 5px;
+}
+.gallery-img-option button:hover {
   background-color: hsl(16, 100%, 50%);
   cursor: pointer;
   color: #fff8e1;

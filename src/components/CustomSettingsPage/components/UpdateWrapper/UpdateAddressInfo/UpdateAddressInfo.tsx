@@ -11,9 +11,12 @@ import {
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { updateAddressInfo } from "../../../../../redux/appCall/AuthAppCall";
+import useSnackBar from "../../../../SnackBar/useSnackBar";
 
 const UpdateAddressInfo = () => {
   const [isEditable, setIsEditable] = useState<EditableFields>({});
+  const triggerSnackBar = useSnackBar();
+
   const dispatch = useAppDispatch();
   const customer = useAppSelector(
     (state) => state.customer.customer
@@ -44,6 +47,7 @@ const UpdateAddressInfo = () => {
         }
       }
       dispatch(updateAddressInfo(result));
+      triggerSnackBar();
     } catch (error) {
       if (error instanceof Error) {
         console.error("Update failed:", error.message);

@@ -8,14 +8,18 @@ import {
   fetchSubCategories,
   fetchVendorSubCategories,
   getFoods,
-  getVendorFoods,
+  getFoodsFeeds,
+  getProductUrlForSubCat,
 } from "../appCall/FoodAppCall";
 import { addFeedback, uploadImage } from "../appCall/AuthAppCall";
+import { getVendorFoods } from "@redux/appCall/VendorAppCall";
 
 const initialState: FoodState = {
   mainC: null,
   subC: null,
-  foodImageUrl: null,
+  productUrl: null,
+  foodImage: null,
+  foodsFeeds: null,
   foods: null,
   foodPagination: null,
   vendorFoods: null,
@@ -48,6 +52,17 @@ const FoodSlice = createSlice({
         state.subC = action.payload;
       })
       .addCase(fetchMainCategorysSubCat.rejected, (state, action) => {
+        state.state = "rejected";
+        state.error = action.error.message || null;
+      })
+      .addCase(getProductUrlForSubCat.pending, (state) => {
+        state.state = "pending";
+      })
+      .addCase(getProductUrlForSubCat.fulfilled, (state, action) => {
+        state.state = "fulfilled";
+        state.productUrl = action.payload;
+      })
+      .addCase(getProductUrlForSubCat.rejected, (state, action) => {
         state.state = "rejected";
         state.error = action.error.message || null;
       })
@@ -106,8 +121,8 @@ const FoodSlice = createSlice({
         state.state = "fulfilled";
         if (state.foods) {
           state.foods.push(action.payload);
-          state.foodImageUrl = null;
         }
+        state.foodImage = null;
       })
       .addCase(createFood.rejected, (state, action) => {
         state.state = "rejected";
@@ -124,12 +139,25 @@ const FoodSlice = createSlice({
         state.state = "rejected";
         state.error = action.error.message || null;
       })
+      .addCase(getFoodsFeeds.pending, (state) => {
+        state.state = "pending";
+      })
+      .addCase(getFoodsFeeds.fulfilled, (state, action) => {
+        state.state = "fulfilled";
+        state.foodsFeeds = action.payload;
+      })
+      .addCase(getFoodsFeeds.rejected, (state, action) => {
+        state.state = "rejected";
+        state.error = action.error.message || null;
+      })
       .addCase(uploadImage.pending, (state) => {
         state.state = "pending";
       })
       .addCase(uploadImage.fulfilled, (state, action) => {
         state.state = "fulfilled";
-        state.foodImageUrl = action.payload;
+        if (action.payload.type === "foods") {
+          state.foodImage = action.payload;
+        }
       })
       .addCase(uploadImage.rejected, (state, action) => {
         state.state = "rejected";

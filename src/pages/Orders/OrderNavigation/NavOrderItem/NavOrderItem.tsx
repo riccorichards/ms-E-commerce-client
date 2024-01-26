@@ -2,10 +2,7 @@ import { FC } from "react";
 import "./NavOrderItem.scss";
 import { IoCaretForwardOutline } from "react-icons/io5";
 import { OrderListType } from "../../../../redux/type.slice";
-
-const dateFormatter = (str: string) => {
-  return str.split("T");
-};
+import Utils from "../../../../utils/utils";
 
 const NavOrderItem: FC<{
   orderItem: OrderListType;
@@ -24,7 +21,7 @@ const NavOrderItem: FC<{
     >
       <div className="order-item-header">
         <h3>{`Order #${orderItem.orderId}`}</h3>
-        <span>{dateFormatter(orderItem.createdAt)[0]}</span>
+        <span>{Utils.dateFormatter(orderItem.createdAt).date}</span>
       </div>
       <div className="order-item-total">
         ${orderItem.total_amount.toFixed(2)}

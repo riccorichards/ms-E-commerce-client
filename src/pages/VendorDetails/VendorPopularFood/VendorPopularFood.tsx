@@ -2,19 +2,19 @@ import { useEffect } from "react";
 import FoodCard from "../../../components/FoodCard/FoodCard";
 import { useAppDispatch, useAppSelector } from "../../../redux/hook";
 import "./VendorPopularFood.scss";
-import { getVendorFoods } from "../../../redux/appCall/FoodAppCall";
+import { getVendorFoods } from "@redux/appCall/VendorAppCall";
 
 const VendorPopularFood = () => {
   const { specVendor, vendor } = useAppSelector((state) => state.vendor);
   const { vendorFoods } = useAppSelector((state) => state.food);
   const dispatch = useAppDispatch();
-  const targetName = specVendor?.name || vendor?.name;
+  const targetId = specVendor?._id || vendor?._id;
 
   useEffect(() => {
-    if (targetName) {
-      dispatch(getVendorFoods(targetName));
+    if (targetId) {
+      dispatch(getVendorFoods(targetId));
     }
-  }, [targetName, dispatch]);
+  }, [targetId, dispatch]);
 
   if (!vendorFoods) return null;
 
@@ -25,10 +25,7 @@ const VendorPopularFood = () => {
       </h2>
       <main className="vendor-popular-food">
         {vendorFoods.map((food) => (
-          <FoodCard
-            key={typeof food === "object" ? food.title : food}
-            food={food}
-          />
+          <FoodCard key={food.title} food={food} />
         ))}
       </main>
     </section>

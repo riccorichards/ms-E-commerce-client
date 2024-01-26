@@ -6,7 +6,7 @@ import React, { useRef } from "react";
 import { uploadVendorImage } from "../../../../../redux/appCall/AdminAppCall";
 
 const UploadVendorImage = () => {
-  const image = useAppSelector((state) => state.admin.imageUrl);
+  const { imageWrapper } = useAppSelector((state) => state.admin);
   const imageRef = useRef<HTMLInputElement | null>(null);
   const dispatch = useAppDispatch();
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement | undefined>) => {
@@ -15,7 +15,7 @@ const UploadVendorImage = () => {
     if (file) {
       formData.append("upload", file[0]);
       formData.append("type", "profiles");
-      formData.append("isCreated", "1");
+      formData.append("isShare", "0");
     }
     dispatch(uploadVendorImage(formData));
   };
@@ -33,7 +33,7 @@ const UploadVendorImage = () => {
         }}
       >
         <ImageWraper
-          image={image ? image : ""}
+          image={imageWrapper ? imageWrapper.url : ""}
           size="290px"
           nonCircle
           radiusSize="0"

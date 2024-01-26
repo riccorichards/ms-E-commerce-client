@@ -43,7 +43,7 @@ const VendorOrderTemplate = () => {
           <h3>{vendor.name}</h3>
           <RatingCalculation rating={rating} />
         </div>
-        <ImageWraper image={vendor.image} size="45px" />
+        <ImageWraper image={vendor.url || ""} size="45px" />
       </main>
     </section>
   );

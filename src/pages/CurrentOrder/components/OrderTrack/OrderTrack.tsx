@@ -165,7 +165,7 @@ const OrderTrack = () => {
             mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
           >
             <div>
-              <ImageWraper image={customer.image} size="25px" />
+              <ImageWraper image={customer.url || ""} size="25px" />
               <h3>{customer.username}</h3>
             </div>
           </OverlayView>

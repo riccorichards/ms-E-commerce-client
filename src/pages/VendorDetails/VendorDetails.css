@@ -23,5 +23,18 @@
 .vendor-details-feedback-wrapper .vendor-details-feedback {
   display: flex;
   gap: 15px;
-  flex-wrap: wrap;
+}
+.vendor-details-feedback-wrapper .vendor-details-feedback button {
+  position: absolute;
+  top: 105%;
+  background-color: #008080;
+  border: none;
+  padding: 5px;
+  font-family: "Josefin Sans", sans-serif;
+  border-radius: 3.5px;
+  color: #fff8e1;
+  cursor: pointer;
+}
+.vendor-details-feedback-wrapper .vendor-details-feedback button:active {
+  transform: scale(0.9);
 }

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-//import VendorOrderTemplate from "./VendorOrderTemplate/VendorOrderTemplate";
 import "./VendorOrders.scss";
 import VendorOrderModal from "./VendorOrderModal/VendorOrderModal";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hook";

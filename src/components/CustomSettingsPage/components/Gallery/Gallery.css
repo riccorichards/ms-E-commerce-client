@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: column;
   gap: 25px;
-  height: 70vh;
+  height: 80vh;
   overflow-y: auto;
-  padding: 5px;
+  padding: 15px 5px;
 }
 
 .gallery-header-wrapper {
@@ -23,6 +23,7 @@
   font-family: "Josefin Sans", sans-serif;
   width: 100px;
   height: 30px;
+  margin-right: 10px;
   border-radius: 2.5px;
   color: #fff8e1;
   cursor: pointer;

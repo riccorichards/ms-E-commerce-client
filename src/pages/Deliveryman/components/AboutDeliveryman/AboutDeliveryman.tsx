@@ -6,6 +6,7 @@ import { AiOutlineLogout } from "react-icons/ai";
 import { deliverymanlogOut } from "../../../../redux/appCall/DeliverymanAppCall";
 import React, { useRef } from "react";
 import { uploadImage } from "../../../../redux/appCall/AuthAppCall";
+import Utils from "../../../../utils/utils";
 
 const AboutDeliveryman = () => {
   const { deliveyman } = useAppSelector((state) => state.deliveryman);
@@ -24,7 +25,7 @@ const AboutDeliveryman = () => {
     if (file) {
       formData.append("upload", file[0]);
       formData.append("type", "profiles");
-      formData.append("isSendToService", "0");
+      formData.append("toShare", "1");
       formData.append("address", "deliveryman");
       dispatch(uploadImage(formData));
     }
@@ -35,21 +36,24 @@ const AboutDeliveryman = () => {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <h1>{deliveyman.name}</h1>
           <span>1k+ Revievs</span>
-          <span>{deliveyman.createdAt}</span>
+          <span>{`${Utils.dateFormatter(deliveyman.createdAt).date} - ${
+            Utils.dateFormatter(deliveyman.createdAt).time
+          }`}</span>
         </div>
 
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque,
-          animi voluptates mollitia, perspiciatis, laboriosam quae repellat
-          officiis molestias vero voluptatem assumenda placeat.
+          This is my life, and i love it. I'm faster and i can effectively take
+          food from one restaurant to another and the last step delivery it to
+          the customer.
         </p>
+
         <span style={{ fontSize: "18px", textDecoration: "underline" }}>
           {deliveyman.email}
         </span>
       </header>
       <main>
         <div className="about-deliveryman-img">
-          <ImageWraper image={deliveyman.image} size="320px" />
+          <ImageWraper image={deliveyman.url} size="320px" />
           <div
             className="deliveryman-upload-img"
             onClick={() => imageRef.current?.click()}

@@ -87,5 +87,3 @@ const LinearVendorOrderTemplate: FC<{
 };
 
 export default LinearVendorOrderTemplate;
-
-///className="vendor-orders-item"

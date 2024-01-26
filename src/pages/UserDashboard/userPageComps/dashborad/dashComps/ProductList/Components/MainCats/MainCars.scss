@@ -3,6 +3,8 @@
 .main-cats-wrapper {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  //justify-content: space-between;
+  gap: 10%;
   width: 100%;
+  flex-wrap: wrap;
 }

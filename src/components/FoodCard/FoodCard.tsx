@@ -1,7 +1,7 @@
 import React, { FC, useState } from "react";
 import "./FoodCard.scss";
 import { MdOutlineFavorite, MdFavoriteBorder } from "react-icons/md";
-import { IoMdAdd, IoMdTime } from "react-icons/io";
+import { IoMdAdd } from "react-icons/io";
 import { NewFeedbackInputType, ProductType } from "../../redux/type.slice";
 import { FiEdit2 } from "react-icons/fi";
 import { IoSend } from "react-icons/io5";
@@ -9,8 +9,13 @@ import { VscFeedback } from "react-icons/vsc";
 import { IoAdd } from "react-icons/io5";
 import ImageWraper from "./../ImageWraper";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
-import { foodToCart, wishlistToggle } from "../../redux/appCall/FoodAppCall";
+import {
+  foodToCart,
+  getFoodsFeeds,
+  wishlistToggle,
+} from "../../redux/appCall/FoodAppCall";
 import { addFeedback } from "../../redux/appCall/AuthAppCall";
+import useSnackBar from "../SnackBar/useSnackBar";
 
 const FoodCard: FC<{
   food: ProductType;
@@ -21,6 +26,9 @@ const FoodCard: FC<{
   const [isFoodsFeed, setIsFoodsFeed] = useState<boolean>(false);
   const dispatch = useAppDispatch();
   const { customer } = useAppSelector((state) => state.customer);
+  const { foodsFeeds } = useAppSelector((state) => state.food);
+
+  const triggerSnackBar = useSnackBar();
 
   const handleLeaveFeedback = (
     productId: number,
@@ -46,6 +54,7 @@ const FoodCard: FC<{
         dispatch(addFeedback(newFeedback));
         setFeedback(null);
         setIsFeed(false);
+        triggerSnackBar();
       }
     }
   };
@@ -56,6 +65,7 @@ const FoodCard: FC<{
       userId: customer?._id || "",
     };
     dispatch(wishlistToggle(data));
+    triggerSnackBar();
   };
 
   const isPickedFood = (id: number) => {
@@ -72,9 +82,14 @@ const FoodCard: FC<{
     };
 
     dispatch(foodToCart(data));
+    triggerSnackBar();
   };
 
   const targetId = from === "mainDashboard" ? food.id : food.foodId;
+  const handleOpenFeed = () => {
+    setIsFoodsFeed(true);
+    dispatch(getFoodsFeeds(food.id));
+  };
   return (
     <div className="food-card-wrapper">
       <div className="leave-feedback" onClick={() => setIsFeed(!isFeed)}>
@@ -93,8 +108,8 @@ const FoodCard: FC<{
                 width: "100%",
               }}
             >
-              {food.feedbacks && food.feedbacks.length > 0 ? (
-                food.feedbacks.map((feed) => (
+              {foodsFeeds && foodsFeeds.length > 0 ? (
+                foodsFeeds.map((feed) => (
                   <React.Fragment key={feed.id}>
                     <div
                       style={{
@@ -114,9 +129,9 @@ const FoodCard: FC<{
                           alignItems: "center",
                         }}
                       >
-                        <ImageWraper image={feed.authorImg} size="20px" />
+                        <ImageWraper image={feed.image} size="20px" />
                       </div>
-                      <p style={{ fontSize: "12px" }}>"{feed.review}"</p>
+                      <p style={{ fontSize: "12px" }}>"{feed.feed}"</p>
                     </div>
                   </React.Fragment>
                 ))
@@ -168,21 +183,17 @@ const FoodCard: FC<{
                 backgroundColor: isFoodsFeed ? "rgb(255, 179, 47)" : "",
               }}
             >
-              <VscFeedback onClick={() => setIsFoodsFeed(true)} />
+              <VscFeedback onClick={handleOpenFeed} />
             </button>
           </div>
         </div>
       )}
       <div className="food-image-wrapper">
-        <ImageWraper image={food.image} size="100%" nonCircle />
+        <ImageWraper image={food.url} size="100%" nonCircle />
       </div>
       <div className="food-content-wrapper">
         <div className="food-card-header">
           <h4>{food.title}</h4>
-          <div className="food-prep-duration">
-            <IoMdTime />
-            <span style={{ fontWeight: "600" }}>25 min</span>
-          </div>
         </div>
         <p style={{ height: "10vh" }}>{food.desc}</p>
       </div>

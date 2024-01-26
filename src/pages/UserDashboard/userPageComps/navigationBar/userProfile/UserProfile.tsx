@@ -1,5 +1,6 @@
 import { IoPersonOutline } from "react-icons/io5";
-import { useAppSelector } from "../../../../../redux/hook";
+import { useAppSelector } from "@redux/hook";
+
 import "./UserProfile.scss";
 
 const UserProfile = () => {
@@ -10,8 +11,8 @@ const UserProfile = () => {
       {customer && (
         <>
           <div className="image-wrapper">
-            {customer.image ? (
-              <img src={customer.image} alt="fake" className="profile-image" />
+            {customer.url ? (
+              <img src={customer.url} alt="fake" className="profile-image" />
             ) : (
               <IoPersonOutline style={{ fontSize: "35px" }} />
             )}

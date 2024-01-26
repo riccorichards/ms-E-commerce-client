@@ -14,6 +14,8 @@ import AllSubCat from "../AllSubCat/AllSubCat";
 import VendorMenu from "../VendorMenu/VendorMenu";
 import CurrentOrder from "../CurrentOrder/CurrentOrder";
 import AllVendorFeeds from "../VendorDetails/AllVendorFeeds/AllVendorFeeds";
+import SnackBar from "../../components/SnackBar/SnackBar";
+import CustomerGalleryPage from "../VendorDetails/CustomerGalleryPage/CustomerGalleryPage";
 
 //for custom setting pages
 const settingOptions = {
@@ -58,11 +60,13 @@ const UserDashboard = () => {
         <Route path="/home/*" element={<Dashboard />} />
         <Route path="/home/sub-category" element={<AllSubCat />} />
         <Route path="/home/current-order" element={<CurrentOrder />} />
+        <Route path="/home/snackBar" element={<SnackBar />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/vendors" element={<VendorList />} />
         <Route path="/vendors/:id" element={<VendorDetails />} />
         <Route path="/vendors/:id/menu" element={<VendorMenu />} />
         <Route path="/vendors/:id/feedbacks" element={<AllVendorFeeds />} />
+        <Route path="/vendors/:id/gallery" element={<CustomerGalleryPage />} />
         <Route
           path="/settings/*"
           element={<Settings settingOptions={settingOptions} />}

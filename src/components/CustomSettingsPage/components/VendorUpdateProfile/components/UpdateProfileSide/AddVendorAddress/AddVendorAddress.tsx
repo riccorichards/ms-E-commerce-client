@@ -10,10 +10,12 @@ import {
   useAppSelector,
 } from "../../../../../../../redux/hook";
 import { addVendorAddress } from "../../../../../../../redux/appCall/VendorAppCall";
+import useSnackBar from "@components/SnackBar/useSnackBar";
 
 const AddVendorAddress = () => {
   const dispatch = useAppDispatch();
   const { vendor } = useAppSelector((state) => state.vendor);
+  const triggerSnackBar = useSnackBar();
   const {
     register,
     handleSubmit,
@@ -26,21 +28,23 @@ const AddVendorAddress = () => {
 
   const onSubmit = (values: AddVendorAddressSchemaType) => {
     dispatch(addVendorAddress(values));
+    triggerSnackBar();
   };
+
   return (
     <section className="add-vendor-address">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="add-vendor-address-form-item">
           <h5 style={{ position: "absolute", bottom: "102%", left: "0" }}>
-            Country
+            Address
           </h5>
           <input
             type="text"
-            placeholder="Country"
-            {...register("country")}
+            placeholder="Address"
+            {...register("address")}
             defaultValue={vendor.address}
           />
-          {errors.country && <p>{errors.country.message}</p>}
+          {errors.address && <p>{errors.address.message}</p>}
         </div>
         <button type="submit">save address</button>
       </form>

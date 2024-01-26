@@ -21,7 +21,8 @@ const TeamMembers = () => {
     if (file) {
       formData.append("upload", file[0]);
       formData.append("type", "profiles");
-      formData.append("isSendToService", "1");
+      formData.append("address", "vendor");
+      formData.append("toShare", "1");
     }
     dispatch(uploadMemberImage(formData));
   }

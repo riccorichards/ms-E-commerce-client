@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { VendorState } from "../type.slice";
+import {
+  LastOrdersWrapper,
+  VendorOrdersWrapper,
+  VendorState,
+} from "../type.slice";
 import {
   addBioInfo,
   addNewMember,
@@ -27,6 +31,7 @@ import {
   uploadMemberImage,
   vendorLogOut,
   vendorLogin,
+  updateVendorProfile,
 } from "../appCall/VendorAppCall";
 import { deleteFeedback, uploadImage } from "../appCall/AuthAppCall";
 import { removeSocUrl } from "./../appCall/VendorAppCall";
@@ -39,8 +44,10 @@ const initialState: VendorState = {
   vendorFeeds: null,
   dashboard: null,
   coords: null,
+  gallery: null,
   orderCustomerInfo: null,
   vendorOrders: null,
+  lastOrders: null,
   vendorOrderItems: null,
   topCustomers: null,
   orderDeliverymanInfo: null,
@@ -146,9 +153,10 @@ const VendorSlice = createSlice({
       })
       .addCase(uploadImage.fulfilled, (state, action) => {
         state.status = "fulfilled";
-        if (state.vendor) {
-          state.vendor.image = action.payload;
-          state.imageUrl = action.payload;
+        if (action.payload.type === "profiles") {
+          if (state.vendor) {
+            state.vendor.url = action.payload.url;
+          }
         }
       })
       .addCase(uploadImage.rejected, (state, action) => {
@@ -236,7 +244,7 @@ const VendorSlice = createSlice({
       })
       .addCase(uploadGalleryImg.fulfilled, (state, action) => {
         state.status = "fulfilled";
-        state.imageUrl = action.payload;
+        state.imageUrl = action.payload.url;
       })
       .addCase(uploadGalleryImg.rejected, (state, action) => {
         state.status = "rejected";
@@ -275,12 +283,24 @@ const VendorSlice = createSlice({
       })
       .addCase(getVendorGallery.fulfilled, (state, action) => {
         state.status = "fulfilled";
-        if (state.vendor) {
-          state.vendor.gallery = action.payload;
-          state.imageUrl = null;
-        }
+
+        state.gallery = action.payload;
+        state.imageUrl = null;
       })
       .addCase(getVendorGallery.rejected, (state, action) => {
+        state.status = "rejected";
+        state.error = action.payload || null;
+      })
+      .addCase(updateVendorProfile.pending, (state) => {
+        state.status = "pending";
+      })
+      .addCase(updateVendorProfile.fulfilled, (state, action) => {
+        state.status = "fulfilled";
+        if (state.vendor) {
+          state.vendor.url = action.payload;
+        }
+      })
+      .addCase(updateVendorProfile.rejected, (state, action) => {
         state.status = "rejected";
         state.error = action.payload || null;
       })
@@ -337,7 +357,14 @@ const VendorSlice = createSlice({
       })
       .addCase(getVendorOrders.fulfilled, (state, action) => {
         state.status = "fulfilled";
-        state.vendorOrders = action.payload;
+        if (
+          action.payload[0] &&
+          typeof action.payload[0].customer === "string"
+        ) {
+          state.vendorOrders = action.payload as VendorOrdersWrapper[];
+        } else {
+          state.lastOrders = action.payload as LastOrdersWrapper[];
+        }
       })
       .addCase(getVendorOrders.rejected, (state, action) => {
         state.status = "rejected";

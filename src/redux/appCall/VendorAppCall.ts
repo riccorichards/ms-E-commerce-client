@@ -5,9 +5,11 @@ import {
   DashboardDataInput,
   FeedbackType,
   GalleryType,
-  GetvendorData,
+  ImageWrapperType,
+  LastOrdersWrapper,
   OrderCustomerInfo,
   OrderDeliverymanInfo,
+  ProductType,
   RemovePhotoFromGallery,
   SocUrlType,
   TargetDashboardData,
@@ -16,6 +18,7 @@ import {
   VendorFeedResponseType,
   VendorListType,
   VendorOrdersWrapper,
+  VendorResponse,
   VendorTeamMembersType,
   VendorTopCustomers,
   VendorType,
@@ -27,7 +30,7 @@ import { SocUrlValidatorSchemaType } from "../../components/CustomSettingsPage/c
 import { updateVendorFormType } from "../../components/CustomSettingsPage/components/VendorUpdateProfile/components/UpdateProfileSide/UpdateVendorInfo/UpdateVendorForm/updateVendorFormschema";
 
 export const vendorLogin = createAsyncThunk<
-  GetvendorData,
+  VendorResponse,
   { email: string; password: string },
   { rejectValue: string }
 >(
@@ -54,7 +57,7 @@ export const vendorLogin = createAsyncThunk<
 );
 
 export const fetchVendor = createAsyncThunk<
-  GetvendorData,
+  VendorResponse,
   undefined,
   { rejectValue: string }
 >("vendor/fetchVendor", async (_: undefined, { rejectWithValue }) => {
@@ -138,13 +141,36 @@ export const getSpecVendorsFeeds = createAsyncThunk<
 
 export const getVendorFeeds = createAsyncThunk<
   FeedbackType[],
-  number,
+  { id: string; amount: number },
   { rejectValue: string | unknown }
->("food/getVendorFeeds", async (amount: number, { rejectWithValue }) => {
+>(
+  "food/getVendorFeeds",
+  async (query: { id: string; amount: number }, { rejectWithValue }) => {
+    try {
+      const { data } = await axios({
+        method: "get",
+        url: `http://localhost:8004/vendor-feeds/${query.id}?amount=${query.amount}`,
+        withCredentials: true,
+      });
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const getVendorFoods = createAsyncThunk<
+  ProductType[],
+  string,
+  { rejectValue: string | unknown }
+>("food/getVendorFoods", async (targetId: string, { rejectWithValue }) => {
   try {
     const { data } = await axios({
       method: "get",
-      url: `http://localhost:8004/vendor-feeds?amount=${amount}`,
+      url: `http://localhost:8004/vendor-products/${targetId}`,
       withCredentials: true,
     });
     return data;
@@ -309,7 +335,7 @@ export const addVendorAddress = createAsyncThunk<
     try {
       const { data } = await axios({
         method: "post",
-        url: "http://localhost:8004/address",
+        url: "http://localhost:8004/add-vendor-address",
         data: address,
         withCredentials: true,
       });
@@ -392,7 +418,7 @@ export const removeSocUrl = createAsyncThunk<
 });
 
 export const uploadGalleryImg = createAsyncThunk<
-  string,
+  ImageWrapperType,
   FormData,
   { rejectValue: string | unknown }
 >("vendor/uploadGalleryImg", async (img: FormData, { rejectWithValue }) => {
@@ -435,13 +461,13 @@ export const removeGalleryImg = createAsyncThunk<
 
 export const getVendorGallery = createAsyncThunk<
   GalleryType[],
-  undefined,
+  string,
   { rejectValue: string | unknown }
->("vendor/getVendorGallery", async (_: undefined, { rejectWithValue }) => {
+>("vendor/getVendorGallery", async (vendorId: string, { rejectWithValue }) => {
   try {
     const { data } = await axios({
       method: "get",
-      url: "http://localhost:8004/vendor-gallery",
+      url: `http://localhost:8004/vendor-gallery/${vendorId}`,
       withCredentials: true,
     });
     return data;
@@ -452,6 +478,30 @@ export const getVendorGallery = createAsyncThunk<
     return rejectWithValue(error);
   }
 });
+
+export const updateVendorProfile = createAsyncThunk<
+  string,
+  string,
+  { rejectValue: string | unknown }
+>(
+  "vendor/updateVendorProfile",
+  async (photoTitle: string, { rejectWithValue }) => {
+    try {
+      const { data } = await axios({
+        method: "put",
+        url: "http://localhost:8004/vendor-profile",
+        data: { photoTitle },
+        withCredentials: true,
+      });
+      return data;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        return rejectWithValue(error.message);
+      }
+      return rejectWithValue(error);
+    }
+  }
+);
 
 export const refreshAccessToken = createAsyncThunk<
   { ttl: number },
@@ -497,7 +547,7 @@ export const getVendorCoords = createAsyncThunk<
 );
 
 export const getVendorOrders = createAsyncThunk<
-  VendorOrdersWrapper[],
+  VendorOrdersWrapper[] | LastOrdersWrapper[],
   boolean,
   { rejectValue: string | unknown }
 >(

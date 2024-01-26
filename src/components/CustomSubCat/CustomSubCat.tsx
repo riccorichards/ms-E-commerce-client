@@ -8,30 +8,47 @@ import {
   MdOutlineFavorite,
 } from "react-icons/md";
 import ImageWraper from "./../ImageWraper";
-import { FC, useState } from "react";
+import { FC, useContext, useEffect, useState } from "react";
 import { GetFilteredSubC } from "../../redux/type.slice";
 import HoverFoodInfo from "./HoverFoodInfo/HoverFoodInfo";
 import ListFoodInSubCat from "./ListFoodInSubCat/ListFoodInSubCat";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
-import { foodToCart, wishlistToggle } from "../../redux/appCall/FoodAppCall";
+import {
+  foodToCart,
+  getProductUrlForSubCat,
+  wishlistToggle,
+} from "../../redux/appCall/FoodAppCall";
+import SnackBarContext from "../SnackBarContext";
 
 const CustomSubCat: FC<{ sub: GetFilteredSubC }> = ({ sub }) => {
   const [index, setIndex] = useState<number>(0);
-  const product = sub.Products.length > 0 ? sub.Products[index] : null;
+  const product =
+    sub.Products && sub.Products.length > 0 ? sub.Products[index] : null;
   const dispatch = useAppDispatch();
   const { customer } = useAppSelector((state) => state.customer);
   const [isInfo, setIsinfo] = useState<boolean>(false);
   const [isList, setIsList] = useState<boolean>(false);
+  const { productUrl } = useAppSelector((s) => s.food);
   const isPickedFood = (id: number) => {
     return Boolean(
       customer && customer.wishlist.find((food) => food.id === id)
     );
   };
+  useEffect(() => {
+    if (product) {
+      dispatch(getProductUrlForSubCat(product.image));
+    }
+  }, [dispatch, product]);
+  const getSnackContext = useContext(SnackBarContext);
+  const setType = getSnackContext?.setType;
+  const setRunSnackBar = getSnackContext?.setRunSnackBar;
+
   if (!product) return null;
 
   const infoToggle = () => {
     setIsinfo((prev) => !prev);
   };
+
   const listToggle = () => {
     setIsList((prev) => !prev);
   };
@@ -42,6 +59,10 @@ const CustomSubCat: FC<{ sub: GetFilteredSubC }> = ({ sub }) => {
       userId: customer?._id || "",
     };
     dispatch(wishlistToggle(data));
+    if (setType && setRunSnackBar) {
+      setType("success");
+      setRunSnackBar(true);
+    }
   };
 
   const handleAddFoodToCart = (productId: number) => {
@@ -52,6 +73,10 @@ const CustomSubCat: FC<{ sub: GetFilteredSubC }> = ({ sub }) => {
     };
 
     dispatch(foodToCart(data));
+    if (setType && setRunSnackBar) {
+      setType("success");
+      setRunSnackBar(true);
+    }
   };
 
   const maxLength = sub.Products.length;
@@ -80,7 +105,7 @@ const CustomSubCat: FC<{ sub: GetFilteredSubC }> = ({ sub }) => {
         >
           <FaHandPointLeft />
         </button>
-        <ImageWraper image={product.image} size="120px" />
+        <ImageWraper image={productUrl || ""} size="120px" />
         <button
           className="foot-switcher-pointer-right"
           onClick={() => handleFoodSwitcher("right")}

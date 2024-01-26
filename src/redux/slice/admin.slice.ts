@@ -18,7 +18,7 @@ import { uploadImage } from "../appCall/AuthAppCall";
 
 const initialState: AdminState = {
   createdVendor: null,
-  imageUrl: null,
+  imageWrapper: null,
   ordersLength: null,
   orders: null,
   topVendors: null,
@@ -46,9 +46,8 @@ const AdminSlice = createSlice({
       })
       .addCase(createVendor.fulfilled, (state, action) => {
         state.status = "fulfilled";
-        if (state.createdVendor) {
-          state.createdVendor = action.payload;
-        }
+        state.createdVendor = action.payload;
+        state.imageWrapper = null;
       })
       .addCase(createVendor.rejected, (state, action) => {
         state.status = "rejected";
@@ -60,7 +59,7 @@ const AdminSlice = createSlice({
       .addCase(createDeliveryman.fulfilled, (state, action) => {
         state.status = "fulfilled";
         state.createdDeliveryman = action.payload;
-        state.imageUrl = null;
+        state.imageWrapper = null;
       })
       .addCase(createDeliveryman.rejected, (state, action) => {
         state.status = "rejected";
@@ -72,7 +71,9 @@ const AdminSlice = createSlice({
       .addCase(uploadVendorImage.fulfilled, (state, action) => {
         state.status = "fulfilled";
         if (state) {
-          state.imageUrl = action.payload;
+          if (action.payload.type === "profiles") {
+            state.imageWrapper = action.payload;
+          }
         }
       })
       .addCase(uploadVendorImage.rejected, (state, action) => {
@@ -85,7 +86,9 @@ const AdminSlice = createSlice({
       .addCase(uploadImage.fulfilled, (state, action) => {
         state.status = "fulfilled";
         if (state) {
-          state.imageUrl = action.payload;
+          if (action.payload.type === "profiles") {
+            state.imageWrapper = action.payload;
+          }
         }
       })
       .addCase(uploadImage.rejected, (state, action) => {

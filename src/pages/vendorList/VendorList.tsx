@@ -13,7 +13,6 @@ const VendorList = () => {
     dispatch(getAllVendors());
   }, []); //eslint-disable-line
 
-
   return (
     <div className="vendors-list">
       {vendorList &&

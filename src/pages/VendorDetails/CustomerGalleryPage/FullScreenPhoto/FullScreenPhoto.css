@@ -1,0 +1,37 @@
+.full-screen-photo-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
+  background-color: rgba(0, 0, 0, 0.4745098039);
+}
+.full-screen-photo-wrapper .full-screen-photo {
+  width: 70%;
+  height: 70%;
+  position: relative;
+}
+.full-screen-photo-wrapper .full-screen-photo img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.full-screen-photo-wrapper .full-screen-photo button {
+  position: absolute;
+  bottom: 99%;
+  right: 5%;
+  background-color: #fff8e1;
+  border: none;
+  font-family: "Josefin Sans", sans-serif;
+  padding: 5px;
+  border-radius: 2.5px;
+  cursor: pointer;
+}
+.full-screen-photo-wrapper .full-screen-photo button:active {
+  transform: scale(0.9);
+}

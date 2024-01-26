@@ -10,10 +10,14 @@ import {
   useAppSelector,
 } from "../../../../../../../../redux/hook";
 import { updateVendorProfileInfo } from "../../../../../../../../redux/appCall/VendorAppCall";
+import useSnackBar from "../../../../../../../SnackBar/useSnackBar";
 
 const UpdateVendorForm = () => {
   const dispatch = useAppDispatch();
   const { vendor } = useAppSelector((state) => state.vendor);
+
+  const triggerSnackBar = useSnackBar();
+
   const {
     register,
     formState: { errors },
@@ -34,6 +38,7 @@ const UpdateVendorForm = () => {
       }
     }
     dispatch(updateVendorProfileInfo(result));
+    triggerSnackBar();
   };
   return (
     <div className="update-vendor-form-wrapper">

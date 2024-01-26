@@ -5,6 +5,7 @@ import {
   FeedbackType,
   FeedbacksResponse,
   GetCustomer,
+  ImageWrapperType,
   NewFeedbackInputType,
 } from "../type.slice";
 import {
@@ -119,7 +120,7 @@ export const addBankInfo = createAsyncThunk<
 );
 
 export const uploadImage = createAsyncThunk<
-  string,
+  ImageWrapperType,
   FormData,
   { rejectValue: string }
 >("customer/uploadImage", async (formData: FormData, { rejectWithValue }) => {

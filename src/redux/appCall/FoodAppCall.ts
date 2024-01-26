@@ -6,6 +6,7 @@ import {
   FeedbackType,
   FoodCardType,
   FoodResponseType,
+  FoodsFeedsType,
   GetFilteredSubC,
   GetVendorSubC,
   MainCType,
@@ -42,6 +43,26 @@ export const fetchMainCategorysSubCat = createAsyncThunk<
     const { data } = await axios({
       method: "get",
       url: `http://localhost:8002/main-subcat/${id}`,
+      withCredentials: true,
+    });
+    return data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      return rejectWithValue(error.message);
+    }
+    return rejectWithValue(error);
+  }
+});
+
+export const getProductUrlForSubCat = createAsyncThunk<
+  string,
+  string,
+  { rejectValue: string | unknown }
+>("food/getProductUrlForSubCat", async (image: string, { rejectWithValue }) => {
+  try {
+    const { data } = await axios({
+      method: "get",
+      url: `http://localhost:8007/file?title=${image}`,
       withCredentials: true,
     });
     return data;
@@ -126,12 +147,12 @@ export const fetchVendorSubCategories = createAsyncThunk<
 
 export const createSubCat = createAsyncThunk<
   GetVendorSubC,
-  { title: string; description: string; mainCatId: number },
+  { title: string; desc: string; mainCatId: number },
   { rejectValue: string | unknown }
 >(
   "food/createSubCat",
   async (
-    subCatData: { title: string; description: string; mainCatId: number },
+    subCatData: { title: string; desc: string; mainCatId: number },
     { rejectWithValue }
   ) => {
     try {
@@ -176,7 +197,7 @@ export const getFoods = createAsyncThunk<
   FoodResponseType,
   number,
   { rejectValue: string | unknown }
->("food/getPopularFoods", async (page: number, { rejectWithValue }) => {
+>("food/getFoods", async (page: number, { rejectWithValue }) => {
   try {
     const { data } = await axios({
       method: "get",
@@ -192,15 +213,15 @@ export const getFoods = createAsyncThunk<
   }
 });
 
-export const getVendorFoods = createAsyncThunk<
-  ProductType[],
-  string,
+export const getFoodsFeeds = createAsyncThunk<
+  FoodsFeedsType[],
+  number,
   { rejectValue: string | unknown }
->("food/getVendorFoods", async (vendorName: string, { rejectWithValue }) => {
+>("food/getFoodsFeeds", async (productId: number, { rejectWithValue }) => {
   try {
     const { data } = await axios({
       method: "get",
-      url: `http://localhost:8002/vendor-products/${vendorName}`,
+      url: `http://localhost:8002/product-feeds/${productId}`,
       withCredentials: true,
     });
     return data;

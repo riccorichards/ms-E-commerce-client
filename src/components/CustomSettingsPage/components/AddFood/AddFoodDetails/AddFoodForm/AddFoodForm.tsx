@@ -6,10 +6,11 @@ import { useAppDispatch, useAppSelector } from "../../../../../../redux/hook";
 import { useContext, useState } from "react";
 import AddFoodContext from "../../AddFoodContext";
 import { createFood } from "../../../../../../redux/appCall/FoodAppCall";
+import useSnackBar from "../../../../../SnackBar/useSnackBar";
 
 const AddFoodForm = () => {
   const { vendor } = useAppSelector((state) => state.vendor);
-  const { foodImageUrl } = useAppSelector((state) => state.food);
+  const { foodImage } = useAppSelector((state) => state.food);
   const dispatch = useAppDispatch();
   const [imgError, setImgError] = useState<boolean>(false);
   const {
@@ -23,22 +24,25 @@ const AddFoodForm = () => {
 
   const getAddFoodContext = useContext(AddFoodContext);
   const getSubCId = getAddFoodContext?.getSubCId;
+  const triggerSnackBar = useSnackBar();
+
   if (!vendor) return null;
 
   const onSubmit = (values: AddFoodSchemaType) => {
-    if (foodImageUrl) {
+    if (foodImage?.title) {
       if (getSubCId) {
         dispatch(
           createFood({
             ...values,
             subCatId: getSubCId,
-            image: foodImageUrl,
+            image: foodImage?.title,
             vendor_name: vendor.name,
             address: vendor.address,
             vendor_rating: vendor.rating,
           })
         );
       }
+      triggerSnackBar();
       reset();
     } else {
       setImgError(true);

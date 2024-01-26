@@ -87,8 +87,8 @@ const AuthSlice = createSlice({
       })
       .addCase(uploadImage.fulfilled, (state, action) => {
         state.status = "fulfilled";
-        if (state.customer) {
-          state.customer.image = action.payload;
+        if (state.customer && !state.customer.isAdmin) {
+          state.customer.url = action.payload.url;
         }
       })
       .addCase(uploadImage.rejected, (state, action) => {

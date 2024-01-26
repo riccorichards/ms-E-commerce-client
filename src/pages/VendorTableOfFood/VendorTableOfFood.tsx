@@ -3,12 +3,10 @@ import { FaSearch } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import MainCars from "../UserDashboard/userPageComps/dashborad/dashComps/ProductList/Components/MainCats/MainCars";
-import {
-  fetchMainCategories,
-  getVendorFoods,
-} from "../../redux/appCall/FoodAppCall";
+import { fetchMainCategories } from "../../redux/appCall/FoodAppCall";
 import VendorSubCatList from "./VendorSubCatList/VendorSubCatList";
 import FoodTable from "./FoodTable/FoodTable";
+import { getVendorFoods } from "@redux/appCall/VendorAppCall";
 
 const VendorTableOfFood = () => {
   const dispatch = useAppDispatch();

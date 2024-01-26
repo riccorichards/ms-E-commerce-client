@@ -10,7 +10,7 @@ import { createDeliveryman } from "../../../../../redux/appCall/AdminAppCall";
 import { useEffect, useState } from "react";
 
 const EmployeeForm = () => {
-  const { imageUrl } = useAppSelector((state) => state.admin);
+  const { imageWrapper } = useAppSelector((state) => state.admin);
   const [isEmptyImage, setIsEmptyImage] = useState<boolean>();
   const dispatch = useAppDispatch();
   const {
@@ -23,8 +23,10 @@ const EmployeeForm = () => {
   });
 
   const onSubmit = (value: EmployeeFormInput) => {
-    if (imageUrl) {
-      dispatch(createDeliveryman({ ...value, image: imageUrl || "" }));
+    if (imageWrapper) {
+      dispatch(
+        createDeliveryman({ ...value, image: imageWrapper.title || "" })
+      );
       reset();
     } else {
       setIsEmptyImage(true);
@@ -32,10 +34,10 @@ const EmployeeForm = () => {
   };
 
   useEffect(() => {
-    if (imageUrl) {
+    if (imageWrapper) {
       setIsEmptyImage(false);
     }
-  }, [imageUrl]);
+  }, [imageWrapper]);
   return (
     <section className="employee-from-wrapper">
       <form id="employee-form" onSubmit={handleSubmit(onSubmit)}>

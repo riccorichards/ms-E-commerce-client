@@ -9,7 +9,7 @@ const NewEmployee = () => {
       <h1>Create a new employee</h1>
       <main className="new-employee">
         <section>
-          <UploadImage size="300px" isSendToService="1" address="deliveryman" />
+          <UploadImage size="300px" toShare="0" address="deliveryman" />
           <p style={{ marginTop: "15px" }}>
             Valide Extensions <span style={style}>jpeg</span>/
             <span style={style}>jpg</span>/<span style={style}>png</span>

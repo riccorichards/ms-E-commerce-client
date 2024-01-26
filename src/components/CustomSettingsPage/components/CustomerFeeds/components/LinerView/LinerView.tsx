@@ -6,10 +6,7 @@ import { FaRegStar } from "react-icons/fa";
 import { LuDelete } from "react-icons/lu";
 import { useContext } from "react";
 import FeedContext from "../../FeedContext";
-
-const timeFormat = (str: string) => {
-  return str.split("T")[0];
-};
+import Utils from "../../../../../../utils/utils";
 
 const LinerView = () => {
   const { myFeeds, customer } = useAppSelector((state) => state.customer);
@@ -35,7 +32,11 @@ const LinerView = () => {
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <h4>{feed.author}</h4>
                 <span style={{ fontSize: "12px" }}>
-                  {timeFormat(customer?.createdAt || vendor?.createdAt || "")}
+                  {
+                    Utils.dateFormatter(
+                      customer?.createdAt || vendor?.createdAt || ""
+                    ).date
+                  }
                 </span>
               </div>
             </div>
@@ -61,7 +62,7 @@ const LinerView = () => {
               </div>
             </div>
             <span style={{ fontSize: "12px" }}>
-              {timeFormat(feed.createdAt)}
+              {Utils.dateFormatter(feed.createdAt).date}
             </span>
             <button
               className="remove-liner-feed"

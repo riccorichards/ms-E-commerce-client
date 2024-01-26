@@ -2,14 +2,12 @@ import "./DeliveryPerson.scss";
 import ImageWraper from "../../../../components/ImageWraper";
 import { IoLocationOutline, IoCallOutline } from "react-icons/io5";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hook";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { addFeedback } from "../../../../redux/appCall/AuthAppCall";
 import { NewFeedbackInputType } from "../../../../redux/type.slice";
 import { FiEdit } from "react-icons/fi";
-
-function dateFormatter(str: string) {
-  return str.split("T");
-}
+import SnackBarContext from "../../../../components/SnackBarContext";
+import Utils from "../../../../../src/utils/utils";
 
 const DeliveryPerson = () => {
   const { deliverymanForOrder } = useAppSelector((state) => state.shopping);
@@ -24,6 +22,10 @@ const DeliveryPerson = () => {
       setFeedErrorWrapper(null);
     }
   }, [feedback]);
+
+  const getSnackContext = useContext(SnackBarContext);
+  const setType = getSnackContext?.setType;
+  const setRunSnackBar = getSnackContext?.setRunSnackBar;
 
   if (!deliverymanForOrder) return null;
 
@@ -46,6 +48,10 @@ const DeliveryPerson = () => {
         };
         dispatch(addFeedback(newFeedback));
         setIsFeedback(false);
+        if (setType && setRunSnackBar) {
+          setType("success");
+          setRunSnackBar(true);
+        }
       } else {
         setFeedErrorWrapper("Feedback should be between ==> 3-150 chars");
       }
@@ -63,7 +69,7 @@ const DeliveryPerson = () => {
         }}
       >
         <h2>{deliverymanForOrder.name}</h2>
-        <span>{dateFormatter(deliverymanForOrder.createdAt)[0]}</span>
+        <span>{Utils.dateFormatter(deliverymanForOrder.createdAt).date}</span>
       </div>
       <div className="leave-feedback-to-deliveryman">
         <button

@@ -10,7 +10,7 @@ import AddFoodContext from "../AddFoodContext";
 
 const formSchema = z.object({
   title: z.string().min(1, "Title is required").trim().optional(),
-  description: z.string().min(16, "Description is required").trim(),
+  desc: z.string().min(16, "Description is required").trim(),
 });
 
 const AddFoodSubC = () => {
@@ -22,14 +22,14 @@ const AddFoodSubC = () => {
     formState: { errors },
     reset,
     handleSubmit,
-  } = useForm<{ title: string; description: string }>({
+  } = useForm<{ title: string; desc: string }>({
     resolver: zodResolver(formSchema),
   });
 
   const getAddFoodContext = useContext(AddFoodContext);
   const mainCId = getAddFoodContext?.getMainCId;
 
-  const onSubmit = (value: { title: string; description: string }) => {
+  const onSubmit = (value: { title: string; desc: string }) => {
     if (mainCId) {
       dispatch(createSubCat({ ...value, mainCatId: mainCId }));
       reset();
@@ -62,9 +62,9 @@ const AddFoodSubC = () => {
               <input
                 type="text"
                 placeholder="Description"
-                {...register("description")}
+                {...register("desc")}
               />
-              {errors.description && <p>{errors.description.message}</p>}
+              {errors.desc && <p>{errors.desc.message}</p>}
             </div>
             <button type="submit">Submit</button>
           </form>

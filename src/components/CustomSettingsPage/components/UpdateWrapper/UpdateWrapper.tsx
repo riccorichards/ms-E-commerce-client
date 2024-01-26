@@ -7,13 +7,14 @@ import "./UpdateWrapper.scss";
 
 const UpdateWrapper = () => {
   const { customer } = useAppSelector((state) => state.customer);
+
   if (!customer) return null;
   return (
     <div className="update-profile-place">
       <UploadImage
         target={customer}
         address="customer"
-        isSendToService="0"
+        toShare="1"
         size="250px"
       />
       <UpdateBasicInfo />

@@ -14,7 +14,7 @@ const googleMapsApiKey = import.meta.env.VITE_GOOGLE_CLOUD_MAPS_API_KEY;
 const GoogleMapApis: FC<{
   coords: VendorCoordsType | null;
   name: string | undefined;
-  image: string | undefined;
+  image: string | undefined | null;
   rating: number | undefined;
 }> = ({ coords, name, image, rating }) => {
   const { isLoaded, loadError } = useLoadScript({

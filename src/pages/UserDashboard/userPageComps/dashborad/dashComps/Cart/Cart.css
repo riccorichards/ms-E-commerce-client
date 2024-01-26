@@ -24,6 +24,7 @@
   position: relative;
   background-color: hsl(16, 100%, 50%);
   border: none;
+  font-family: "Josefin Sans", sans-serif;
   border-radius: 7px;
   display: flex;
   align-items: center;

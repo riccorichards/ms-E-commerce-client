@@ -11,7 +11,7 @@ import { createVendor } from "../../../../../redux/appCall/AdminAppCall";
 
 const VendorForm = () => {
   const dispatch = useAppDispatch();
-  const image = useAppSelector((state) => state.admin.imageUrl);
+  const { imageWrapper } = useAppSelector((state) => state.admin);
   //const [isImage, setIsImage] = useState<boolean>(false);
   const {
     register,
@@ -23,11 +23,12 @@ const VendorForm = () => {
   });
 
   const onSubmit = (values: VendorFormInput) => {
-    if (image) {
-      dispatch(createVendor({ ...values, profileImg: image }));
+    if (imageWrapper) {
+      dispatch(createVendor({ ...values, image: imageWrapper.title }));
       reset();
     }
   };
+  
   return (
     <section className="vendor-from-wrapper">
       <form id="vendor-form" onSubmit={handleSubmit(onSubmit)}>

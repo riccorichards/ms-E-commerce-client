@@ -3,6 +3,7 @@ import ImageWraper from "../../../../../../components/ImageWraper";
 import "./VendorOrderHeaderInfo.scss";
 import VendorOrderContext from "../../VendorOrderContext";
 import { useAppSelector } from "../../../../../../redux/hook";
+import Utils from "../../../../../../../src/utils/utils";
 
 const VendorOrderHeaderInfo = () => {
   const getVendorOrderContect = useContext(VendorOrderContext);
@@ -19,7 +20,7 @@ const VendorOrderHeaderInfo = () => {
     <section className="vendor-order-header-info">
       <div className="vendor-order-info-part">
         <h2>Order #{orderId}</h2>
-        <p>{orderDate.split("T")[0]}</p>
+        <p>{Utils.dateFormatter(orderDate).date}</p>
       </div>
       <div className="vendor-order-customer-part">
         <div style={{ textAlign: "end" }}>

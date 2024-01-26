@@ -45,16 +45,25 @@
   display: flex;
   width: 100%;
   top: 100%;
-  height: 5vh;
   box-shadow: 0 0 10px rgba($color: #00000022, $alpha: 0.1);
-  align-items: center;
-  padding: 15px 5px;
-  gap: 15px;
-  transition: all 0.25s ease-in-out;
+  gap: 5px;
+  padding: 5px;
+  flex-direction: column;
 
-  &:hover {
-    background-color: v.$orangered;
-    cursor: pointer;
-    color: v.$white;
+  button {
+    transition: all 0.25s ease-in-out;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    padding: 5px;
+    font-family: v.$title_font2;
+    align-items: center;
+    gap: 5px;
+
+    &:hover {
+      background-color: v.$orangered;
+      cursor: pointer;
+      color: v.$white;
+    }
   }
 }

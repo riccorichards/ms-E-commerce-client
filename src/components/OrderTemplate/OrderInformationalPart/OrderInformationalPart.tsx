@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../../redux/hook";
 import RatingCalculation from "../../RatingCalculation";
 import { useEffect, useState } from "react";
 import { getVendorForOrder } from "../../../redux/appCall/ShoppingApiCall";
+import Utils from "../../../utils/utils";
 
 const OrderInformationalPart = () => {
   const { customer } = useAppSelector((s) => s.customer);
@@ -15,9 +16,7 @@ const OrderInformationalPart = () => {
   useEffect(() => {
     if (order) {
       setVendorIndex(0);
-      const uniqueAddresses = new Set(
-        order.orderItem.map((item) => item.product_address)
-      );
+      const uniqueAddresses = Utils.addressWrapper(order.orderItem);
       if (vendorForOrder.length < 1) {
         uniqueAddresses.forEach((address) => {
           dispatch(getVendorForOrder(address));

@@ -27,7 +27,9 @@ const PopularFoods = () => {
             <FoodCard key={food.id} food={food} from="mainDashboard" />
           ))}
       </main>
-      <Pagination totalPage={foodPagination.totalPages} setPage={setPage} />
+      {foodPagination.totalPages >= 2 && (
+        <Pagination totalPage={foodPagination.totalPages} setPage={setPage} />
+      )}
     </section>
   );
 };

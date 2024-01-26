@@ -10,6 +10,7 @@ import { fetchLogin } from "../../../../redux/appCall/AuthAppCall";
 import { Link, useNavigate } from "react-router-dom";
 import { vendorLogin } from "../../../../redux/appCall/VendorAppCall";
 import { loginDeliveryman } from "../../../../redux/appCall/DeliverymanAppCall";
+import useSnackBar from "../../../../components/SnackBar/useSnackBar";
 
 const Login = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -18,6 +19,11 @@ const Login = () => {
   const { customer } = useAppSelector((state) => state.customer);
   const { vendor } = useAppSelector((state) => state.vendor);
   const { deliveyman } = useAppSelector((state) => state.deliveryman);
+  const triggerSnackBar = useSnackBar();
+  const customerError = useAppSelector((state) => state.customer.error);
+  const vendorError = useAppSelector((state) => state.vendor.error);
+  const deliveymanError = useAppSelector((state) => state.deliveryman.error);
+
   const navigate = useNavigate();
   const {
     register,
@@ -27,6 +33,7 @@ const Login = () => {
   } = useForm<LoginInputType>({
     resolver: zodResolver(loginSchema),
   });
+  
   useEffect(() => {
     const timeOut = setTimeout(() => {
       if (isVisible) {
@@ -51,12 +58,17 @@ const Login = () => {
       }
     } catch (error) {
       if (error instanceof Error) {
-        console.log(error.message);
         throw new Error(error.message);
       }
       throw new Error("Server Internal");
     }
   };
+
+  useEffect(() => {
+    if (customerError || deliveymanError || vendorError) {
+      triggerSnackBar("opss");
+    }
+  }, [customerError, vendorError, deliveymanError, triggerSnackBar]);
 
   useEffect(() => {
     if (customer) {

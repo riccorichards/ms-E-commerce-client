@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import { useAppDispatch, useAppSelector } from "../../../../../../redux/hook";
 import { addBioInfo } from "../../../../../../redux/appCall/VendorAppCall";
+import useSnackBar from "../../../../../SnackBar/useSnackBar";
 
 const UploadVendorBio = () => {
   const [bio, setBio] = useState<string>("");
   const [bioInvalid, setBioInvalid] = useState<string | null>(null);
   const dispatch = useAppDispatch();
+  const triggerSnackBar = useSnackBar();
   const { vendor } = useAppSelector((state) => state.vendor);
   const submitBio = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const bioText = e.target.value;
@@ -17,6 +19,7 @@ const UploadVendorBio = () => {
     if (bio.length > 3 && bio.length < 150) {
       dispatch(addBioInfo({ bio: bio }));
       setBioInvalid(null);
+      triggerSnackBar();
     } else {
       setBioInvalid("Invalid length(3-150) of Bio text...");
     }

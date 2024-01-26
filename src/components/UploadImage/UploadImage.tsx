@@ -10,13 +10,13 @@ type TargetType = EntireCustomerType | VendorType;
 
 const UploadImage: FC<{
   target?: TargetType;
-  isSendToService: string;
+  toShare: string;
   size: string;
   address: string;
-}> = ({ target, isSendToService, size, address }) => {
+}> = ({ target, toShare, size, address }) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const dispatch = useAppDispatch();
-  const { imageUrl } = useAppSelector((state) => state.admin);
+  const { imageWrapper } = useAppSelector((state) => state.admin);
 
   const submitFile = (
     event: React.ChangeEvent<HTMLInputElement | undefined>
@@ -29,7 +29,7 @@ const UploadImage: FC<{
       formData.append("upload", files[0]);
       formData.append("type", "profiles");
       formData.append("address", address);
-      formData.append("isSendToService", isSendToService);
+      formData.append("toShare", toShare);
       dispatch(uploadImage(formData));
     }
   };
@@ -37,7 +37,13 @@ const UploadImage: FC<{
     <section className="update-customer-image">
       <div className="customer-image-wrapper">
         <ImageWraper
-          image={target ? target.image : imageUrl ? imageUrl : undefined}
+          image={
+            target && target.url
+              ? target.url
+              : imageWrapper
+              ? imageWrapper.url
+              : undefined
+          }
           size={size}
           nonCircle
           radiusSize="15px"

@@ -15,6 +15,7 @@ import {
   updateBasicCustomerInfo,
 } from "../../../../../redux/appCall/AuthAppCall";
 import { IoSendOutline } from "react-icons/io5";
+import useSnackBar from "../../../../SnackBar/useSnackBar";
 
 const UpdateBasicInfo = () => {
   const [isEditable, setIsEditable] = useState<EditableFields>({});
@@ -31,6 +32,7 @@ const UpdateBasicInfo = () => {
   } = useForm<UpdateBasicCustomerInput>({
     resolver: zodResolver(updateBasicCustomerSchema),
   });
+  const triggerSnackBar = useSnackBar();
 
   if (!customer) return null;
 
@@ -52,6 +54,7 @@ const UpdateBasicInfo = () => {
         }
       }
       dispatch(updateBasicCustomerInfo(result));
+      triggerSnackBar();
     } catch (error) {
       if (error instanceof Error) {
         console.error("Update failed:", error.message);

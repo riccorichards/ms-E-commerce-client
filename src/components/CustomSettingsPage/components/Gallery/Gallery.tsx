@@ -12,7 +12,7 @@ import {
 
 const Gallery = () => {
   const dispatch = useAppDispatch();
-  const { vendor } = useAppSelector((state) => state.vendor);
+  const { vendor, gallery } = useAppSelector((state) => state.vendor);
   const { imageUrl } = useAppSelector((state) => state.vendor);
   const [imgIdWrapper, setImgIdWrapper] = useState<string | null>(null);
   const imageRef = useRef<HTMLInputElement | null>(null);
@@ -22,10 +22,12 @@ const Gallery = () => {
   };
 
   useEffect(() => {
-    dispatch(getVendorGallery());
-  }, [imageUrl]); //eslint-disable-line
+    if (vendor) {
+      dispatch(getVendorGallery(vendor._id));
+    }
+  }, [imageUrl, vendor]); //eslint-disable-line
 
-  if (!vendor) return null;
+  if (!vendor || !gallery) return null;
 
   const fileSubmition = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files;
@@ -34,7 +36,7 @@ const Gallery = () => {
     if (file) {
       formData.append("upload", file[0]);
       formData.append("type", "gallery");
-      formData.append("isSendToService", "0");
+      formData.append("toShare", "1");
       formData.append("address", "vendor");
       dispatch(uploadGalleryImg(formData));
     }
@@ -48,7 +50,7 @@ const Gallery = () => {
     <div className="gallery-wrapper">
       <header className="gallery-header-wrapper">
         <h2>
-          {vendor?.name}'s <span style={{ color: "orangered" }}>Gallery</span>
+          {vendor.name}'s <span style={{ color: "orangered" }}>Gallery</span>
         </h2>
         <button onClick={() => imageRef.current?.click()}>
           <IoImageOutline /> Upload
@@ -56,8 +58,8 @@ const Gallery = () => {
         <input ref={imageRef} type="file" hidden onChange={fileSubmition} />
       </header>
       <main className="gallery">
-        {vendor.gallery.length >= 1 ? (
-          vendor.gallery.map((image) => (
+        {gallery.length > 0 ? (
+          gallery.map((image) => (
             <ImageTemplateG
               removePhoto={handleRemovePhoto}
               image={image}
@@ -76,7 +78,7 @@ const Gallery = () => {
               }}
             >
               <FiCameraOff style={{ color: "orangered", fontSize: "18px" }} />
-              <span>There is no Image</span>
+              <span style={{ textAlign: "center" }}>There is no Image</span>
             </div>
           </div>
         )}

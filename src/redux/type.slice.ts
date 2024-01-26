@@ -8,8 +8,10 @@ export type CustomerType = {
   username?: string;
 };
 
-export type ProfileURLType = {
-  image: string;
+export type ImageWrapperType = {
+  url: string;
+  title: string;
+  type: string;
 };
 
 export type ErrorWrapper = object;
@@ -35,6 +37,7 @@ export interface EntireCustomerType extends CustomarBasicInfo {
   bonus: number;
   isAdmin: boolean;
   image: string;
+  url: string | null;
   address: StateAddressType;
   bank: StateBankInfoType;
   wishlist: ProductType[];
@@ -79,7 +82,7 @@ export interface BasicVendorType {
   about?: string;
   pincode: string;
   phone: string;
-  profileImg: string | null;
+  image: string | null;
   email: string;
   password: string;
 }
@@ -142,7 +145,7 @@ export interface EmployeeResponseType {
 
 export interface AdminState {
   createdVendor: BasicVendorType | null;
-  imageUrl: string | null;
+  imageWrapper: ImageWrapperType | null;
   ordersLength: number | null;
   employees: EmployeeType[] | null;
   adminPagination: PagnationType | null;
@@ -206,6 +209,7 @@ export interface VendorType {
   about: string;
   pincode: string;
   phone: string;
+  url: string | null;
   image: string;
   email: string;
   foods: ProductType[];
@@ -217,11 +221,6 @@ export interface VendorType {
   gallery: GalleryType[];
   socialMedia: SocUrlType[];
   createdAt: string;
-}
-
-export interface GetvendorData {
-  vendor: VendorType;
-  ttl: number;
 }
 
 export interface VendorListType {
@@ -254,7 +253,16 @@ export interface VendorOrdersWrapper {
   order_status: string;
   total_amount: number;
   deliverymanName: string;
-  customer: OrderCustomerInfo | string;
+  customer: string;
+  orderId: number;
+  createdAt: string;
+}
+
+export interface LastOrdersWrapper {
+  order_status: string;
+  total_amount: number;
+  deliverymanName: string;
+  customer: OrderCustomerInfo;
   orderId: number;
   createdAt: string;
 }
@@ -276,6 +284,11 @@ export interface VendorFeedResponseType {
   pagination: PagnationType;
 }
 
+export interface VendorResponse {
+  vendor: VendorType;
+  ttl: number;
+}
+
 export interface VendorState {
   vendor: VendorType | null;
   vendorList: VendorListType[] | null;
@@ -284,8 +297,10 @@ export interface VendorState {
   vendorFeeds: FeedbackType[] | null;
   ttl: number | null;
   coords: VendorCoordsType | null;
+  gallery: GalleryType[] | null;
   orderCustomerInfo: OrderCustomerInfo | null;
   vendorOrders: VendorOrdersWrapper[] | null;
+  lastOrders: LastOrdersWrapper[] | null;
   vendorOrderItems: CartItemsType[] | null;
   orderDeliverymanInfo: OrderDeliverymanInfo | null;
   topCustomers: VendorTopCustomers[] | null;
@@ -310,6 +325,7 @@ export interface ProductType {
   foodId: number;
   title: string;
   image: string;
+  url: string;
   vendor_name: string;
   address: string;
   vendor_rating: number;
@@ -372,6 +388,7 @@ export interface CartInputType {
 
 export interface FeedbackType {
   id: number;
+  feedId: number;
   userId: string;
   author: string;
   authorImg: string;
@@ -383,7 +400,6 @@ export interface FeedbackType {
   review: string;
   vendorRating?: number;
   createdAt: string;
-  feedId: number;
 }
 
 export interface DashboardDataInput {
@@ -409,9 +425,16 @@ export interface NewFeedbackInputType {
   vendorRating?: number;
 }
 
+export interface FoodsFeedsType {
+  image: string;
+  feed: string;
+  id: number;
+}
 export interface FoodState {
   mainC: MainCType[] | null;
-  foodImageUrl: string | null;
+  foodImage: ImageWrapperType | null;
+  foodsFeeds: FoodsFeedsType[] | null;
+  productUrl: string | null;
   subC: GetFilteredSubC[] | GetVendorSubC[] | null;
   foods: ProductType[] | null;
   foodPagination: PagnationType | null;
@@ -433,6 +456,7 @@ export interface DeliverymanType {
   name: string;
   email: string;
   image: string;
+  url: string;
   createdAt: string;
   feedCount: number;
 }

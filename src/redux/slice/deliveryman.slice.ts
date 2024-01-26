@@ -56,7 +56,7 @@ const DeliverymanSlice = createSlice({
       .addCase(uploadImage.fulfilled, (state, action) => {
         state.status = "fulfilled";
         if (state.deliveyman) {
-          state.deliveyman.image = action.payload;
+          state.deliveyman.url = action.payload.url;
         }
       })
       .addCase(uploadImage.rejected, (state, action) => {

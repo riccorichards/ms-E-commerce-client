@@ -6,7 +6,7 @@
 }
 
 .table-wrapper {
-  height: 63vh;
+  height: 60vh;
 }
 
 .invoice-table {
@@ -16,7 +16,7 @@
 
 .invoice-table .invoice-thead .invoice-tr {
   background-color: #333333;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 700;
   color: #c0c0c0;
   height: 7vh;
@@ -26,6 +26,7 @@
 .invoice-table .invoice-th,
 .invoice-table .invoice-td {
   padding: 12px 15px;
+  font-size: 14px;
 }
 
 .invoice-table .invoice-tbody .invoice-tr {

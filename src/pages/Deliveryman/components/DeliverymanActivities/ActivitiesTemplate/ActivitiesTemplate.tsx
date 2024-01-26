@@ -3,8 +3,8 @@ import "./ActivitiesTemplate.scss";
 import ImageWraper from "../../../../../components/ImageWraper";
 import { MdLocationPin, MdAlternateEmail } from "react-icons/md";
 import DeliveryContext from "../../../DeliveryContext";
-import { addressWrapper } from "../../../../../utils/utils";
 import { OrderType } from "../../../../../redux/type.slice";
+import Utils from "../../../../../utils/utils";
 
 const ActivitiesTemplate: FC<{
   order: OrderType;
@@ -37,10 +37,10 @@ const ActivitiesTemplate: FC<{
           </span>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <span style={{ fontSize: "12px" }}>
-              {order.createdAt.split("T")[0]}
+              {Utils.dateFormatter(order.createdAt).date}
             </span>
             <span style={{ fontSize: "12px" }}>
-              {order.createdAt.split("T")[1].split(".")[0]}
+              {Utils.dateFormatter(order.createdAt).time}
             </span>
           </div>
         </div>
@@ -88,7 +88,7 @@ const ActivitiesTemplate: FC<{
             <ImageWraper image={customer.image} size="55px" />
           </div>
           <div>
-            <h4>Ricco</h4>
+            <h5>{customer.username}</h5>
             <div style={{ display: "flex", alignItems: "center" }}>
               <span
                 style={{
@@ -117,7 +117,7 @@ const ActivitiesTemplate: FC<{
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
-          {addressWrapper(order.orderItem).map((address, index) => (
+          {Utils.addressWrapper(order.orderItem).map((address, index) => (
             <span style={{ fontSize: "11px" }} key={index}>
               {" "}
               {`${index + 1}: ${address}`}

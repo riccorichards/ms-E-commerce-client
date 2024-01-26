@@ -4,11 +4,11 @@ import VendorFood from "./VendorFood/VendorFood";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hook";
 import MainCars from "../UserDashboard/userPageComps/dashborad/dashComps/ProductList/Components/MainCats/MainCars";
+import { fetchMainCategories } from "../../redux/appCall/FoodAppCall";
 import {
-  fetchMainCategories,
+  getSpecVendor,
   getVendorFoods,
-} from "../../redux/appCall/FoodAppCall";
-import { getSpecVendor } from "../../redux/appCall/VendorAppCall";
+} from "../../redux/appCall/VendorAppCall";
 import { useParams } from "react-router-dom";
 import VendorMenuHeader from "./VendorMenuHeader/VendorMenuHeader";
 

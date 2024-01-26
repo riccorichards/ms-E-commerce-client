@@ -19,7 +19,7 @@ const Orders = () => {
 
   useEffect(() => {
     if (ordersList && orderId == null) {
-      const firstOrderId = ordersList[0].orderId;
+      const firstOrderId = ordersList[0] && ordersList[0].orderId;
       setOrderId(firstOrderId);
     }
   }, [ordersList, orderId]);

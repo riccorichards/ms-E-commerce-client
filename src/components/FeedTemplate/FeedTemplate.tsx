@@ -7,10 +7,7 @@ import { FaRegStar } from "react-icons/fa";
 import { MdMoreHoriz } from "react-icons/md";
 import { IoTrashOutline } from "react-icons/io5";
 import FeedContext from "../CustomSettingsPage/components/CustomerFeeds/FeedContext";
-
-const timeFormat = (str: string) => {
-  return str.split("T")[0];
-};
+import Utils from "../../utils/utils";
 
 const FeedTemplate: FC<{
   feed: FeedbackType;
@@ -37,7 +34,9 @@ const FeedTemplate: FC<{
           </div>
           <div className="customer-details-in-feed">
             <h5>{feed.author}</h5>
-            <p style={{ fontSize: "12px" }}>{timeFormat(since || "")}</p>
+            <p style={{ fontSize: "12px" }}>
+              {Utils.dateFormatter(since || "").date}
+            </p>
           </div>
         </div>
         {getFeedContext && (
@@ -90,7 +89,7 @@ const FeedTemplate: FC<{
           {`"${feed.review}"`}
         </p>
         <span style={{ fontSize: "12px", alignSelf: "flex-end" }}>
-          {timeFormat(feed.createdAt)}
+          {Utils.dateFormatter(feed.createdAt).date}
         </span>
       </main>
     </div>

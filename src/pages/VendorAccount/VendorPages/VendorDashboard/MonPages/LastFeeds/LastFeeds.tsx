@@ -4,19 +4,20 @@ import { getVendorFeeds } from "../../../../../../redux/appCall/VendorAppCall";
 import ImageWraper from "../../../../../../components/ImageWraper";
 import "./LastFeeds.scss";
 import { Link } from "react-router-dom";
+import Utils from "../../../../../../utils/utils";
 
 const LastFeeds = () => {
   const dispatch = useAppDispatch();
   const { vendorFeeds, vendor } = useAppSelector((state) => state.vendor);
 
   useEffect(() => {
-    dispatch(getVendorFeeds(20));
-  }, [dispatch]);
+    if (vendor) {
+      dispatch(getVendorFeeds({ id: vendor._id, amount: 20 }));
+    }
+  }, [dispatch, vendor]);
 
   if (!vendorFeeds || !vendor) return null;
-  function formatterTime(str: string) {
-    return str.split("T")[0];
-  }
+
   return (
     <section className="last-feed-wrapper-vendor-dashboard">
       {vendorFeeds.length > 0 ? (
@@ -61,7 +62,7 @@ const LastFeeds = () => {
               </div>
               <span className="last-feed-id-wrapper">{`#000${feed.feedId}`}</span>
               <span className="last-feed-date-wrapper">
-                {formatterTime(feed.createdAt)}
+                {Utils.dateFormatter(feed.createdAt).time}
               </span>
             </div>
           </Link>

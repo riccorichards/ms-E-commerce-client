@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@hookform/resolvers": "^3.3.2",
+    "@hookform/resolvers": "^3.3.4",
     "@react-google-maps/api": "^2.19.2",
     "@reduxjs/toolkit": "^2.0.1",
     "@types/jwt-decode": "^3.1.0",
